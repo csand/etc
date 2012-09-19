@@ -74,6 +74,11 @@ givedef() {
 	fi
 }
 
+mcd() {
+	mkdir $1
+	cd $1
+}
+
 # Aliases
 # ============================================================================
 
@@ -113,7 +118,6 @@ alias pwdls="pwd && ls"
 alias serve="python -m SimpleHTTPServer 8060"
 
 # Software specific
-alias t="python ~/build/t/t.py --task-dir ~/lib/tasks --list tasks"
 alias x="dtrx"
 
 # Zsh does odd things sometimes, stop correcting me!
