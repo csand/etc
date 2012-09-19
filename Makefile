@@ -3,18 +3,18 @@ WORKING_DIR = $(PWD)
 REPO = $(HOME)/.files
 REPO_URL = https://github.com/coarsesand/dotfiles.git
 LN = ln -sf
-RM = rm
+RM = rm -i
 
-objects = $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.oh-my-zsh $(HOME)/.vim $(HOME)/.vimrc\
-		  $(HOME)/.hgrc $(HOME)/.mercurial $(HOME)/.tmux.conf $(HOME)/.gitconfig\
-		  $(HOME)/.bin
+objects = $(HOME)/.zshrc $(HOME)/.zshenv $(HOME)/.oh-my-zsh $(HOME)/.hgrc \
+		  $(HOME)/.mercurial $(HOME)/.tmux.conf $(HOME)/.gitconfig \
+		  $(HOME)/.bin $(HOME)/.vimrc $(HOME)/.vim
 
 
 .PHONY : links repo clean
 
 # Phony actions, use these for most commands
 links: $(REPO) $(objects)
-	@echo "Symlinks created successfully"
+	@echo "Symlinks created, Vim plugins installed!"
 
 repo: $(REPO)
 
@@ -29,7 +29,7 @@ $(REPO):
 	@git submodule init
 	@git submodule update
 	@cd $(WORKING_DIR)
-	@echo "Dot files repository cloned to ~/.files"
+	@echo "Dotfiles repository cloned to ~/.files"
 
 $(HOME)/.zshrc: $(REPO)
 	@$(LN) $(REPO)/zsh/zshrc $(HOME)/.zshrc
@@ -51,7 +51,7 @@ $(HOME)/.vim/: $(REPO)
 	@$(LN) $(REPO)/vim/ $(HOME)/.vim
 	@echo "Linked vim folder"
 	@vim +BundleInstall +qall
-	@echo "All vim bundles installed"
+	@echo "All vim plugins installed"
 
 $(HOME)/.gitconfig: $(REPO)
 	@$(LN) $(REPO)/git/gitconfig $(HOME)/.gitconfig
