@@ -11,6 +11,7 @@
 	a = add
 	c = commit
 	cm = commit -m
+	aa = add --all
 
 [core]
 	editor = vim
