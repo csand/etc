@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+
+<!--
+
+      Save this file to 4bit-d9e6f2-on-171717.itermcolors                                    
+      and load it with iTerm2 Preferences panel                                 
+                                                                                
+      generated with 4bit Terminal Color Scheme Designer                        
+                                                                                
+      http://ciembor.github.com/4bit                                            
+                                                                                
+-->
+
+<plist version="1.0">
+<dict>
+<!-- special colors -->
+	<key>Background Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.09019607843137255</real>
+		<key>Green Component</key>
+		<real>0.09019607843137255</real>
+		<key>Red Component</key>
+		<real>0.09019607843137255</real>
+	</dict>
+	<key>Foreground Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.9490196078431372</real>
+		<key>Green Component</key>
+		<real>0.9019607843137255</real>
+		<key>Red Component</key>
+		<real>0.8509803921568627</real>
+	</dict>
+	<key>Cursor Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.9490196078431372</real>
+		<key>Green Component</key>
+		<real>0.9019607843137255</real>
+		<key>Red Component</key>
+		<real>0.8509803921568627</real>
+	</dict>
+	<key>Cursor Text Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.09019607843137255</real>
+		<key>Green Component</key>
+		<real>0.09019607843137255</real>
+		<key>Red Component</key>
+		<real>0.09019607843137255</real>
+	</dict>
+<!-- standard colors -->
+	<!-- black -->
+	<key>Ansi 0 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.09019607843137255</real>
+		<key>Green Component</key>
+		<real>0.09019607843137255</real>
+		<key>Red Component</key>
+		<real>0.09019607843137255</real>
+	</dict>
+	<!-- bright_black -->
+	<key>Ansi 8 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.28627450980392155</real>
+		<key>Green Component</key>
+		<real>0.28627450980392155</real>
+		<key>Red Component</key>
+		<real>0.28627450980392155</real>
+	</dict>
+	<!-- red -->
+	<key>Ansi 1 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.403921568627451</real>
+		<key>Green Component</key>
+		<real>0.30196078431372547</real>
+		<key>Red Component</key>
+		<real>0.7450980392156863</real>
+	</dict>
+	<!-- bright_red -->
+	<key>Ansi 9 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.7411764705882353</real>
+		<key>Green Component</key>
+		<real>0.6980392156862745</real>
+		<key>Red Component</key>
+		<real>0.8901960784313725</real>
+	</dict>
+	<!-- green -->
+	<key>Ansi 2 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.30196078431372547</real>
+		<key>Green Component</key>
+		<real>0.7450980392156863</real>
+		<key>Red Component</key>
+		<real>0.403921568627451</real>
+	</dict>
+	<!-- bright_green -->
+	<key>Ansi 10 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.6980392156862745</real>
+		<key>Green Component</key>
+		<real>0.8901960784313725</real>
+		<key>Red Component</key>
+		<real>0.7411764705882353</real>
+	</dict>
+	<!-- yellow -->
+	<key>Ansi 3 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.30196078431372547</real>
+		<key>Green Component</key>
+		<real>0.6431372549019608</real>
+		<key>Red Component</key>
+		<real>0.7450980392156863</real>
+	</dict>
+	<!-- bright_yellow -->
+	<key>Ansi 11 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.6980392156862745</real>
+		<key>Green Component</key>
+		<real>0.8431372549019608</real>
+		<key>Red Component</key>
+		<real>0.8901960784313725</real>
+	</dict>
+	<!-- blue -->
+	<key>Ansi 4 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.7450980392156863</real>
+		<key>Green Component</key>
+		<real>0.403921568627451</real>
+		<key>Red Component</key>
+		<real>0.30196078431372547</real>
+	</dict>
+	<!-- bright_blue -->
+	<key>Ansi 12 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.8901960784313725</real>
+		<key>Green Component</key>
+		<real>0.7411764705882353</real>
+		<key>Red Component</key>
+		<real>0.6980392156862745</real>
+	</dict>
+	<!-- magenta -->
+	<key>Ansi 5 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.7450980392156863</real>
+		<key>Green Component</key>
+		<real>0.30196078431372547</real>
+		<key>Red Component</key>
+		<real>0.6431372549019608</real>
+	</dict>
+	<!-- bright_magenta -->
+	<key>Ansi 13 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.8901960784313725</real>
+		<key>Green Component</key>
+		<real>0.6980392156862745</real>
+		<key>Red Component</key>
+		<real>0.8431372549019608</real>
+	</dict>
+	<!-- cyan -->
+	<key>Ansi 6 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.6431372549019608</real>
+		<key>Green Component</key>
+		<real>0.7450980392156863</real>
+		<key>Red Component</key>
+		<real>0.30196078431372547</real>
+	</dict>
+	<!-- bright_cyan -->
+	<key>Ansi 14 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.8431372549019608</real>
+		<key>Green Component</key>
+		<real>0.8901960784313725</real>
+		<key>Red Component</key>
+		<real>0.6980392156862745</real>
+	</dict>
+	<!-- white -->
+	<key>Ansi 7 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>0.7176470588235294</real>
+		<key>Green Component</key>
+		<real>0.7176470588235294</real>
+		<key>Red Component</key>
+		<real>0.7176470588235294</real>
+	</dict>
+	<!-- bright_white -->
+	<key>Ansi 15 Color</key>
+	<dict>
+		<key>Blue Component</key>
+		<real>1</real>
+		<key>Green Component</key>
+		<real>1</real>
+		<key>Red Component</key>
+		<real>1</real>
+	</dict>
+</dict>
+</plist>
+

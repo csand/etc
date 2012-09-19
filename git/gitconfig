@@ -1,0 +1,27 @@
+[user]
+	name = Sam Anderson
+	email = coarse.sand@gmail.com
+
+[alias]
+	stage = add
+	unstage = reset HEAD
+	discard = checkout --
+	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	s = status
+
+[core]
+	editor = vim
+	symlinks = false
+
+[merge]
+	tool = splice
+
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto

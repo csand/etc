@@ -1,0 +1,8 @@
+.DS_Store
+*.pyc
+vim/bundle
+!vim/bundle/vundle
+vim/sessions
+xmonad/xmonad.o
+xmonad/xmonad.hi
+xmonad/xmonad.errors
