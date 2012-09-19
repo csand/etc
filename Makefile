@@ -70,6 +70,6 @@ $(HOME)/.tmux.conf: $(REPO)
 	@echo "Linked tmux config"
 
 $(HOME)/.bin: $(REPO)
-	@$(LN) $(REPO)/scripts $(HOME)/.bin
-	@echo "Linked scripts as ~/.bin"
+	@$(LN) $(REPO)/scripts/ $(HOME)/.bin
+	@echo "Linked scripts directory as ~/.bin"
 
