@@ -3,6 +3,7 @@
 vim/bundle
 !vim/bundle/vundle
 vim/sessions
+vim/.netrwhist
 xmonad/xmonad.o
 xmonad/xmonad.hi
 xmonad/xmonad.errors
