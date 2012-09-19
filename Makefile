@@ -22,7 +22,7 @@ clean:
 	@$(RM) $(objects)
 	@echo "Removed all links"
 
-#
+# The objects themselves
 $(REPO):
 	@git clone $(REPO_URL) $(REPO)
 	@cd $(REPO)
