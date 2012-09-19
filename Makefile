@@ -50,7 +50,7 @@ $(HOME)/.vimrc: $(REPO)
 $(HOME)/.vim/: $(REPO)
 	@$(LN) $(REPO)/vim/ $(HOME)/.vim
 	@echo "Linked vim folder"
-	@vim +BundleInstall +qall
+	vim +BundleInstall! +qall
 	@echo "All vim plugins installed"
 
 $(HOME)/.gitconfig: $(REPO)
@@ -70,6 +70,6 @@ $(HOME)/.tmux.conf: $(REPO)
 	@echo "Linked tmux config"
 
 $(HOME)/.bin: $(REPO)
-	@$(LN) $(REPO)/scripts/ $(HOME)/.bin
+	-@$(LN) $(REPO)/scripts/ $(HOME)/.bin
 	@echo "Linked scripts directory as ~/.bin"
 
