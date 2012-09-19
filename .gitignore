@@ -1,7 +1,6 @@
 .DS_Store
 *.pyc
 vim/bundle
-!vim/bundle/vundle
 vim/sessions
 vim/.netrwhist
 xmonad/xmonad.o
