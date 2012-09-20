@@ -1,3 +1,4 @@
+
 PLUGIN_FILE = 'vim/plugins'
 BUNDLE = "#{REPO}/vim/bundle"
 
@@ -80,6 +81,8 @@ namespace :vim do
     end
   end
 
+  task :installed => [:list]
+
   desc 'Update installed vim plugins'
   task :update do
     installed_plugins.each do |name, _|
@@ -96,6 +99,16 @@ namespace :vim do
     installed_plugins.each do |plugin|
       cd bundle do
         rm_rf plugin
+      end
+    end
+  end
+
+  desc 'Remove plugins not listed in the plugins file'
+  task :prune do
+    v_plugins = vim_plugins
+    installed_plugins.each do |plugin|
+      unless v_plugins[plugin]
+        rm_rf bundle(plugin)
       end
     end
   end
