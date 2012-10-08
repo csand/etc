@@ -71,7 +71,7 @@ namespace :vim do
       git_clone url, bundle(name)
       puts "Installed #{name}"
     end
-    puts "\n=== Vim plugins installed ===\n\n"
+    puts "\n\t-=& Installed Vim plugins &=-\n\n"
   end
 
   desc 'List installed vim plugins'
@@ -91,7 +91,7 @@ namespace :vim do
         puts "#{name} updated"
       end
     end
-    puts "\n=== Vim plugins updated ===\n\n"
+    puts "\n\t-=& Updated Vim plugins &=-\n\n"
   end
 
   desc 'Remove all installed vim plugins'
@@ -101,9 +101,10 @@ namespace :vim do
         rm_rf plugin
       end
     end
+    puts "\n\t-=& Removed all Vim plugins &=-\n\n"
   end
 
-  desc 'Remove plugins not listed in the plugins file'
+  desc 'Remove plugins that are no longer listed in the plugins file'
   task :prune do
     v_plugins = vim_plugins
     installed_plugins.each do |plugin|
@@ -111,6 +112,7 @@ namespace :vim do
         rm_rf bundle(plugin)
       end
     end
+    puts "\n\t-=& Pruned unused Vim plugins &=-\n\n"
   end
 end
 

@@ -3,7 +3,10 @@ Lokaltog/vim-powerline
 Raimondi/delimitMate
 altercation/vim-colors-solarized
 benmills/vimux
+chriskempson/vim-tomorrow-theme
+depuracao/vim-rdoc
 digitaltoad/vim-jade
+epmatsw/ag.vim
 ervandew/supertab
 jelera/vim-gummybears-colorscheme
 juanpabloaj/help.vim
@@ -27,11 +30,12 @@ tpope/vim-markdown
 tpope/vim-rails
 tpope/vim-rake
 tpope/vim-repeat
-tpope/vim-rvm
 tpope/vim-speeddating
 tpope/vim-fugitive
 tsaleh/vim-align
+vim-ruby/vim-ruby
 wavded/vim-stylus
+w0ng/vim-hybrid
 xolox/vim-session
 
 [vimscripts]
@@ -63,4 +67,6 @@ surround.vim
 tComment
 utl.vim
 vim-indent-object
+railscasts
+Specky
 
