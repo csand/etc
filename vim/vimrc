@@ -31,9 +31,9 @@ call togglebg#map("<F5>")
 set t_Co=16  " If using solarized as a terminal theme
 set title    " Makes the terminal title reflect current buffer
 set ttyfast  " Mark this as a fast terminal
-set shell=/bin/sh " Should resolve issues with RVM sourcing in .zshrc
+" set shell=/bin/sh " Should resolve issues with RVM sourcing in .zshrc
 
-colorscheme molokai
+color Tomorrow-Night
 set background=dark
 
 " GUI settings
@@ -44,9 +44,9 @@ endif
 
 " OS Settings
 if has("gui_macvim")
-	set guifont=Droid\ Sans\ Mono:h13
+	set guifont=Meslo\ LG\ M\ DZ:h12
 	set fuoptions=maxvert,maxhorz
-	set columns=110
+	set columns=90
 	set shell=/usr/local/bin/zsh
 elseif has("gui_win32")
 	set guifont=Droid\ Sans\ Mono:h12
@@ -58,7 +58,8 @@ endif
 " hi ColorColumn guibg=#404040
 " put this right into jellybeans.vim instead
 
-hi ColorColumn guibg=#303030 " Good for molokai
+" Good for powerline
+hi ColorColumn guibg=#303030
 
 " Core VIM Settings
 set hidden        " Hides buffers rather than require they be written out
@@ -69,8 +70,11 @@ set noerrorbells
 set noswapfile    " Swap files cause more annoyance than they're worth
 set novisualbell
 set nowritebackup
+set autoread      " Automatically read files into the buffer if they've changed
+				  " on disk. Relatively safe given the `FocusLost wall`
+				  " autocommand
 set shortmess=atI " Skip those annoying 'Press Enter' messages
-                  " http://items.sjbach.com/319/configuring-vim-right
+				  " http://items.sjbach.com/319/configuring-vim-right
 
 " Wildcard matching
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
@@ -189,82 +193,6 @@ endfunction
 
 autocmd CursorHold,BufWritePost * unlet! b:mixed_indent_warning
 autocmd CursorHold,BufWritePost * unlet! b:trailing_whitespace_warning
-
-" }}}
-
-" Vundle {{{
-" =============================================================================
-
-" set rtp+=~/.vim/bundle/vundle
-" call vundle#rc()
-"
-" " Github repos
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'Raimondi/delimitMate'
-" Bundle 'altercation/vim-colors-solarized'
-" Bundle 'benmills/vimux'
-" Bundle 'digitaltoad/vim-jade'
-" Bundle 'ervandew/supertab'
-" Bundle 'gmarik/vundle'
-" Bundle 'jelera/vim-gummybears-colorscheme'
-" Bundle 'juanpabloaj/help.vim'
-" Bundle 'kchmck/vim-coffee-script'
-" Bundle 'kien/ctrlp.vim'
-" Bundle 'mattn/zencoding-vim'
-" Bundle 'mgutz/vim-colors'
-" Bundle 'othree/html5.vim'
-" Bundle 'pangloss/vim-javascript'
-" Bundle 'rson/vim-conque'
-" Bundle 'scrooloose/nerdtree'
-" Bundle 'scrooloose/syntastic'
-" Bundle 'sjl/clam.vim'
-" Bundle 'sjl/splice.vim'
-" Bundle 'sjl/vitality.vim'
-" Bundle 'sukima/xmledit'
-" Bundle 'tpope/vim-abolish'
-" Bundle 'tpope/vim-bundler'
-" Bundle 'tpope/vim-eunuch'
-" Bundle 'tpope/vim-markdown'
-" Bundle 'tpope/vim-rails'
-" Bundle 'tpope/vim-rake'
-" Bundle 'tpope/vim-repeat'
-" Bundle 'tpope/vim-rvm'
-" Bundle 'tpope/vim-speeddating'
-" Bundle 'tpope/vim-fugitive'
-" Bundle 'tsaleh/vim-align'
-" Bundle 'wavded/vim-stylus'
-" Bundle 'xolox/vim-session'
-"
-" " Vim Scripts
-" Bundle 'Better-CSS-Syntax-for-Vim'
-" Bundle 'Color-Sampler-Pack'
-" Bundle 'ColorV'
-" Bundle 'EasyMotion'
-" Bundle 'Gundo'
-" Bundle 'HTML-AutoCloseTag'
-" Bundle 'Haskell-Highlight-Enhanced'
-" Bundle 'JSON.vim'
-" Bundle 'Puppet-Syntax-Highlighting'
-" Bundle 'SearchComplete'
-" Bundle 'Syntastic'
-" Bundle 'Tagbar'
-" Bundle 'Zenburn'
-" Bundle 'ZoomWin'
-" Bundle 'ack.vim'
-" Bundle 'argtextobj.vim'
-" Bundle 'bufexplorer.zip'
-" Bundle 'github-theme'
-" Bundle 'jellybeans.vim'
-" Bundle 'molokai'
-" Bundle 'moria'
-" Bundle 'nginx.vim'
-" Bundle 'phpcomplete.vim'
-" Bundle 'python.vim--Vasiliev'
-" Bundle 'smartbd'
-" Bundle 'surround.vim'
-" Bundle 'tComment'
-" Bundle 'utl.vim'
-" Bundle 'vim-indent-object'
 
 " }}}
 
@@ -468,15 +396,14 @@ endfunction
 
 command! -nargs=1 LinkToCase call MarkdownCaseLink(<args>)
 
-" Open current file in Firefox
-let g:firefox_command = 'firefox'
-command! -nargs=0 Firefox execute '!' g:firefox_command expand('%:p')
-
 " Re-open the current file with dos line endings
 command! -nargs=0 Dos e ++ff=dos
 
 " Show the next incident of mixed indentation
 command! -nargs=0 MixedLine /^\( \+\t\|\t\+ \+\(\*\@!\)\)
+
+" Show Ri documentation using Clam
+command! -nargs=1 Ri Clam ri <args>
 
 " }}}
 
@@ -546,8 +473,9 @@ inoremap <C-e> <ESC>A
 " Maximize the current window
 nmap ,,w :ZoomWin<CR>
 
-" Edit vimrc
+" Edit vimrc and plugins
 nmap ,,rc :e ~/.vimrc<CR>
+nmap ,,ug :e ~/.files/vim/plugins<CR>
 
 " Who hates F1?
 function! HateF1()
@@ -614,9 +542,10 @@ autocmd WinLeave * setlocal nocursorline
 autocmd BufRead .vimrc setl foldmethod=marker
 
 " Filetype specific settings
-autocmd FileType haskell setlocal expandtab
-autocmd FileType python  setlocal expandtab
-autocmd FileType ruby    setlocal ts=2 sw=2 expandtab
+autocmd FileType haskell  setlocal expandtab
+autocmd FileType python   setlocal expandtab
+autocmd FileType ruby     setlocal ts=2 sw=2 expandtab foldmethod=syntax
+autocmd FileType cucumber setlocal ts=2 sw=2 expandtab
 
 autocmd FileType javascript setlocal foldmethod=syntax
 
@@ -638,6 +567,12 @@ autocmd FileType stylus   setlocal sw=2 ts=2 et
 autocmd Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
 autocmd FileType markdown syn sync fromstart
 autocmd FileType markdown set foldmethod=syntax
+
+" Fix RSpec syntax highlighting, http://stackoverflow.com/questions/8848896/why-do-i-get-syntax-highlighting-for-rspec-only-in-some-projects-in-vim
+" autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
+" highlight def link rubyRspec Function
+" autocmd BufRead *_spec.rb syn keyword rubyRspecControl do end
+" highlight def link rubyRspecControl Statement
 
 " Strip whitespace on write
 autocmd BufWritePre * :silent! StripWhitespace
