@@ -17,6 +17,11 @@ DOTFILES = {
   "scripts/"       => ".bin"
 }
 
+# OS X
+if `uname -s`.strip == 'Darwin'
+  DOTFILES['mpd/osxmpdconf'] = '.mpdconf'
+end
+
 def git_clone(url, dest = "")
   sh "git clone #{url} #{dest}"
 end

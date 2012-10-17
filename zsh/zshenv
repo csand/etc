@@ -1,5 +1,11 @@
-
-PATH=$HOME/.bin:/usr/local/bin:/usr/local/sbin:/opt/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+PATH=$HOME/.bin
+PATH=$PATH:/usr/local/bin
+PATH=$PATH:/usr/local/sbin
+PATH=$PATH:/opt/local/bin
+PATH=$PATH:/usr/bin
+PATH=$PATH:/usr/sbin
+PATH=$PATH:/bin
+PATH=$PATH:/sbin
 
 # virtualenvwrapper environments home
 WORKON_HOME=$HOME/.virtualenvs/
@@ -11,14 +17,5 @@ VIRTUAL_ENV_DISABLE_PROMPT=true
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 
-# RVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
-if [ "`uname`" = 'Darwin' ]
-then
-	# Update Ruby Gems path for Homebrew
-	# GEM_HOME="$(brew --prefix)"
-fi
-
-# PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
+# rbenv
+which rbenv > /dev/null && eval "$(rbenv init -)"
