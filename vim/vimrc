@@ -12,13 +12,10 @@ filetype off
 
 " Pathogen paths
 call pathogen#infect()
-" call pathogen#infect("unmanaged")
 call pathogen#helptags()
 
 syntax on
-
 filetype plugin indent on
-
 syntax enable
 
 let mapleader="," " Cause \ is a bitch, yo
@@ -28,10 +25,9 @@ call togglebg#map("<F5>")
 
 " Terminal Settings
 " set t_Co=256 " GNOME Terminal doesn't present as 256 colours, this forces it
-set t_Co=16  " If using solarized as a terminal theme
+" set t_Co=16  " If using solarized as a terminal theme
 set title    " Makes the terminal title reflect current buffer
 set ttyfast  " Mark this as a fast terminal
-" set shell=/bin/sh " Should resolve issues with RVM sourcing in .zshrc
 
 color Tomorrow-Night
 set background=dark
@@ -42,7 +38,7 @@ if has("gui_running")
 	set linespace=3 " bump this up a little bit for looks
 endif
 
-" OS Settings
+" OS GUI Settings
 if has("gui_macvim")
 	set guifont=Meslo\ LG\ M\ DZ:h12
 	set fuoptions=maxvert,maxhorz
@@ -56,7 +52,6 @@ endif
 
 " Makes the colorcolumn a different colour, useful with certain schemes
 " hi ColorColumn guibg=#404040
-" put this right into jellybeans.vim instead
 
 " Good for powerline
 hi ColorColumn guibg=#303030
@@ -80,7 +75,6 @@ set shortmess=atI " Skip those annoying 'Press Enter' messages
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
 set wildmenu
 set wildmode=longest,list:longest
-
 
 " Search Optimizations
 set hlsearch
@@ -116,6 +110,9 @@ set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
 
 set listchars=tab:\»\ ,eol:¬,trail:⋅,nbsp:⋅ " Used with `set list`
+
+" Finally, source my Vundle settings
+source ~/.vim/plugins
 
 " }}}
 
@@ -312,61 +309,6 @@ endfunction
 
 nnoremap <leader>ss :call SynStack()<CR>
 
-" Mark in this case is a coworker
-function! FixMarkStyle ()
-	" Fixes equal signs that do not have spaces around them
-	" %s/[^ !+<>=&]\@<==/ =/
-	" %s/=[^ =]\&=/= /
-
-	" Fixes braces that do not have a space before them
-	%s/[^ ]{\&{/ {/
-
-	" Fixes function parens that do not have a space before them
-	%s/\(function \w\+\)\@<=(/ (/
-
-	" Fixes open function parens that then have content after on the same line
-	%s/(\@<=[^)]\+\n/&/
-
-	" Fixes `argumentCollection=` typos
-	%s/argumentcollection \?= \?/argumentCollection=/
-
-	" Fixes comments which do not begin capitalized
-	%s/\(\/\/\)\@<=\( ?[a-z]\)/ \U&/
-
-	" Fixes comments which do not have a space after their opening
-	%s/\/\/[^ ]\@=/\/\/ /
-
-	" Replace multiple spaces after the indentation
-	%s/[^ \t]\@<=[ ]\{2,}/ /
-
-	" Elses without spaces
-	%s/}\@<=else/ else/
-	%s/else{\@=/else /
-
-	" Spaceless fors
-	%s/for(/for (/
-
-	" Semi-colon but not starting a new line and text appears directly after
-	%s/;[^ ]\@=/; /
-
-	" Function names
-	%s/listgetat/listGetAt/i
-	%s/listtoarray/listToArray/i
-	%s/listlen/listLen/i
-	%s/structkeyexists/structKeyExists/i
-
-	" Operators
-	%s/ \@<!\(&&\|||\)/ &/
-	%s/\(&&\|||\) \@!/& /
-	%s/[^+ ]\@<=+/ +/
-
-	" Arguments
-	%s/\(([^)]*)\@!\)\@<=,[^ ]\@=/, /
-
-	" Abandoning this one, meant to find not inside a string
-	" %s/\(\('\|"\)[^"']*\1\@!\)\@<=\(=\w\@=\)/, /
-endfunction
-
 " }}}
 
 " Commands {{{
@@ -525,9 +467,6 @@ nnoremap K <nop>
 " Autocommands {{{
 " =============================================================================
 
-" Source vimrc when it's written
-" autocmd BufWritePost .vimrc source %
-
 " Write all files when GVIM loses focus
 autocmd FocusLost * :silent! wall
 
@@ -540,39 +479,6 @@ autocmd WinLeave * setlocal nocursorline
 
 " Foldmethod is marker in my vimrc
 autocmd BufRead .vimrc setl foldmethod=marker
-
-" Filetype specific settings
-autocmd FileType haskell  setlocal expandtab
-autocmd FileType python   setlocal expandtab
-autocmd FileType ruby     setlocal ts=2 sw=2 expandtab foldmethod=syntax
-autocmd FileType cucumber setlocal ts=2 sw=2 expandtab
-
-autocmd FileType javascript setlocal foldmethod=syntax
-
-autocmd BufNewFile,BufRead *.json set filetype=json
-autocmd FileType json FormatJSON
-
-autocmd BufNewFile,BufRead *.coffee    setlocal filetype=coffee foldmethod=indent nofoldenable
-autocmd BufWritePost       *.coffee    silent CoffeeMake -b | cwindow | redraw!
-
-autocmd BufNewFile,BufRead *.jade      setlocal filetype=jade foldmethod=indent nofoldenable
-
-autocmd BufNewFile,BufRead *.zsh-theme setlocal filetype=zsh
-autocmd BufNewFile,BufRead *.pp        setlocal filetype=puppet
-
-autocmd BufNewFile,BufRead *.md        setlocal filetype=markdown
-
-autocmd FileType stylus   setlocal sw=2 ts=2 et
-
-autocmd Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
-autocmd FileType markdown syn sync fromstart
-autocmd FileType markdown set foldmethod=syntax
-
-" Fix RSpec syntax highlighting, http://stackoverflow.com/questions/8848896/why-do-i-get-syntax-highlighting-for-rspec-only-in-some-projects-in-vim
-" autocmd BufRead *_spec.rb syn keyword rubyRspec describe context it specify it_should_behave_like before after setup subject its shared_examples_for shared_context let
-" highlight def link rubyRspec Function
-" autocmd BufRead *_spec.rb syn keyword rubyRspecControl do end
-" highlight def link rubyRspecControl Statement
 
 " Strip whitespace on write
 autocmd BufWritePre * :silent! StripWhitespace
@@ -590,11 +496,30 @@ autocmd FileType qf setl nolist nocursorline nowrap
 autocmd WinLeave * set nocursorline
 autocmd WinEnter * set cursorline
 
-" Enable omnicomplete funcs
-autocmd FileType python     setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html       setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css        setlocal omnifunc=csscomplete#CompleteCSS
+" Filetype specific settings
+autocmd FileType css              setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType cucumber         setlocal ts=2 sw=2 expandtab
+autocmd FileType eruby            setlocal ts=2 sw=2 expandtab
+autocmd FileType haskell          setlocal expandtab
+autocmd FileType html             setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript       setlocal foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType json FormatJSON
+autocmd BufNewFile,BufRead *.json setlocal filetype=json
+autocmd FileType python           setlocal expandtab omnifunc=pythoncomplete#Complete
+autocmd FileType ruby             setlocal ts=2 sw=2 expandtab foldmethod=syntax
+autocmd FileType scss             setlocal ts=2 sw=2 expandtab
+autocmd FileType stylus           setlocal sw=2 ts=2 et
+
+autocmd BufNewFile,BufRead *.coffee    setlocal filetype=coffee foldmethod=indent nofoldenable
+autocmd BufWritePost       *.coffee    silent CoffeeMake -b | cwindow | redraw!
+autocmd BufNewFile,BufRead *.jade      setlocal filetype=jade foldmethod=indent nofoldenable
+autocmd BufNewFile,BufRead *.zsh-theme setlocal filetype=zsh
+autocmd BufNewFile,BufRead *.pp        setlocal filetype=puppet
+autocmd BufNewFile,BufRead *.md        setlocal filetype=markdown
+
+autocmd Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
+autocmd FileType markdown syn sync fromstart
+autocmd FileType markdown set foldmethod=syntax
 
 " }}}
 
