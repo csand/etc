@@ -12,6 +12,7 @@ filetype off
 
 " Pathogen paths
 call pathogen#infect()
+call pathogen#infect('unmanaged')
 call pathogen#helptags()
 
 " Vundle
@@ -49,7 +50,7 @@ if has("gui_macvim")
 	set guifont=Meslo\ LG\ M\ DZ:h12
 	set fuoptions=maxvert,maxhorz
 	set columns=90
-	set shell=/usr/local/bin/zsh
+	set shell=/bin/zsh
 elseif has("gui_win32")
 	set guifont=Droid\ Sans\ Mono:h12
 elseif has("gui_gtk")
@@ -227,6 +228,7 @@ let g:ctrlp_persistent_input = -1
 let g:ctrlp_custom_ignore = {}
 let g:ctrlp_custom_ignore.dir = '\.git$\|\.hg$'
 let g:ctrlp_custom_ignore.file = '\.so$'
+let g:ctrlp_use_caching = 0
 
 " DetectIndent
 let g:detectindent_preferred_expandtab = 0
