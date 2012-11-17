@@ -1,21 +1,28 @@
-PATH=$HOME/.bin
-PATH=$PATH:/usr/local/bin
-PATH=$PATH:/usr/local/sbin
-PATH=$PATH:/opt/local/bin
-PATH=$PATH:/usr/bin
-PATH=$PATH:/usr/sbin
-PATH=$PATH:/bin
-PATH=$PATH:/sbin
-
-# virtualenvwrapper environments home
-WORKON_HOME=$HOME/.virtualenvs/
-
-# Disable the regular virtualenv prompt, "(venv_name)$"
-VIRTUAL_ENV_DISABLE_PROMPT=true
-
-# Pip related settings
-PIP_VIRTUALENV_BASE=$WORKON_HOME
-PIP_RESPECT_VIRTUALENV=true
+PATH=$HOME/.bin:$PATH
 
 # rbenv
-which rbenv > /dev/null && eval "$(rbenv init -)"
+if which rbenv &>/dev/null; then eval "$(rbenv init -)"; fi
+
+# nvm
+# if [[ -s $HOME/.nvm/nvm.sh ]]; then source $HOME/.nvm/nvm.sh; fi
+
+# Postgres.app
+if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]
+then export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
+fi
+
+# virtualenvwrapper
+WORKON_HOME=$HOME/.virtualenvs/
+PIP_VIRTUALENV_BASE=$WORKON_HOME
+PIP_RESPECT_VIRTUALENV=true
+VIRTUAL_ENV_DISABLE_PROMPT=true # Disable "(venv_name}$" prompt
+if which virtualenvwrapper.sh &>/dev/null; then source virtualenvwrapper.sh; fi
+
+# ls colors
+if [ "`uname`" = 'Darwin' ]
+# Solarized
+# then export LSCOLORS=exfxcxdxbxegedabagexex
+# Kibble
+then export LSCOLORS=exBxcxfxbxegedabagacad
+else export LS_COLORS='di=34;40:ln=1;;40:so=32;40:pi=35;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+fi
