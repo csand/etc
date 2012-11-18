@@ -58,12 +58,13 @@ end
 
 file REPO do
   git_clone REPO_URL, REPO
+  sh "cd #{REPO} && git submodule update"
 end
 
 task :default => :setup
 
 desc 'Clones the dotfiles repository, creates links, and fetches plugins'
-task :setup => [REPO, 'dot:links' 'vim:install']
+task :setup => [REPO, 'dot:links']
 
 namespace :dot do
   task :links => dotfiles do
