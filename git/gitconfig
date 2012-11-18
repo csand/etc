@@ -13,6 +13,8 @@
 	cm = commit -m
 	aa = add --all
 	l = log --pretty=format:\"%h | %s%d\" --graph
+	submod = submodule
+	sub = submodule
 
 [core]
 	editor = vim
