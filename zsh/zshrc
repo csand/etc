@@ -16,8 +16,8 @@ if [ "`uname`" = 'Darwin' ]
 # Solarized
 # then export LSCOLORS=exfxcxdxbxegedabagexex
 # Kibble
-then export LSCOLORS=exBxcxfxbxegedabagacad
-else export LS_COLORS='di=34;40:ln=1;;40:so=32;40:pi=35;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
+then export LSCOLORS=exBxcxCxbxgxGxdxdxGeEx
+else export LS_COLORS='di=34;40:ln=1;;40:so=32;40:pi=1;;40:ex=31;40:bd=36;40:cd=1;;40:su=33;40:sg=33;40:tw=1;;44:ow=1;;40:'
 fi
 
 # =========
