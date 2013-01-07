@@ -1,6 +1,6 @@
 [user]
 	name = Sam Anderson
-	email = coarse.sand@gmail.com
+	email = self@coarsesand.net
 
 [alias]
 	stage = add
@@ -21,7 +21,7 @@
 	symlinks = false
 
 [merge]
-	tool = splice
+	tool = Kaleidoscope
 
 [mergetool "splice"]
 	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
@@ -32,5 +32,21 @@
 	status = auto
 	branch = auto
 	interactive = auto
+
 [push]
 	default = simple
+
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+
+[diff]
+	tool = Kaleidoscope
+
+[difftool]
+	prompt = false
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+
+[mergetool]
+	prompt = false
