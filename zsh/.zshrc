@@ -1,14 +1,14 @@
 # Automatically start tmux if it isn't attached
 # [[ $TERM != "screen" ]] && [[ $TERM != "screen-256color" ]] && tmux && exit
 
-ZSH=$HOME/.oh-my-zsh
-ZSH_THEME=coarsesand
-N_VERSION=0.8.16
+# ZSH=$HOME/.oh-my-zsh
+# ZSH_THEME=coarsesand
+# N_VERSION=0.8.16
 
-plugins=(django git github mercurial node pip powder rake rbenv vundle)
+# plugins=(django git github mercurial node pip powder rake rbenv vundle)
 if [[ `uname` == 'Darwin' ]]; then plugins+=brew; else plugins+=debian; fi
 
-source $ZSH/oh-my-zsh.sh
+# source $ZSH/oh-my-zsh.sh
 
 export EDITOR="subl -w"
 
@@ -33,7 +33,7 @@ mkcd() {
   cd $1
 }
 
-source $HOME/.files/zsh/colors.sh
+source $HOME/.zsh/colors.sh
 
 # =======
 # Aliases

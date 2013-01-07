@@ -1,6 +1,12 @@
-PATH=$HOME/.bin:$PATH
+
+PATH=$HOME/bin:$PATH
+
 # Homebrew
 PATH=/usr/local/sbin:$PATH
+
+EDITOR="subl -w"
+
+if [ "`uname`" = 'Darwin' ]; then export LSCOLORS=exBxcxCxbxgxGxdxdxGeEx; fi
 
 # Pythons
 if [[ -d /usr/local/share/python ]]; then PATH=/usr/local/share/python:$PATH; fi
@@ -8,14 +14,6 @@ if [[ -d /usr/local/share/python3 ]]; then PATH=/usr/local/share/python3:$PATH; 
 
 # rbenv
 if which rbenv &>/dev/null; then eval "$(rbenv init -)"; fi
-
-# nvm
-# if [[ -s $HOME/.nvm/nvm.sh ]]; then source $HOME/.nvm/nvm.sh; fi
-
-# Postgres.app
-# if [[ -d /Applications/Postgres.app/Contents/MacOS/bin ]]
-# then export PATH=/Applications/Postgres.app/Contents/MacOS/bin:$PATH
-# fi
 
 # virtualenvwrapper
 WORKON_HOME=$HOME/.virtualenvs/
