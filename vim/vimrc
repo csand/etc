@@ -36,8 +36,8 @@ call togglebg#map("<F5>")
 set title    " Makes the terminal title reflect current buffer
 set ttyfast  " Mark this as a fast terminal
 
-color Tomorrow-Night
-set background=dark
+colorscheme Peacock
+" set background=dark
 
 " GUI settings
 if has("gui_running")
@@ -47,7 +47,7 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-	set guifont=Meslo\ LG\ M\ DZ:h12
+	set guifont=Source\ Code\ Pro:h12
 	set fuoptions=maxvert,maxhorz
 	set columns=90
 	set shell=/bin/zsh
