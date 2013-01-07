@@ -40,6 +40,8 @@ Bundle 'w0ng/vim-hybrid'
 Bundle 'xolox/vim-session'
 Bundle 'bbommarito/vim-slim'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'davidhalter/jedi-vim'
+Bundle 'bryanjswift/vim-rust'
 
 " Vim scripts
 Bundle 'Better-CSS-Syntax-for-Vim'
