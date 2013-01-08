@@ -1,47 +1,41 @@
-# ===
-# ZSH
-# ===
+# ==========
+# Oh My Zsh?
+# ==========
 
-# Completion
-
-# zstyle ':completion:*' completer _complete _ignored
-# zstyle :compinstall filename '/Users/sand/.zshrc'
-
-autoload -Uz compinit
-compinit
-
-# History
-HISTFILE=~/.zsh_history
-HISTSIZE=1000
-SAVEHIST=1000
+if [[ -s ~/.oh-my-zsh/oh-my-zsh.sh ]]
+  then source ~/.zsh/oh-my.zsh
+  else source ~/.zsh/regular.zsh
+fi
 
 # Environment
 EDITOR="subl -w"
 CLICOLOR=1
 VIRTUAL_ENV_DISABLE_PROMPT=true
 
-# Mac Specific
+# Mac specific
 if [[ "`uname`" = Darwin ]]
 then
   LSCOLORS=exBxcxCxbxgxGxdxdxGeEx
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
 fi
 
-# Options
-setopt autocd
-setopt extendedglob
-setopt nomatch
-setopt appendhistory
+# =========
+# Functions
+# =========
 
-unsetopt notify
+# Path Zsh searches for functions
+fpath=($fpath ~/.zsh/functions)
+
+autoload termcolors
 
 # =======
 # Aliases
 # ======
 
-if [[ "`uname`" != 'Darwin' ]]
-  then alias vim="vim"
-  else alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
-fi
+# Commands where correction just gets irritating
+for cmd in "cp mv mkdir tmux rbenv ncmpcpp subl powder bundle vundle pip which"
+  do alias $cmd="nocorrect $cmd"
+done
 
 alias addrepo="sudo add-apt-repository" # add-apt-repository is just too verbose
 alias serve="python -m SimpleHTTPServer 8060" # Serve current directory, thanks Python
@@ -51,10 +45,5 @@ alias weather="weatherman"
 alias hastier="cat $1 | haste | pbcopy"
 alias mman="middleman"
 
-# ===========
-# Keybindings
-# ===========
-
-bindkey -v # Start ZLE in vi insert mode
-
 echo "Did you update your system today?"
+
