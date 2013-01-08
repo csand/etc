@@ -1,4 +1,4 @@
-" VIM Options {{{
+" VIM options {{{
 " =============================================================================
 
 " First up, this isn't vi
@@ -49,7 +49,7 @@ endif
 if has("gui_macvim")
 	set guifont=Source\ Code\ Pro:h12
 	set fuoptions=maxvert,maxhorz
-	set columns=90
+	set columns=110
 	set shell=/bin/zsh
 elseif has("gui_win32")
 	set guifont=Droid\ Sans\ Mono:h12
@@ -120,7 +120,7 @@ set listchars=tab:\»\ ,eol:¬,trail:⋅,nbsp:⋅ " Used with `set list`
 
 " }}}
 
-" Status Line {{{
+" Status line {{{
 " =============================================================================
 
 " Powerline has taken over
@@ -229,6 +229,7 @@ let g:ctrlp_custom_ignore = {}
 let g:ctrlp_custom_ignore.dir = '\.git$\|\.hg$'
 let g:ctrlp_custom_ignore.file = '\.so$'
 let g:ctrlp_use_caching = 0
+let g:ctrlp_show_hidden = 1
 
 " DetectIndent
 let g:detectindent_preferred_expandtab = 0
@@ -260,6 +261,9 @@ nnoremap <leader>rs :InterruptVimTmuxRunner<CR>
 
 let g:user_zen_leader_key = '<c-e>'
 let g:user_zen_settings = { 'indentation': '	' }
+
+" NERDTree
+let NERDTreeHijackNetrw=1
 
 " }}}
 
@@ -417,12 +421,8 @@ nnoremap L $
 " Just put me at the end of the line
 inoremap <C-e> <ESC>A
 
-" Maximize the current window
-nmap ,,w :ZoomWin<CR>
-
-" Edit vimrc and plugins
-nmap ,,rc :e ~/.vimrc<CR>
-nmap ,,ug :e ~/.files/vim/plugins<CR>
+" Edit vimrc
+nmap <leader><leader>rc :e ~/.vimrc<CR>
 
 " Who hates F1?
 function! HateF1()
