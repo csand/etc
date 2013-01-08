@@ -23,4 +23,7 @@ WORKON_HOME=$HOME/.virtualenvs/
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
 VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
-if which virtualenvwrapper.sh &>/dev/null; then source virtualenvwrapper.sh; fi
+
+if which virtualenvwrapper_lazy.sh &>/dev/null
+  then source virtualenvwrapper_lazy.sh
+fi
