@@ -1,44 +1,44 @@
-## Dotfiles
+# Dotfiles
 
-### Description
+## Description
 
-For a long time I kept these synchronized between machines using Dropbox and
-symlinks. While that approach does work, Dropbox doesn't cope very well with
-moving lots of small files, like those stored in .git directories, one of which
-I had for almost every Vim plugin installed. It could take a few hours for
-Dropbox to synchronize everything to a new machine, so instead I plan to just
-keep the Makefile in Dropbox and let git/vundle do the heavy lifting.
+All of my dotfiles, stored in a format suitable for use with [GNU stow][stow].
+[Vundle][vundle] and [Oh My ZSH][ohmyzsh] are included as submodules that will
+be symlinked into the correct locations by stow (<code>~/.vim/bundle/vundle
+</code> and <code>~/.oh-my-zsh</code>.)
 
-### Usage
+## Usage
 
-<dl>
-<dt><code>make</code> or <code>make links</code></dt>
-<dd>
-Will clone the repository to *~/.files*, symlink all the files and directories
-to where they need to go, and also run `:BundleInstall!` in vim in order to
-pull down all of the plugins I've setup in my .vimrc.
-</dd>
-<dt><code>make repo</code></dt>
-<dd>
-If you just want to pull down the repo to *~/.files* without creating any of
-the links, or installing the Vim plugins. Don't worry, I won't ask why you only
-have this Makefile and not the rest of the repo.
-</dd>
-<dt><code>make clean</code></dt>
-<dd>
-Ruin all of those symlinks `make` worked so hard to create. Also useful if
-you have other links already set up and need to remove them before running
-`make links`. Set to interactive mode so you don't accidentally eat any real
-files when you run it.
-</dd>
-</dl>
+Obviously, you'll have to have [stow][stow] installed. It's a pretty useful
+tool, so go grab it.
 
-### Thanks
+	stow -t $HOME _package_
 
-To anyone reading this, I'd bet 90% of my dotfiles were inspired by, or copied
-directly from, [Steve Losh](http://stevelosh.com/), either from his [oh-my-zsh
-theme](http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/), or
-[his .vimrc](http://stevelosh.com/blog/2010/09/coming-home-to-vim/), or the
-excellent [Twitter account](https://twitter.com/dotvimrc) he runs. Go give [his
-blog](http://stevelosh.com/blog/) a read.
+Will link the tree in <code>_package_</code> into your home directory. Useful
+if you only want to use one or two of the packages. **Special note**, the
+<code>scripts</code> package is meant to be linked to a folder on your
+<code>PATH </code>. In my case I use either <code>~/bin</code> or
+<code>~/.bin</code> for personal scripts, so <code>stow -t $HOME/bin
+scripts</code> will link them correctly.
+
+	setup.sh
+
+Uses stow to link every package in the repository in the correct order and to
+the correct location. Not very complicated, just a list of stow commands useful
+for initial setup.
+
+## Thanks
+
+It's a reasonable guess that 90% of my dotfiles were inspired by, or copied
+directly from, [Steve Losh][sjl-blog], either from his [oh-my-zsh theme]
+[sjl-ohmyzsh], or [his .vimrc][sjl-vimrc], or the excellent [Twitter account]
+[sjl-twitter] he runs.
+
+[stow]: http://www.gnu.org/software/stow/
+[vundle]: http://github.com/gmarik/vundle
+[ohmyzsh]: http://github.com/robbyrussell/oh-my-zsh
+[sjl-blog]: http://stevelosh.com/
+[sjl-ohmyzsh]: http://stevelosh.com/blog/2010/02/my-extravagant-zsh-prompt/
+[sjl-vimrc]: http://stevelosh.com/blog/2010/09/coming-home-to-vim/
+[sjl-twitter]: http://twitter.com/dotvimrc
 
