@@ -1,6 +1,6 @@
 [ui]
 editor = vim
-username = Sam Anderson <coarse.sand@gmail.com>
+username = Sam Anderson <self@coarsesand.net>
 
 [alias]
 show = log --color=always -pr
