@@ -26,7 +26,7 @@ fi
 # Path Zsh searches for functions
 fpath=($fpath ~/.zsh/functions)
 
-autoload termcolors
+autoload term_colors
 
 # =======
 # Aliases
