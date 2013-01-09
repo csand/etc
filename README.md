@@ -12,9 +12,9 @@ be symlinked into the correct locations by stow (<code>~/.vim/bundle/vundle
 Obviously, you'll have to have [stow][stow] installed. It's a pretty useful
 tool, so go grab it.
 
-	stow -t $HOME _package_
+	stow -t $HOME %package%
 
-Will link the tree in <code>_package_</code> into your home directory. Useful
+Will link the tree in <code>%package%</code> into your home directory. Useful
 if you only want to use one or two of the packages. **Special note**, the
 <code>scripts</code> package is meant to be linked to a folder on your
 <code>PATH </code>. In my case I use either <code>~/bin</code> or
