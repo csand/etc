@@ -33,6 +33,4 @@ mq =
 progress =
 record =
 shelve =
-prompt = $HOME/.mercurial/extensions/hg-prompt/prompt.py
-hggit = $HOME/.mercurial/extensions/hg-git/hggit
 
