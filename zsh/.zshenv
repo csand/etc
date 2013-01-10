@@ -1,8 +1,11 @@
-
-PATH=$HOME/bin:$PATH
+# Personal bin dir
+PATH=$PATH:$HOME/bin
 
 # Homebrew
-PATH=/usr/local/sbin:$PATH
+if [[ `uname` = 'Darwin' ]]
+then
+	PATH=/usr/local/sbin:$PATH
+fi
 
 # Pythons
 if [[ -d /usr/local/share/python ]]
