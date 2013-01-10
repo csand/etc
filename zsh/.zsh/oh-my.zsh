@@ -6,7 +6,7 @@ ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="coarsesand"
 DISABLE_AUTO_UPDATE="true"
 
-plugins=(bundler django git github mercurial node pip powder rake rbenv vi-mode vundle)
+plugins=(bundler django git github mercurial node pip powder rake rbenv vundle)
 if [[ `uname` == 'Darwin' ]]
   then plugins=(brew $plugins)
   else plugins=(debian $plugins)

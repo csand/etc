@@ -23,4 +23,4 @@ setopt appendhistory
 
 unsetopt notify
 
-bindkey -v # Start ZLE in vi insert mode
+# bindkey -v # Start ZLE in vi insert mode
