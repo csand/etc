@@ -1,5 +1,4 @@
-# Personal bin dir
-PATH=$PATH:$HOME/bin
+EDITOR=vim
 
 # Homebrew
 if [[ `uname` = 'Darwin' ]]
@@ -30,3 +29,6 @@ VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
 if which virtualenvwrapper_lazy.sh &>/dev/null
   then source virtualenvwrapper_lazy.sh
 fi
+
+# Personal bin dir
+PATH=$HOME/bin:$PATH
