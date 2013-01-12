@@ -3,20 +3,8 @@
 # ==========
 
 if [[ -s ~/.oh-my-zsh/oh-my-zsh.sh ]]
-  then source ~/.zsh/oh-my.zsh
-  else source ~/.zsh/regular.zsh
-fi
-
-# Environment
-EDITOR="subl -w"
-CLICOLOR=1
-VIRTUAL_ENV_DISABLE_PROMPT=true
-
-# Mac specific
-if [[ "`uname`" = Darwin ]]
-then
-  LSCOLORS=exBxcxCxbxgxGxdxdxGeEx
-  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+then source ~/.zsh/oh-my.zsh
+else source ~/.zsh/regular.zsh
 fi
 
 # =========
@@ -32,9 +20,16 @@ autoload term_colors
 # Aliases
 # ======
 
+# Macvim
+if [[ "`uname`" = Darwin ]]
+then
+	alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
+
 # Commands where correction just gets irritating
 for cmd in "cp mv mkdir tmux rbenv ncmpcpp subl powder bundle vundle pip which"
-  do alias $cmd="nocorrect $cmd"
+do
+	alias $cmd="nocorrect $cmd"
 done
 
 alias addrepo="sudo add-apt-repository" # add-apt-repository is just too verbose

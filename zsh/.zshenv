@@ -1,9 +1,11 @@
 EDITOR=vim
+CLICOLOR=1
 
 # Mac settings
 if [[ `uname` = 'Darwin' ]]
 then
-	PATH=/usr/local/sbin:$PATH
+	LSCOLORS=exBxcxCxbxgxGxdxdxGeEx
+	PATH=/usr/local/sbin:$PATH # Homebrew
 fi
 
 # Pythons
@@ -33,7 +35,7 @@ fi
 WORKON_HOME=$HOME/.virtualenvs/
 PIP_VIRTUALENV_BASE=$WORKON_HOME
 PIP_RESPECT_VIRTUALENV=true
-VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+VIRTUAL_ENV_DISABLE_PROMPT=true
 
 if which virtualenvwrapper_lazy.sh &>/dev/null
 then
