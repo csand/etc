@@ -3,11 +3,11 @@
 import sys
 import json
 from plistlib import writePlist
-import StringIO
+from StringIO import StringIO
 
-json_file = open(sys.argv[1], "r").read()
-
-in_file = StringIO.StringIO(json_file)
-json_dict = json.load(in_file)
-
-writePlist(json_dict, open(sys.argv[1] + ".plist", "w"))
+if __name__ == '__main__':
+    filename = sys.argv[1]
+    with open(filename, 'r') as f:
+        data = json.load(StringIO(f.read()))
+    with open(filename + '.plist', 'w') as plist_file:
+        writePlist(data, plist_file)
