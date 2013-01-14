@@ -1,7 +1,6 @@
 .DS_Store
 *.pyc
-vim/.vim/bundle
-vim/.vim/sessions
-vim/.vim/.netrwhist
-vim/.vim/unmanaged
-vundle/.vim/bundle
+vim/bundle
+vim/sessions
+vim/.netrwhist
+vim/unmanaged
