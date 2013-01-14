@@ -15,6 +15,7 @@
 	l = log --pretty=format:\"%h | %s%d\" --graph
 	submod = submodule
 	sub = submodule
+	remotes = remote -v
 
 [core]
 	editor = vim
