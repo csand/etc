@@ -16,6 +16,7 @@
 	submod = submodule
 	sub = submodule
 	remotes = remote -v
+	pull-upstream = pull --no-commit --startegy=recursive -X ours
 
 [core]
 	editor = vim
