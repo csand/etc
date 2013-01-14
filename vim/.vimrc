@@ -5,7 +5,7 @@
 set nocompatible
 
 " Clear existing autocomands
-autocmd!
+au!
 
 " Startup tweaks
 filetype off
@@ -31,34 +31,32 @@ let maplocalleader="\\"
 call togglebg#map("<F5>")
 
 " Terminal Settings
-" set t_Co=256 " GNOME Terminal doesn't present as 256 colours, this forces it
-" set t_Co=16  " If using solarized as a terminal theme
-set title    " Makes the terminal title reflect current buffer
-set ttyfast  " Mark this as a fast terminal
+if $TERM=='xterm-256color'
+  set t_Co=256
+endif
+
+set title   " Makes the terminal title reflect current buffer
+set ttyfast " Mark this as a fast terminal
 
 colorscheme Peacock
-" set background=dark
 
 " GUI settings
 if has("gui_running")
-	set guioptions=aegi
-	set linespace=3 " bump this up a little bit for looks
+  set guioptions=aegi
+  set linespace=3 " bump this up a little bit for looks
 endif
 
 " OS GUI Settings
 if has("gui_macvim")
-	set guifont=Source\ Code\ Pro:h12
-	set fuoptions=maxvert,maxhorz
-	set columns=110
-	set shell=/bin/zsh
+  set guifont=Source\ Code\ Pro:h12
+  set fuoptions=maxvert,maxhorz
+  set columns=110
+  set shell=/bin/zsh
 elseif has("gui_win32")
-	set guifont=Droid\ Sans\ Mono:h12
+  set guifont=Droid\ Sans\ Mono:h12
 elseif has("gui_gtk")
-	set guifont=Ubuntu\ Mono\ 12
+  set guifont=Ubuntu\ Mono\ 12
 endif
-
-" Makes the colorcolumn a different colour, useful with certain schemes
-" hi ColorColumn guibg=#404040
 
 " Good for powerline
 hi ColorColumn guibg=#303030
@@ -73,10 +71,10 @@ set noswapfile    " Swap files cause more annoyance than they're worth
 set novisualbell
 set nowritebackup
 set autoread      " Automatically read files into the buffer if they've changed
-				  " on disk. Relatively safe given the `FocusLost wall`
-				  " autocommand
+                  " on disk. Relatively safe given the `FocusLost wall`
+                  " autocommand
 set shortmess=atI " Skip those annoying 'Press Enter' messages
-				  " http://items.sjbach.com/319/configuring-vim-right
+                  " http://items.sjbach.com/319/configuring-vim-right
 
 " Wildcard matching
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
@@ -93,7 +91,7 @@ set smartcase " Use case sensitivity if search includes a capital letter
 
 " Sets file encoding to UTF-8 for new files
 if !strlen(&fileencoding)
-	set fileencoding=utf-8
+  set fileencoding=utf-8
 endif
 
 set autoindent
@@ -109,91 +107,14 @@ set relativenumber             " 7.3 introduced this; relative line numbers
 set ruler                      " Makes navigating TraceBacks just a bit easier
 set scrolloff=7                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
 set shiftround
-set shiftwidth=4               " Indents use four spaces
+set shiftwidth=8
 let &showbreak = '++'
 set smarttab
-set tabstop=4
+set tabstop=8                  " Number of spaces a tab is displayed as
 set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
 
 set listchars=tab:\»\ ,eol:¬,trail:⋅,nbsp:⋅ " Used with `set list`
-
-" }}}
-
-" Status line {{{
-" =============================================================================
-
-" Powerline has taken over
-
-" set laststatus=2
-" set statusline=
-" set statusline+=\ %< " Where to truncate the line
-" set statusline+=%f " Path relative to cwd and file name
-" set statusline+=%q " Quickfix/location list flag
-" set statusline+=\ [
-" set statusline+=%{strlen(&filetype)?&filetype:''} " File type in buffer
-" set statusline+=%W " Preview window flag
-" set statusline+=%R " Readonly flag
-" set statusline+=%{','.&ff} " File format
-" set statusline+=%{strlen(&fenc)?','.&fenc:',No\ Encoding'}, " File encoding
-" set statusline+=%{ShowSpell()}
-" set statusline+=%{ShowWrap()}
-" set statusline+=%{MixedIndentWarning()}
-" " set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%{TrailingWhitespaceWarning()}
-" set statusline+=]
-" set statusline+=%m " Modified flag
-" set statusline+=\ %=
-" set statusline+=%l:%c " Line Number:Column number/Virtual column number
-" set statusline+=/%L " /Number of lines in buffer
-" set statusline+=\ (%P)\  " Percentage through file
-
-function! ShowSpell()
-	if &spell
-		return ",spell"
-	else
-		return ""
-endfunction
-
-function! ShowWrap()
-	if &wrap
-		return ",wrap"
-	else
-		return ""
-endfunction
-
-function! MixedIndentWarning()
-	if !exists("b:mixed_indent_warning")
-		let tabs = search('^\t\+', 'nw') != 0
-		" ignore spaces just before JavaDoc style comments
-		let spaces = search('^ \+\(\*\@!\)', 'nw') != 0
-		let mixed = search('^\( \+\t\|\t\+ \+\(\*\@!\)\)', 'nw') != 0
-
-		if mixed || (spaces && tabs)
-			let b:mixed_indent_warning = ',mixed'
-		elseif spaces
-			let b:mixed_indent_warning = ',spaces'
-		else
-			let b:mixed_indent_warning = ',tabs'
-		endif
-		let b:mixed_indent_warning_bools = [mixed,tabs,spaces]
-	endif
-	return b:mixed_indent_warning
-endfunction
-
-function! TrailingWhitespaceWarning()
-	if !exists("b:trailing_whitespace_warning")
-		if search('\s\+$', 'nw') != 0
-			let b:trailing_whitespace_warning = ',\s'
-		else
-			let b:trailing_whitespace_warning = ''
-		endif
-	endif
-	return b:trailing_whitespace_warning
-endfunction
-
-autocmd CursorHold,BufWritePost * unlet! b:mixed_indent_warning
-autocmd CursorHold,BufWritePost * unlet! b:trailing_whitespace_warning
 
 " }}}
 
@@ -219,9 +140,6 @@ let delimitMate_balance_matchpairs=1
 " SuperTab
 let g:SuperTabDefaultCompletionType = "context"
 
-" GoogleReader.vim
-" execute 'source ~/lib/googlereader.conf.vim'
-
 " CtrlP
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_persistent_input = -1
@@ -234,10 +152,6 @@ let g:ctrlp_show_hidden = 1
 " DetectIndent
 let g:detectindent_preferred_expandtab = 0
 let g:detectindent_preferred_indent = 4
-
-" Powerline
-" Enable fancy triangles in Powerline if the font supports it
-" let g:Powerline_symbols = 'fancy'
 
 " NERDTree
 nmap <F7> :NERDTreeToggle<CR>
@@ -260,7 +174,7 @@ nnoremap <leader>rs :InterruptVimTmuxRunner<CR>
 " Zencoding
 
 let g:user_zen_leader_key = '<c-e>'
-let g:user_zen_settings = { 'indentation': '	' }
+let g:user_zen_settings = { 'indentation': '    ' }
 
 " NERDTree
 let NERDTreeHijackNetrw=1
@@ -272,48 +186,48 @@ let NERDTreeHijackNetrw=1
 
 " Does what it says
 function! ToggleSpellCheck ()
-	if !&spell
-		setlocal spell spelllang=en_ca
-	else
-		setlocal nospell
-	endif
+  if !&spell
+    setlocal spell spelllang=en_ca
+  else
+    setlocal nospell
+  endif
 endfunction
 
 imap <silent> <F4> <Esc>:call ToggleSpellCheck()<CR>i
 nmap <silent> <F4> :call ToggleSpellCheck()<CR>
 
 function! EnsureDirExists ()
-	let required_dir = expand("%:h")
-	if !isdirectory(required_dir)
-		call mkdir(required_dir, 'p')
-	endif
+  let required_dir = expand("%:h")
+  if !isdirectory(required_dir)
+          call mkdir(required_dir, 'p')
+  endif
 endfunction
 
 function! Scratch ()
-	split +e nofile
-	set buftype=nofile
-	bufhidden=hide
-	setlocal noswapfile
+  split +e nofile
+  set buftype=nofile
+  bufhidden=hide
+  setlocal noswapfile
 endfunction
 
 function! ToggleReadOnlyBit ()
-	let fname = fnameescape(substitute(expand("%:p"), "\\", "/", "g"))
-	checktime
-	execute "au FileChangedShell " . fname . " :echo"
-	if &readonly
-		silent !chmod u-r %
-	else
-		silent !chmod u+r %
-	endif
-	checktime
-	set invreadonly
-	execute "au! FileChangedShell " . fname
+  let fname = fnameescape(substitute(expand("%:p"), "\\", "/", "g"))
+  checktime
+  execute "au FileChangedShell " . fname . " :echo"
+  if &readonly
+    silent !chmod u-r %
+  else
+    silent !chmod u+r %
+  endif
+  checktime
+  set invreadonly
+  execute "au! FileChangedShell " . fname
 endfunction
 
 command! -nargs=0 ToggleReadOnly call ToggleReadOnlyBit()
 
 function! SynStack()
-	echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunction
 
 nnoremap <leader>ss :call SynStack()<CR>
@@ -326,26 +240,15 @@ nnoremap <leader>ss :call SynStack()<CR>
 command! -nargs=0 StripWhitespace %s/\s\+$//|let @/=''
 nmap <silent> <leader>sw :StripWhitespace<CR>
 
-command! -nargs=0 TabIndents %s/	/<tab>/
-command! -nargs=0 SpaceIndents %s/<tab>/	/
+command! -nargs=0 TabIndents %s/        /<tab>/
+command! -nargs=0 SpaceIndents %s/<tab>/        /
 
 " Python makes JSON formatting easy
 command! -nargs=0 FormatJSON %!python -m json.tool
 
 command! -nargs=0 JsBeautify call g:Jsbeautify()
 
-command! -nargs=0 Max set lines=999 | set columns=999
-
 command! -nargs=0 Scratch call Scratch()
-
-" Insert frogger url for a case
-command! -nargs=1 CaseUrl normal ihttp://frogger.dominknow.com/default.asp?<args>
-
-function! MarkdownCaseLink(case)
-	execute 'normal o[Link to case](http://frogger.dominknow.com/default.asp?' . a:case . ' "' . a:case . '"'
-endfunction
-
-command! -nargs=1 LinkToCase call MarkdownCaseLink(<args>)
 
 " Re-open the current file with dos line endings
 command! -nargs=0 Dos e ++ff=dos
@@ -426,13 +329,13 @@ nmap <leader><leader>rc :e ~/.vimrc<CR>
 
 " Who hates F1?
 function! HateF1()
-	if has("gui_macvim")
-		if &fu
-			set nofu
-		else
-			set fu
-		endif
-	endif
+  if has("gui_macvim")
+    if &fu
+      set nofu
+    else
+      set fu
+    endif
+  endif
 endfunction
 
 nnoremap <F1> call HateF1()<CR>
@@ -440,11 +343,11 @@ inoremap <F1> <ESC>call HateF1()<CR>
 
 " Mapping to make movements operate on 1 screen line in wrap mode
 function! ScreenMovement(movement)
-	if &wrap
-		return "g" . a:movement
-	else
-		return a:movement
-	endif
+  if &wrap
+    return "g" . a:movement
+  else
+    return a:movement
+  endif
 endfunction
 
 onoremap <silent> <expr> j ScreenMovement("j")
@@ -472,59 +375,65 @@ nnoremap K <nop>
 " Autocommands {{{
 " =============================================================================
 
-" Write all files when GVIM loses focus
-autocmd FocusLost * :silent! wall
+augroup editor_conveniences
+  au!
 
-" Only show cursorline in current window
-autocmd WinEnter * setlocal cursorline
-autocmd WinLeave * setlocal nocursorline
+  " Write all files when GVIM loses focus
+  au FocusLost * :silent! wall
 
-" Guess the bloody indentation of the file
-" autocmd BufReadPost * :DetectIndent
+  " Only show cursorline in current window
+  au WinEnter * setl cursorline
+  au WinLeave * setl nocursorline
 
-" Foldmethod is marker in my vimrc
-autocmd BufRead .vimrc setl foldmethod=marker
+  " My vimrc is set up for the marker fold method
+  au BufRead .vimrc setl foldmethod=marker
 
-" Strip whitespace on write
-autocmd BufWritePre * :silent! StripWhitespace
+  " Strip whitespace on write
+  au BufWritePre * :silent! StripWhitespace
 
-" Make all windows equal size on Gvim window resize
-autocmd VimResized * exe "normal \<c-w>="
+  " Make all windows equal size on Gvim window resize
+  au VimResized * exe "normal \<c-w>="
 
-" Create parent directories for file if they don't exist when writing
-autocmd BufWritePre * :call EnsureDirExists()
+  " Create parent directories for file if they don't exist when writing
+  au BufWritePre * :call EnsureDirExists()
 
-" Clean up the QuickFix window
-autocmd FileType qf setl nolist nocursorline nowrap
+augroup END
 
-" Only show cursorline in the current window
-autocmd WinLeave * set nocursorline
-autocmd WinEnter * set cursorline
+augroup filetype_settings
+  au!
+  au FileType coffee     setl sw=2 ts=2 et
+  au FileType css        setl omnifunc=csscomplete#CompleteCSS
+  au FileType cucumber   setl ts=2 sw=2 et
+  au FileType eruby      setl ts=2 sw=2 et
+  au FileType haskell    setl et
+  au FileType html       setl et ts=2
+  au FileType html       setl omnifunc=htmlcomplete#CompleteTags
+  au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
+  au FileType javascript setl ts=8 sw=8 noet
+  au FileType python     setl et omnifunc=pythoncomplete#Complete
+  au FileType qf         setl nolist nocursorline nowrap
+  au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
+  au FileType scss       setl ts=2 sw=2 et
+  au FileType stylus     setl sw=2 ts=2 et
+  au FileType vim        setl sw=2 ts=2 et
+  au FileType zsh        setl sw=2 ts=2 et
+augroup END
 
-" Filetype specific settings
-autocmd FileType css              setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType cucumber         setlocal ts=2 sw=2 expandtab
-autocmd FileType eruby            setlocal ts=2 sw=2 expandtab
-autocmd FileType haskell          setlocal expandtab
-autocmd FileType html             setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript       setlocal foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType json FormatJSON
-autocmd BufNewFile,BufRead *.json setlocal filetype=json
-autocmd FileType python           setlocal expandtab omnifunc=pythoncomplete#Complete
-autocmd FileType ruby             setlocal ts=2 sw=2 expandtab foldmethod=syntax
-autocmd FileType scss             setlocal ts=2 sw=2 expandtab
-autocmd FileType stylus           setlocal sw=2 ts=2 et
+augroup undetected_filetypes
+  au!
+  au BufNewFile,BufRead *.coffee setl ft=coffee foldmethod=indent nofoldenable
+  au BufNewFile,BufRead *.jade   setl ft=jade   foldmethod=indent nofoldenable
+  au BufNewFile,BufRead *.json   setl ft=json
+  au BufNewFile,BufRead *.pp     setl ft=puppet
+  au BufNewFile,BufRead *.md     setl ft=markdown
+augroup END
 
-autocmd BufNewFile,BufRead *.coffee    setlocal filetype=coffee foldmethod=indent nofoldenable
-autocmd BufWritePost       *.coffee    silent CoffeeMake -b | cwindow | redraw!
-autocmd BufNewFile,BufRead *.jade      setlocal filetype=jade foldmethod=indent nofoldenable
-autocmd BufNewFile,BufRead *.zsh-theme setlocal filetype=zsh
-autocmd BufNewFile,BufRead *.pp        setlocal filetype=puppet
-autocmd BufNewFile,BufRead *.md        setlocal filetype=markdown
-
-autocmd Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
-autocmd FileType markdown syn sync fromstart
-autocmd FileType markdown set foldmethod=syntax
+augroup markdown
+  au!
+  au Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
+  au FileType markdown syn sync fromstart
+  au FileType markdown set foldmethod=syntax
+augroup END
 
 " }}}
 
