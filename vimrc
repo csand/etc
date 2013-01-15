@@ -107,7 +107,7 @@ set relativenumber             " 7.3 introduced this; relative line numbers
 set ruler                      " Makes navigating TraceBacks just a bit easier
 set scrolloff=7                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
 set shiftround
-set shiftwidth=8
+set shiftwidth=0
 let &showbreak = '++'
 set smarttab
 set tabstop=8                  " Number of spaces a tab is displayed as
@@ -288,8 +288,6 @@ nnoremap <leader>sp <C-w>s<C-w>j<C-w>=
 nnoremap <leader>q :b#<CR>
 
 " Save yourself some time
-nmap ; :
-vmap ; :
 inoremap jk <Esc>
 
 " Sort CSS properties
@@ -375,6 +373,7 @@ nnoremap K <nop>
 " Autocommands {{{
 " =============================================================================
 
+" editor conveniences {{{
 augroup editor_conveniences
   au!
 
@@ -398,7 +397,9 @@ augroup editor_conveniences
   au BufWritePre * :call EnsureDirExists()
 
 augroup END
+" }}}
 
+" filetype_settings {{{}
 augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
@@ -418,7 +419,9 @@ augroup filetype_settings
   au FileType vim        setl sw=2 ts=2 et
   au FileType zsh        setl sw=2 ts=2 et
 augroup END
+" }}}
 
+" undetected_filetypes {{{
 augroup undetected_filetypes
   au!
   au BufNewFile,BufRead *.coffee setl ft=coffee foldmethod=indent nofoldenable
@@ -427,13 +430,16 @@ augroup undetected_filetypes
   au BufNewFile,BufRead *.pp     setl ft=puppet
   au BufNewFile,BufRead *.md     setl ft=markdown
 augroup END
+" }}}
 
+" markdown {{{
 augroup markdown
   au!
   au Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
   au FileType markdown syn sync fromstart
   au FileType markdown set foldmethod=syntax
 augroup END
+" }}}
 
 " }}}
 
