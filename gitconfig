@@ -17,6 +17,7 @@
 	sub = submodule
 	remotes = remote -v
 	pull-upstream = pull --no-commit --startegy=recursive -X ours
+	pending = diff --cached
 
 [core]
 	editor = vim
