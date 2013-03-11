@@ -26,6 +26,7 @@ Bundle 'surround.vim'
 Bundle 'tComment'
 Bundle 'tsaleh/vim-align'
 Bundle 'vim-indent-object'
+Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
 
 " Syntax
