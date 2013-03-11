@@ -6,12 +6,12 @@ BINDIR="${BINDIR:-$HOME/bin}"
 ln_cmd='ln -sf'
 
 for dotfile in $PWD/^(README.md|setup.zsh|scripts); do
-  $ln_cmd $dotfile $DOTDIR/.${dotfile:t}
+  eval "$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
 done
 
 scripts=($PWD/scripts/*)
 mkdir -p "$BINDIR"
-"$ln_cmd $scripts $BINDIR"
+eval "$ln_cmd $scripts $BINDIR"
 
 if [[ ! -d $DOTDIR/.vim/bundle/vundle ]]; then
   mkdir -p $DOTDIR/.vim/bundle
