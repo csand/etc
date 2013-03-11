@@ -38,20 +38,19 @@ endif
 set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
-colorscheme Peacock
+color molokai
 
 " GUI settings
 if has("gui_running")
   set guioptions=aegi
-  set linespace=3 " bump this up a little bit for looks
 endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h12
+  set guifont=Source\ Code\ Pro:h11
+  set linespace=2 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
-  set columns=110
-  set shell=/bin/zsh
+  set shell=/usr/local/bin/zsh
 elseif has("gui_win32")
   set guifont=Droid\ Sans\ Mono:h12
 elseif has("gui_gtk")
@@ -126,6 +125,10 @@ let g:solarized_underline=0
 
 " Syntastic
 let g:syntastic_enable_signs=1
+let g:syntastic_mode_map={}
+let g:syntastic_mode_map.mode='passive'
+let g:syntastic_mode_map.active_filetypes=['ruby', 'python']
+let g:syntastic_mode_map.passive_filetypes=['js']
 
 " Tagbar
 let g:tagbar_autofocus=1
@@ -399,7 +402,7 @@ augroup editor_conveniences
 augroup END
 " }}}
 
-" filetype_settings {{{}
+" filetype_settings {{{
 augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
@@ -410,7 +413,7 @@ augroup filetype_settings
   au FileType html       setl et ts=2
   au FileType html       setl omnifunc=htmlcomplete#CompleteTags
   au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
-  au FileType javascript setl ts=8 sw=8 noet
+  au FileType javascript setl ts=4 sw=4 noet
   au FileType python     setl et omnifunc=pythoncomplete#Complete
   au FileType qf         setl nolist nocursorline nowrap
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
