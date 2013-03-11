@@ -24,21 +24,24 @@
 	editor = vim
 	symlinks = false
 
-[merge]
-	tool = Kaleidoscope
-
-[mergetool "splice"]
-	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
-	trustExitCode = true
-
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	interactive = auto
 
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = Kaleidoscope
+
+[mergetool]
+	prompt = false
+
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+
+[mergetool "splice"]
+	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'SpliceInit'"
+	trustExitCode = true
 
 [diff]
 	tool = Kaleidoscope
@@ -46,8 +49,5 @@
 [difftool]
 	prompt = false
 
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-
-[mergetool]
-	prompt = false
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
