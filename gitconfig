@@ -18,6 +18,7 @@
 	remotes = remote -v
 	pull-upstream = pull --no-commit --startegy=recursive -X ours
 	pending = diff --cached
+	co = checkout
 
 [core]
 	editor = vim
