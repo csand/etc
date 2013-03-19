@@ -406,12 +406,14 @@ augroup END
 augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
+  au FileType css        setl ts=4 sw=4 et
   au FileType css        setl omnifunc=csscomplete#CompleteCSS
   au FileType cucumber   setl ts=2 sw=2 et
   au FileType eruby      setl ts=2 sw=2 et
   au FileType haskell    setl et
-  au FileType html       setl et ts=2
+  au FileType html       setl ts=4 sw=4 et
   au FileType html       setl omnifunc=htmlcomplete#CompleteTags
+  au FileType htmldjango setl ts=4 sw=4 et
   au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType javascript setl ts=4 sw=4 noet
   au FileType python     setl et omnifunc=pythoncomplete#Complete
