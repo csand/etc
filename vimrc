@@ -38,7 +38,7 @@ endif
 set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
-color molokai
+color lucius
 
 " GUI settings
 if has("gui_running")

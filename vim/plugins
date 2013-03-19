@@ -28,6 +28,7 @@ Bundle 'tsaleh/vim-align'
 Bundle 'vim-indent-object'
 Bundle 'walm/jshint.vim'
 Bundle 'xolox/vim-session'
+Bundle 'jonathanfilip/vim-lucius'
 
 " Syntax
 Bundle 'Better-CSS-Syntax-for-Vim'
