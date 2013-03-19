@@ -113,7 +113,7 @@ set tabstop=8                  " Number of spaces a tab is displayed as
 set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
 
-set listchars=tab:\»\ ,eol:¬,trail:⋅,nbsp:⋅ " Used with `set list`
+set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 
 " }}}
 
