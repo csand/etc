@@ -72,6 +72,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
+Bundle 'tpope/vim-unimpaired'
 
 " sjl
 Bundle 'sjl/clam.vim'
