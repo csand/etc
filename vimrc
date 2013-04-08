@@ -39,7 +39,7 @@ set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
 color lucius
-LuciusDark
+LuciusLight
 
 " GUI settings
 if has("gui_running")
@@ -48,7 +48,7 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h11
+  set guifont=Source\ Code\ Pro:h12
   set linespace=2 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
   set shell=/usr/local/bin/zsh
@@ -417,7 +417,9 @@ augroup filetype_settings
   au FileType htmldjango setl ts=4 sw=4 et
   au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType javascript setl ts=4 sw=4 et
+  au FileType less       setl ts=4 sw=4 et
   au FileType python     setl et omnifunc=pythoncomplete#Complete
+  au FileType python     setl ts=4 sw=4 et
   au FileType qf         setl nolist nocursorline nowrap
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
   au FileType scss       setl ts=2 sw=2 et
@@ -448,4 +450,3 @@ augroup END
 " }}}
 
 " }}}
-
