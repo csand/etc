@@ -214,6 +214,8 @@ function! Scratch ()
   setlocal noswapfile
 endfunction
 
+command! -nargs=0 Scratch call Scratch()
+
 function! ToggleReadOnlyBit ()
   let fname = fnameescape(substitute(expand("%:p"), "\\", "/", "g"))
   checktime
@@ -251,8 +253,6 @@ command! -nargs=0 SpaceIndents %s/<tab>/        /
 command! -nargs=0 FormatJSON %!python -m json.tool
 
 command! -nargs=0 JsBeautify call g:Jsbeautify()
-
-command! -nargs=0 Scratch call Scratch()
 
 " Re-open the current file with dos line endings
 command! -nargs=0 Dos e ++ff=dos
