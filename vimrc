@@ -19,7 +19,7 @@ call pathogen#helptags()
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-source ~/.vim/plugins
+source ~/.vim/plugins.vim
 
 syntax on
 filetype plugin indent on
@@ -121,20 +121,10 @@ set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 " Plugin specific settings {{{
 " =============================================================================
 
-" Solarized
-let g:solarized_underline=0
-
 " Syntastic
 let g:syntastic_enable_signs=1
-let g:syntastic_mode_map={}
-let g:syntastic_mode_map.mode='passive'
-let g:syntastic_mode_map.active_filetypes=['ruby', 'python']
-let g:syntastic_mode_map.passive_filetypes=['js']
-
-" Tagbar
-let g:tagbar_autofocus=1
-" let g:tagbar_ctags_bin="/usr/local/bin/ctags"
-nmap <F8> :TagbarToggle<CR>
+let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_jshint_conf="sub:true"
 
 " delimitMate
 let delimitMate_expand_cr=1
@@ -145,35 +135,17 @@ let delimitMate_balance_matchpairs=1
 let g:SuperTabDefaultCompletionType = "context"
 
 " CtrlP
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_persistent_input = -1
 let g:ctrlp_custom_ignore = {}
-let g:ctrlp_custom_ignore.dir = '\.git$\|\.hg$'
-let g:ctrlp_custom_ignore.file = '\.so$'
+let g:ctrlp_custom_ignore.dir = '\v\.(git|hg)\|lib\/(dojo|dijit|dgrid)$'
+let g:ctrlp_custom_ignore.file = '\v\.so$'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_show_hidden = 1
-
-" DetectIndent
-let g:detectindent_preferred_expandtab = 0
-let g:detectindent_preferred_indent = 4
-
-" NERDTree
-nmap <F7> :NERDTreeToggle<CR>
-
-" Rope
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
 
 " EasyMotion highlighting
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
-
-" Vimux bindings
-nnoremap <leader>rc :PromptVimTmuxCommand<CR>
-nnoremap <leader>rl :RunLastVimTmuxCommand<CR>
-nnoremap <leader>ri :InspectVimTmuxRunner<CR>
-nnoremap <leader>rx :CloseVimTmuxPanes<CR>
-nnoremap <leader>rs :InterruptVimTmuxRunner<CR>
 
 " Zencoding
 
