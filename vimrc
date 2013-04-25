@@ -39,7 +39,7 @@ set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
 color lucius
-LuciusLight
+LuciusDark
 
 " GUI settings
 if has("gui_running")
@@ -57,9 +57,6 @@ elseif has("gui_win32")
 elseif has("gui_gtk")
   set guifont=Ubuntu\ Mono\ 12
 endif
-
-" Good for powerline
-hi ColorColumn guibg=#303030
 
 " Core VIM Settings
 set hidden        " Hides buffers rather than require they be written out
