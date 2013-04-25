@@ -31,6 +31,9 @@
 	branch = auto
 	interactive = auto
 
+[push]
+	default = simple
+
 [merge]
 	conflictstyle = diff3
 	tool = Kaleidoscope
