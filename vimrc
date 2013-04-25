@@ -402,7 +402,7 @@ augroup filetype_settings
   au FileType qf         setl nolist nocursorline nowrap colorcolumn=0
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
   au FileType scss       setl ts=2 sw=2 et
-  au FileType stylus     setl sw=2 ts=2 et
+  au FileType stylus     setl sw=4 ts=4 et
   au FileType vim        setl sw=2 ts=2 et
   au FileType zsh        setl sw=2 ts=2 et
 augroup END
