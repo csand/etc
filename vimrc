@@ -207,6 +207,16 @@ endfunction
 
 nnoremap <leader>ss :call SynStack()<CR>
 
+" Common fixes which need to be made to CSS files
+function! FixCssSmell ()
+  " Add newlines between rules
+  %substitute/\}\(\n\n\)\@!/}/g
+  " Add a space after a colon, if it isn't a pseudo-class/filter
+  %substitute/:\( \|DXImage\|hover\|active\|focus\)\@!/: /gi
+endfunction
+
+command! -nargs=0 CSSfix :call FixCssSmell()<CR>
+
 " }}}
 
 " Commands {{{
