@@ -249,10 +249,6 @@ command! -nargs=1 Ri Clam ri <args>
 
 map Y y$
 
-" Fixes regex searching?
-nnoremap / /\v
-vnoremap / /\v
-
 inoremap <C-space> <C-x><C-o>
 nnoremap <C-space> <C-x><C-o>
 
