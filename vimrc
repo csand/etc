@@ -247,10 +247,6 @@ command! -nargs=1 Ri Clam ri <args>
 " Keymaps {{{
 " =============================================================================
 
-" gq formatting now a short cut
-" vmap Q gq
-" nmap Q gqap
-
 map Y y$
 
 " Fixes regex searching?
@@ -283,6 +279,7 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <Left> :bp<CR>
 nmap <Right> :bn<CR>
 nmap <Up> :BufExplorer<CR>
+nmap <leader>be :BufExplorer<CR>
 
 nnoremap <S-h> :bp<CR>
 nnoremap <S-l> :bn<CR>
