@@ -19,7 +19,7 @@ call pathogen#helptags()
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-source ~/.vim/plugins
+source ~/.vim/plugins.vim
 
 syntax on
 filetype plugin indent on
@@ -48,7 +48,7 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h11
+  set guifont=Source\ Code\ Pro:h12
   set linespace=2 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
   set shell=/usr/local/bin/zsh
@@ -57,9 +57,6 @@ elseif has("gui_win32")
 elseif has("gui_gtk")
   set guifont=Ubuntu\ Mono\ 12
 endif
-
-" Good for powerline
-hi ColorColumn guibg=#303030
 
 " Core VIM Settings
 set hidden        " Hides buffers rather than require they be written out
@@ -121,20 +118,10 @@ set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 " Plugin specific settings {{{
 " =============================================================================
 
-" Solarized
-let g:solarized_underline=0
-
 " Syntastic
 let g:syntastic_enable_signs=1
-let g:syntastic_mode_map={}
-let g:syntastic_mode_map.mode='passive'
-let g:syntastic_mode_map.active_filetypes=['ruby', 'python']
-let g:syntastic_mode_map.passive_filetypes=['js']
-
-" Tagbar
-let g:tagbar_autofocus=1
-" let g:tagbar_ctags_bin="/usr/local/bin/ctags"
-nmap <F8> :TagbarToggle<CR>
+let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_jshint_conf="sub:true"
 
 " delimitMate
 let delimitMate_expand_cr=1
@@ -145,35 +132,17 @@ let delimitMate_balance_matchpairs=1
 let g:SuperTabDefaultCompletionType = "context"
 
 " CtrlP
-let g:ctrlp_working_path_mode = 0
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_persistent_input = -1
 let g:ctrlp_custom_ignore = {}
-let g:ctrlp_custom_ignore.dir = '\.git$\|\.hg$'
-let g:ctrlp_custom_ignore.file = '\.so$'
+let g:ctrlp_custom_ignore.dir = '\v\.(git|hg)\|lib\/(dojo|dijit|dgrid)$'
+let g:ctrlp_custom_ignore.file = '\v\.so$'
 let g:ctrlp_use_caching = 0
 let g:ctrlp_show_hidden = 1
-
-" DetectIndent
-let g:detectindent_preferred_expandtab = 0
-let g:detectindent_preferred_indent = 4
-
-" NERDTree
-nmap <F7> :NERDTreeToggle<CR>
-
-" Rope
-let ropevim_vim_completion=1
-let ropevim_extended_complete=1
 
 " EasyMotion highlighting
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
-
-" Vimux bindings
-nnoremap <leader>rc :PromptVimTmuxCommand<CR>
-nnoremap <leader>rl :RunLastVimTmuxCommand<CR>
-nnoremap <leader>ri :InspectVimTmuxRunner<CR>
-nnoremap <leader>rx :CloseVimTmuxPanes<CR>
-nnoremap <leader>rs :InterruptVimTmuxRunner<CR>
 
 " Zencoding
 
@@ -214,6 +183,8 @@ function! Scratch ()
   setlocal noswapfile
 endfunction
 
+command! -nargs=0 Scratch call Scratch()
+
 function! ToggleReadOnlyBit ()
   let fname = fnameescape(substitute(expand("%:p"), "\\", "/", "g"))
   checktime
@@ -236,6 +207,16 @@ endfunction
 
 nnoremap <leader>ss :call SynStack()<CR>
 
+" Common fixes which need to be made to CSS files
+function! FixCssSmell ()
+  " Add newlines between rules
+  %substitute/\}\(\n\n\)\@!/}/g
+  " Add a space after a colon, if it isn't a pseudo-class/filter
+  %substitute/:\( \|DXImage\|hover\|active\|focus\)\@!/: /gi
+endfunction
+
+command! -nargs=0 CSSfix :call FixCssSmell()<CR>
+
 " }}}
 
 " Commands {{{
@@ -252,8 +233,6 @@ command! -nargs=0 FormatJSON %!python -m json.tool
 
 command! -nargs=0 JsBeautify call g:Jsbeautify()
 
-command! -nargs=0 Scratch call Scratch()
-
 " Re-open the current file with dos line endings
 command! -nargs=0 Dos e ++ff=dos
 
@@ -268,15 +247,7 @@ command! -nargs=1 Ri Clam ri <args>
 " Keymaps {{{
 " =============================================================================
 
-" gq formatting now a short cut
-" vmap Q gq
-" nmap Q gqap
-
 map Y y$
-
-" Fixes regex searching?
-nnoremap / /\v
-vnoremap / /\v
 
 inoremap <C-space> <C-x><C-o>
 nnoremap <C-space> <C-x><C-o>
@@ -304,6 +275,7 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <Left> :bp<CR>
 nmap <Right> :bn<CR>
 nmap <Up> :BufExplorer<CR>
+nmap <leader>be :BufExplorer<CR>
 
 nnoremap <S-h> :bp<CR>
 nnoremap <S-l> :bn<CR>
@@ -417,11 +389,13 @@ augroup filetype_settings
   au FileType htmldjango setl ts=4 sw=4 et
   au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType javascript setl ts=4 sw=4 et
+  au FileType less       setl ts=4 sw=4 et
   au FileType python     setl et omnifunc=pythoncomplete#Complete
-  au FileType qf         setl nolist nocursorline nowrap
+  au FileType python     setl ts=4 sw=4 et
+  au FileType qf         setl nolist nocursorline nowrap colorcolumn=0
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
   au FileType scss       setl ts=2 sw=2 et
-  au FileType stylus     setl sw=2 ts=2 et
+  au FileType stylus     setl sw=4 ts=4 et
   au FileType vim        setl sw=2 ts=2 et
   au FileType zsh        setl sw=2 ts=2 et
 augroup END
@@ -448,4 +422,3 @@ augroup END
 " }}}
 
 " }}}
-
