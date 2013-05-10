@@ -152,6 +152,9 @@ let g:user_zen_settings = { 'indentation': '    ' }
 " NERDTree
 let NERDTreeHijackNetrw=1
 
+" Show Marks
+let g:showmarks_enable = 0
+
 " }}}
 
 " Functions {{{
