@@ -19,8 +19,6 @@ call pathogen#helptags()
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-source ~/.vim/plugins.vim
-
 syntax on
 filetype plugin indent on
 syntax enable
