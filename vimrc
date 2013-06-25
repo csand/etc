@@ -10,18 +10,20 @@ au!
 " Startup tweaks
 filetype off
 
-" Pathogen paths
-call pathogen#infect()
-call pathogen#infect('unmanaged')
-call pathogen#helptags()
+if has('vim_starting')
+  set rtp+=~/.vim/bundle/neobundle.vim
+end
 
-" Vundle
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+call neobundle#rc()
+
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 syntax on
 filetype plugin indent on
 syntax enable
+
+source ~/.vim/bundles.vim
+NeoBundleCheck
 
 let mapleader="," " Cause \ is a bitch, yo
 let maplocalleader="\\"
@@ -37,7 +39,7 @@ set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
 color lucius
-LuciusDark
+LuciusLight
 
 " GUI settings
 if has("gui_running")
@@ -46,8 +48,8 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h12
-  set linespace=2 " bump this up a little bit for looks
+  set guifont=Source\ Code\ Pro:h10
+  set linespace=3 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
   set shell=/usr/local/bin/zsh
 elseif has("gui_win32")
@@ -132,9 +134,10 @@ let g:SuperTabDefaultCompletionType = "context"
 " CtrlP
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_persistent_input = -1
-let g:ctrlp_custom_ignore = {}
-let g:ctrlp_custom_ignore.dir = '\v\.(git|hg)\|lib\/(dojo|dijit|dgrid)$'
-let g:ctrlp_custom_ignore.file = '\v\.so$'
+let g:ctrlp_custom_ignore = {
+      \ 'dir': '\v[\/](\.(git|hg))|(lib\/(dojo|dijit|dgrid))$',
+      \ 'file': '\v[\/]\.so$',
+      \ }
 let g:ctrlp_use_caching = 0
 let g:ctrlp_show_hidden = 1
 
@@ -152,6 +155,21 @@ let NERDTreeHijackNetrw=1
 
 " Show Marks
 let g:showmarks_enable = 0
+
+" Unite
+let g:unite_source_grep_max_candidates = 200
+
+if executable('ag')
+  " Use ag in unite grep source.
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+  let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack-grep')
+  " Use ack in unite grep source.
+  let g:unite_source_grep_command = 'ack-grep'
+  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 " }}}
 
@@ -183,7 +201,6 @@ function! Scratch ()
   bufhidden=hide
   setlocal noswapfile
 endfunction
-
 command! -nargs=0 Scratch call Scratch()
 
 function! ToggleReadOnlyBit ()
@@ -199,13 +216,11 @@ function! ToggleReadOnlyBit ()
   set invreadonly
   execute "au! FileChangedShell " . fname
 endfunction
-
 command! -nargs=0 ToggleReadOnly call ToggleReadOnlyBit()
 
 function! SynStack()
   echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunction
-
 nnoremap <leader>ss :call SynStack()<CR>
 
 " Common fixes which need to be made to CSS files
@@ -215,8 +230,17 @@ function! FixCssSmell ()
   " Add a space after a colon, if it isn't a pseudo-class/filter
   %substitute/:\( \|DXImage\|hover\|active\|focus\)\@!/: /gi
 endfunction
-
 command! -nargs=0 CSSfix :call FixCssSmell()<CR>
+
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 
 " }}}
 
@@ -240,8 +264,9 @@ command! -nargs=0 Dos e ++ff=dos
 " Show the next incident of mixed indentation
 command! -nargs=0 MixedLine /^\( \+\t\|\t\+ \+\(\*\@!\)\)
 
-" Show Ri documentation using Clam
-command! -nargs=1 Ri Clam ri <args>
+command! -nargs=? Search Unite -auto-preview grep:.::<args>
+
+command! -nargs=0 Reconfig source ~/.vimrc
 
 " }}}
 
@@ -256,13 +281,6 @@ nnoremap <C-space> <C-x><C-o>
 " De-highlight search when you're done
 nnoremap <silent> <leader><space> :noh<cr>:match none<cr>:2match none<cr>:3match none<cr>
 
-" Create a new split and switch to it
-nnoremap <leader>vsp <C-w>v<C-w>l<C-w>=
-nnoremap <leader>sp <C-w>s<C-w>j<C-w>=
-
-" Switch to previous buffer
-nnoremap <leader>q :b#<CR>
-
 " Save yourself some time
 inoremap jk <Esc>
 
@@ -271,15 +289,6 @@ nnoremap <leader>sortcss ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:nohlsearch<CR>
 
 " Forgot to "sudo vim" and stuck in read-only? :w!!
 cmap w!! w !sudo tee % >/dev/null
-
-" <- -> to change buffer, ^ for a list
-nmap <Left> :bp<CR>
-nmap <Right> :bn<CR>
-nmap <Up> :BufExplorer<CR>
-nmap <leader>be :BufExplorer<CR>
-
-nnoremap <S-h> :bp<CR>
-nnoremap <S-l> :bn<CR>
 
 " Moves the cursor back to where it started after '.'
 nmap . .`[
@@ -339,11 +348,19 @@ nnoremap <silent> <expr> $ ScreenMovement("$")
 " Open a Quickfix window for the last search.
 nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
-" Toggle "keep current line centered" mode
+" Toggle 'keep current line centered' mode
 nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
 
 " Fuck off, shift+k
 nnoremap K <nop>
+
+" Get around buffers like tabs
+nnoremap gb :bn<CR>
+nnoremap gB :bp<CR>
+
+" Unite
+nnoremap [unite] <nop>
+nnoremap <C-p> :Unite -start-insert -auto-preview file_rec/async<CR>
 
 " }}}
 
@@ -399,6 +416,7 @@ augroup filetype_settings
   au FileType stylus     setl sw=4 ts=4 et
   au FileType vim        setl sw=2 ts=2 et
   au FileType zsh        setl sw=2 ts=2 et
+  au FileType yaml       setl sw=2 ts=2 et
 augroup END
 " }}}
 
@@ -410,6 +428,7 @@ augroup undetected_filetypes
   au BufNewFile,BufRead *.json   setl ft=json
   au BufNewFile,BufRead *.pp     setl ft=puppet
   au BufNewFile,BufRead *.md     setl ft=markdown
+  au BufNewFile,BufRead *.hbs    setl ft=handlebars
 augroup END
 " }}}
 
