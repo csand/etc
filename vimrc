@@ -1,5 +1,4 @@
-" VIM options {{{
-" =============================================================================
+" Startup {{{
 
 " First up, this isn't vi
 set nocompatible
@@ -17,14 +16,129 @@ end
 call neobundle#rc()
 
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'Shougo/vimproc', {
+        \   'build' : {
+        \     'windows' : 'make -f make_mingw32.mak',
+        \     'cygwin' : 'make -f make_cygwin.mak',
+        \     'mac' : 'make -f make_mac.mak',
+        \     'unix' : 'make -f make_unix.mak',
+        \   },
+        \ }
 
 syntax on
 filetype plugin indent on
 syntax enable
 
-source ~/.vim/bundles.vim
+}}}
+
+" Plugins {{{
+
+" Core improvements {{{
+NeoBundle 'argtextobj.vim'
+NeoBundle 'juanpabloaj/help.vim'
+NeoBundle 'nelstrom/vim-visual-star-search'
+NeoBundle 'Raimondi/delimitMate'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'surround.vim'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'Valloric/YouCompleteMe', {
+        \   'build': {
+        \     'mac': './install.sh --clang-completer'
+        \   },
+        \ }
+" }}}
+
+" Additional functionality {{{
+NeoBundle 'EasyMotion'
+NeoBundle 'SearchComplete'
+NeoBundle 'ShowMarks'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'zhaocai/linepower.vim'
+" }}}
+
+" Unite plugins {{{
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'Shougo/unite-help'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'ujihisa/unite-font'
+" }}}
+
+" UI and colour schemes {{{
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'moria'
+" }}}
+
+" Core syntax improvements {{{
+NeoBundle 'JSON.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'python.vim--Vasiliev'
+NeoBundle 'vim-ruby/vim-ruby'
+" }}}
+
+" Uncommon syntaxes, lazy-loaded {{{
+NeoBundleLazy 'Haskell-Highlight-Enhanced'
+NeoBundleLazy 'Puppet-Syntax-Highlighting'
+NeoBundleLazy 'bryanjswift/vim-rust'
+NeoBundleLazy 'cakebaker/scss-syntax.vim'
+NeoBundleLazy 'depuracao/vim-rdoc'
+NeoBundleLazy 'digitaltoad/vim-jade'
+NeoBundleLazy 'groenewege/vim-less'
+NeoBundleLazy 'jnwhiteh/vim-golang'
+NeoBundleLazy 'nginx.vim'
+NeoBundleLazy 'nono/vim-handlebars'
+NeoBundleLazy 'pangloss/vim-javascript'
+NeoBundleLazy 'wavded/vim-stylus'
+NeoBundleLazy 'kchmck/vim-coffee-script'
+
+augroup lazy_loaded_syntaxes
+  au!
+  au FileType coffee     NeoBundleSource vim-coffee-script
+  au FileType golang     NeoBundleSource vim-golang
+  au FileType handlebars NeoBundleSource vim-handlebars
+  au FileType haskell    NeoBundleSource Haskell-Highlight-Enhanced
+  au FileType jade       NeoBundleSource vim-jade
+  au FileType javascript NeoBundleSource vim-javascript
+  au FileType less       NeoBundleSource vim-less
+  au FileType nginx      NeoBundleSource nginx.vim
+  au FileType puppet     NeoBundleSource Puppet-Syntax-Highlighting
+  au FileType rdoc       NeoBundleSource vim-rdoc
+  au FileType rust       NeoBundleSource vim-rust
+  au FileType scss       NeoBundleSource scss-syntax.vim
+  au FileType stylus     NeoBundleSource vim-stylus
+augroup END
+" }}}
+
+" tpope {{{
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-eunuch'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rake'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-speeddating'
+NeoBundle 'tpope/vim-unimpaired'
+" }}}
+
+" Shougo {{{
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimfiler.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/neocomplete.vim'
+" }}}
+
 NeoBundleCheck
 
+"}}}
+
+" Options {{{
 let mapleader="," " Cause \ is a bitch, yo
 let maplocalleader="\\"
 
@@ -48,7 +162,7 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h10
+  set guifont=Source\ Code\ Pro:h11
   set linespace=3 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
   set shell=/usr/local/bin/zsh
@@ -75,6 +189,7 @@ set shortmess=atI " Skip those annoying 'Press Enter' messages
 
 " Wildcard matching
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
+set wildignore+=*.dmg
 set wildmenu
 set wildmode=longest,list:longest
 
@@ -113,10 +228,12 @@ set nowrap                     " Wrapping just looks odd on top of being a nuisa
 
 set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 
+set iskeyword+=<,>,[,],:,-,`,!
+set iskeyword-=_
+
 " }}}
 
 " Plugin specific settings {{{
-" =============================================================================
 
 " Syntastic
 let g:syntastic_enable_signs=1
@@ -128,30 +245,13 @@ let delimitMate_expand_cr=1
 let delimitMate_expand_space=1
 let delimitMate_balance_matchpairs=1
 
-" SuperTab
-let g:SuperTabDefaultCompletionType = "context"
-
-" CtrlP
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_persistent_input = -1
-let g:ctrlp_custom_ignore = {
-      \ 'dir': '\v[\/](\.(git|hg))|(lib\/(dojo|dijit|dgrid))$',
-      \ 'file': '\v[\/]\.so$',
-      \ }
-let g:ctrlp_use_caching = 0
-let g:ctrlp_show_hidden = 1
-
 " EasyMotion highlighting
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
 
 " Zencoding
-
 let g:user_zen_leader_key = '<c-e>'
 let g:user_zen_settings = { 'indentation': '    ' }
-
-" NERDTree
-let NERDTreeHijackNetrw=1
 
 " Show Marks
 let g:showmarks_enable = 0
@@ -162,19 +262,26 @@ let g:unite_source_grep_max_candidates = 200
 if executable('ag')
   " Use ag in unite grep source.
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden'
+  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden -i'
   let g:unite_source_grep_recursive_opt = ''
 elseif executable('ack-grep')
   " Use ack in unite grep source.
   let g:unite_source_grep_command = 'ack-grep'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a'
+  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -i'
   let g:unite_source_grep_recursive_opt = ''
 endif
+
+" VimFiler
+let g:vimfiler_as_default_explorer=1
+let g:vimfiler_force_overwrite_statusline=0
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_marked_file_icon = '✓'
+let g:vimfiler_safe_mode_by_default = 0
 
 " }}}
 
 " Functions {{{
-" =============================================================================
 
 " Does what it says
 function! ToggleSpellCheck ()
@@ -184,7 +291,6 @@ function! ToggleSpellCheck ()
     setlocal nospell
   endif
 endfunction
-
 imap <silent> <F4> <Esc>:call ToggleSpellCheck()<CR>i
 nmap <silent> <F4> :call ToggleSpellCheck()<CR>
 
@@ -194,14 +300,6 @@ function! EnsureDirExists ()
           call mkdir(required_dir, 'p')
   endif
 endfunction
-
-function! Scratch ()
-  split +e nofile
-  set buftype=nofile
-  bufhidden=hide
-  setlocal noswapfile
-endfunction
-command! -nargs=0 Scratch call Scratch()
 
 function! ToggleReadOnlyBit ()
   let fname = fnameescape(substitute(expand("%:p"), "\\", "/", "g"))
@@ -221,7 +319,7 @@ command! -nargs=0 ToggleReadOnly call ToggleReadOnlyBit()
 function! SynStack()
   echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
 endfunction
-nnoremap <leader>ss :call SynStack()<CR>
+nnoremap <Leader>ss :call SynStack()<CR>
 
 " Common fixes which need to be made to CSS files
 function! FixCssSmell ()
@@ -245,10 +343,9 @@ command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 " }}}
 
 " Commands {{{
-" =============================================================================
 
 command! -nargs=0 StripWhitespace %s/\s\+$//|let @/=''
-nmap <silent> <leader>sw :StripWhitespace<CR>
+nmap <silent> <Leader>sw :StripWhitespace<CR>
 
 command! -nargs=0 TabIndents %s/        /<tab>/
 command! -nargs=0 SpaceIndents %s/<tab>/        /
@@ -264,14 +361,13 @@ command! -nargs=0 Dos e ++ff=dos
 " Show the next incident of mixed indentation
 command! -nargs=0 MixedLine /^\( \+\t\|\t\+ \+\(\*\@!\)\)
 
-command! -nargs=? Search Unite -auto-preview grep:.::<args>
+command! -nargs=0 Search Unite -auto-preview grep:.
 
 command! -nargs=0 Reconfig source ~/.vimrc
 
 " }}}
 
 " Keymaps {{{
-" =============================================================================
 
 map Y y$
 
@@ -279,13 +375,13 @@ inoremap <C-space> <C-x><C-o>
 nnoremap <C-space> <C-x><C-o>
 
 " De-highlight search when you're done
-nnoremap <silent> <leader><space> :noh<cr>:match none<cr>:2match none<cr>:3match none<cr>
+nnoremap <silent> <Leader><space> :noh<cr>:match none<cr>:2match none<cr>:3match none<cr>
 
 " Save yourself some time
 inoremap jk <Esc>
 
 " Sort CSS properties
-nnoremap <leader>sortcss ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:nohlsearch<CR>
+nnoremap <Leader>sortcss ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:nohlsearch<CR>
 
 " Forgot to "sudo vim" and stuck in read-only? :w!!
 cmap w!! w !sudo tee % >/dev/null
@@ -309,7 +405,7 @@ nnoremap L $
 inoremap <C-e> <ESC>A
 
 " Edit vimrc
-nmap <leader><leader>rc :e ~/.vimrc<CR>
+nmap <Leader><Leader>rc :e ~/.vimrc<CR>
 
 " Who hates F1?
 function! HateF1()
@@ -346,10 +442,10 @@ nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
 " Open a Quickfix window for the last search.
-nnoremap <silent> <leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
+nnoremap <silent> <Leader>? :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Toggle 'keep current line centered' mode
-nnoremap <leader>C :let &scrolloff=999-&scrolloff<cr>
+nnoremap <Leader>C :let &scrolloff=999-&scrolloff<cr>
 
 " Fuck off, shift+k
 nnoremap K <nop>
@@ -358,16 +454,15 @@ nnoremap K <nop>
 nnoremap gb :bn<CR>
 nnoremap gB :bp<CR>
 
-" Unite
-nnoremap [unite] <nop>
+" Unite mappings
 nnoremap <C-p> :Unite -start-insert -auto-preview file_rec/async<CR>
+nnoremap <Leader>b :Unite -quick-match buffer<CR>
 
 " }}}
 
 " Autocommands {{{
-" =============================================================================
 
-" editor conveniences {{{
+" Editor Conveniences {{{
 augroup editor_conveniences
   au!
 
@@ -390,10 +485,13 @@ augroup editor_conveniences
   " Create parent directories for file if they don't exist when writing
   au BufWritePre * :call EnsureDirExists()
 
+  " Open VimFiler is no files given as arguments
+  " au VimEnter * if !argc() | VimFiler . | endif
+
 augroup END
 " }}}
 
-" filetype_settings {{{
+" Filetype Settings {{{
 augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
@@ -405,11 +503,11 @@ augroup filetype_settings
   au FileType html       setl ts=4 sw=4 et
   au FileType html       setl omnifunc=htmlcomplete#CompleteTags
   au FileType htmldjango setl ts=4 sw=4 et
-  au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType javascript setl ts=4 sw=4 et
+  au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType less       setl ts=4 sw=4 et
-  au FileType python     setl et omnifunc=pythoncomplete#Complete
   au FileType python     setl ts=4 sw=4 et
+  au FileType python     setl omnifunc=pythoncomplete#Complete
   au FileType qf         setl nolist nocursorline nowrap colorcolumn=0
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
   au FileType scss       setl ts=2 sw=2 et
@@ -420,7 +518,7 @@ augroup filetype_settings
 augroup END
 " }}}
 
-" undetected_filetypes {{{
+" Undetected Filetypes {{{
 augroup undetected_filetypes
   au!
   au BufNewFile,BufRead *.coffee setl ft=coffee foldmethod=indent nofoldenable
@@ -432,10 +530,14 @@ augroup undetected_filetypes
 augroup END
 " }}}
 
-" markdown {{{
+" Markdown {{{
 augroup markdown
   au!
-  au Filetype markdown syntax region markdownFold start="^\z(#\+\) " end="\(^#\(\z1#*\)\@!#*[^#]\)\@=" transparent fold
+  au Filetype markdown syntax
+    \ region markdownFold
+    \ start="^\z(#\+\) "
+    \ end="\(^#\(\z1#*\)\@!#*[^#]\)\@="
+    \ transparent fold
   au FileType markdown syn sync fromstart
   au FileType markdown set foldmethod=syntax
 augroup END
