@@ -55,6 +55,16 @@ NeoBundle 'ShowMarks'
 NeoBundle 'godlygeek/tabular'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'zhaocai/linepower.vim'
+NeoBundle 'tyru/restart.vim'
+NeoBundle 'hrsh7th/vim-versions'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+" }}}
+
+" Textobjs {{{
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-line'
+NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'coderifous/textobj-word-column.vim'
 " }}}
 
 " Unite plugins {{{
@@ -70,6 +80,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'moria'
+NeoBundle 'w0ng/vim-hybrid'
 " }}}
 
 " Core syntax improvements {{{
@@ -123,6 +134,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-unimpaired'
 " }}}
@@ -227,8 +239,8 @@ set nowrap                     " Wrapping just looks odd on top of being a nuisa
 
 set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 
-set iskeyword+=<,>,[,],:,-,`,!
-set iskeyword-=_
+set iskeyword+=<,>,[,],:,`,!
+set iskeyword-=_,-
 
 " }}}
 
@@ -362,7 +374,7 @@ command! -nargs=0 MixedLine /^\( \+\t\|\t\+ \+\(\*\@!\)\)
 
 command! -nargs=0 Search Unite -auto-preview grep:.
 
-command! -nargs=0 Reconfig source ~/.vimrc
+command! -nargs=0 -bar Reconfig source ~/.vimrc
 
 " }}}
 
@@ -374,7 +386,7 @@ inoremap <C-space> <C-x><C-o>
 nnoremap <C-space> <C-x><C-o>
 
 " De-highlight search when you're done
-nnoremap <silent> <Leader><space> :noh<cr>:match none<cr>:2match none<cr>:3match none<cr>
+nnoremap <silent> <Leader><Space> :noh<cr>:match none<cr>:2match none<cr>:3match none<cr>
 
 " Save yourself some time
 inoremap jk <Esc>
@@ -498,6 +510,7 @@ augroup filetype_settings
   au FileType html       setl ts=4 sw=4 et
   au FileType html       setl omnifunc=htmlcomplete#CompleteTags
   au FileType htmldjango setl ts=4 sw=4 et
+  au FileType htmldjango let b:delimitMate_matchpairs="(:),[:],<:>,{:},%:%"
   au FileType javascript setl ts=4 sw=4 et
   au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType less       setl ts=4 sw=4 et
@@ -521,7 +534,8 @@ augroup undetected_filetypes
   au BufNewFile,BufRead *.json   setl ft=json
   au BufNewFile,BufRead *.pp     setl ft=puppet
   au BufNewFile,BufRead *.md     setl ft=markdown
-  au BufNewFile,BufRead *.hbs    setl ft=handlebars
+  au BufNewFile,BufRead *.hbs,*.handlebars setl ft=handlebars
+  au BufNewFile,BufRead */Views/* setl ft=htmldjango
 augroup END
 " }}}
 

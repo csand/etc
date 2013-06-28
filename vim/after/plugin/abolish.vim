@@ -4,3 +4,4 @@ if !exists(':Abolish')
 endif
 
 Abolish dbeugger debugger
+Abolish NoeBundle NeoBundle
