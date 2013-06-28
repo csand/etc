@@ -388,10 +388,6 @@ cmap w!! w !sudo tee % >/dev/null
 " Moves the cursor back to where it started after '.'
 nmap . .`[
 
-" Toggle folds with space
-nnoremap <space> za
-vnoremap <space> za
-
 " Quick new line
 inoremap <C-cr> <esc>A:<cr>
 inoremap <S-cr> <esc>A<cr>
@@ -455,7 +451,7 @@ nnoremap gB :bp<CR>
 
 " Unite mappings
 nnoremap <C-p> :Unite -start-insert -auto-preview file_rec/async<CR>
-nnoremap <Leader>b :Unite -quick-match buffer<CR>
+nnoremap <Space><Space> :Unite -quick-match buffer<CR>
 
 " }}}
 
