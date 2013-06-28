@@ -29,7 +29,7 @@ syntax on
 filetype plugin indent on
 syntax enable
 
-}}}
+" }}}
 
 " Plugins {{{
 
@@ -131,7 +131,6 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'Shougo/neocomplete.vim'
 " }}}
 
 NeoBundleCheck
