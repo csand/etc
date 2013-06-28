@@ -9,7 +9,7 @@ BINDIR="${BINDIR:-$HOME/bin}"
 ln_cmd='ln -sfv'
 
 # Link dotfiles
-for dotfile in $PWD/^(README.md|setup.zsh|scripts); do
+for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts); do
   eval "$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
 done
 
