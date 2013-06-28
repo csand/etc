@@ -3,22 +3,18 @@
 	email = self@coarsesand.net
 
 [alias]
-	stage = add
-	unstage = reset HEAD
-	discard = checkout --
-	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
-	s = status
 	a = add
+	aa = add --all
+	au = add -u
 	c = commit
 	cm = commit -m
-	aa = add --all
-	l = log --pretty=format:\"%h | %s%d\" --graph
-	submod = submodule
-	sub = submodule
-	remotes = remote -v
-	pull-upstream = pull --no-commit --startegy=recursive -X ours
-	pending = diff --cached
 	co = checkout
+	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+	l = log --pretty=format:\"%h | %s%d\" --graph
+	remotes = remote -v
+	s = status
+	sub = submodule
+	st = stash
 
 [core]
 	editor = vim
