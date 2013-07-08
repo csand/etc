@@ -18,9 +18,9 @@ scripts=($PWD/scripts/*)
 mkdir -p $BINDIR
 eval "$ln_cmd $scripts $BINDIR"
 
-# Clone Vundle and install vim plugins
-if [[ ! -d $DOTDIR/.vim/bundle/vundle ]]; then
+# Clone NeoBundle and install vim plugins
+if [[ ! -d $DOTDIR/.vim/bundle/neobundle.vim ]]; then
   mkdir -p $DOTDIR/.vim/bundle
-  git clone git://github.com/gmarik/vundle.git $DOTDIR/.vim/bundle/vundle
-  vim +BundleInstall +qall
+  git clone git://github.com/Shougo/neobundle.vim.git $DOTDIR/.vim/bundle/neobundle.vim
+  vim +NeoBundleCheck +qall
 fi
