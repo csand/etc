@@ -19,7 +19,9 @@ zstyle ':prezto:*:*' color 'yes'
 # zstyle ':prezto:load' zmodule 'attr' 'stat'
 
 # Set the Zsh functions to load (man zshcontrib).
-# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
+zstyle ':prezto:load' zfunction \
+  'term_colors' \
+  'prompt_csand_setup'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
@@ -92,7 +94,7 @@ zstyle ':prezto:module:editor' keymap 'emacs'
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':prezto:module:prompt' theme 'coarsan'
+zstyle ':prezto:module:prompt' theme 'csand'
 
 #
 # Screen

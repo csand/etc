@@ -5,6 +5,12 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Set additional directories for functions
+fpath=(
+  $HOME/etc/prompts
+  $fpath
+)
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -18,14 +24,6 @@ unsetopt NOMATCH
 
 # prezto ovverides
 alias rm='rm'
-
-# Set additional directories for functions
-fpath=(
-  $HOME/.zsh/functions
-  $fpath
-)
-
-autoload -Uz term_colors
 
 # Use MacVim's vim
 if [[ "$OSTYPE" == darwin* ]]; then
