@@ -9,8 +9,14 @@ BINDIR="${BINDIR:-$HOME/bin}"
 ln_cmd='ln -sfv'
 
 # Link dotfiles
-for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts); do
-  eval "$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
+for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|vim); do
+  cmd="$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
+  if [[ $dotfile == 'vim' ]]; then
+    # Prevents vim dir inception
+    if [[ ! -h $DOTDIR/.vim ]]; then eval "$cmd"; fi
+  else
+    eval "$cmd"
+  fi
 done
 
 # Link scripts into bin directory, creating if necessary
