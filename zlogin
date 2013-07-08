@@ -20,3 +20,10 @@ if (( $+commands[fortune] )); then
   print
 fi
 
+# Start ssh-agent
+if [[ -d "${HOME}/.ssh" ]] then
+  SSH_AGENT="/usr/bin/ssh-agent"
+  if [[ -e $SSH_AGENT && -z `pgrep -u $UID ssh-agent` ]] then
+    eval $(ssh-agent)
+  fi
+fi
