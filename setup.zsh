@@ -11,9 +11,9 @@ ln_cmd='ln -sfv'
 # Link dotfiles
 for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|vim); do
   cmd="$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
-  if [[ $dotfile == 'vim' ]]; then
-    # Prevents vim dir inception
-    if [[ ! -h $DOTDIR/.vim ]]; then eval "$cmd"; fi
+  if [[ -d $dotfile ]]; then
+    # Prevent dotdir inception, -h checks symlinks
+    if [[ ! -h $DOTDIR/.${dotfile:t} ]]; then eval "$cmd"; fi
   else
     eval "$cmd"
   fi
