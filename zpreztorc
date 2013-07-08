@@ -36,7 +36,8 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
-  'prompt'
+  'prompt' \
+  'ssh'
 
 # 'environment' module must be loaded first
 # 'completion' must load *after* the 'utility' module
