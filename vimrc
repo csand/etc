@@ -58,6 +58,8 @@ NeoBundle 'zhaocai/linepower.vim'
 NeoBundle 'tyru/restart.vim'
 NeoBundle 'hrsh7th/vim-versions'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'sleistner/vim-jshint'
 " }}}
 
 " Textobjs {{{
@@ -164,7 +166,7 @@ set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
 color lucius
-LuciusLight
+LuciusDark
 
 " GUI settings
 if has("gui_running")
@@ -173,7 +175,7 @@ endif
 
 " OS GUI Settings
 if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h11
+  set guifont=Source\ Code\ Pro:h10
   set linespace=3 " bump this up a little bit for looks
   set fuoptions=maxvert,maxhorz
   set shell=/usr/local/bin/zsh
@@ -530,12 +532,14 @@ augroup END
 augroup undetected_filetypes
   au!
   au BufNewFile,BufRead *.coffee setl ft=coffee foldmethod=indent nofoldenable
-  au BufNewFile,BufRead *.jade   setl ft=jade   foldmethod=indent nofoldenable
-  au BufNewFile,BufRead *.json   setl ft=json
-  au BufNewFile,BufRead *.pp     setl ft=puppet
-  au BufNewFile,BufRead *.md     setl ft=markdown
+  au BufNewFile,BufRead *.jade setl ft=jade foldmethod=indent nofoldenable
+  au BufNewFile,BufRead *.json setl ft=json
+  au BufNewFile,BufRead *.pp setl ft=puppet
+  au BufNewFile,BufRead *.md setl ft=markdown
   au BufNewFile,BufRead *.hbs,*.handlebars setl ft=handlebars
-  au BufNewFile,BufRead */Views/* setl ft=htmldjango
+  au BufNewFile,BufRead */Views/*.html setl ft=htmldjango
+  au BufNewFile,BufRead Vagrantfile setl ft=ruby
+  au BufNewFile,BufRead *.sls setl ft=yaml
 augroup END
 " }}}
 
