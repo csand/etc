@@ -232,10 +232,10 @@ set relativenumber             " 7.3 introduced this; relative line numbers
 set ruler                      " Makes navigating TraceBacks just a bit easier
 set scrolloff=7                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
 set shiftround
-set shiftwidth=0
+set shiftwidth=4
 let &showbreak = '++'
 set smarttab
-set tabstop=8                  " Number of spaces a tab is displayed as
+set tabstop=4                  " Number of spaces a tab is displayed as
 set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
 
