@@ -39,5 +39,6 @@ fi
 
 alias hastier="cat $1 | haste | pbcopy"
 alias mman="middleman"
+alias weechat="weechat-curses"
 
 echo "Did you update your system today?"
