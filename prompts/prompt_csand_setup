@@ -70,7 +70,7 @@ function prompt_csand_setup {
   # Define prompts
   PROMPT='
   %F{11}%n%f at %F{1}%m%f in %F{5}%~%f${git_info:+${(e)git_info[prompt]}}%f${python_info[virtualenv]}
-  %F{15}⇒%f '
+  %F{15}⇒%f  '
 
   RPROMPT=''
 }
