@@ -78,7 +78,6 @@ NeoBundle 'ujihisa/unite-font'
 " }}}
 
 " UI and colour schemes {{{
-NeoBundle 'Lokaltog/vim-powerline'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'jonathanfilip/vim-lucius'
@@ -166,24 +165,9 @@ endif
 set title   " Makes the terminal title reflect current buffer
 set ttyfast " Mark this as a fast terminal
 
-color lucius
-LuciusDark
-
 " GUI settings
 if has("gui_running")
   set guioptions=aegi
-endif
-
-" OS GUI Settings
-if has("gui_macvim")
-  set guifont=Source\ Code\ Pro:h10
-  set linespace=3 " bump this up a little bit for looks
-  set fuoptions=maxvert,maxhorz
-  set shell=/usr/local/bin/zsh
-elseif has("gui_win32")
-  set guifont=Droid\ Sans\ Mono:h12
-elseif has("gui_gtk")
-  set guifont=Ubuntu\ Mono\ 12
 endif
 
 " Core VIM Settings
@@ -239,6 +223,7 @@ set smarttab
 set tabstop=4                  " Number of spaces a tab is displayed as
 set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
+set linespace=3                " Bump this up a little bit for looks
 
 set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
 
@@ -250,14 +235,14 @@ set iskeyword-=_,-
 " Plugin specific settings {{{
 
 " Syntastic
-let g:syntastic_enable_signs=1
-let g:syntastic_javascript_checkers=['jshint']
-let g:syntastic_javascript_jshint_conf="sub:true"
+let g:syntastic_check_on_open = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_javascript_checkers = ['jshint']
 
 " delimitMate
-let delimitMate_expand_cr=1
-let delimitMate_expand_space=1
-let delimitMate_balance_matchpairs=1
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_balance_matchpairs = 1
 
 " EasyMotion highlighting
 hi link EasyMotionTarget ErrorMsg
@@ -272,6 +257,9 @@ let g:showmarks_enable = 0
 
 " Unite
 let g:unite_source_grep_max_candidates = 200
+let s:file_rec_ignore = '\.\%(gif\|png\|jpg\|jpeg\|ico\)$'
+call unite#custom#source('file_rec', 'ignore_pattern', s:file_rec_ignore)
+let g:unite_enable_ignore_case = 1
 
 if executable('ag')
   " Use ag in unite grep source.
@@ -280,6 +268,7 @@ if executable('ag')
   let g:unite_source_grep_recursive_opt = ''
 elseif executable('ack-grep')
   " Use ack in unite grep source.
+  let g:unite_source_rec_async_command = 'ack-grep -f --no-filter'
   let g:unite_source_grep_command = 'ack-grep'
   let g:unite_source_grep_default_opts = '--no-heading --no-color -a -i'
   let g:unite_source_grep_recursive_opt = ''
@@ -506,19 +495,15 @@ augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
   au FileType css        setl ts=4 sw=4 et
-  au FileType css        setl omnifunc=csscomplete#CompleteCSS
   au FileType cucumber   setl ts=2 sw=2 et
   au FileType eruby      setl ts=2 sw=2 et
   au FileType haskell    setl et
   au FileType html       setl ts=4 sw=4 et
-  au FileType html       setl omnifunc=htmlcomplete#CompleteTags
   au FileType htmldjango setl ts=4 sw=4 et
   au FileType htmldjango let b:delimitMate_matchpairs="(:),[:],<:>,{:},%:%"
   au FileType javascript setl ts=4 sw=4 et
-  au FileType javascript setl foldmethod=syntax omnifunc=javascriptcomplete#CompleteJS
   au FileType less       setl ts=4 sw=4 et
   au FileType python     setl ts=4 sw=4 et
-  au FileType python     setl omnifunc=pythoncomplete#Complete
   au FileType qf         setl nolist nocursorline nowrap colorcolumn=0
   au FileType ruby       setl ts=2 sw=2 et foldmethod=syntax
   au FileType scss       setl ts=2 sw=2 et
@@ -558,3 +543,11 @@ augroup END
 " }}}
 
 " }}}
+
+if filereadable(glob('~/.vimlocal'))
+  source ~/.vimlocal
+endif
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
