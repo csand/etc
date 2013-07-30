@@ -1,0 +1,38 @@
+# Prompt based on one seen in jekor's Haskell from Scratch video series
+
+function prompt_jekor_help {
+  cat <<EOH
+Prompt based on the one seen in jekor's Haskell from Scratch video series.
+Includes support for virtualenv. Requires a unicode capable terminal.
+EOH
+}
+
+function prompt_jekor_preview {
+  prompt_preview_theme jekor
+}
+
+function prompt_jekor_precmd {
+  # Get virtualenv info
+  if (( $+functions[python-info] )); then
+    python-info
+  fi
+}
+
+function prompt_jekor_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+
+  autoload -Uz add-zsh-hook
+  add-zsh-hook precmd prompt_jekor_precmd
+
+  zstyle ':prezto:module:editor:info:completing' format '%F{yellow}...%f'
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{magenta}(%v)%f '
+
+  # Define prompts
+  PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}%1~%f $python_info[virtualenv]λ '
+
+  RPROMPT=''
+}
+
+prompt_jekor_setup "$@"
