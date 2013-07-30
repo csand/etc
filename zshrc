@@ -20,12 +20,15 @@ fi
 
 # When using git, HEAD^ conflicts with EXTENDED_GLOB, NOMATCH will send it on
 # to git correctly
+
 unsetopt NOMATCH
 
-# prezto ovverides
+# Undo Prezto override
+
 alias rm='rm'
 
 # Use MacVim's vim
+
 if [[ "$OSTYPE" == darwin* ]]; then
   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
   if [[ -x "$HOME${MACVIM_VIM}" ]]; then
@@ -37,8 +40,7 @@ if [[ "$OSTYPE" == darwin* ]]; then
   fi
 fi
 
-alias hastier="cat $1 | haste | pbcopy"
-alias mman="middleman"
-alias weechat="weechat-curses"
+# Aliases
 
-echo "Did you update your system today?"
+alias hastier="cat $1 | haste | pbcopy"
+alias weechat="weechat-curses"
