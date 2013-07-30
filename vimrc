@@ -11,6 +11,7 @@ filetype off
 
 if has('vim_starting')
   set rtp+=~/.vim/bundle/neobundle.vim
+  set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 end
 
 call neobundle#rc()
@@ -83,6 +84,7 @@ NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'moria'
 NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'Lokaltog/powerline'
 " }}}
 
 " Core syntax improvements {{{
@@ -111,7 +113,7 @@ NeoBundleLazy 'kchmck/vim-coffee-script'
 augroup lazy_loaded_syntaxes
   au!
   au FileType coffee     NeoBundleSource vim-coffee-script
-  au FileType golang     NeoBundleSource vim-golang
+  au FileType go         NeoBundleSource vim-golang
   au FileType handlebars NeoBundleSource vim-handlebars
   au FileType haskell    NeoBundleSource Haskell-Highlight-Enhanced
   au FileType jade       NeoBundleSource vim-jade
@@ -215,10 +217,10 @@ set linebreak                  " VIM wraps at `breakat` instead of last characte
 set numberwidth=5              " Column width for line numbers, will never exceed 5 because of relnums
 set relativenumber             " 7.3 introduced this; relative line numbers
 set ruler                      " Makes navigating TraceBacks just a bit easier
-set scrolloff=7                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
+set scrolloff=4                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
 set shiftround
 set shiftwidth=4
-let &showbreak = '++'
+let &showbreak = '↳'
 set smarttab
 set tabstop=4                  " Number of spaces a tab is displayed as
 set textwidth=0                " Somehow getting set to 78, which is weird
@@ -547,7 +549,3 @@ augroup END
 if filereadable(glob('~/.vimlocal'))
   source ~/.vimlocal
 endif
-
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
