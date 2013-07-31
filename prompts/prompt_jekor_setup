@@ -30,7 +30,7 @@ function prompt_jekor_setup {
   zstyle ':prezto:module:python:info:virtualenv' format '%F{magenta}(%v) '
 
   # Define prompts
-  PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}%1~ $python_info[virtualenv]λ%f '
+  PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}$(pwd_trunc.py) $python_info[virtualenv]λ%f '
 
   RPROMPT=''
 }
