@@ -1,6 +1,6 @@
 [user]
 	name = Sam Anderson
-	email = self@coarsesand.net
+	email = sam@csand.net
 
 [alias]
 	a = add
@@ -28,7 +28,7 @@
 	interactive = auto
 
 [push]
-	default = simple
+	default = matching
 
 [merge]
 	conflictstyle = diff3
