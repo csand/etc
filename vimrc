@@ -94,6 +94,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'python.vim--Vasiliev'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'atourino/jinja.vim'
 " }}}
 
 " Uncommon syntaxes, lazy-loaded {{{

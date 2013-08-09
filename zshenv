@@ -45,6 +45,7 @@ path=(
   $HOME/bin
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
+  /usr/local/opt/ruby/bin
   /usr/{bin,sbin}
   /{bin,sbin}
   $path
