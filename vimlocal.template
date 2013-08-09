@@ -1,0 +1,22 @@
+" Use this file to create local settings for your machine. Settings that belong
+" here include colour schemes, shell settings, and MacVim specific settings.
+
+" Set your color scheme
+" color lucius
+" LuciusDark " lucius uses its own commands to set contrasts/background colours
+
+" Set your font
+" set guifont=DejaVu\ Sans\ Mono:h12
+
+" Linespace tweaking can improve the readability of some fonts
+" set linespace=3
+
+" MacVim specific, tells it how to size the window when the zoom button is
+" clicked.
+" set fuoptions=maxvert,maxhorz
+
+" Tells vim which shell to use, including with :!. Useful if you've brewed
+" your own zsh/bash, or vim can't find an external command it needs.
+" set shell=/usr/local/bin/zsh
+
+" Customize to your needs...
