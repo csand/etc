@@ -44,4 +44,4 @@ fi
 
 alias hastier="cat $1 | haste | pbcopy"
 alias weechat="weechat-curses"
-alias gcd='cd $(git-root)''
+alias gcd='cd $(git-root)'
