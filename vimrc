@@ -192,7 +192,7 @@ set shortmess=atI " Skip those annoying 'Press Enter' messages
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
 set wildignore+=*.dmg
 set wildmenu
-set wildmode=longest,list:longest
+set wildmode=list:longest,full
 
 " Search Optimizations
 set hlsearch
