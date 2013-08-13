@@ -62,6 +62,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'rking/ag.vim'
 " }}}
 
 " Textobjs {{{
