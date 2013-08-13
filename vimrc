@@ -529,6 +529,7 @@ augroup undetected_filetypes
   au BufNewFile,BufRead */Views/*.html setl ft=htmldjango
   au BufNewFile,BufRead Vagrantfile setl ft=ruby
   au BufNewFile,BufRead *.sls setl ft=yaml
+  au BufNewFile,BufRead .vimlocal setl ft=vim
 augroup END
 " }}}
 
