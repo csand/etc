@@ -69,6 +69,7 @@ NeoBundle 'rking/ag.vim'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'coderifous/textobj-word-column.vim'
 " }}}
 
