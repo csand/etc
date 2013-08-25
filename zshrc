@@ -31,7 +31,7 @@ alias rm='rm'
 
 if [[ "$OSTYPE" == darwin* ]]; then
   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
-  if [[ -x "$HOME${MACVIM_VIM}" ]]; then
+  if [[ -x $HOME${MACVIM_VIM} ]]; then
     alias vim="$HOME${MACVIM_VIM}"
   else
     if [[ -x "${MACVIM_VIM}" ]]; then
