@@ -1,11 +1,8 @@
 " Startup {{{
-
 " First up, this isn't vi
 set nocompatible
-
 " Clear existing autocomands
 au!
-
 " Startup tweaks
 filetype off
 
@@ -13,9 +10,7 @@ if has('vim_starting')
   set rtp+=~/.vim/bundle/neobundle.vim
   set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 end
-
 call neobundle#rc()
-
 NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/vimproc', {
         \   'build' : {
@@ -25,120 +20,112 @@ NeoBundle 'Shougo/vimproc', {
         \     'unix' : 'make -f make_unix.mak',
         \   },
         \ }
-
 syntax on
 filetype plugin indent on
 syntax enable
-
 " }}}
-
 " Plugins {{{
-
-" Core improvements {{{
-NeoBundle 'argtextobj.vim'
-NeoBundle 'juanpabloaj/help.vim'
-NeoBundle 'nelstrom/vim-visual-star-search'
+" VIMprovements {{{
+NeoBundle 'EasyMotion'
 NeoBundle 'Raimondi/delimitMate'
-NeoBundle 'scrooloose/syntastic'
+NeoBundle 'SearchComplete'
+NeoBundle 'ShowMarks'
+NeoBundle 'chrisbra/NrrwRgn'
+NeoBundleLazy 'godlygeek/tabular', {'autoload': {'commands': 'Tabularize'}}
+NeoBundle 'hrsh7th/vim-versions'
+NeoBundle 'juanpabloaj/help.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'nelstrom/vim-visual-star-search'
+NeoBundleLazy 'rking/ag.vim', {'autoload': {'commands': 'Ag'}}
 NeoBundle 'surround.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'thinca/vim-ref'
 NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tyru/restart.vim'
+NeoBundle 'zhaocai/linepower.vim'
+NeoBundle 'Lokaltog/powerline'
+" }}}
+" Missing syntaxes {{{
+NeoBundleLazy 'elzr/vim-json', {'autoload': {'filetypes': 'json'}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload': {'filetypes': 'css'}}
+NeoBundleLazy 'othree/html5.vim', {'autoload': {'filetypes': 'html'}}
+NeoBundleLazy 'python.vim--Vasiliev', {'autoload': {'filetypes': 'python'}}
+NeoBundleLazy 'vim-ruby/vim-ruby', {'autoload': {'filetypes': 'ruby'}}
+NeoBundleLazy 'atourino/jinja.vim', {'autoload': {'filetypes': 'jinja'}}
+NeoBundleLazy 'Haskell-Highlight-Enhanced', {
+      \ 'autoload': {
+      \   'filetypes': 'haskell'
+      \ }}
+NeoBundleLazy 'Puppet-Syntax-Highlighting', {
+      \ 'autoload': {
+      \   'filetypes': 'puppet'
+      \ }}
+NeoBundleLazy 'cakebaker/scss-syntax.vim', {'autoload': {'filetypes': 'scss'}}
+NeoBundleLazy 'depuracao/vim-rdoc', {'autoload': {'filetypes': 'rdoc'}}
+NeoBundleLazy 'digitaltoad/vim-jade', {'autoload': {'filetypes': 'jade'}}
+NeoBundleLazy 'groenewege/vim-less', {'autoload': {'filetypes': 'less'}}
+NeoBundleLazy 'jnwhiteh/vim-golang', {'autoload': {'filetypes': 'go'}}
+NeoBundleLazy 'nginx.vim', {'autoload': {'filetypes': 'nginx'}}
+NeoBundleLazy 'nono/vim-handlebars', {'autoload': {'filetypes': 'handlebars'}}
+NeoBundleLazy 'pangloss/vim-javascript', {
+      \ 'autoload': {
+      \   'filetypes': 'javascript'
+      \ }}
+NeoBundleLazy 'tpope/vim-markdown', {'autoload': {'filetypes': 'markdown'}}
+NeoBundleLazy 'wavded/vim-stylus', {'autoload': {'filetypes': 'stylus'}}
+NeoBundleLazy 'kchmck/vim-coffee-script', {'autoload': {'filetypes': 'coffee'}}
+" }}}
+" Syntax checking and auto-completion {{{
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Valloric/YouCompleteMe', {
         \   'build': {
         \     'mac': './install.sh --clang-completer'
         \   },
         \ }
+NeoBundle 'marijnh/tern_for_vim', {
+        \   'build': {
+        \     'mac': 'npm install',
+        \     'unix': 'npm install',
+        \   },
+        \ }
 " }}}
-
-" Additional functionality {{{
-NeoBundle 'EasyMotion'
-NeoBundle 'SearchComplete'
-NeoBundle 'ShowMarks'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'zhaocai/linepower.vim'
-NeoBundle 'tyru/restart.vim'
-NeoBundle 'hrsh7th/vim-versions'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'chrisbra/NrrwRgn'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'rking/ag.vim'
-NeoBundle 'jmcantrell/vim-virtualenv'
-NeoBundle 'mattn/emmet-vim'
-" }}}
-
-" Textobjs {{{
+" Text objects {{{
+NeoBundle 'argtextobj.vim'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-line'
 NeoBundle 'kana/vim-textobj-fold'
+NeoBundle 'kana/vim-textobj-indent'
 NeoBundle 'coderifous/textobj-word-column.vim'
 " }}}
-
-" Unite plugins {{{
+" Unite {{{
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'Shougo/unite-help'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'ujihisa/unite-font'
 " }}}
-
-" UI and colour schemes {{{
+" Colour schemes {{{
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'moria'
 NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'Lokaltog/powerline'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'Liquid-Carbon'
+NeoBundle 'pyte'
+NeoBundle 'proton'
+NeoBundle 'endel/vim-github-colorscheme'
+NeoBundle 'candy.vim'
+NeoBundle 'zefei/cake16'
 " }}}
-
-" Core syntax improvements {{{
-NeoBundle 'JSON.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'python.vim--Vasiliev'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'atourino/jinja.vim'
-" }}}
-
-" Uncommon syntaxes, lazy-loaded {{{
-NeoBundleLazy 'Haskell-Highlight-Enhanced'
-NeoBundleLazy 'Puppet-Syntax-Highlighting'
-NeoBundleLazy 'bryanjswift/vim-rust'
-NeoBundleLazy 'cakebaker/scss-syntax.vim'
-NeoBundleLazy 'depuracao/vim-rdoc'
-NeoBundleLazy 'digitaltoad/vim-jade'
-NeoBundleLazy 'groenewege/vim-less'
-NeoBundleLazy 'jnwhiteh/vim-golang'
-NeoBundleLazy 'nginx.vim'
-NeoBundleLazy 'nono/vim-handlebars'
-NeoBundleLazy 'pangloss/vim-javascript'
-NeoBundleLazy 'wavded/vim-stylus'
-NeoBundleLazy 'kchmck/vim-coffee-script'
-
-augroup lazy_loaded_syntaxes
-  au!
-  au FileType coffee     NeoBundleSource vim-coffee-script
-  au FileType go         NeoBundleSource vim-golang
-  au FileType handlebars NeoBundleSource vim-handlebars
-  au FileType haskell    NeoBundleSource Haskell-Highlight-Enhanced
-  au FileType jade       NeoBundleSource vim-jade
-  au FileType javascript NeoBundleSource vim-javascript
-  au FileType less       NeoBundleSource vim-less
-  au FileType nginx      NeoBundleSource nginx.vim
-  au FileType puppet     NeoBundleSource Puppet-Syntax-Highlighting
-  au FileType rdoc       NeoBundleSource vim-rdoc
-  au FileType rust       NeoBundleSource vim-rust
-  au FileType scss       NeoBundleSource scss-syntax.vim
-  au FileType stylus     NeoBundleSource vim-stylus
-augroup END
-" }}}
-
 " tpope {{{
 NeoBundle 'tpope/vim-abolish'
 NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-dispatch'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-eunuch'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-markdown'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-rake'
 NeoBundle 'tpope/vim-repeat'
@@ -146,17 +133,16 @@ NeoBundle 'tpope/vim-sleuth'
 NeoBundle 'tpope/vim-speeddating'
 NeoBundle 'tpope/vim-unimpaired'
 " }}}
-
 " Shougo {{{
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler.vim'
 NeoBundle 'Shougo/vimshell.vim'
 " }}}
-
+" Python {{{
+NeoBundle 'jmcantrell/vim-virtualenv'
+NeoBundle 'lambdalisue/nose.vim'
+" }}}
 NeoBundleCheck
-
-"}}}
-
+" }}}
 " Options {{{
 let mapleader="," " Cause \ is a bitch, yo
 let maplocalleader="\\"
@@ -190,6 +176,7 @@ set autoread      " Automatically read files into the buffer if they've changed
                   " autocommand
 set shortmess=atI " Skip those annoying 'Press Enter' messages
                   " http://items.sjbach.com/319/configuring-vim-right
+set mouse=n       " Only listen to mouse events in normal mode
 
 " Wildcard matching
 set wildignore=*.swp,*.bak,*.pyc,*.class,node_modules/*,_sgbak,.DS_Store
@@ -197,13 +184,13 @@ set wildignore+=*.dmg
 set wildmenu
 set wildmode=list:longest,full
 
-" Search Optimizations
+" Search optimizations
 set hlsearch
 set ignorecase
 set incsearch " Incremental search as you type
 set smartcase " Use case sensitivity if search includes a capital letter
 
-" Editor Settings
+" Editor settings
 
 " Sets file encoding to UTF-8 for new files
 if !strlen(&fileencoding)
@@ -221,7 +208,7 @@ set linebreak                  " VIM wraps at `breakat` instead of last characte
 set numberwidth=5              " Column width for line numbers, will never exceed 5 because of relnums
 set relativenumber             " 7.3 introduced this; relative line numbers
 set ruler                      " Makes navigating TraceBacks just a bit easier
-set scrolloff=4                " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
+set scrolloff=14               " Changes when VIM starts scrolling file (i.e. cursor two lines from bottom)
 set shiftround
 set shiftwidth=4
 let &showbreak = '↳'
@@ -231,13 +218,9 @@ set textwidth=0                " Somehow getting set to 78, which is weird
 set nowrap                     " Wrapping just looks odd on top of being a nuisance
 set linespace=3                " Bump this up a little bit for looks
 
-set listchars=tab:→\ ,eol:¬,trail:·,nbsp:· " Used with `set list`
-
-set iskeyword+=<,>,[,],:,`,!
-set iskeyword-=_,-
+set listchars=tab:→\ ,eol:↵,trail:·,nbsp:· " Used with `set list`
 
 " }}}
-
 " Plugin specific settings {{{
 
 " Syntastic
@@ -284,8 +267,10 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 let g:vimfiler_safe_mode_by_default = 0
 
-" }}}
+" Tube
+let g:tube_terminal = 'iterm'
 
+" }}}
 " Functions {{{
 
 " Does what it says
@@ -344,11 +329,8 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-
 " }}}
-
 " Commands {{{
-
 command! -nargs=0 StripWhitespace %s/\s\+$//|let @/=''
 nmap <silent> <Leader>sw :StripWhitespace<CR>
 
@@ -373,7 +355,6 @@ command! -nargs=0 -bar Reconfig source ~/.vimrc
 command! -nargs=0 Marked !open -a 'Marked' %
 
 " }}}
-
 " Keymaps {{{
 
 map Y y$
@@ -462,39 +443,28 @@ nnoremap <C-p> :Unite -start-insert -auto-preview file_rec/async<CR>
 nnoremap <Space><Space> :Unite -quick-match buffer<CR>
 
 " }}}
-
 " Autocommands {{{
-
-" Editor Conveniences {{{
+" Editor conveniences {{{
 augroup editor_conveniences
   au!
-
   " Write all files when GVIM loses focus
   au FocusLost * :silent! wall
-
   " Only show cursorline in current window
   au WinEnter * setl cursorline
   au WinLeave * setl nocursorline
-
   " My vimrc is set up for the marker fold method
   au BufRead .vimrc setl foldmethod=marker
-
   " Strip whitespace on write
   au BufWritePre * :silent! StripWhitespace
-
   " Make all windows equal size on Gvim window resize
   au VimResized * exe "normal \<c-w>="
-
   " Create parent directories for file if they don't exist when writing
   au BufWritePre * :call EnsureDirExists()
-
   " Open VimFiler is no files given as arguments
   " au VimEnter * if !argc() | VimFiler . | endif
-
 augroup END
 " }}}
-
-" Filetype Settings {{{
+" Filetype settings {{{
 augroup filetype_settings
   au!
   au FileType coffee     setl sw=2 ts=2 et
@@ -517,23 +487,24 @@ augroup filetype_settings
   au FileType yaml       setl sw=2 ts=2 et
 augroup END
 " }}}
-
-" Undetected Filetypes {{{
+" Undetected filetypes {{{
 augroup undetected_filetypes
   au!
-  au BufNewFile,BufRead *.coffee setl ft=coffee foldmethod=indent nofoldenable
+  au BufNewFile,BufRead *.coffee set ft=coffee foldmethod=indent nofoldenable
+  au BufNewFile,BufRead *.hbs,*.handlebars setl ft=handlebars
+  au BufNewFile,BufRead *.j2 setl ft=jinja
   au BufNewFile,BufRead *.jade setl ft=jade foldmethod=indent nofoldenable
   au BufNewFile,BufRead *.json setl ft=json
-  au BufNewFile,BufRead *.pp setl ft=puppet
   au BufNewFile,BufRead *.md setl ft=markdown
-  au BufNewFile,BufRead *.hbs,*.handlebars setl ft=handlebars
+  au BufNewFile,BufRead *.pp setl ft=puppet
+  au BufNewFile,BufRead *.sls setl ft=yaml
   au BufNewFile,BufRead */Views/*.html setl ft=htmldjango
+  au BufNewFile,BufRead .vimlocal setl ft=vim
   au BufNewFile,BufRead Vagrantfile setl ft=ruby
   au BufNewFile,BufRead *.sls setl ft=yaml
   au BufNewFile,BufRead .vimlocal setl ft=vim
 augroup END
 " }}}
-
 " Markdown {{{
 augroup markdown
   au!
@@ -546,9 +517,22 @@ augroup markdown
   au FileType markdown set foldmethod=syntax
 augroup END
 " }}}
-
+" Cursorline {{{
+augroup cursor_line
+    au!
+    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    au WinLeave * setlocal nocursorline
+augroup END
 " }}}
-
+" Dispatch compilers {{{
+augroup dispatch_compilers
+    au!
+    au FileType python
+augroup END
+" }}}
+" }}}
+" Source local settings {{{
 if filereadable(glob('~/.vimlocal'))
   source ~/.vimlocal
 endif
+" }}}
