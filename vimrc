@@ -63,6 +63,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'chrisbra/NrrwRgn'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'rking/ag.vim'
+NeoBundle 'jmcantrell/vim-virtualenv'
+NeoBundle 'mattn/emmet-vim'
 " }}}
 
 " Textobjs {{{
@@ -252,10 +254,6 @@ let delimitMate_balance_matchpairs = 1
 hi link EasyMotionTarget ErrorMsg
 hi link EasyMotionShade Comment
 
-" Zencoding
-let g:user_zen_leader_key = '<c-e>'
-let g:user_zen_settings = { 'indentation': '    ' }
-
 " Show Marks
 let g:showmarks_enable = 0
 
@@ -371,6 +369,8 @@ command! -nargs=0 MixedLine /^\( \+\t\|\t\+ \+\(\*\@!\)\)
 command! -nargs=0 Search Unite -auto-preview grep:.
 
 command! -nargs=0 -bar Reconfig source ~/.vimrc
+
+command! -nargs=0 Marked !open -a 'Marked' %
 
 " }}}
 
