@@ -74,6 +74,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-git'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'wavded/vim-stylus'
 
 " }}}
 " Colorschemes {{{
