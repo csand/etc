@@ -96,6 +96,7 @@ NeoBundle 'Shougo/unite-help' " Adds help source for Unite
 NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
 NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
 NeoBundle 'tpope/vim-fugitive' " The best Git plugin
+NeoBundle 'zhaocai/linepower.vim' " Extra themes for powerline
 
 " Text objects
 NeoBundle 'kana/vim-textobj-user'
