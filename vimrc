@@ -270,6 +270,11 @@ au BufNewFile,BufRead .vimlocal setl filetype=vim
 " }}}
 " Plugin settings {{{
 
+" Powerline
+let g:powerline_config_overrides = {}
+let g:powerline_config_overrides.ext = {}
+let g:powerline_config_overrides.ext.vim = {'colorscheme': 'solarized'}
+
 " python-syntax
 let python_version_2 = 1
 
