@@ -88,7 +88,7 @@ NeoBundle 'tomasr/molokai'
 " Extras {{{
 
 NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
-NeoBundle 'godlygeek/csapprox' " Approximates GUI schemes in terminals
+" NeoBundle 'godlygeek/csapprox' " Approximates GUI schemes in terminals
 NeoBundle 'Lokaltog/powerline' " Gives a nice statusline
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
