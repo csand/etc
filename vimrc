@@ -269,23 +269,33 @@ au BufWritePre * :silent! call EnsureDirExists()
 au BufNewFile,BufRead Vagrantfile setl filetype=ruby
 au BufNewFile,BufRead .vimlocal setl filetype=vim
 
+" Filetype settings
+au Filetype html setl sw=2
+au Filetype coffee setl et
+
 " }}}
 " Plugin settings {{{
+" Powerline {{{
 
-" Powerline
 let g:powerline_config_overrides = {}
 let g:powerline_config_overrides.ext = {}
 let g:powerline_config_overrides.ext.vim = {'colorscheme': 'solarized'}
 
-" python-syntax
+" }}}
+" python-syntax {{{
+
 let python_version_2 = 1
 
-" Syntastic
+" }}}
+" Syntastic {{{
+
 let g:syntastic_check_on_open = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['jshint']
 
-" Unite.vim
+" }}}
+" Unite.vim {{{
+
 let g:unite_source_grep_max_candidates = 200
 let s:file_rec_ignore = '\.\%(gif\|png\|jpg\|jpeg\|ico\)$'
 call unite#custom#source('file_rec', 'ignore_pattern', s:file_rec_ignore)
@@ -308,7 +318,9 @@ nnoremap <Leader>b :Unite -start-insert buffer<CR>
 nnoremap <Leader>/ :Unite -auto-preview grep:.<CR>
 nnoremap <Leader>h :Unite help<CR>
 
-" VimFiler
+" }}}
+" VimFiler {{{
+
 " let g:vimfiler_as_default_explorer = 1
 " let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_tree_opened_icon = '▾'
@@ -316,6 +328,7 @@ let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 let g:vimfiler_safe_mode_by_default = 0
 
+" }}}
 " }}}
 " Finally {{{
 
