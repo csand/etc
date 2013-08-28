@@ -67,7 +67,8 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'atourino/jinja.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'hail2u/vim-css3-syntax
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
@@ -92,6 +93,7 @@ NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
 NeoBundle 'Lokaltog/powerline' " Gives a nice statusline
 NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
+NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
@@ -281,6 +283,10 @@ au BufWritePre * :silent! call EnsureDirExists()
 au BufNewFile,BufRead Vagrantfile setl filetype=ruby
 au BufNewFile,BufRead .vimlocal setl filetype=vim
 
+" Filetype settings
+au Filetype html setl sw=2
+au Filetype coffee setl et
+
 " }}}
 " Plugin settings {{{
 " Powerline {{{
@@ -330,14 +336,15 @@ nnoremap <LocalLeader>o :Unite outline<CR>
 
 " }}}
 " VimFiler {{{
+
 " let g:vimfiler_as_default_explorer = 1
 " let g:vimfiler_force_overwrite_statusline = 0
 let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 let g:vimfiler_safe_mode_by_default = 0
-" }}}
 
+" }}}
 " }}}
 " Finally {{{
 
