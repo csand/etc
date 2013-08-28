@@ -67,6 +67,7 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'atourino/jinja.vim'
+NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
@@ -90,6 +91,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
 NeoBundle 'Lokaltog/powerline' " Gives a nice statusline
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
+NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
