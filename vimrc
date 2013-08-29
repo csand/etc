@@ -67,8 +67,9 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'atourino/jinja.vim'
+NeoBundle 'dag/vim2hs'
 NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'hail2u/vim-css3-syntax
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
@@ -99,6 +100,7 @@ NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
 NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
 NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
+NeoBundle 'tpope/vim-fireplace' " Adds a quasi REPL
 NeoBundle 'tpope/vim-fugitive' " The best Git plugin
 NeoBundle 'tpope/vim-repeat' " Repeat commands added by plugins
 NeoBundle 'ujihisa/unite-colorscheme' " Lists available colorschemes in Unite
