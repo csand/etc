@@ -157,7 +157,7 @@ set shiftround
 set smarttab
 set textwidth=0
 set nowrap
-set linespace=3 " nice for readability
+set linespace=1 " nice for readability
 set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
 
