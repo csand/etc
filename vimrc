@@ -67,7 +67,9 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'atourino/jinja.vim'
+NeoBundle 'dag/vim2hs'
 NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'othree/html5.vim'
@@ -90,6 +92,7 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
 NeoBundle 'Lokaltog/powerline' " Gives a nice statusline
+NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
 NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
@@ -98,7 +101,10 @@ NeoBundle 'Shougo/unite-help' " Adds help source for Unite
 NeoBundle 'tpope/vim-abolish' " Abolish typos by making them abbrevs
 NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
 NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
+NeoBundle 'tpope/vim-fireplace' " Adds a quasi REPL
 NeoBundle 'tpope/vim-fugitive' " The best Git plugin
+NeoBundle 'tpope/vim-repeat' " Repeat commands added by plugins
+NeoBundle 'ujihisa/unite-colorscheme' " Lists available colorschemes in Unite
 NeoBundle 'zhaocai/linepower.vim' " Extra themes for powerline
 
 " Text objects
@@ -117,8 +123,8 @@ if $TERM == 'xterm-256color'
   set t_Co=256
 endif
 
-let mapleader=','
-let maplocalleader='<Space>'
+let mapleader = ','
+let maplocalleader = ' '
 
 set title
 set ttyfast
@@ -154,7 +160,7 @@ set shiftround
 set smarttab
 set textwidth=0
 set nowrap
-set linespace=3 " nice for readability
+set linespace=1 " nice for readability
 set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
 
@@ -190,6 +196,16 @@ endif
 " Commands {{{
 
 command! -nargs=0 Marked :!open -a 'Marked' %
+
+function! QuickfixFilenames()
+  " Building a hash ensures we get each buffer only once
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 
 " }}}
 " Key mappings {{{
@@ -302,7 +318,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['jshint']
 
 " }}}
-" Unite.vim {{{
+" Unite {{{
 
 let g:unite_source_grep_max_candidates = 200
 let s:file_rec_ignore = '\.\%(gif\|png\|jpg\|jpeg\|ico\)$'
@@ -325,6 +341,8 @@ nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <Leader>b :Unite -start-insert buffer<CR>
 nnoremap <Leader>/ :Unite -auto-preview grep:.<CR>
 nnoremap <Leader>h :Unite help<CR>
+nnoremap <LocalLeader><LocalLeader> :Unite -quick-match buffer<CR>
+nnoremap <LocalLeader>o :Unite outline<CR>
 
 " }}}
 " VimFiler {{{
