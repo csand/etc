@@ -95,6 +95,7 @@ NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
+NeoBundle 'tpope/vim-abolish' " Abolish typos by making them abbrevs
 NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
 NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
 NeoBundle 'tpope/vim-fugitive' " The best Git plugin
@@ -275,6 +276,13 @@ au Filetype coffee setl et
 
 " }}}
 " Plugin settings {{{
+" Abolish {{{
+
+Abolish funciton function
+Abolish dbeugger debugger
+Abolish tableay tableau
+
+" }}}
 " Powerline {{{
 
 let g:powerline_config_overrides = {}
