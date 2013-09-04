@@ -33,7 +33,7 @@ function prompt_jekor_setup {
 
   zstyle ':prezto:module:editor:info:completing' format '%F{yellow}...%f'
   zstyle ':prezto:module:python:info:virtualenv' format '%F{magenta}(%v) '
-  zstyle ':prezto:module:git:info:branch' format '%F{cyan}(%b)'
+  zstyle ':prezto:module:git:info:branch' format '%F{cyan}[%b]'
   zstyle ':prezto:module:git:info:keys' format 'prompt' '%b '
 
   # Define prompts

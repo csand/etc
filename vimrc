@@ -101,6 +101,7 @@ NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
+NeoBundle 'tpope/vim-abolish' " Abolish typos by making them abbrevs
 NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
 NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
 NeoBundle 'tpope/vim-fireplace' " Adds a quasi REPL
@@ -293,6 +294,13 @@ au Filetype coffee setl et
 
 " }}}
 " Plugin settings {{{
+" Abolish {{{
+
+Abolish funciton function
+Abolish dbeugger debugger
+Abolish tableay tableau
+
+" }}}
 " airline {{{
 
 let g:airline_powerline_fonts = 1
