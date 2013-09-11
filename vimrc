@@ -101,6 +101,7 @@ NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
 NeoBundle 'tpope/vim-fireplace' " Adds a quasi REPL
 NeoBundle 'tpope/vim-fugitive' " The best Git plugin
 NeoBundle 'tpope/vim-repeat' " Repeat commands added by plugins
+NeoBundle 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 NeoBundle 'ujihisa/unite-colorscheme' " Lists available colorschemes in Unite
 NeoBundle 'zhaocai/linepower.vim' " Extra themes for powerline
 
