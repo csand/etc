@@ -1,8 +1,5 @@
 " Startup {{{
 
-" VIM, not vi
-set nocompatible
-
 " Fetch NeoBundle before anything else if it's not installed
 if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
   echo 'Installing NeoBundle...'
@@ -130,15 +127,12 @@ set title
 set ttyfast
 set laststatus=2 " always show the statusline
 set noswapfile
-set nobackup
-set nowritebackup
-set noerrorbells
-set novisualbell
 set modelines=0
 set hidden
 set shortmess=at " skip all 'Press Enter' messages
 set shortmess+=I " skip the intro page
 set mouse=n " only listen to the mouse in normal mode
+set autoread " read files as they change (branch switches, etc)
 
 " }}}
 " Editor {{{
@@ -190,6 +184,11 @@ set wildmode=list:longest,full
 if has('gui_running')
   set guioptions=aegi
 endif
+
+" }}}
+" Grep {{{
+
+let &grepprg = 'ag'
 
 " }}}
 " }}}
@@ -285,10 +284,11 @@ au BufWritePre * :silent! call EnsureDirExists()
 " Undetected filetypes
 au BufNewFile,BufRead Vagrantfile setl filetype=ruby
 au BufNewFile,BufRead .vimlocal setl filetype=vim
+au BufNewFile,BufRead *.ft setl filetype=markdown
 
 " Filetype settings
 au Filetype html setl sw=2
-au Filetype coffee setl et
+au Filetype coffee setl sw=2 et
 
 " }}}
 " Plugin settings {{{
