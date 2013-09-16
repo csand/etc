@@ -304,7 +304,7 @@ Abolish tableay tableau
 
 let g:powerline_config_overrides = {}
 let g:powerline_config_overrides.ext = {}
-let g:powerline_config_overrides.ext.vim = {'colorscheme': 'solarized'}
+" let g:powerline_config_overrides.ext.vim = {'colorscheme': 'solarized'}
 
 " }}}
 " python-syntax {{{
@@ -342,7 +342,7 @@ nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <Leader>b :Unite -start-insert buffer<CR>
 nnoremap <Leader>/ :Unite -auto-preview grep:.<CR>
 nnoremap <Leader>h :Unite help<CR>
-nnoremap <LocalLeader><LocalLeader> :Unite -quick-match buffer<CR>
+" nnoremap <LocalLeader><LocalLeader> :Unite -quick-match buffer<CR>
 nnoremap <LocalLeader>o :Unite outline<CR>
 
 " }}}
