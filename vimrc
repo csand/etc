@@ -63,12 +63,12 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " }}}
 " Syntaxes {{{
 
-NeoBundle 'atourino/jinja.vim'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'mitsuhiko/vim-jinja'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-git'
@@ -88,8 +88,9 @@ NeoBundle 'tomasr/molokai'
 " Extras {{{
 
 NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
-NeoBundle 'Lokaltog/powerline' " Gives a nice statusline
+NeoBundle 'bling/vim-airline' " Powerline-a-like, Vimscript only
 NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
+NeoBundle 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
 NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
@@ -103,7 +104,6 @@ NeoBundle 'tpope/vim-fugitive' " The best Git plugin
 NeoBundle 'tpope/vim-repeat' " Repeat commands added by plugins
 NeoBundle 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 NeoBundle 'ujihisa/unite-colorscheme' " Lists available colorschemes in Unite
-NeoBundle 'zhaocai/linepower.vim' " Extra themes for powerline
 
 " Text objects
 NeoBundle 'kana/vim-textobj-user'
@@ -298,6 +298,13 @@ au Filetype coffee setl sw=2 et
 Abolish funciton function
 Abolish dbeugger debugger
 Abolish tableay tableau
+
+" }}}
+" airline {{{
+
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
+let g:airline#extensions#tabline#enabled = 1
 
 " }}}
 " Powerline {{{
