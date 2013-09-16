@@ -66,7 +66,6 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " }}}
 " Syntaxes {{{
 
-NeoBundle 'atourino/jinja.vim'
 NeoBundle 'dag/vim2hs'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
@@ -93,7 +92,6 @@ NeoBundle 'tomasr/molokai'
 
 NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
 NeoBundle 'bling/vim-airline' " Powerline-a-like, Vimscript only
-NeoBundle 'bling/vim-bufferline' " List buffers in the statusline
 NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
 NeoBundle 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
@@ -305,6 +303,7 @@ Abolish tableay tableau
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'solarized'
+let g:airline#extensions#tabline#enabled = 1
 
 " }}}
 " Powerline {{{
