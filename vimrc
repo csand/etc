@@ -297,9 +297,9 @@ au Filetype yaml setl sw=2
 " Plugin settings {{{
 " Abolish {{{
 
-Abolish funciton function
-Abolish dbeugger debugger
-Abolish tableay tableau
+" Abolish funciton function
+" Abolish dbeugger debugger
+" Abolish tableay tableau
 
 " }}}
 " airline {{{
