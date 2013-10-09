@@ -295,9 +295,9 @@ au Filetype coffee setl sw=2 et
 " Plugin settings {{{
 " Abolish {{{
 
-Abolish funciton function
-Abolish dbeugger debugger
-Abolish tableay tableau
+" Abolish funciton function
+" Abolish dbeugger debugger
+" Abolish tableay tableau
 
 " }}}
 " airline {{{
