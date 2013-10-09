@@ -22,7 +22,7 @@ done
 # Copy templates
 for template in $PWD/*.template; do
   file=$(basename ${template})
-  dest=$HOME/${file%.template}
+  dest=$HOME/.${file%.template}
   if [[ ! -f $dest ]]; then
     cp $template $dest
   else
