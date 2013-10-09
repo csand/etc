@@ -83,6 +83,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'jnurmine/Zenburn'
 
 " }}}
 " Extras {{{
@@ -290,6 +291,7 @@ au BufNewFile,BufRead *.ft setl filetype=markdown
 " Filetype settings
 au Filetype html setl sw=2
 au Filetype coffee setl sw=2 et
+au Filetype yaml setl sw=2
 
 " }}}
 " Plugin settings {{{
@@ -303,8 +305,7 @@ Abolish tableay tableau
 " airline {{{
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'solarized'
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 
 " }}}
 " Powerline {{{
