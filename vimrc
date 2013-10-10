@@ -64,6 +64,7 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'dag/vim2hs'
+NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
@@ -133,7 +134,14 @@ set modelines=0
 set hidden
 set shortmess=at " skip all 'Press Enter' messages
 set shortmess+=I " skip the intro page
-set mouse=n " only listen to the mouse in normal mode
+set mouse=a " listen to mouse in all modes
+" try to use sgr mouse mode, enables wider layouts
+if has('mouse_sgr')
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+endif
+set ttymouse=sgr
 set autoread " read files as they change (branch switches, etc)
 
 " }}}
@@ -370,6 +378,7 @@ let g:vimfiler_safe_mode_by_default = 0
 " Enable syntax, filetype detection, plugins, and indentation settings
 filetype on
 filetype plugin indent on
+syntax on
 
 " Don't highlight searches just because this is being sourced
 nohlsearch
