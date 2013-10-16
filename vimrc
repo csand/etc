@@ -370,6 +370,7 @@ let g:vimfiler_safe_mode_by_default = 0
 " Enable syntax, filetype detection, plugins, and indentation settings
 filetype on
 filetype plugin indent on
+syntax on
 
 " Don't highlight searches just because this is being sourced
 nohlsearch
