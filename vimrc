@@ -64,6 +64,7 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 " Syntaxes {{{
 
 NeoBundle 'dag/vim2hs'
+NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
@@ -292,6 +293,7 @@ au BufNewFile,BufRead *.ft setl filetype=markdown
 au Filetype html setl sw=2
 au Filetype coffee setl sw=2 et
 au Filetype yaml setl sw=2
+au Filetype json setl sw=4 et
 
 " }}}
 " Plugin settings {{{
