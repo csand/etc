@@ -94,6 +94,7 @@ NeoBundle 'bling/vim-airline' " Powerline-a-like, Vimscript only
 NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
 NeoBundle 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
+NeoBundle 'kien/ctrlp.vim' " Fuzzy file finder
 NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
@@ -198,7 +199,9 @@ endif
 " }}}
 " Grep {{{
 
-let &grepprg = 'ag'
+if executable('ag')
+  let &grepprg = 'ag --nocolor --nogroup'
+endif
 
 " }}}
 " }}}
@@ -316,6 +319,15 @@ let g:airline_powerline_fonts = 1
 " let g:airline#extensions#tabline#enabled = 1
 
 " }}}
+" ctrlp {{{
+
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_working_path_mode = 'ra'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" }}}
 " Powerline {{{
 
 let g:powerline_config_overrides = {}
@@ -354,7 +366,7 @@ elseif executable('ack-grep')
   let g:unite_source_grep_recursive_opt = ''
 endif
 
-nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
+" nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
 nnoremap <Leader>b :Unite -start-insert buffer<CR>
 nnoremap <Leader>/ :Unite -auto-preview grep:.<CR>
 nnoremap <Leader>h :Unite help<CR>
