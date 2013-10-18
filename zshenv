@@ -17,8 +17,14 @@ fi
 # Editors
 #
 
-export EDITOR='vim'
-export VISUAL='vim'
+if hash mvim; then
+  ed='mvim -v'
+else
+  ed='vim'
+fi
+
+export EDITOR=$ed
+export VISUAL=$ed
 export PAGER='less'
 
 #
