@@ -70,6 +70,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mitsuhiko/vim-jinja'
+NeoBundle 'nono/vim-handlebars'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'tpope/vim-git'
@@ -81,7 +82,7 @@ NeoBundle 'wavded/vim-stylus'
 " Colorschemes {{{
 
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'jnurmine/Zenburn'
@@ -303,6 +304,7 @@ au BufNewFile,BufRead *.ft setl filetype=markdown
 au Filetype html setl sw=2
 au Filetype coffee setl sw=2 et
 au Filetype yaml setl sw=2
+au Filetype json setl sw=4 et
 
 " }}}
 " Plugin settings {{{
