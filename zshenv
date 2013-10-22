@@ -17,7 +17,7 @@ fi
 # Editors
 #
 
-if hash mvim; then
+if which mvim &>/dev/null; then
   ed='mvim -v'
 else
   ed='vim'
