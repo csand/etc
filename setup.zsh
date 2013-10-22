@@ -9,13 +9,12 @@ BINDIR="${BINDIR:-$HOME/bin}"
 ln_cmd='ln -sfv'
 
 # Link dotfiles
-for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|vim|*.template); do
+for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|*.template); do
   cmd="$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
-  if [[ -d $dotfile ]]; then
-    # Prevent dotdir inception, -h checks symlinks
-    if [[ ! -h $DOTDIR/.${dotfile:t} ]]; then eval "$cmd"; fi
-  else
-    eval "$cmd"
+  # Prevent dotdir inception, -h checks symlinks
+  if [[ ! -h $DOTDIR/.${dotfile:t} ]]
+    then eval "$cmd"
+    else echo "Skipping $dotfile, $DOTDIR/.${dotfile:t} exists"
   fi
 done
 
@@ -28,7 +27,7 @@ for template in $PWD/*.template; do
   else
     echo -n 'Skipping '
     echo -n ${template}
-    echo ', target exists'
+    echo ', $dest exists'
   fi
 done
 
