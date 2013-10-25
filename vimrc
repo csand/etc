@@ -296,9 +296,10 @@ endfunction
 au BufWritePre * :silent! call EnsureDirExists()
 
 " Undetected filetypes
-au BufNewFile,BufRead Vagrantfile setl filetype=ruby
-au BufNewFile,BufRead .vimlocal setl filetype=vim
-au BufNewFile,BufRead *.ft setl filetype=markdown
+au BufNewFile,BufRead Vagrantfile set ft=ruby
+au BufNewFile,BufRead .vimlocal set ft=vim
+au BufNewFile,BufRead *.ft set ft=markdown
+au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
 
 " Filetype settings
 au Filetype html setl sw=2
@@ -347,6 +348,11 @@ let python_version_2 = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'active_filetypes': [],
+      \ 'passive_filetypes': ['html']
+      \ }
 
 " }}}
 " Unite {{{
