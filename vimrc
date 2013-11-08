@@ -13,7 +13,6 @@ if has('vim_starting')
 
   " Runtime path modification for certain plugins
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 endif
 
 " }}}
