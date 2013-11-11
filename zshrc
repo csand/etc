@@ -40,10 +40,4 @@ alias rm='rm'
 #   fi
 # fi
 
-# Aliases
-
-alias hastier="cat $1 | haste | pbcopy"
-alias weechat="weechat-curses"
-alias gcd='cd $(git-root)'
-alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
-alias firefox="$HOME/Applications/Firefox.app/Contents/MacOS/firefox"
+source $HOME/etc/aliases.zsh
