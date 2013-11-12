@@ -18,6 +18,9 @@ fi
 
 # Customize to your needs...
 
+# Override command for headrefs when completing git checkout
+zstyle :completion::complete:git-checkout:argument-rest:headrefs command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
+
 # When using git, HEAD^ conflicts with EXTENDED_GLOB, NOMATCH will send it on
 # to git correctly
 
@@ -27,17 +30,9 @@ unsetopt NOMATCH
 
 alias rm='rm'
 
-# Use MacVim's vim
+# Aliases
 
-# if [[ "$OSTYPE" == darwin* ]]; then
-#   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
-#   if [[ -x $HOME${MACVIM_VIM} ]]; then
-#     alias vim="$HOME${MACVIM_VIM}"
-#   else
-#     if [[ -x "${MACVIM_VIM}" ]]; then
-#       alias vim="${MACVIM_VIM}"
-#     fi
-#   fi
-# fi
-
-source $HOME/etc/aliases.zsh
+alias hastier="cat $1 | haste | pbcopy"
+alias weechat="weechat-curses"
+alias gcd='cd $(git-root)'
+alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
