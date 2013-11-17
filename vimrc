@@ -169,6 +169,7 @@ set nowrap
 set linespace=1 " nice for readability
 set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
+set expandtab
 
 " }}}
 " Search {{{
@@ -306,6 +307,7 @@ au Filetype html setl sw=2
 au Filetype coffee setl sw=2 et
 au Filetype yaml setl sw=2
 au Filetype json setl sw=4 et
+au Filetype javascript setl sw=2 et
 
 " }}}
 " Plugin settings {{{
