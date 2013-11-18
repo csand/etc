@@ -30,9 +30,24 @@ unsetopt NOMATCH
 
 alias rm='rm'
 
+# Use MacVim's vim
+
+# if [[ "$OSTYPE" == darwin* ]]; then
+#   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
+#   if [[ -x $HOME${MACVIM_VIM} ]]; then
+#     alias vim="$HOME${MACVIM_VIM}"
+#   else
+#     if [[ -x "${MACVIM_VIM}" ]]; then
+#       alias vim="${MACVIM_VIM}"
+#     fi
+#   fi
+# fi
+
 # Aliases
 
 alias hastier="cat $1 | haste | pbcopy"
 alias weechat="weechat-curses"
 alias gcd='cd $(git-root)'
 alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
+alias npm-exec='nocorrect PATH=$(npm bin):$PATH'
+alias firefox="$HOME/Applications/Firefox.app/Contents/MacOS/firefox"

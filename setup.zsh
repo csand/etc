@@ -42,3 +42,8 @@ if [[ ! -d $DOTDIR/.vim/bundle/neobundle.vim ]]; then
   git clone git://github.com/Shougo/neobundle.vim.git $DOTDIR/.vim/bundle/neobundle.vim
   vim +NeoBundleCheck +qall
 fi
+
+# Link weechat irc conf (contains passwords)
+if [[ -d $HOME/Dropbox ]]; then
+  eval "$ln_cmd $HOME/Dropbox/weechat_irc.conf $DOTDIR/.weechat/irc.conf"
+fi
