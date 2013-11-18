@@ -45,5 +45,5 @@ fi
 
 # Link weechat irc conf (contains passwords)
 if [[ -d $HOME/Dropbox ]]; then
-  eval "$ln_cmd $HOME/Dropbox/weechat_irc.conf $DOTDIR/.weechat/irc.conf"
+  eval "$ln_cmd $HOME/Dropbox/Dotfiles/weechat_irc.conf $DOTDIR/.weechat/irc.conf"
 fi
