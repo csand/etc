@@ -18,6 +18,9 @@ fi
 
 # Customize to your needs...
 
+# Override command for headrefs when completing git checkout
+zstyle :completion::complete:git-checkout:argument-rest:headrefs command "git for-each-ref --format='%(refname)' refs/heads 2>/dev/null"
+
 # When using git, HEAD^ conflicts with EXTENDED_GLOB, NOMATCH will send it on
 # to git correctly
 

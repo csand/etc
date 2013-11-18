@@ -13,7 +13,6 @@ if has('vim_starting')
 
   " Runtime path modification for certain plugins
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  set runtimepath+=~/.vim/bundle/powerline/powerline/bindings/vim
 endif
 
 " }}}
@@ -97,7 +96,9 @@ NeoBundle 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
 NeoBundle 'kien/ctrlp.vim' " Fuzzy file finder
 NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
+NeoBundle 'kovisoft/paredit' " Easy editing of LISP sexprs
 NeoBundle 'mattn/emmet-vim' " Eases HTML creation
+NeoBundle 'rking/ag.vim' " Easy access to ag from vim
 NeoBundle 'Shougo/unite.vim' " Unifies, completely
 NeoBundle 'Shougo/unite-help' " Adds help source for Unite
 NeoBundle 'tpope/vim-abolish' " Abolish typos by making them abbrevs
