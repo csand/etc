@@ -46,7 +46,6 @@ alias rm='rm'
 # Aliases
 
 alias hastier="cat $1 | haste | pbcopy"
-alias weechat="weechat-curses"
 alias gcd='cd $(git-root)'
 alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
 alias npm-exec='nocorrect PATH=$(npm bin):$PATH'
