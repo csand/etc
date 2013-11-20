@@ -44,6 +44,9 @@ if [[ ! -d $DOTDIR/.vim/bundle/neobundle.vim ]]; then
 fi
 
 # Link weechat irc conf (contains passwords)
-if [[ -d $HOME/Dropbox ]]; then
-  eval "$ln_cmd $HOME/Dropbox/Dotfiles/weechat_irc.conf $DOTDIR/.weechat/irc.conf"
+if [[ -d $HOME/Dropbox/Dotfiles ]]; then
+  for dotfile in $HOME/Dropbox/Dotfiles/*; do
+    dest=$(echo ${dotfile:t} | sed 's/_/\//g')
+    eval "$ln_cmd $dotfile $DOTDIR/.${dest}"
+  done
 fi

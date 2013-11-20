@@ -98,3 +98,8 @@ if which virtualenvwrapper_lazy.sh &>/dev/null
 then
   source virtualenvwrapper_lazy.sh
 fi
+
+#
+# Secret ENVVARs
+#
+source $HOME/.secretenv
