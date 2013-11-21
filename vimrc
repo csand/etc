@@ -87,6 +87,9 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'jnurmine/Zenburn'
 NeoBundle 'baskerville/bubblegum'
 NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'moria'
+" NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'luan/vim-hybrid', 'use_iterm_colors'
 
 " }}}
 " Extras {{{
