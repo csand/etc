@@ -43,12 +43,12 @@ NeoBundle 'tpope/vim-sleuth' " Guesses indentation settings
 NeoBundle 'tpope/vim-surround' " Work with surrounding characters
 
 " Autocompletion
-NeoBundle 'Valloric/YouCompleteMe', {
-        \   'build': {
-        \     'mac': 'sh install.sh --clang-completer',
-        \     'unix': 'sh install.sh --clang-completer'
-        \   },
-        \ }
+" NeoBundle 'Valloric/YouCompleteMe', {
+"         \   'build': {
+"         \     'mac': 'sh install.sh --clang-completer',
+"         \     'unix': 'sh install.sh --clang-completer'
+"         \   },
+"         \ }
 NeoBundleLazy 'marijnh/tern_for_vim', {
         \   'autoload': {
         \     'filetypes': 'javascript'
@@ -85,6 +85,8 @@ NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'jonathanfilip/vim-lucius'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'jnurmine/Zenburn'
+NeoBundle 'baskerville/bubblegum'
+NeoBundle 'nanotech/jellybeans.vim'
 
 " }}}
 " Extras {{{
