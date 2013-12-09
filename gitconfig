@@ -20,6 +20,7 @@
 	editor = vim
 	symlinks = false
 	whitespace = trailing-space,space-before-tab
+	trustctime = false
 
 [color]
 	diff = auto
