@@ -51,3 +51,5 @@ alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
 alias npm-exec='nocorrect PATH=$(npm bin):$PATH'
 alias firefox="$HOME/Applications/Firefox.app/Contents/MacOS/firefox"
 alias desertbus="livestreamer twitch.tv/desertbus"
+alias cl=clear
+alias l=ls
