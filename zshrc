@@ -11,6 +11,11 @@ fpath=(
   $fpath
 )
 
+# Source dienv if available
+if which direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
@@ -53,3 +58,4 @@ alias firefox="$HOME/Applications/Firefox.app/Contents/MacOS/firefox"
 alias desertbus="livestreamer twitch.tv/desertbus"
 alias cl=clear
 alias l=ls
+alias gbv="git branch -v"
