@@ -37,7 +37,7 @@ function prompt_jekor_setup {
   zstyle ':prezto:module:git:info:keys' format 'prompt' '%b '
 
   # Define prompts
-  PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}$(pwd_trunc.py) $git_info[prompt]$python_info[virtualenv]λ%f '
+  PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}$(pwd_trunc.py) $git_info[prompt]$python_info[virtualenv]%B%F{red}λ%b%f '
 
   RPROMPT=''
 }
