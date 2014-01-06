@@ -43,12 +43,12 @@ NeoBundle 'tpope/vim-sleuth' " Guesses indentation settings
 NeoBundle 'tpope/vim-surround' " Work with surrounding characters
 
 " Autocompletion
-" NeoBundle 'Valloric/YouCompleteMe', {
-"         \   'build': {
-"         \     'mac': 'sh install.sh --clang-completer',
-"         \     'unix': 'sh install.sh --clang-completer'
-"         \   },
-"         \ }
+NeoBundle 'Valloric/YouCompleteMe', {
+        \   'build': {
+        \     'mac': 'sh install.sh --clang-completer',
+        \     'unix': 'sh install.sh --clang-completer'
+        \   },
+        \ }
 NeoBundleLazy 'marijnh/tern_for_vim', {
         \   'autoload': {
         \     'filetypes': 'javascript'
@@ -176,6 +176,7 @@ set linespace=1 " nice for readability
 set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
 set expandtab
+set completeopt=menuone
 
 " }}}
 " Search {{{
@@ -326,7 +327,12 @@ au Filetype javascript setl sw=2 et
 " }}}
 " airline {{{
 
-let g:airline_powerline_fonts = 1
+if has('gui_running')
+  let g:airline_powerline_fonts = 1
+else
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
+endif
 " let g:airline#extensions#tabline#enabled = 1
 
 " }}}
