@@ -33,8 +33,11 @@ function prompt_jekor_setup {
 
   zstyle ':prezto:module:editor:info:completing' format '%F{yellow}...%f'
   zstyle ':prezto:module:python:info:virtualenv' format '%F{magenta}(%v) '
-  zstyle ':prezto:module:git:info:branch' format '%F{cyan}[%b]'
-  zstyle ':prezto:module:git:info:keys' format 'prompt' '%b '
+  zstyle ':prezto:module:git:info:clean' format '%F{cyan}'
+  zstyle ':prezto:module:git:info:unindexed' format '%F{red}'
+  zstyle ':prezto:module:git:info:indexed' format '%F{yellow}'
+  zstyle ':prezto:module:git:info:branch' format '%b'
+  zstyle ':prezto:module:git:info:keys' format 'prompt' '%F{cyan}[%f%C%i%I%b%%b%F{cyan}]%f '
 
   # Define prompts
   PROMPT='%(?.%F{green}✓%f.%F{red}✗ %?%f) %F{green}%n %F{blue}$(pwd_trunc.py) $git_info[prompt]$python_info[virtualenv]%B%F{red}λ%b%f '
