@@ -59,3 +59,8 @@ alias desertbus="livestreamer twitch.tv/desertbus"
 alias cl=clear
 alias l=ls
 alias gbv="git branch -v"
+alias use-mongo="autossh -M 30000 -L 27017:localhost:27017 -L 27018:localhost:27018 -L 11211:localhost:11211 -N"
+
+# Keybindings
+bindkey 'OA' up-line-or-search
+bindkey 'OB' down-line-or-search
