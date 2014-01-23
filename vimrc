@@ -177,6 +177,9 @@ set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
 set expandtab
 set completeopt=menuone
+set shiftwidth=4
+set softtabstop=4
+set expandtab
 
 " }}}
 " Search {{{
@@ -310,11 +313,13 @@ au BufNewFile,BufRead *.ft set ft=markdown
 au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
 
 " Filetype settings
-au Filetype html setl sw=2
-au Filetype coffee setl sw=2 et
-au Filetype yaml setl sw=2
-au Filetype json setl sw=4 et
-au Filetype javascript setl sw=2 et
+au FileType html setl sw=2
+au FileType coffee setl sw=2
+au FileType yaml setl sw=2
+au FileType json setl sw=4
+au FileType javascript setl sw=2
+au FileType rust set sw=4
+au FileType json set sw=2
 
 " }}}
 " Plugin settings {{{
