@@ -11,6 +11,7 @@
 	co = checkout
 	history = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 	l = log --pretty=format:\"%h | %s%d\" --graph
+	slog = log --pretty=format:\"%C(green)%h %C(blue)%ad %C(yellow)[%C(magenta)%an%C(yellow)] %Creset%s\" --date=short
 	remotes = remote -v
 	s = status
 	sub = submodule
