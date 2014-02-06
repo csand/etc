@@ -76,6 +76,7 @@ NeoBundle 'tpope/vim-git'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'wavded/vim-stylus'
+NeoBundle 'wting/rust.vim'
 
 " }}}
 " Colorschemes {{{
@@ -332,18 +333,12 @@ au FileType json set sw=2
 " }}}
 " airline {{{
 
-if has('gui_running')
-  let g:airline_powerline_fonts = 1
-else
-  let g:airline_left_sep=''
-  let g:airline_right_sep=''
-endif
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " }}}
 " ctrlp {{{
 
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
