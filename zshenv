@@ -17,15 +17,12 @@ fi
 # Editors
 #
 
-if which mvim &>/dev/null; then
-  ed='mvim -v'
-else
-  ed='vim'
-fi
+editor='vim'
 
-export EDITOR=$ed
-export VISUAL=$ed
+export EDITOR=$editor
+export VISUAL=$editor
 export PAGER='less'
+export PROJECTS=${HOME}/code
 
 #
 # Language
