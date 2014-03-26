@@ -8,6 +8,7 @@
 # Set additional directories for functions
 fpath=(
   $HOME/etc/prompts
+  $HOME/etc/funcs
   $fpath
 )
 
@@ -35,18 +36,8 @@ unsetopt NOMATCH
 
 alias rm='rm'
 
-# Use MacVim's vim
-
-# if [[ "$OSTYPE" == darwin* ]]; then
-#   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
-#   if [[ -x $HOME${MACVIM_VIM} ]]; then
-#     alias vim="$HOME${MACVIM_VIM}"
-#   else
-#     if [[ -x "${MACVIM_VIM}" ]]; then
-#       alias vim="${MACVIM_VIM}"
-#     fi
-#   fi
-# fi
+# Autoload functions
+autoload -Uz in-progress
 
 # Aliases
 

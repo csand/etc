@@ -38,17 +38,13 @@ fi
 
 typeset -gU cdpath fpath mailpath path
 
-# Set the the list of directories that cd searches.
-# cdpath=(
-#   $cdpath
-# )
-
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/bin
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
   /usr/local/opt/ruby/bin
+  /usr/local/opt/coreutils/libexec/gnubin
   /usr/{bin,sbin}
   /{bin,sbin}
   $path
@@ -100,3 +96,13 @@ fi
 # Secret ENVVARs
 #
 source $HOME/.secretenv
+
+#
+# Active JIRA Issue
+#
+if [ -f $HOME/.jiraissue ]; then source $HOME/.jiraissue; fi
+
+#
+# Android SDK
+#
+export ANDROID_HOME=/usr/local/opt/android-sdk

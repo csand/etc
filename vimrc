@@ -43,12 +43,12 @@ NeoBundle 'tpope/vim-sleuth' " Guesses indentation settings
 NeoBundle 'tpope/vim-surround' " Work with surrounding characters
 
 " Autocompletion
-NeoBundle 'Valloric/YouCompleteMe', {
-        \   'build': {
-        \     'mac': 'sh install.sh --clang-completer',
-        \     'unix': 'sh install.sh --clang-completer'
-        \   },
-        \ }
+" NeoBundle 'Valloric/YouCompleteMe', {
+"         \   'build': {
+"         \     'mac': 'sh install.sh --clang-completer',
+"         \     'unix': 'sh install.sh --clang-completer'
+"         \   },
+"         \ }
 NeoBundleLazy 'marijnh/tern_for_vim', {
         \   'autoload': {
         \     'filetypes': 'javascript'
@@ -67,6 +67,7 @@ NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
+NeoBundle 'jsx/jsx.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mitsuhiko/vim-jinja'
 NeoBundle 'nono/vim-handlebars'
@@ -91,6 +92,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'moria'
 " NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'luan/vim-hybrid', 'use_iterm_colors'
+NeoBundle 'cocopon/iceberg.vim'
 
 " }}}
 " Extras {{{
@@ -164,7 +166,7 @@ endif
 set colorcolumn=80
 set cursorline
 set relativenumber
-set numberwidth=5
+set numberwidth=4
 set linebreak
 let &showbreak = '↳'
 set backspace=indent,eol,start
@@ -329,11 +331,6 @@ au FileType json set sw=2
 " Abolish funciton function
 " Abolish dbeugger debugger
 " Abolish tableay tableau
-
-" }}}
-" airline {{{
-
-let g:airline_powerline_fonts = 1
 
 " }}}
 " ctrlp {{{
