@@ -67,6 +67,7 @@ NeoBundle 'digitaltoad/vim-jade'
 NeoBundle 'guns/vim-clojure-static'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'hdima/python-syntax'
+NeoBundle 'jsx/jsx.vim'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'mitsuhiko/vim-jinja'
 NeoBundle 'nono/vim-handlebars'
@@ -76,6 +77,7 @@ NeoBundle 'tpope/vim-git'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'wavded/vim-stylus'
+NeoBundle 'wting/rust.vim'
 
 " }}}
 " Colorschemes {{{
@@ -90,6 +92,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'moria'
 " NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'luan/vim-hybrid', 'use_iterm_colors'
+NeoBundle 'cocopon/iceberg.vim'
 
 " }}}
 " Extras {{{
@@ -163,7 +166,7 @@ endif
 set colorcolumn=80
 set cursorline
 set relativenumber
-set numberwidth=5
+set numberwidth=4
 set linebreak
 let &showbreak = '↳'
 set backspace=indent,eol,start
@@ -175,6 +178,10 @@ set nowrap
 set linespace=1 " nice for readability
 set listchars=tab:→\ ,eol:↵,trail:·,nbsp:·
 set gdefault
+set expandtab
+set completeopt=menuone
+set shiftwidth=4
+set softtabstop=4
 set expandtab
 
 " }}}
@@ -309,11 +316,13 @@ au BufNewFile,BufRead *.ft set ft=markdown
 au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
 
 " Filetype settings
-au Filetype html setl sw=2
-au Filetype coffee setl sw=2 et
-au Filetype yaml setl sw=2
-au Filetype json setl sw=4 et
-au Filetype javascript setl sw=2 et
+au FileType html setl sw=2
+au FileType coffee setl sw=2
+au FileType yaml setl sw=2
+au FileType json setl sw=4
+au FileType javascript setl sw=2
+au FileType rust set sw=4
+au FileType json set sw=2
 
 " }}}
 " Plugin settings {{{
@@ -324,15 +333,9 @@ au Filetype javascript setl sw=2 et
 " Abolish tableay tableau
 
 " }}}
-" airline {{{
-
-let g:airline_powerline_fonts = 1
-" let g:airline#extensions#tabline#enabled = 1
-
-" }}}
 " ctrlp {{{
 
-let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_working_path_mode = 0
 if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif

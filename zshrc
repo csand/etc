@@ -8,8 +8,14 @@
 # Set additional directories for functions
 fpath=(
   $HOME/etc/prompts
+  $HOME/etc/funcs
   $fpath
 )
+
+# Source dienv if available
+if which direnv &>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
@@ -30,18 +36,8 @@ unsetopt NOMATCH
 
 alias rm='rm'
 
-# Use MacVim's vim
-
-# if [[ "$OSTYPE" == darwin* ]]; then
-#   MACVIM_VIM="/Applications/MacVim.app/Contents/MacOS/Vim"
-#   if [[ -x $HOME${MACVIM_VIM} ]]; then
-#     alias vim="$HOME${MACVIM_VIM}"
-#   else
-#     if [[ -x "${MACVIM_VIM}" ]]; then
-#       alias vim="${MACVIM_VIM}"
-#     fi
-#   fi
-# fi
+# Autoload functions
+autoload -Uz in-progress
 
 # Aliases
 
@@ -51,3 +47,11 @@ alias gtool='PYTHONPATH="/Users/sam/gazaro/b2b" python -m gtool'
 alias npm-exec='nocorrect PATH=$(npm bin):$PATH'
 alias firefox="$HOME/Applications/Firefox.app/Contents/MacOS/firefox"
 alias desertbus="livestreamer twitch.tv/desertbus"
+alias cl=clear
+alias l=ls
+alias gbv="git branch -v"
+alias use-mongo="autossh -M 30000 -L 27017:localhost:27017 -L 27018:localhost:27018 -L 11211:localhost:11211 -N"
+
+# Keybindings
+bindkey 'OA' up-line-or-search
+bindkey 'OB' down-line-or-search
