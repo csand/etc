@@ -1,10 +1,10 @@
 " Startup {{{
 
-" Fetch NeoBundle before anything else if it's not installed
-if !filereadable(expand('~/.vim/bundle/neobundle.vim/README.md'))
-  echo 'Installing NeoBundle...'
-  silent !mkdir -p ~/.vim/bundle/neobundle.vim
-  silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+" Fetch Vundle before anything else if it's not installed
+if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
+  echo 'Installing Vundle...'
+  silent !mkdir -p ~/.vim/bundle/vundle
+  silent !git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
 endif
 
 if has('vim_starting')
@@ -12,35 +12,29 @@ if has('vim_starting')
   filetype off
 
   " Runtime path modification for certain plugins
-  set runtimepath+=~/.vim/bundle/neobundle.vim
+  set runtimepath+=~/.vim/bundle/vundle
 endif
 
 " }}}
 " Plugins {{{
-call neobundle#rc(expand('~/.vim/bundle'))
+call vundle#rc(expand('~/.vim/bundle'))
 
 " Core {{{
 
-NeoBundleFetch 'Shougo/neobundle.vim' " Lets NeoBundle manage itself
-NeoBundle 'Shougo/vimproc', {
-        \   'build' : {
-        \     'mac' : 'make -f make_mac.mak',
-        \     'unix' : 'make -f make_unix.mak',
-        \   },
-        \ }
+Plugin 'gmarik/vundle' " Let Vundle manage itself
 
 " }}}
 " Editor {{{
 
-NeoBundle 'Lokaltog/vim-easymotion' " Extended motion commands
-NeoBundle 'godlygeek/tabular' " Align search patterns for pretty tabular data
-NeoBundle 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
-NeoBundle 'kshenoy/vim-signature' " Shows mark symbols in the signs column
-NeoBundle 'scrooloose/syntastic' " Unified syntax checking
-NeoBundle 'tomtom/tcomment_vim' " Toggle comments
-NeoBundle 'tpope/vim-endwise' " Ends certain language's blocks intelligently
-NeoBundle 'tpope/vim-sleuth' " Guesses indentation settings
-NeoBundle 'tpope/vim-surround' " Work with surrounding characters
+Plugin 'Lokaltog/vim-easymotion' " Extended motion commands
+Plugin 'godlygeek/tabular' " Align search patterns for pretty tabular data
+Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
+Plugin 'kshenoy/vim-signature' " Shows mark symbols in the signs column
+Plugin 'scrooloose/syntastic' " Unified syntax checking
+Plugin 'tomtom/tcomment_vim' " Toggle comments
+Plugin 'tpope/vim-endwise' " Ends certain language's blocks intelligently
+Plugin 'tpope/vim-sleuth' " Guesses indentation settings
+Plugin 'tpope/vim-surround' " Work with surrounding characters
 
 " Autocompletion
 " NeoBundle 'Valloric/YouCompleteMe', {
@@ -49,84 +43,77 @@ NeoBundle 'tpope/vim-surround' " Work with surrounding characters
 "         \     'unix': 'sh install.sh --clang-completer'
 "         \   },
 "         \ }
-NeoBundleLazy 'marijnh/tern_for_vim', {
-        \   'autoload': {
-        \     'filetypes': 'javascript'
-        \   },
-        \   'build': {
-        \     'mac': 'npm install',
-        \     'unix': 'npm install',
-        \   },
-        \ }
+" NeoBundleLazy 'marijnh/tern_for_vim', {
+"         \   'autoload': {
+"         \     'filetypes': 'javascript'
+"         \   },
+"         \   'build': {
+"         \     'mac': 'npm install',
+"         \     'unix': 'npm install',
+"         \   },
+"         \ }
 
 " }}}
 " Syntaxes {{{
 
-NeoBundle 'dag/vim2hs'
-NeoBundle 'digitaltoad/vim-jade'
-NeoBundle 'guns/vim-clojure-static'
-NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'hdima/python-syntax'
-NeoBundle 'jsx/jsx.vim'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'mitsuhiko/vim-jinja'
-NeoBundle 'nono/vim-handlebars'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'tpope/vim-git'
-NeoBundle 'tpope/vim-markdown'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'wavded/vim-stylus'
-NeoBundle 'wting/rust.vim'
-NeoBundle 'applescript.vim'
+Plugin 'dag/vim2hs'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'guns/vim-clojure-static'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'hdima/python-syntax'
+Plugin 'jsx/jsx.vim'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'mitsuhiko/vim-jinja'
+Plugin 'nono/vim-handlebars'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'wavded/vim-stylus'
+Plugin 'wting/rust.vim'
+Plugin 'applescript.vim'
 
 " }}}
 " Colorschemes {{{
 
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'chriskempson/base16-vim'
-NeoBundle 'jonathanfilip/vim-lucius'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'jnurmine/Zenburn'
-NeoBundle 'baskerville/bubblegum'
-NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'moria'
-" NeoBundle 'w0ng/vim-hybrid'
-NeoBundle 'luan/vim-hybrid', 'use_iterm_colors'
-NeoBundle 'cocopon/iceberg.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
+Plugin 'jonathanfilip/vim-lucius'
+Plugin 'tomasr/molokai'
+Plugin 'jnurmine/Zenburn'
+Plugin 'baskerville/bubblegum'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'moria'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'cocopon/iceberg.vim'
 
 " }}}
 " Extras {{{
 
-NeoBundle 'ervandew/supertab' " Gives <Tab> superpowers
-NeoBundle 'bling/vim-airline' " Powerline-a-like, Vimscript only
-NeoBundle 'h1mesuke/unite-outline' " Creates a file outline Unite source
-NeoBundle 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
-NeoBundle 'juanpabloaj/help.vim' " Eases help navigation
-NeoBundle 'kien/ctrlp.vim' " Fuzzy file finder
-NeoBundle 'kien/rainbow_parentheses.vim' " Colour matching parentheses
-NeoBundle 'kovisoft/paredit' " Easy editing of LISP sexprs
-NeoBundle 'mattn/emmet-vim' " Eases HTML creation
-NeoBundle 'rking/ag.vim' " Easy access to ag from vim
-NeoBundle 'Shougo/unite.vim' " Unifies, completely
-NeoBundle 'Shougo/unite-help' " Adds help source for Unite
-NeoBundle 'tpope/vim-abolish' " Abolish typos by making them abbrevs
-NeoBundle 'tpope/vim-dispatch' " Dispatches compiler commands
-NeoBundle 'tpope/vim-eunuch' " Adds UNIX integration
-NeoBundle 'tpope/vim-fireplace' " Adds a quasi REPL
-NeoBundle 'tpope/vim-fugitive' " The best Git plugin
-NeoBundle 'tpope/vim-repeat' " Repeat commands added by plugins
-NeoBundle 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
-NeoBundle 'ujihisa/unite-colorscheme' " Lists available colorschemes in Unite
+Plugin 'ervandew/supertab' " Gives <Tab> superpowers
+Plugin 'bling/vim-airline' " Powerline-a-like, Vimscript only
+Plugin 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
+Plugin 'juanpabloaj/help.vim' " Eases help navigation
+Plugin 'kien/ctrlp.vim' " Fuzzy file finder
+Plugin 'kien/rainbow_parentheses.vim' " Colour matching parentheses
+Plugin 'kovisoft/paredit' " Easy editing of LISP sexprs
+Plugin 'mattn/emmet-vim' " Eases HTML creation
+Plugin 'rking/ag.vim' " Easy access to ag from vim
+Plugin 'tpope/vim-abolish' " Abolish typos by making them abbrevs
+Plugin 'tpope/vim-dispatch' " Dispatches compiler commands
+Plugin 'tpope/vim-eunuch' " Adds UNIX integration
+Plugin 'tpope/vim-fireplace' " Adds a quasi REPL
+Plugin 'tpope/vim-fugitive' " The best Git plugin
+Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
+Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 
 " Text objects
-NeoBundle 'kana/vim-textobj-user'
-NeoBundle 'kana/vim-textobj-fold'
-NeoBundle 'kana/vim-textobj-indent'
+Plugin 'kana/vim-textobj-user'
+Plugin 'kana/vim-textobj-fold'
+Plugin 'kana/vim-textobj-indent'
 
 " }}}
-
-NeoBundleCheck
 " }}}
 " Settings {{{
 " Core {{{
@@ -367,33 +354,6 @@ let g:syntastic_mode_map = {
       \ 'active_filetypes': [],
       \ 'passive_filetypes': ['html']
       \ }
-
-" }}}
-" Unite {{{
-
-let g:unite_source_grep_max_candidates = 200
-let s:file_rec_ignore = '\.\%(gif\|png\|jpg\|jpeg\|ico\)$'
-call unite#custom#source('file_rec', 'ignore_pattern', s:file_rec_ignore)
-let g:unite_enable_ignore_case = 1
-
-" Use ag or ack for Unite's grep if available
-if executable('ag')
-  let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts = '--nocolor --nogroup --hidden -i'
-  let g:unite_source_grep_recursive_opt = ''
-elseif executable('ack-grep')
-  let g:unite_source_rec_async_command = 'ack-grep -f --no-filter'
-  let g:unite_source_grep_command = 'ack-grep'
-  let g:unite_source_grep_default_opts = '--no-heading --no-color -a -i'
-  let g:unite_source_grep_recursive_opt = ''
-endif
-
-" nnoremap <C-p> :Unite -start-insert file_rec/async<CR>
-nnoremap <Leader>b :Unite -start-insert buffer<CR>
-nnoremap <Leader>/ :Unite -auto-preview grep:.<CR>
-nnoremap <Leader>h :Unite help<CR>
-" nnoremap <LocalLeader><LocalLeader> :Unite -quick-match buffer<CR>
-nnoremap <LocalLeader>o :Unite outline<CR>
 
 " }}}
 " VimFiler {{{
