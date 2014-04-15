@@ -78,6 +78,7 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'wavded/vim-stylus'
 NeoBundle 'wting/rust.vim'
+NeoBundle 'applescript.vim'
 
 " }}}
 " Colorschemes {{{
@@ -273,6 +274,8 @@ nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
+nnoremap K <nop>
+
 " }}}
 " Autocommands {{{
 
@@ -314,6 +317,7 @@ au BufNewFile,BufRead Vagrantfile set ft=ruby
 au BufNewFile,BufRead .vimlocal set ft=vim
 au BufNewFile,BufRead *.ft set ft=markdown
 au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
+au BufNewFile,BufRead .envrc set ft=sh
 
 " Filetype settings
 au FileType html setl sw=2
