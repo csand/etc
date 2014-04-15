@@ -108,6 +108,7 @@ Plugin 'tpope/vim-fugitive' " The best Git plugin
 Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
 Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
+Plugin 'bling/vim-bufferline' " List open buffers in the statusline
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
@@ -366,6 +367,16 @@ let g:vimfiler_tree_opened_icon = '▾'
 let g:vimfiler_tree_closed_icon = '▸'
 let g:vimfiler_marked_file_icon = '✓'
 let g:vimfiler_safe_mode_by_default = 0
+
+" }}}
+" airline {{{
+
+" Other plugin integration
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#virtualenv#enabled = 1
+
+" Whitespace
+let g:airline#extensions#whitespace#enabled = 1
 
 " }}}
 " }}}
