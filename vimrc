@@ -107,6 +107,7 @@ Plugin 'tpope/vim-fireplace' " Adds a quasi REPL
 Plugin 'tpope/vim-fugitive' " The best Git plugin
 Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
 Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
+Plugin 'tpope/vim-vinegar' " Improvements for netrw
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
@@ -171,6 +172,7 @@ set completeopt=menuone
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set iskeyword=@,48-57,-,_,192-255,#
 
 " }}}
 " Search {{{
