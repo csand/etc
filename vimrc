@@ -172,7 +172,7 @@ set completeopt=menuone
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set iskeyword=@,48-57,-,_,192-255,#
+set iskeyword-=_
 
 " }}}
 " Search {{{
