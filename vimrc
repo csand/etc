@@ -31,10 +31,11 @@ Plugin 'godlygeek/tabular' " Align search patterns for pretty tabular data
 Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
 Plugin 'kshenoy/vim-signature' " Shows mark symbols in the signs column
 Plugin 'scrooloose/syntastic' " Unified syntax checking
-Plugin 'tomtom/tcomment_vim' " Toggle comments
+" Plugin 'tomtom/tcomment_vim' " Toggle comments
 Plugin 'tpope/vim-endwise' " Ends certain language's blocks intelligently
 Plugin 'tpope/vim-sleuth' " Guesses indentation settings
 Plugin 'tpope/vim-surround' " Work with surrounding characters
+Plugin 'tpope/vim-commentary' " Comment toggling
 
 " Autocompletion
 " NeoBundle 'Valloric/YouCompleteMe', {
@@ -73,6 +74,7 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'wavded/vim-stylus'
 Plugin 'wting/rust.vim'
 Plugin 'applescript.vim'
+Plugin 'dag/vim-fish'
 
 " }}}
 " Colorschemes {{{

@@ -7,3 +7,5 @@ vim/unmanaged
 weechat/logs
 weechat/weechat.log
 weechat/irc.conf
+config/fish/fishd.*
+config/fish/fish_history

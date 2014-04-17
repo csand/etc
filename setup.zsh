@@ -9,12 +9,22 @@ BINDIR="${BINDIR:-$HOME/bin}"
 ln_cmd='ln -sfv'
 
 # Link dotfiles
-for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|*.template); do
+for dotfile in $PWD/^(README.md|setup.zsh|teardown.zsh|scripts|config|*.template); do
   cmd="$ln_cmd $dotfile $DOTDIR/.${dotfile:t}"
   # Prevent dotdir inception, -h checks symlinks
   if [[ ! -h $DOTDIR/.${dotfile:t} ]]
     then eval "$cmd"
     else echo "Skipping $dotfile, $DOTDIR/.${dotfile:t} exists"
+  fi
+done
+
+# Link config files
+for dotfile in $PWD/config/*; do
+  cmd="$ln_cmd $dotfile $HOME/.config/${dotfile:t}"
+  # Prevent dotdir inception, -h checks symlinks
+  if [[ ! -h $HOME/.config/${dotfile:t} ]]
+    then eval "$cmd"
+    else echo "Skipping $dotfile, $HOME/.config/${dotfile:t} exists"
   fi
 done
 
@@ -36,11 +46,11 @@ scripts=($PWD/scripts/*)
 mkdir -p $BINDIR
 eval "$ln_cmd $scripts $BINDIR"
 
-# Clone NeoBundle and install vim plugins
-if [[ ! -d $DOTDIR/.vim/bundle/neobundle.vim ]]; then
+# Clone Vundle and install vim plugins
+if [[ ! -d $DOTDIR/.vim/bundle/vundle ]]; then
   mkdir -p $DOTDIR/.vim/bundle
-  git clone git://github.com/Shougo/neobundle.vim.git $DOTDIR/.vim/bundle/neobundle.vim
-  vim +NeoBundleCheck +qall
+  git clone git://github.com/gmarik/vundle.git $DOTDIR/.vim/bundle/vundle
+  vim +PluginInstall +qall
 fi
 
 # Link weechat irc conf (contains passwords)
