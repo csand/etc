@@ -1,4 +1,10 @@
 #
+# Fish
+#
+
+set -e fish_greeting
+
+#
 # Browser
 #
 
@@ -50,6 +56,13 @@ and source $HOME/.secretenv.fish
 #
 
 set -gx ANDROID_HOME /usr/local/opt/android-sdk
+
+#
+# Git Prompt
+#
+
+set -gx __fish_git_prompt_color_prefix cyan
+set -gx __fish_git_prompt_color_suffix cyan
 
 #
 # Interactive Settings
