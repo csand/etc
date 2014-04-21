@@ -110,7 +110,6 @@ Plugin 'tpope/vim-fugitive' " The best Git plugin
 Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
 Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
-Plugin 'bling/vim-bufferline' " List open buffers in the statusline
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
