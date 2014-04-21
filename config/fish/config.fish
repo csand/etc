@@ -77,5 +77,5 @@ if status --is-interactive
     alias l ls
     alias gtool 'python -m gtool'
     alias use-mongo 'autossh -M 30000 -L 27017:localhost:27017 -L 27018:localhost:27018 -L 11211:localhost:11211 -N'
-
+    alias serve 'python -m SimpleHTTPServer'
 end
