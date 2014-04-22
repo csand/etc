@@ -89,6 +89,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'moria'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'cocopon/iceberg.vim'
+Plugin 'molokai'
 
 " }}}
 " Extras {{{

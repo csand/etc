@@ -6,7 +6,7 @@ function fish_prompt --description "Prompt, based on jekor's"
     set color_user (set_color green)
     set color_cwd  (set_color blue)
     set color_venv (set_color magenta)
-    set color_char (set_color red --bold)
+    set color_char (set_color yellow)
     set color_git_branch (set_color cyan)
     set color_git_dirty  (set_color red)
     set color_git_staged (set_color yellow)
