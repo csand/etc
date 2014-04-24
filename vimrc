@@ -31,28 +31,14 @@ Plugin 'godlygeek/tabular' " Align search patterns for pretty tabular data
 Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
 Plugin 'kshenoy/vim-signature' " Shows mark symbols in the signs column
 Plugin 'scrooloose/syntastic' " Unified syntax checking
-" Plugin 'tomtom/tcomment_vim' " Toggle comments
 Plugin 'tpope/vim-endwise' " Ends certain language's blocks intelligently
 Plugin 'tpope/vim-sleuth' " Guesses indentation settings
 Plugin 'tpope/vim-surround' " Work with surrounding characters
 Plugin 'tpope/vim-commentary' " Comment toggling
 
 " Autocompletion
-" NeoBundle 'Valloric/YouCompleteMe', {
-"         \   'build': {
-"         \     'mac': 'sh install.sh --clang-completer',
-"         \     'unix': 'sh install.sh --clang-completer'
-"         \   },
-"         \ }
-" NeoBundleLazy 'marijnh/tern_for_vim', {
-"         \   'autoload': {
-"         \     'filetypes': 'javascript'
-"         \   },
-"         \   'build': {
-"         \     'mac': 'npm install',
-"         \     'unix': 'npm install',
-"         \   },
-"         \ }
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'marijnh/tern_for_vim'
 
 " }}}
 " Syntaxes {{{
@@ -89,7 +75,6 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'moria'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'cocopon/iceberg.vim'
-Plugin 'molokai'
 
 " }}}
 " Extras {{{
