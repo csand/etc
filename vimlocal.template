@@ -19,4 +19,9 @@
 " your own zsh/bash, or vim can't find an external command it needs.
 " set shell=/usr/local/bin/zsh
 
+" If using Solarized, this changes the split bar colour to match solarized,
+" and removes the underline from folds
+" highlight VertSplit ctermfg=0 ctermbg=0
+" highlight Folded term=NONE cterm=NONE
+
 " Customize to your needs...
