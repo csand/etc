@@ -55,6 +55,6 @@ end
 # Clone Vundle and install vim plugins
 if not test -d $dot_dir/.vim/bundle/vundle
     mkdir -p $dot_dir/.vim/bundle
-    git clone git://github.com/gmarik/vundle.git $dot_dir/.vim/bundle/vundle
+    git clone git://github.com/gmarik/Vundle.vim.git $dot_dir/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
 end
