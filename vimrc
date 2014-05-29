@@ -61,6 +61,7 @@ Plugin 'wavded/vim-stylus'
 Plugin 'wting/rust.vim'
 Plugin 'applescript.vim'
 Plugin 'dag/vim-fish'
+Plugin 'groovy.vim'
 
 " }}}
 " Colorschemes {{{
@@ -296,6 +297,7 @@ au BufNewFile,BufRead .vimlocal set ft=vim
 au BufNewFile,BufRead *.ft set ft=markdown
 au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
 au BufNewFile,BufRead .envrc set ft=sh
+au BufNewFile,BufRead *.gradle set ft=groovy
 
 " Filetype settings
 au FileType html setl sw=2
