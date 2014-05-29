@@ -1,10 +1,10 @@
 " Startup {{{
 
 " Fetch Vundle before anything else if it's not installed
-if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
+if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
   echo 'Installing Vundle...'
-  silent !mkdir -p ~/.vim/bundle/vundle
-  silent !git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
+  silent !mkdir -p ~/.vim/bundle/Vundle.vim
+  silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
 endif
 
 if has('vim_starting')
@@ -12,7 +12,7 @@ if has('vim_starting')
   filetype off
 
   " Runtime path modification for certain plugins
-  set runtimepath+=~/.vim/bundle/vundle
+  set runtimepath+=~/.vim/bundle/Vundle.vim
 endif
 
 " }}}
@@ -21,7 +21,7 @@ call vundle#rc(expand('~/.vim/bundle'))
 
 " Core {{{
 
-Plugin 'gmarik/vundle' " Let Vundle manage itself
+Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 " }}}
 " Editor {{{
