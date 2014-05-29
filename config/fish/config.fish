@@ -65,6 +65,13 @@ set -gx __fish_git_prompt_color_prefix cyan
 set -gx __fish_git_prompt_color_suffix cyan
 
 #
+# Docker + boot2docker
+#
+
+set DOCKER_HOST tcp://localhost:4243
+
+
+#
 # Interactive Settings
 #
 
