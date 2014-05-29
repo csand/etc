@@ -1,10 +1,10 @@
 " Startup {{{
 
 " Fetch Vundle before anything else if it's not installed
-if !filereadable(expand('~/.vim/bundle/vundle/README.md'))
+if !filereadable(expand('~/.vim/bundle/Vundle.vim/README.md'))
   echo 'Installing Vundle...'
-  silent !mkdir -p ~/.vim/bundle/vundle
-  silent !git clone https://github.com/gmarik/vundle $HOME/.vim/bundle/vundle
+  silent !mkdir -p ~/.vim/bundle/Vundle.vim
+  silent !git clone https://github.com/gmarik/Vundle.vim $HOME/.vim/bundle/Vundle.vim
 endif
 
 if has('vim_starting')
@@ -12,7 +12,7 @@ if has('vim_starting')
   filetype off
 
   " Runtime path modification for certain plugins
-  set runtimepath+=~/.vim/bundle/vundle
+  set runtimepath+=~/.vim/bundle/Vundle.vim
 endif
 
 " }}}
@@ -21,7 +21,7 @@ call vundle#rc(expand('~/.vim/bundle'))
 
 " Core {{{
 
-Plugin 'gmarik/vundle' " Let Vundle manage itself
+Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 " }}}
 " Editor {{{
@@ -62,6 +62,7 @@ Plugin 'wting/rust.vim'
 Plugin 'applescript.vim'
 Plugin 'dag/vim-fish'
 Plugin 'groenewege/vim-less'
+Plugin 'groovy.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 
 " }}}
@@ -298,6 +299,7 @@ au BufNewFile,BufRead .vimlocal set ft=vim
 au BufNewFile,BufRead *.ft set ft=markdown
 au BufNewFile,BufRead *.hbs,*.handlebars set ft=html syntax=handlebars
 au BufNewFile,BufRead .envrc set ft=sh
+au BufNewFile,BufRead *.gradle set ft=groovy
 
 " Filetype settings
 au FileType html setl sw=2
@@ -345,7 +347,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'active_filetypes': [],
-      \ 'passive_filetypes': ['html']
+      \ 'passive_filetypes': ['html', 'java']
       \ }
 
 " }}}

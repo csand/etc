@@ -36,6 +36,12 @@ set -gx PATH /usr/local/coreutils/libexec/gnubin $PATH
 set -gx PATH $HOME/bin $PATH
 
 #
+# TERM
+#
+
+set -gx TERM xterm-256color
+
+#
 # Python
 #
 
