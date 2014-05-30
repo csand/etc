@@ -61,7 +61,9 @@ Plugin 'wavded/vim-stylus'
 Plugin 'wting/rust.vim'
 Plugin 'applescript.vim'
 Plugin 'dag/vim-fish'
+Plugin 'groenewege/vim-less'
 Plugin 'groovy.vim'
+Plugin 'ekalinin/Dockerfile.vim'
 
 " }}}
 " Colorschemes {{{
