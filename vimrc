@@ -136,7 +136,6 @@ if has('mouse_sgr')
 else
   set ttymouse=xterm2
 endif
-set ttymouse=sgr
 set autoread " read files as they change (branch switches, etc)
 
 " }}}
@@ -166,6 +165,7 @@ set expandtab
 set completeopt=menuone
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
 set expandtab
 set iskeyword-=_
 
@@ -316,65 +316,8 @@ au FileType json set sw=2
 
 " }}}
 " Plugin settings {{{
-" Abolish {{{
-
-" Abolish funciton function
-" Abolish dbeugger debugger
-" Abolish tableay tableau
-
-" }}}
-" ctrlp {{{
-
-let g:ctrlp_working_path_mode = 0
-if executable('ag')
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
-" }}}
-" Powerline {{{
-
-let g:powerline_config_overrides = {}
-let g:powerline_config_overrides.ext = {}
-" let g:powerline_config_overrides.ext.vim = {'colorscheme': 'solarized'}
-
-" }}}
-" python-syntax {{{
-
-let python_version_2 = 1
-
-" }}}
-" Syntastic {{{
-
-let g:syntastic_check_on_open = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_mode_map = {
-      \ 'mode': 'active',
-      \ 'active_filetypes': [],
-      \ 'passive_filetypes': ['html', 'java']
-      \ }
-
-" }}}
-" VimFiler {{{
-
-" let g:vimfiler_as_default_explorer = 1
-" let g:vimfiler_force_overwrite_statusline = 0
-let g:vimfiler_tree_opened_icon = '▾'
-let g:vimfiler_tree_closed_icon = '▸'
-let g:vimfiler_marked_file_icon = '✓'
-let g:vimfiler_safe_mode_by_default = 0
-
-" }}}
-" airline {{{
-
-" Other plugin integration
-let g:airline#extensions#bufferline#enabled = 1
-let g:airline#extensions#virtualenv#enabled = 1
-
-" Whitespace
-let g:airline#extensions#whitespace#enabled = 1
-
-" }}}
+" Read plugins settings from .vim/config
+runtime! config/**/*.vim
 " }}}
 " Finally {{{
 
