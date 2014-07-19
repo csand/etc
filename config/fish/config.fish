@@ -32,6 +32,7 @@ set -gx PATH /{bin,sbin} $PATH
 set -gx PATH /usr/{bin,sbin} $PATH
 set -gx PATH /usr/local/{bin,sbin} $PATH
 set -gx PATH /usr/local/opt/ruby/bin $PATH
+set -gx PATH /usr/local/var/rbenv/{bin,shims} $PATH
 set -gx PATH /usr/local/coreutils/libexec/gnubin $PATH
 set -gx PATH $HOME/bin $PATH
 
@@ -49,6 +50,12 @@ set -gx WORKON_HOME $HOME/.virtualenvs
 set -gx PIP_VIRTUALENV_BASE $WORKON_HOME
 set -gx PIP_RESPECT_VIRTUALENV true
 set -gx VIRTUAL_ENV_DISABLE_PROMPT true
+
+#
+#
+#
+
+set -gx RBENV_ROOT /usr/local/var/rbenv
 
 #
 # Secret ENVVARs
@@ -91,4 +98,6 @@ if status --is-interactive
     alias gtool 'python -m gtool'
     alias use-mongo 'autossh -M 30000 -L 27017:localhost:27017 -L 27018:localhost:27018 -L 11211:localhost:11211 -N'
     alias serve 'python -m SimpleHTTPServer'
+    alias docker 'env DOCKER_HOST=tcp://localhost:4243 docker'
+    alias miralaw-docker 'autossh -M 30000 -L8085:localhost:8085 -L8080:localhost:80 -L8098:localhost:8098 -F .ssh/config default'
 end

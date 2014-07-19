@@ -64,6 +64,7 @@ Plugin 'dag/vim-fish'
 Plugin 'groenewege/vim-less'
 Plugin 'groovy.vim'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'nginx.vim'
 
 " }}}
 " Colorschemes {{{
@@ -78,6 +79,7 @@ Plugin 'nanotech/jellybeans.vim'
 Plugin 'moria'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'cocopon/iceberg.vim'
+Plugin 'ciaranm/inkpot'
 
 " }}}
 " Extras {{{
@@ -96,6 +98,7 @@ Plugin 'tpope/vim-dispatch' " Dispatches compiler commands
 Plugin 'tpope/vim-eunuch' " Adds UNIX integration
 Plugin 'tpope/vim-fireplace' " Adds a quasi REPL
 Plugin 'tpope/vim-fugitive' " The best Git plugin
+Plugin 'tpope/vim-projectionist' " Easily navigate project layouts
 Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
 Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
@@ -180,6 +183,7 @@ set smartcase
 set wildignore+=*.swp,*.pyc,*.dmg,.DS_Store
 set wildignore+=*.png,*.gif,*.jpg
 set wildignore+=node_modules/*
+set wildignore+=bundle/*
 set wildchar=<Tab>
 set wildmenu
 " Expand to the longest common sequence first and list all matches
