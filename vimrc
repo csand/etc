@@ -65,6 +65,7 @@ Plugin 'groenewege/vim-less'
 Plugin 'groovy.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'nginx.vim'
+Plugin 'saltstack/salt-vim'
 
 " }}}
 " Colorschemes {{{
@@ -88,6 +89,7 @@ Plugin 'ervandew/supertab' " Gives <Tab> superpowers
 Plugin 'bling/vim-airline' " Powerline-a-like, Vimscript only
 Plugin 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 Plugin 'juanpabloaj/help.vim' " Eases help navigation
+Plugin 'junegunn/goyo.vim' " Distraction free writing
 Plugin 'kien/ctrlp.vim' " Fuzzy file finder
 Plugin 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 Plugin 'kovisoft/paredit' " Easy editing of LISP sexprs
@@ -103,6 +105,7 @@ Plugin 'tpope/vim-repeat' " Repeat commands added by plugins
 Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
 Plugin 'guns/xterm-color-table.vim' " Show the terminal colour table
+Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
