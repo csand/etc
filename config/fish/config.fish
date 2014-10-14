@@ -78,13 +78,6 @@ set -gx __fish_git_prompt_color_prefix cyan
 set -gx __fish_git_prompt_color_suffix cyan
 
 #
-# Docker + boot2docker
-#
-
-set DOCKER_HOST tcp://localhost:4243
-
-
-#
 # Interactive Settings
 #
 
@@ -100,4 +93,5 @@ if status --is-interactive
     alias serve 'python -m SimpleHTTPServer'
     alias docker 'env DOCKER_HOST=tcp://localhost:4243 docker'
     alias miralaw-docker 'autossh -M 30000 -L8085:localhost:8085 -L8080:localhost:80 -L8098:localhost:8098 -F .ssh/config default'
+    alias ql 'qlmanage -p'
 end
