@@ -1,5 +1,5 @@
 in-project: &in-project
-  shell_command_before: cd $HOME/code/webclient
+  shell_command_before: cd $HOME/code/web-client
 
 in-api: &in-api
   shell_command_before: cd $HOME/code/miralaw-api
