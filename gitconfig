@@ -17,6 +17,7 @@
 	sub = submodule
 	st = stash
 	prune = remote prune origin
+	index = diff --cached
 
 [core]
 	editor = vim
