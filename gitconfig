@@ -18,6 +18,7 @@
 	st = stash
 	prune = remote prune origin
 	index = diff --cached
+	bd = branch -d
 
 [core]
 	editor = vim
