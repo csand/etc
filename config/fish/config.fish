@@ -52,7 +52,7 @@ set -gx PIP_RESPECT_VIRTUALENV true
 set -gx VIRTUAL_ENV_DISABLE_PROMPT true
 
 #
-#
+# rbenv
 #
 
 set -gx RBENV_ROOT /usr/local/var/rbenv
@@ -94,4 +94,5 @@ if status --is-interactive
     alias docker 'env DOCKER_HOST=tcp://localhost:4243 docker'
     alias miralaw-docker 'autossh -M 30000 -L8085:localhost:8085 -L8080:localhost:80 -L8098:localhost:8098 -F .ssh/config default'
     alias ql 'qlmanage -p'
+    alias die 'exit'
 end
