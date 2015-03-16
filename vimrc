@@ -28,7 +28,7 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 Plugin 'Lokaltog/vim-easymotion' " Extended motion commands
 Plugin 'godlygeek/tabular' " Align search patterns for pretty tabular data
-Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
+" Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
 Plugin 'kshenoy/vim-signature' " Shows mark symbols in the signs column
 Plugin 'scrooloose/syntastic' " Unified syntax checking
 Plugin 'tpope/vim-endwise' " Ends certain language's blocks intelligently
@@ -92,7 +92,6 @@ Plugin 'juanpabloaj/help.vim' " Eases help navigation
 Plugin 'junegunn/goyo.vim' " Distraction free writing
 Plugin 'kien/ctrlp.vim' " Fuzzy file finder
 Plugin 'kien/rainbow_parentheses.vim' " Colour matching parentheses
-Plugin 'kovisoft/paredit' " Easy editing of LISP sexprs
 Plugin 'mattn/emmet-vim' " Eases HTML creation
 Plugin 'rking/ag.vim' " Easy access to ag from vim
 Plugin 'tpope/vim-abolish' " Abolish typos by making them abbrevs
@@ -109,7 +108,6 @@ Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-fold'
 Plugin 'kana/vim-textobj-indent'
 
 " }}}
@@ -175,7 +173,7 @@ set iskeyword-=_
 " }}}
 " Search {{{
 
-set hlsearch
+set nohlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -226,15 +224,15 @@ command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 " }}}
 " Key mappings {{{
 
+" The worst default key mapping in the world
+nnoremap K <nop>
+
 " Quick little chord for exiting insert mode
 inoremap jk <Esc>
 
 " Edit vimrc, vimlocal
 nnoremap <Leader><Leader>rc :e ~/.vimrc<CR>
 nnoremap <Leader><Leader>lc :e ~/.vimlocal<CR>
-
-" The worst default key mapping in the world
-nmap K <Nop>
 
 " Un-highlight searches
 nmap <Leader><Space> :noh<CR>
@@ -262,8 +260,6 @@ nnoremap <silent> <expr> 0 ScreenMovement("0")
 nnoremap <silent> <expr> ^ ScreenMovement("^")
 nnoremap <silent> <expr> $ ScreenMovement("$")
 
-nnoremap K <nop>
-
 " }}}
 " Autocommands {{{
 
@@ -289,7 +285,8 @@ function! StripWhitespace ()
   keepjumps %substitute/\s\+$//
   let @/ = old_search
 endfunction
-au BufWritePre * :silent! call StripWhitespace()
+" au BufWritePre * :silent! call StripWhitespace()
+" No longer used, editorconfig lets this be smarter
 
 " Ensure parent directories exist before write, useful for new files
 function! EnsureDirExists ()
