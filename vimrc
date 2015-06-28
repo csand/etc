@@ -28,17 +28,21 @@ Plugin 'gmarik/Vundle.vim' " Let Vundle manage itself
 
 Plugin 'Lokaltog/vim-easymotion' " Extended motion commands
 Plugin 'godlygeek/tabular' " Align search patterns for pretty tabular data
-" Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
+Plugin 'kana/vim-smartinput' " Matches character pairs, e.g. (), [], {}
 Plugin 'kshenoy/vim-signature' " Shows mark symbols in the signs column
 Plugin 'scrooloose/syntastic' " Unified syntax checking
 Plugin 'tpope/vim-endwise' " Ends certain language's blocks intelligently
 Plugin 'tpope/vim-sleuth' " Guesses indentation settings
 Plugin 'tpope/vim-surround' " Work with surrounding characters
 Plugin 'tpope/vim-commentary' " Comment toggling
+Plugin 'chrisbra/vim-diff-enhanced' " Better diffing with patience alg
 
 " Autocompletion
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'marijnh/tern_for_vim'
+if ! has('gui_running')
+  " MacVim is terrible
+  Plugin 'Valloric/YouCompleteMe'
+endif
+Plugin 'marijnh/tern_for_vim'
 
 " }}}
 " Syntaxes {{{
@@ -48,12 +52,11 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'guns/vim-clojure-static'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'hdima/python-syntax'
-Plugin 'jsx/jsx.vim'
+" Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'nono/vim-handlebars'
 Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
@@ -66,10 +69,14 @@ Plugin 'groovy.vim'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'nginx.vim'
 Plugin 'saltstack/salt-vim'
+Plugin 'b4winckler/vim-objc'
+Plugin 'Keithbsmiley/swift.vim'
+Plugin 'othree/yajs.vim'
 
 " }}}
 " Colorschemes {{{
 
+" Plugin 'godlygeek/csapprox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'jonathanfilip/vim-lucius'
@@ -81,11 +88,12 @@ Plugin 'moria'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'cocopon/iceberg.vim'
 Plugin 'ciaranm/inkpot'
+Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 
 " }}}
 " Extras {{{
 
-Plugin 'ervandew/supertab' " Gives <Tab> superpowers
+" Plugin 'ervandew/supertab' " Gives <Tab> superpowers
 Plugin 'bling/vim-airline' " Powerline-a-like, Vimscript only
 Plugin 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 Plugin 'juanpabloaj/help.vim' " Eases help navigation
@@ -105,6 +113,8 @@ Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
 Plugin 'guns/xterm-color-table.vim' " Show the terminal colour table
 Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
+" Plugin 'rdnetto/YCM-Generator' " YCM .ycm_extra_config.py generator
+Plugin 'eraserhd/vim-ios' " Utilities for developing iOS apps in vim
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
@@ -115,9 +125,9 @@ Plugin 'kana/vim-textobj-indent'
 " Settings {{{
 " Core {{{
 
-if $TERM == 'xterm-256color'
-  set t_Co=256
-endif
+" if $TERM == 'xterm-256color'
+"   set t_Co=256
+" endif
 
 let mapleader = ','
 let maplocalleader = ' '
@@ -169,11 +179,12 @@ set softtabstop=4
 set tabstop=4
 set expandtab
 set iskeyword-=_
+set diffopt+=vertical
 
 " }}}
 " Search {{{
 
-set nohlsearch
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -185,6 +196,7 @@ set wildignore+=*.swp,*.pyc,*.dmg,.DS_Store
 set wildignore+=*.png,*.gif,*.jpg
 set wildignore+=node_modules/*
 set wildignore+=bundle/*
+set wildignore+=*.woff,*.woff2,*.ttf,*.eot
 set wildchar=<Tab>
 set wildmenu
 " Expand to the longest common sequence first and list all matches

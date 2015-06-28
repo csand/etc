@@ -35,28 +35,21 @@
 [push]
 	default = matching
 
-[merge]
-	conflictstyle = diff3
-	tool = Kaleidoscope
-
-[mergetool]
-	prompt = false
-
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-
 [diff]
-	tool = Kaleidoscope
+	tool = vimdiff
 
 [difftool]
 	prompt = false
+	path = nvim
 
-[difftool "mvimdiff"]
-	cmd = mvim -f -d \"$LOCAL\" \"$REMOTE\"
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
 
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool]
+	prompt = false
+	path = nvim
+
 [prompt]
 	showinfo = true
 
