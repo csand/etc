@@ -98,7 +98,7 @@ Plugin 'bling/vim-airline' " Powerline-a-like, Vimscript only
 Plugin 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 Plugin 'juanpabloaj/help.vim' " Eases help navigation
 Plugin 'junegunn/goyo.vim' " Distraction free writing
-Plugin 'kien/ctrlp.vim' " Fuzzy file finder
+Plugin 'ctrlpvim/ctrlp.vim' " Fuzzy file finder
 Plugin 'kien/rainbow_parentheses.vim' " Colour matching parentheses
 Plugin 'mattn/emmet-vim' " Eases HTML creation
 Plugin 'rking/ag.vim' " Easy access to ag from vim
