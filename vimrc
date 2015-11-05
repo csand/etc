@@ -55,7 +55,6 @@ Plugin 'hdima/python-syntax'
 " Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mitsuhiko/vim-jinja'
-Plugin 'nono/vim-handlebars'
 Plugin 'othree/html5.vim'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-markdown'
@@ -72,6 +71,7 @@ Plugin 'saltstack/salt-vim'
 Plugin 'b4winckler/vim-objc'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'othree/yajs.vim'
+Plugin 'joukevandermaas/vim-ember-hbs'
 
 " }}}
 " Colorschemes {{{
@@ -115,6 +115,7 @@ Plugin 'guns/xterm-color-table.vim' " Show the terminal colour table
 Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
 " Plugin 'rdnetto/YCM-Generator' " YCM .ycm_extra_config.py generator
 Plugin 'eraserhd/vim-ios' " Utilities for developing iOS apps in vim
+Plugin 'alexlafroscia/vim-ember-cli' " Ember-cli utilities for vim
 
 " Text objects
 Plugin 'kana/vim-textobj-user'
@@ -141,12 +142,6 @@ set hidden
 set shortmess=at " skip all 'Press Enter' messages
 set shortmess+=I " skip the intro page
 set mouse=a " listen to mouse in all modes
-" try to use sgr mouse mode, enables wider layouts
-if has('mouse_sgr')
-  set ttymouse=sgr
-else
-  set ttymouse=xterm2
-endif
 set autoread " read files as they change (branch switches, etc)
 
 " }}}
