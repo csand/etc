@@ -21,7 +21,7 @@
 	bd = branch -d
 
 [core]
-	editor = vim
+	editor = nvim
 	symlinks = false
 	whitespace = trailing-space,space-before-tab
 	trustctime = false
