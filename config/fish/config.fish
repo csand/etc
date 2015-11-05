@@ -88,7 +88,6 @@ eval (python -m virtualfish)
 #
 
 if status --is-interactive
-
     # direnv
     eval (direnv hook fish)
 
@@ -103,3 +102,9 @@ if status --is-interactive
     alias die 'exit'
     alias nv 'env NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 end
+
+#
+# Local Settings
+#
+
+source ~/.fishlocal
