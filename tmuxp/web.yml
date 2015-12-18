@@ -1,15 +1,15 @@
 before_script: '/Users/samanderson/.run_watchman.sh'
-session_name: foko-web
+session_name: web
 windows:
   - window_name: editor
     panes:
       - shell_command:
-          cd $HOME/code/foko-web; nvim
+          cd $HOME/code/web; nvim
   - window_name: shell
     panes:
       - shell_command:
-          cd $HOME/code/foko-web
+          cd $HOME/code/web
   - window_name: ember
     panes:
       - shell_command:
-          cd $HOME/code/foko-web; ember s
+          cd $HOME/code/web; ember s
