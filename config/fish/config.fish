@@ -93,14 +93,13 @@ if status --is-interactive
 
     # aliases
     alias l ls
-    alias gtool 'python -m gtool'
-    alias use-mongo 'autossh -M 30000 -L 27017:localhost:27017 -L 27018:localhost:27018 -L 11211:localhost:11211 -N'
     alias serve 'python -m SimpleHTTPServer'
-    alias docker 'env DOCKER_HOST=tcp://localhost:4243 docker'
-    alias miralaw-docker 'autossh -M 30000 -L8085:localhost:8085 -L8080:localhost:80 -L8098:localhost:8098 -F .ssh/config default'
     alias ql 'qlmanage -p'
     alias die 'exit'
-    alias nv 'env NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+
+    if which hub > /dev/null
+        alias git 'hub'
+    end
 end
 
 #
