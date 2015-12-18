@@ -42,7 +42,7 @@ if ! has('gui_running')
   " MacVim is terrible
   Plugin 'Valloric/YouCompleteMe'
 endif
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 
 " }}}
 " Syntaxes {{{
@@ -72,6 +72,7 @@ Plugin 'b4winckler/vim-objc'
 Plugin 'Keithbsmiley/swift.vim'
 Plugin 'othree/yajs.vim'
 Plugin 'joukevandermaas/vim-ember-hbs'
+Plugin 'cakebaker/scss-syntax.vim'
 
 " }}}
 " Colorschemes {{{
