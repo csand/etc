@@ -42,7 +42,7 @@ if ! has('gui_running')
   " MacVim is terrible
   Plugin 'Valloric/YouCompleteMe'
 endif
-" Plugin 'marijnh/tern_for_vim'
+Plugin 'marijnh/tern_for_vim'
 
 " }}}
 " Syntaxes {{{
@@ -52,7 +52,6 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'guns/vim-clojure-static'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'hdima/python-syntax'
-" Plugin 'mxw/vim-jsx'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mitsuhiko/vim-jinja'
 Plugin 'othree/html5.vim'
@@ -94,8 +93,8 @@ Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 " }}}
 " Extras {{{
 
-" Plugin 'ervandew/supertab' " Gives <Tab> superpowers
-Plugin 'bling/vim-airline' " Powerline-a-like, Vimscript only
+Plugin 'vim-airline/vim-airline' " Powerline-a-like, Vimscript only
+Plugin 'vim-airline/vim-airline-themes' " Powerline-a-like, Vimscript only
 Plugin 'jmcantrell/vim-virtualenv' " Make vim virtualenv aware
 Plugin 'juanpabloaj/help.vim' " Eases help navigation
 Plugin 'junegunn/goyo.vim' " Distraction free writing
@@ -114,7 +113,6 @@ Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
 Plugin 'guns/xterm-color-table.vim' " Show the terminal colour table
 Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
-" Plugin 'rdnetto/YCM-Generator' " YCM .ycm_extra_config.py generator
 Plugin 'eraserhd/vim-ios' " Utilities for developing iOS apps in vim
 Plugin 'alexlafroscia/vim-ember-cli' " Ember-cli utilities for vim
 
