@@ -19,7 +19,7 @@ end
 set ln_cmd 'ln -sfv'
 
 # Link dotfiles
-for dotfile in  $PWD/{dir_colors,gitconfig,gvimrc,hgrc,jshintrc,tmux.conf,vimrc,tmuxp}
+for dotfile in  $PWD/{dir_colors,gitconfig,gvimrc,hgrc,jshintrc,tmux.conf,vimrc,tmuxp,spacemacs}
     set dest $dot_dir/.(basename $dotfile)
     safe_to_dest $ln_cmd $dotfile $dest
 end
