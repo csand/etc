@@ -58,10 +58,11 @@ values."
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
-   '(
+   '(base16-theme
      editorconfig
      ember-mode
      handlebars-mode
+     key-chord
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -118,24 +119,27 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         base16-eighties-dark
+                         darktooth
+                         smyx
+                         omtose-phellack
+                         material
                          gruvbox
+                         colorsarenice-dark
                          spacemacs-dark
-                         monokai
                          zenburn
-                         solarized-dark
-                         solarized-light
-                         spacemacs-light
+                         flatui
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '(
-                               "Source Code Pro"
-                               :size 13
+                               "Hack"
+                               :size 12
                                :weight normal
                                :width normal
-                               :powerline-scale 1.6
+                               :powerline-scale 1.3
                                )
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -207,7 +211,7 @@ values."
    dotspacemacs-loading-progress-bar t
    ;; If non nil the frame is fullscreen when Emacs starts up. (default nil)
    ;; (Emacs 24.4+ only)
-   dotspacemacs-fullscreen-at-startup t
+   dotspacemacs-fullscreen-at-startup nil
    ;; If non nil `spacemacs/toggle-fullscreen' will not use native fullscreen.
    ;; Use to disable fullscreen animations in OSX. (default nil)
    dotspacemacs-fullscreen-use-non-native nil
@@ -242,7 +246,7 @@ values."
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    ;; (default nil)
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    ;; List of search tool executable names. Spacemacs uses the first installed
    ;; tool of the list. Supported tools are `ag', `pt', `ack' and `grep'.
    ;; (default '("ag" "pt" "ack" "grep"))
@@ -266,6 +270,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (setq-default git-magit-status-fullscreen t)
   )
 
 (defun dotspacemacs/user-config ()
@@ -276,25 +281,43 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
-  (setq-default evil-escape-key-sequence "jk")
-  (setq deft-directory "~/Dropbox/Text")
+  (remove-hook 'sass-mode-hook 'flycheck-mode)
+  (remove-hook 'scss-mode-hook 'flycheck-mode)
+
+  (add-hook 'hack-local-variables-hook (lambda ()
+                                         (setq truncate-lines t)))
+
+  (setq-default deft-directory "~/Dropbox/Text"
+                deft-user-filter-string-for-filename t
+                deft-auto-save-interval 0.0
+                js2-global-externs '("autosize")
+                spaceline-version-control-p nil)
+
+  (editorconfig-mode t)
+  (key-chord-mode t)
+
+  (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
 
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
-  (editorconfig-mode 1)
+  (evil-define-key 'visual evil-surround-mode-map
+    "s" 'evil-substitute
+    "S" 'evil-surround-region)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
-  '(paradox-github-token t)
-  '(js2-strict-trailing-comma-warning nil)
-  )
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(create-lockfiles nil)
+ '(js2-strict-trailing-comma-warning nil)
+ '(paradox-github-token t)
+ )
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -302,4 +325,6 @@ you should place you code here."
  ;; If there is more than one, they won't work right.
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(web-mode-block-attr-name-face ((t nil)))
+ '(web-mode-block-attr-value-face ((t nil)))
  )
