@@ -119,16 +119,16 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         niflheim
+                         monokai
                          base16-eighties-dark
                          darktooth
                          smyx
-                         omtose-phellack
+                         omtose-softer
                          material
                          gruvbox
-                         colorsarenice-dark
                          spacemacs-dark
                          zenburn
-                         flatui
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -281,21 +281,27 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place you code here."
 
-  (remove-hook 'sass-mode-hook 'flycheck-mode)
-  (remove-hook 'scss-mode-hook 'flycheck-mode)
-
-  (add-hook 'hack-local-variables-hook (lambda ()
-                                         (setq truncate-lines t)))
-
-  (setq-default deft-directory "~/Dropbox/Text"
-                deft-user-filter-string-for-filename t
-                deft-auto-save-interval 0.0
-                js2-global-externs '("autosize")
-                spaceline-version-control-p nil)
-
   (editorconfig-mode t)
   (key-chord-mode t)
 
+  ;; Flycheck is only set up for SASS in Ruby projects
+  (remove-hook 'sass-mode-hook 'flycheck-mode)
+  (remove-hook 'scss-mode-hook 'flycheck-mode)
+
+  ;; Disable wrapping when opening a file
+  (add-hook 'hack-local-variables-hook (lambda () (setq truncate-lines t)))
+
+  ;; Deft
+  (setq-default
+   deft-directory "~/Dropbox/Text"
+   deft-use-filter-string-for-filename t
+   deft-auto-save-interval 0.0 ;; Disable autosaves
+   )
+
+  (setq-default js2-global-externs '("autosize"))
+  (setq-default spaceline-version-control-p nil)
+
+  ;; Keybindings
   (key-chord-define evil-insert-state-map  "jk" 'evil-normal-state)
 
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
@@ -304,6 +310,14 @@ you should place you code here."
   (evil-define-key 'visual evil-surround-mode-map
     "s" 'evil-substitute
     "S" 'evil-surround-region)
+
+  ;; Remove the hideous box around the mode-line on some themes
+  ;; (set-face-attribute 'mode-line nil :box nil)
+  ;; (set-face-attribute 'mode-line-inactive nil :box nil)
+  ;; (set-face-attribute 'powerline-active1 nil :box nil)
+  ;; (set-face-attribute 'powerline-inactive1 nil :box nil)
+  ;; (set-face-attribute 'powerline-active2 nil :box nil)
+  ;; (set-face-attribute 'powerline-inactive2 nil :box nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -315,8 +329,10 @@ you should place you code here."
  ;; If there is more than one, they won't work right.
  '(create-lockfiles nil)
  '(js2-strict-trailing-comma-warning nil)
- '(paradox-github-token t)
- )
+ '(package-selected-packages
+   (quote
+    (zonokai-theme zenburn-theme zen-and-art-theme yaml-mode xterm-color xkcd ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme tronesque-theme toxi-theme toml-mode toc-org tao-theme tangotango-theme tango-plus-theme tango-2-theme tagedit sunny-day-theme sublime-themes subatomic256-theme subatomic-theme stekene-theme spray spacemacs-theme spaceline spacegray-theme soothe-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme smooth-scrolling smeargle slim-mode shell-pop seti-theme selectric-mode scss-mode sass-mode reverse-theme reveal-in-osx-finder restclient restart-emacs rainbow-delimiters railscasts-theme racer quelpa pyvenv pytest pyenv-mode py-yapf purple-haze-theme professional-theme popwin planet-theme pip-requirements phoenix-dark-pink-theme phoenix-dark-mono-theme persp-mode pcre2el pbcopy pastels-on-dark-theme paradox page-break-lines osx-trash orgit organic-green-theme org-repo-todo org-present org-pomodoro org-plus-contrib org-bullets open-junk-file omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme niflheim-theme neotree naquadah-theme mustang-theme multi-term move-text monokai-theme monochrome-theme molokai-theme moe-theme mmm-mode minimal-theme material-theme markdown-toc majapahit-theme magit-gitflow magit-gh-pulls macrostep lush-theme lorem-ipsum linum-relative light-soap-theme leuven-theme less-css-mode launchctl key-chord json-mode js2-refactor js-doc jbeans-theme jazz-theme jade-mode ir-black-theme inkpot-theme info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation heroku-theme hemisu-theme help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flyspell helm-flx helm-descbinds helm-dash helm-css-scss helm-company helm-c-yasnippet helm-ag hc-zenburn-theme handlebars-mode gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme google-translate golden-ratio gnuplot github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md gandalf-theme flycheck-rust flycheck-pos-tip flx-ido flatui-theme flatland-theme firebelly-theme fill-column-indicator farmhouse-theme fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-commentary evil-args evil-anzu eval-sexp-fu espresso-theme eshell-prompt-extras esh-help emoji-cheat-sheet-plus emmet-mode ember-mode elisp-slime-nav editorconfig dracula-theme django-theme diff-hl deft define-word dash-at-point darktooth-theme darkmine-theme darkburn-theme dakrone-theme cython-mode cyberpunk-theme company-web company-tern company-statistics company-racer company-quickhelp company-emoji company-anaconda colorsarenice-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized coffee-mode clues-theme clean-aindent-mode cherry-blossom-theme busybee-theme buffer-move bubbleberry-theme bracketed-paste birds-of-paradise-plus-theme base16-theme badwolf-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+ '(paradox-github-token t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -326,5 +342,4 @@ you should place you code here."
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(web-mode-block-attr-name-face ((t nil)))
- '(web-mode-block-attr-value-face ((t nil)))
- )
+ '(web-mode-block-attr-value-face ((t nil))))
