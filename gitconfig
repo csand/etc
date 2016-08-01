@@ -36,8 +36,8 @@
 	unstage = reset -q HEAD --
 
 [core]
-	editor = nvim
 	symlinks = false
+	editor = vim
 	whitespace = trailing-space,space-before-tab
 	trustctime = false
 
