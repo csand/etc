@@ -56,7 +56,7 @@ function fish_prompt --description "Prompt, based on jekor's"
 
     set prompt_char "$color_char"λ' '
 
-    echo -n -s $prompt_status $prompt_user \
+    echo -n -s $prompt_status \
         $color_cwd(pwd_trunc.py) ' ' $prompt_git \
         $prompt_venv $prompt_char (set_color normal)
 end
