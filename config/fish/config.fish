@@ -14,8 +14,8 @@ set -gx BROWSER open
 # Editor
 #
 
-set -gx EDITOR vim
-set -gx VISUAL vim
+set -gx EDITOR 'emacsclient -c'
+set -gx VISUAL 'emacsclient -c'
 set -gx PAGER less
 
 #
@@ -30,10 +30,8 @@ set -gx PROJECTS $HOME/code
 
 set -gx PATH /{bin,sbin} $PATH
 set -gx PATH /usr/{bin,sbin} $PATH
-set -gx PATH /usr/local/{bin,sbin} $PATH
+set -gx PATH /usr/local/bin $PATH
 set -gx PATH /usr/local/opt/ruby/bin $PATH
-set -gx PATH /usr/local/var/rbenv/{bin,shims} $PATH
-set -gx PATH /usr/local/coreutils/libexec/gnubin $PATH
 set -gx PATH $HOME/bin $PATH
 
 #
