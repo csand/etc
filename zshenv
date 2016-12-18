@@ -41,6 +41,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   $HOME/bin
+  $HOME/.cargo/bin
   /usr/local/{bin,sbin}
   /usr/local/share/npm/bin
   /usr/local/opt/ruby/bin
@@ -106,3 +107,8 @@ if [ -f $HOME/.jiraissue ]; then source $HOME/.jiraissue; fi
 # Android SDK
 #
 export ANDROID_HOME=/usr/local/opt/android-sdk
+
+#
+# Rust + Racer
+#
+export RUST_SRC_PATH="$HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src"

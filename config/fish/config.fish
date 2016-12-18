@@ -32,6 +32,7 @@ set -gx PATH /{bin,sbin} $PATH
 set -gx PATH /usr/{bin,sbin} $PATH
 set -gx PATH /usr/local/bin $PATH
 set -gx PATH /usr/local/opt/ruby/bin $PATH
+set -gx PATH $HOME/.cargo/bin $PATH
 set -gx PATH $HOME/bin $PATH
 
 #
@@ -99,6 +100,13 @@ if status --is-interactive
         alias git 'hub'
     end
 end
+
+#
+#
+#
+
+set -gx RUST_SRC_PATH $HOME/.multirust/toolchains/stable-x86_64-apple-darwin/lib/rustlib/src/rust/src
+
 
 #
 # Local Settings
