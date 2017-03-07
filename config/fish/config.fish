@@ -80,7 +80,7 @@ set -gx __fish_git_prompt_color_suffix cyan
 # virtualfish
 #
 
-eval (python -m virtualfish)
+python -m virtualfish | source
 
 #
 # Interactive Settings
@@ -88,7 +88,8 @@ eval (python -m virtualfish)
 
 if status --is-interactive
     # direnv
-    eval (direnv hook fish)
+    # Fix an Emacs startup problem
+    direnv hook fish | source
 
     # aliases
     alias l ls
