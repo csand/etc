@@ -35,7 +35,6 @@ values."
                                        dash
                                        deft
                                        emacs-lisp
-                                       emoji
                                        evil-commentary
                                        git
                                        github
