@@ -40,7 +40,7 @@ Plugin 'chrisbra/vim-diff-enhanced' " Better diffing with patience alg
 " Autocompletion
 if ! has('gui_running')
   " MacVim is terrible
-  Plugin 'Valloric/YouCompleteMe'
+  " Plugin 'Valloric/YouCompleteMe'
 endif
 Plugin 'marijnh/tern_for_vim'
 
