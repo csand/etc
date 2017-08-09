@@ -1,0 +1,404 @@
+#+TITLE: Dotfiles
+#+AUTHOR: Sam Anderson
+#+DATE: [2017-08-07 Mon]
+#+STARTUP: contents
+
+* New Machine Setup
+** Mac
+*** Install Brew
+    #+BEGIN_SRC sh
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    #+END_SRC
+
+*** Install Brew Packages
+    Get the currently installed brew packages on this system.
+
+    #+NAME: list-packages
+    #+BEGIN_SRC sh :results output
+/usr/local/bin/brew ls
+    #+END_SRC
+
+    #+NAME: brew-packages
+    #+RESULTS: list-packages
+    #+begin_example
+   autoconf
+   automake
+   autossh
+   bchunk
+   cloog
+   cmake
+   cscope
+   diff-so-fancy
+   direnv
+   elixir
+   emacs-mac
+   erlang
+   exercism
+   ffmpeg
+   fish
+   fzf
+   gdbm
+   gettext
+   gmp
+   gmp@4
+   gnutls
+   gradle
+   icu4c
+   isl
+   isl@0.12
+   jemalloc
+   jpeg
+   jrnl
+   lame
+   leiningen
+   libevent
+   libffi
+   libgcrypt
+   libgpg-error
+   libmpc
+   libpng
+   libssh2
+   libtasn1
+   libtermkey
+   libtiff
+   libtool
+   libunistring
+   libuv
+   libvo-aacenc
+   libvterm
+   libxml2
+   libyaml
+   lua
+   mariadb
+   md5sha1sum
+   mercurial
+   mpfr
+   msgpack
+   mtr
+   ncurses
+   neovim
+   nettle
+   node
+   openssl
+   ossp-uuid
+   p11-kit
+   pandoc
+   pcre
+   pcre2
+   pkg-config
+   pyenv
+   pyenv-virtualenv
+   python
+   python3
+   rbenv
+   readline
+   rtmpdump
+   ruby
+   ruby-build
+   rust
+   sqlite
+   terminal-notifier
+   texinfo
+   the_silver_searcher
+   thefuck
+   tmux
+   tree
+   unibilium
+   vim
+   watchman
+   wxmac
+   x264
+   xvid
+   xz
+   yarn
+    #+end_example
+
+    Install current packages on a new machine.
+
+    #+BEGIN_SRC sh :var PACKAGES=brew-packages :results output
+/usr/local/bin/brew install $PACKAGES
+    #+END_SRC
+
+*** Change Login Shell
+    #+BEGIN_SRC sh :dir /sudo:: :results silent
+chsh -s /usr/local/bin/fish $(whoami)
+    #+END_SRC
+
+* Fish
+  :PROPERTIES:
+  :header-args: :mkdirp yes
+  :END:
+
+** Config
+   :PROPERTIES:
+   :header-args: :tangle ~/.config/fish/config.fish
+   :END:
+
+   Every source I've found says that =set -e= should just erase the ~fish_greeting~ variable, but for whatever reason I could never get it to stick. At least setting it to an empty string works.
+
+   #+BEGIN_SRC fish
+set -x fish_greeting ''
+   #+END_SRC
+
+   Interactive-only settings. Direnv is only activated in interactive shells in order to prevent some odd errors I've run into with Emacs. I only set up aliases in interactive shells because I don't see much use for them when fish is just going to run a subprocess.
+
+   #+BEGIN_SRC fish
+if status --is-interactive
+    direnv hook fish | source
+
+    alias directories 'ls -d */'
+    alias serve 'python -m SimpleHTTPServer'
+    alias ql 'qlmanage -p'
+
+    if which hub >/dev/null
+        alias git 'hub'
+    end
+end
+   #+END_SRC
+
+   I keep an untracked local file for random environment variables. A variable like ~RUST_SRC_PATH~ needs to point at =rustup='s installed Rust source for =racer= autocompletion to work, but the path contains platform and architecture specific information that wouldn't make sense on another machine.
+
+   #+BEGIN_SRC fish
+source ~/.fishlocal
+   #+END_SRC
+
+   And finally, rarely used these days, but in case I want a local file for secrets.
+
+   #+BEGIN_SRC fish
+test -e $HOME/.secretenv.fish
+and source $HOME/.secretenv.fish
+   #+END_SRC
+
+** Fisherman
+   Install =fisherman=.
+
+#+BEGIN_SRC sh :results silent
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
+#+END_SRC
+
+   Plugins I have installed through Fisherman.
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/fishfile
+fisherman/done
+fisherman/free
+fisherman/getopts
+fisherman/humanize_duration
+fisherman/imgcat
+fisherman/paths
+fisherman/pyenv
+fisherman/rbenv
+fisherman/termcolours
+fisherman/transfer
+oh-my-fish/plugin-thefuck
+   #+END_SRC
+
+** Prompt
+   :PROPERTIES:
+   :header-args: :tangle ~/.config/fish/functions/fish_prompt.fish
+   :END:
+
+   I originally based this prompt on the one used by YouTube user jekor in his Haskell videos. He also has a bunch of Emacs videos which I still haven't watched, mostly because at the time I was still using Vim.
+
+   #+BEGIN_SRC fish
+function fish_prompt --description "Prompt, based on jekor's"
+   #+END_SRC
+
+   The very first thing I have to do is capture the last command's exit status, otherwise it'll be rewritten by fish's ~set~ command.
+
+   #+BEGIN_SRC fish
+    set last_status $status
+   #+END_SRC
+
+   Set up some human names for colours used in the prompt, and stops me from fussing about whether the current working directory should be green or blue.
+
+   #+BEGIN_SRC fish
+    set color_good       (set_color green)
+    set color_maybe      (set_color yellow)
+    set color_bad        (set_color red)
+    # set color_user       (set_color green)
+    set color_cwd        (set_color blue)
+    set color_venv       (set_color magenta)
+    set color_char       (set_color yellow)
+    set color_git_branch (set_color cyan)
+    set color_git_dirty  (set_color red)
+    set color_git_staged (set_color yellow)
+   #+END_SRC
+
+   Gives me a nice green checkmark if a command exits normally, or else a red cross with the exit status. Sometimes it's useful to have a command's exit status for debugging, but mostly this is just pretty.
+
+   #+BEGIN_SRC fish
+    if test $last_status -eq 0
+        set prompt_status "$color_good"✓" "
+    else
+        set prompt_status "$color_bad"✗" $last_status "
+    end
+   #+END_SRC
+
+   I actually removed the user segment from my prompt at some point, so there's no reason for this to be defined unless I want to bring that segment back. Having the user in the prompt is useful for remote sessions so I might bring it back when I do more SSHing.
+
+   #+BEGIN_SRC fish
+    # set prompt_user $color_user(whoami)' '
+   #+END_SRC
+
+   Get the git status segment from fish, and add a segment if there's a Python virtual environment active.
+
+   #+BEGIN_SRC fish
+    set prompt_git (__fish_git_prompt '(%s) ')
+
+    set prompt_venv ''
+    if set -q VIRTUAL_ENV
+      set prompt_venv (printf '%s[%s] ' $color_venv (basename $VIRTUAL_ENV))
+    end
+   #+END_SRC
+
+   Prompt characters are a funny thing. I'm sure there's history behind ~$~ and ~#~ I'm not aware of, but I like lambda for its programming roots even if I sometimes get questions about having the Half Life logo in my terminal. Also: Unicode, baby.
+
+   #+BEGIN_SRC fish
+    set prompt_char "$color_char"λ' '
+   #+END_SRC
+
+   Do our final construction and emit the prompt string. We've seen everything but ~pwd_trunc.py~, which is a small Python 2 script I wrote forever ago that removes excess directories from the current working directory in order to keep the prompt short. Once you're more than three directories deep any intervening directories between the first and the last two will be replaced with ellipsis.
+
+   #+BEGIN_SRC fish
+    echo -n -s $prompt_status \
+    $color_cwd(pwd_trunc.py) ' ' $prompt_git \
+    $prompt_venv $prompt_char (set_color normal)
+
+end
+   #+END_SRC
+
+*** Git Customization
+    These are hideous to read, but they're used by fish's built in git prompt function, and it's ultimately easier to customize them instead of writing our own function to read git status. The double underscores probably indicate that these variables are meant to be private, but at the time I wrote my prompt every example prompt I looked at was customizing these.
+
+    #+BEGIN_SRC fish
+set -g __fish_git_prompt_hide_untrackedfiles 1
+set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_showupstream "informative"
+
+set -g __fish_git_prompt_char_cleanstate ""
+set -g __fish_git_prompt_char_conflictedstate "✗"
+set -g __fish_git_prompt_char_dirtystate "+"
+set -g __fish_git_prompt_char_stagedstate "~"
+set -g __fish_git_prompt_char_stateseparator ""
+set -g __fish_git_prompt_char_untrackedfiles "…"
+set -g __fish_git_prompt_char_upstream_ahead "↑"
+set -g __fish_git_prompt_char_upstream_behind "↓"
+set -g __fish_git_prompt_char_upstream_prefix ""
+
+set -g __fish_git_prompt_color_branch magenta
+set -g __fish_git_prompt_color_cleanstate green
+set -g __fish_git_prompt_color_dirtystate blue
+set -g __fish_git_prompt_color_invalidstate red
+set -g __fish_git_prompt_color_stagedstate yellow
+set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
+    #+END_SRC
+
+** Functions
+*** npmx
+
+    Evaluate a command with a project's =node_modules/.bin= directory in the ~PATH~.
+
+    #+BEGIN_SRC fish :tangle ~/.config/fish/functions/npmx.fish
+function npmx
+    set PATH (npm bin) $PATH
+    eval $argv
+end
+    #+END_SRC
+
+** Environment
+
+   Fish has an excellent plugin through =fisherman= called =paths= for managing environment variables. Anything in the =~/.config/fish/paths.d= directory will create or append to an environment variable, so you don't have to have a long list of variable exports in your config files. Most of these are for a macOS platform since that's what I'm on, I'll have to come back through and script these correctly in the future.
+
+*** Tools and Directories
+
+    =BROWSER=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/BROWSER
+open
+   #+END_SRC
+
+   =EDITOR=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/EDITOR
+emacsclient -c
+   #+END_SRC
+
+   =PAGER=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PAGER
+less
+   #+END_SRC
+
+   =TERM=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/TERM
+xterm-256color
+   #+END_SRC
+
+   =VISUAL=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/VISUAL
+emacsclient -c
+   #+END_SRC
+
+   =PROJECTS=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PROJECTS
+/Users/csand/code
+   #+END_SRC
+
+*** PATH
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PATH/cargo-bin
+/Users/csand/.cargo/bin
+   #+END_SRC
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PATH/home-bin
+/Users/csand/bin
+   #+END_SRC
+
+*** Python
+
+    Set up =virtualenv= directories.
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PIP_VIRTUALENV_BASE
+/Users/csand/.virtualenvs
+   #+END_SRC
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/WORKON_HOME
+/Users/csand/.virtualenvs
+   #+END_SRC
+
+    Makes =pip= respect the active virtual environment instead of installing to the global =site-packages=.
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/PIP_RESPECT_VIRTUALENV
+true
+   #+END_SRC
+
+   Disable the default =virtualenv= prompt.
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/VIRTUAL_ENV_DISABLE_PROMPT
+true
+   #+END_SRC
+
+*** Ruby
+
+    =RBENV_ROOT=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/RBENV_ROOT
+/usr/local/var/rbenv
+   #+END_SRC
+
+*** Android
+
+    =ANDROID_HOME=
+
+   #+BEGIN_SRC conf :tangle ~/.config/fish/paths.d/ANDROID_HOME
+/usr/local/opt/android-sdk
+   #+END_SRC
+
+
+# Indentation in src blocks will be messed up without this
+# Local Variables:
+# org-src-preserve-indentation: t
+# End:
