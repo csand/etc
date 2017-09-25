@@ -5,12 +5,20 @@
 
 * New Machine Setup
 ** Mac
-*** Install Brew
+*** Install Homebrew
     #+BEGIN_SRC sh
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     #+END_SRC
 
-*** Install Brew Packages
+*** Add Homebrew Taps
+    #+BEGIN_SRC sh
+brew tap homebrew/versions
+brew tap caskroom/cask
+brew tap caskroom/versions
+brew tap railwaycat/emacsmacport
+    #+END_SRC
+
+*** Install Homebrew Packages
     Get the currently installed brew packages on this system.
 
     #+NAME: list-packages
