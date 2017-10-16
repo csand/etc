@@ -9,7 +9,9 @@
   :mode "\\.j2\\'")
 
 (use-package js2-mode
-  :mode "\\.js\\'")
+  :mode "\\.js\\'"
+  :config
+  (setq js2-mode-show-strict-warnings nil))
 
 (use-package json-mode
   :mode "\\.json\\'")
