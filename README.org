@@ -1,0 +1,9 @@
+#+TITLE: README
+#+AUTHOR: Sam Anderson
+
+* My Emacs Config
+
+For a number of reasons I've decided to abandon Spacemacs in favour of my own,
+lighter configuration, including my attempt to manage my =.spacemacs= file with
+~org-tangle~. This is the result so far of several hours spent on a weekend
+learning how to put an Emacs config together.
