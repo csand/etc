@@ -1,5 +1,5 @@
-#+TITLE: README
 #+AUTHOR: Sam Anderson
+#+DATE: [2017-10-16 Mon]
 
 * My Emacs Config
 
