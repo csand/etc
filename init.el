@@ -1,10 +1,15 @@
 (defvar default-gc-cons-threshold gc-cons-threshold)
 (setq gc-cons-threshold 100000000)
 
-(setq line-spacing 2)
+(setq my-font-height (cond ((eq system-type 'darwin) 140)
+                           ((eq system-type 'windows-nt) 110)
+                           ((eq system-type 'gnu/linux) 110)))
+
+(setq-default line-spacing 2)
+
 (set-face-attribute 'default nil
                     :family "PragmataPro"
-                    :height 140
+                    :height my-font-height
                     :width 'normal
                     :weight 'normal)
 
