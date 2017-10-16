@@ -18,7 +18,7 @@
   (expand-file-name filename user-emacs-directory))
 
 (defvar my-config '(
-		    defaults
+                    defaults
                     funcs
                     packages
                     macos
@@ -26,7 +26,7 @@
                     org
                     themes
                     keybindings
-		    ))
+                    ))
 
 (dolist (file my-config)
   (load (emacs-d (symbol-name file))))
