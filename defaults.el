@@ -19,6 +19,7 @@
  initial-scratch-message nil)
 
 (setq-default
+ fill-column 80
  indent-tabs-mode nil
  tab-width 2
  truncate-lines t
