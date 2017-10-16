@@ -2,6 +2,8 @@
 
 (general-evil-setup)
 
+;; Hub
+
 (general-mmap
  "j" 'evil-next-visual-line
  "k" 'evil-previous-visual-line
@@ -58,6 +60,7 @@
  "&" 'projectile-run-async-shell-command-in-root
  "b" 'projectile-switch-to-buffer
  "f" 'projectile-find-file
+ "I" 'projectile-invalidate-cache
  "p" 'projectile-switch-project
  "s" 'projectile-ag)
 
@@ -68,21 +71,40 @@
  "r" 'restart-emacs-and-resume
  "R" 'restart-emacs)
 
-;; Tell which-key about all this
-(defvar my-prefixes
-  '(
-    ("b"   . "buffers")
-    ("f"   . "files")
-    ("f e" . ".emacs.d")
-    ("g"   . "git")
-    ("h"   . "help")
-    ("h d" . "describe")
-    ("o"   . "org")
-    ("p"   . "projectile")
-    ("q"   . "quit")
-    ))
+;; Quit/Restart
+(general-nmap
+ :prefix "SPC w"
+ "c" 'evil-window-delete
+ "h" 'evil-window-left
+ "j" 'evil-window-down
+ "k" 'evil-window-up
+ "l" 'evil-window-right
+ "s" 'evil-window-split
+ "v" 'evil-window-vsplit
+ )
 
-(dolist (pf my-prefixes)
+;; Tell which-key about all this
+(setq hub-prefixes
+      '(
+        ("b"   . "buffers")
+        ("f"   . "files")
+        ("f e" . ".emacs.d")
+        ("g"   . "git")
+        ("h"   . "help")
+        ("h d" . "describe")
+        ("o"   . "org")
+        ("p"   . "projectile")
+        ("q"   . "quit")
+        ("w"   . "windows")
+        ))
+
+(dolist (pf hub-prefixes)
   (let ((prefix (concat "SPC " (car pf)))
         (description (cdr pf)))
     (which-key-add-key-based-replacements prefix description)))
+
+;; Leader
+
+(general-nmap
+ :prefix ","
+ "SPC" 'evil-ex-nohighlight)
