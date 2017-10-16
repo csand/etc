@@ -20,7 +20,7 @@
   :mode "\\.md\\'")
 
 (use-package python-mode
-  :mode "\\.python\\'")
+  :mode "\\.py\\'")
 
 (use-package rust-mode
   :mode "\\.rs\\'"
