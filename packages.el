@@ -120,3 +120,7 @@
 (use-package flycheck)
 
 (use-package restart-emacs)
+
+(use-package rainbow-mode
+  :config
+  (add-hook 'css-mode-hook (lambda () (rainbow-mode 1))))
