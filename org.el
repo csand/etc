@@ -1,7 +1,7 @@
 ;;; org.el --- Org-mode config and enhancements
 
 (use-package org
-  :mode "\\.org\\'")
+  :mode ("\\.org\\'" . org-mode))
 
 (use-package org-bullets
   :config
