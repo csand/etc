@@ -1,5 +1,6 @@
 /auto-save-list
 /elpa
+/server
 custom.el
 projectile-bookmarks.eld
 projectile.cache
