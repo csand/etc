@@ -66,7 +66,7 @@
  "f" 'projectile-find-file
  "I" 'projectile-invalidate-cache
  "p" 'projectile-switch-project
- "s" 'projectile-ag)
+ "s" 'projectile-rg)
 
 ;; Quit/Restart
 (general-nmap
