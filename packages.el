@@ -53,6 +53,9 @@
   (ivy-mode 1))
 
 (use-package counsel
+  :config
+  (when (eq system-type 'windows-nt)
+    (setq counsel-ag-base-command "pt /e /nocolor /nogroup"))
   :bind
   ("M-x" . counsel-M-x)
   ("C-h f" . counsel-describe-function)
