@@ -67,8 +67,11 @@
   :commands (projectile-find-file projectile-switch-project)
   :diminish projectile-mode
   :config
-  (setq projectile-enable-caching t)
+  (setq projectile-enable-caching t
+        projectile-indexing-method 'alien)
   (add-to-list 'projectile-globally-ignored-files ".DS_Store")
+  (add-to-list 'projectile-globally-ignored-directories "node_modules")
+  (add-to-list 'projectile-globally-ignored-directories "bower_components")
   (projectile-global-mode))
 
 (use-package counsel-projectile
