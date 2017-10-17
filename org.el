@@ -6,3 +6,10 @@
 (use-package org-bullets
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq org-directory "~/Dropbox/Org"
+      org-default-notes-file (concat org-directory "/inbox.org")
+      org-agenda-files (concat org-directory "/agenda.org")
+      org-export-coding-system 'utf-8
+      org-src-tab-acts-natively t
+      org-tags-column 80)
