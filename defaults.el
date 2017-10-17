@@ -26,7 +26,7 @@
  require-final-newline t)
 
 (recentf-mode 1)
-(setq recentf-max-menu-items 25)
+(setq recentf-max-menu-items 100)
 
 ;; Swap out yes/no prompts for y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
