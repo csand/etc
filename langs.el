@@ -19,6 +19,10 @@
 (use-package markdown-mode
   :mode "\\.md\\'")
 
+(when (eq system-type 'windows-nt)
+  (use-package powershell
+    :mode ("\\.ps[dm]?1\\'" . powershell-mode)))
+
 (use-package python-mode
   :mode "\\.py\\'")
 
