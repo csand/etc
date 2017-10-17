@@ -36,14 +36,18 @@
  :prefix "SPC g"
  "b" 'magit-blame
  "c" 'magit-commit
- "s" 'magit-status
- )
+ "s" 'magit-status)
 
 ;; Help
+
+;; Describe
 (general-nmap
- :prefix "SPC h"
- "df" 'counsel-describe-function
- "dv" 'counsel-describe-variable)
+ :prefix "SPC h d"
+ "f" 'counsel-describe-function
+ "k" 'describe-key
+ "m" 'describe-mode
+ "p" 'describe-package
+ "v" 'counsel-describe-variable)
 
 ;; Org
 (general-nmap
