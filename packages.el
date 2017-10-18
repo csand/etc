@@ -97,7 +97,8 @@
   :init
   (require 'smartparens-config)
   :config
-  (add-hook 'prog-mode-hook #'smartparens-mode))
+  (add-hook 'prog-mode-hook #'smartparens-mode)
+  (add-hook 'smartparens-mode-hook #'show-smartparens-mode))
 
 (use-package rainbow-delimiters
   :defer t
