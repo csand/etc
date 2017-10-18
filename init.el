@@ -1,5 +1,5 @@
-(defvar default-gc-cons-threshold gc-cons-threshold)
-(setq gc-cons-threshold 100000000)
+(setq default-gc-cons-threshold gc-cons-threshold
+      gc-cons-threshold most-positive-fixnum)
 
 (setq my-font-height (cond ((eq system-type 'darwin) 140)
                            ((eq system-type 'windows-nt) 110)
@@ -44,3 +44,5 @@
 (unless (file-exists-p custom-file)
   (with-temp-buffer (write-file custom-file)))
 (load custom-file)
+
+(setq gc-cons-threshold default-gc-cons-threshold)
