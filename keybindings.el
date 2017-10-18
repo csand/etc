@@ -1,93 +1,83 @@
 ;;; keybindings.el --- Efficient keybindings with general.el
 
-(general-evil-setup)
+(general-define-key :states '(motion)
+                    "j" 'evil-next-visual-line
+                    "k" 'evil-previous-visual-line
+                    "gj" 'evil-next-line
+                    "gk" 'evil-previous-line)
 
 ;; Hub
+(general-create-definer define-hub-key
+                        :states '(normal visual)
+                        :prefix "SPC")
 
-(general-mmap
- "j" 'evil-next-visual-line
- "k" 'evil-previous-visual-line
- "gj" 'evil-next-line
- "gk" 'evil-previous-line)
-
-(general-nmap
- :prefix "SPC"
- "SPC" 'counsel-M-x
- "TAB" 'switch-to-previous-buffer
- "/" 'swiper)
+(define-hub-key
+  "SPC" 'counsel-M-x
+  "TAB" 'switch-to-previous-buffer
+  "/" 'swiper)
 
 ;; Buffers
-(general-nmap
- :prefix "SPC b"
- "b" 'switch-to-buffer
- "d" 'evil-delete-buffer)
+(define-hub-key :infix "b"
+  "b" 'switch-to-buffer
+  "d" 'evil-delete-buffer)
 
 ;; Files
-(general-nmap
- :prefix "SPC f"
- "D" 'delete-file-and-buffer
- "f" 'counsel-find-file
- "r" 'counsel-recentf
- "R" 'rename-file-and-buffer
- "ed" 'edit-init-el)
+(define-hub-key :infix "f"
+  "D" 'delete-file-and-buffer
+  "f" 'counsel-find-file
+  "r" 'counsel-recentf
+  "R" 'rename-file-and-buffer
+  "ed" 'edit-init-el)
 
 ;; Git
-(general-nmap
- :prefix "SPC g"
- "b" 'magit-blame
- "c" 'magit-commit
- "s" 'magit-status)
+(define-hub-key :infix "g"
+  "b" 'magit-blame
+  "c" 'magit-commit
+  "s" 'magit-status)
 
 ;; Help
-
 ;; Describe
-(general-nmap
- :prefix "SPC h d"
- "f" 'counsel-describe-function
- "k" 'describe-key
- "m" 'describe-mode
- "p" 'describe-package
- "v" 'counsel-describe-variable)
+(define-hub-key :infix "h d"
+  "f" 'counsel-describe-function
+  "k" 'describe-key
+  "m" 'describe-mode
+  "p" 'describe-package
+  "v" 'counsel-describe-variable)
 
 ;; Org
-(general-nmap
- :prefix "SPC o"
- :global-prefix "C-c"
- "a" 'org-agenda
- "c" 'org-capture
- "l" 'org-store-link)
+(define-hub-key :infix "o"
+  :global-prefix "C-c"
+  "a" 'org-agenda
+  "c" 'org-capture
+  "l" 'org-store-link)
 
 ;; Projectile
-(general-nmap
- :prefix "SPC p"
- "!" 'projectile-run-shell-command-in-root
- "&" 'projectile-run-async-shell-command-in-root
- "b" 'projectile-switch-to-buffer
- "f" 'projectile-find-file
- "I" 'projectile-invalidate-cache
- "p" 'projectile-switch-project
- "s" 'projectile-rg)
+(define-hub-key :infix "p"
+  "!" 'projectile-run-shell-command-in-root
+  "&" 'projectile-run-async-shell-command-in-root
+  "b" 'projectile-switch-to-buffer
+  "f" 'projectile-find-file
+  "I" 'projectile-invalidate-cache
+  "p" 'projectile-switch-project
+  "s" 'counsel-projectile-rg)
 
 ;; Quit/Restart
-(general-nmap
- :prefix "SPC q"
- "q" 'save-buffers-kill-emacs
- "r" 'restart-emacs-and-resume
- "R" 'restart-emacs)
+(define-hub-key :infix "q"
+  "q" 'save-buffers-kill-emacs
+  "r" 'restart-emacs-and-resume
+  "R" 'restart-emacs)
 
 ;; Quit/Restart
-(general-nmap
- :prefix "SPC w"
- "c" 'evil-window-delete
- "h" 'evil-window-left
- "j" 'evil-window-down
- "k" 'evil-window-up
- "l" 'evil-window-right
- "s" 'evil-window-split
- "v" 'evil-window-vsplit
- )
+(define-hub-key :infix "w"
+  "c" 'evil-window-delete
+  "h" 'evil-window-left
+  "j" 'evil-window-down
+  "k" 'evil-window-up
+  "l" 'evil-window-right
+  "s" 'evil-window-split
+  "v" 'evil-window-vsplit)
 
-;; Tell which-key about all this
+;; Add hub prefixes to which-key
 (setq hub-prefixes
       '(
         ("b"   . "buffers")
@@ -108,7 +98,19 @@
     (which-key-add-key-based-replacements prefix description)))
 
 ;; Leader
+(general-create-definer define-follower-key
+                        :keymaps 'evil-normal-state-map
+                        :prefix ",")
 
-(general-nmap
- :prefix ","
- "SPC" 'evil-ex-nohighlight)
+;; Would be nice to use `:major-mode' instead of `:keymaps'
+(general-create-definer define-major-mode-follower-key
+                        :states '(normal)
+                        :prefix ",")
+
+(define-follower-key
+  "SPC" 'evil-ex-nohighlight)
+
+;; Emacs Lisp
+(define-major-mode-follower-key
+  :keymaps 'emacs-lisp-mode-map
+  "," 'eval-last-sexp)
