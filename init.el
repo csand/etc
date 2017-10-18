@@ -17,19 +17,17 @@
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
 
-(defvar my-config '(
-                    defaults
-                    funcs
-                    packages
-                    macos
-                    langs
-                    org
-                    themes
-                    keybindings
-                    ))
+(defvar my-init '(defaults
+                  funcs
+                  packages
+                  macos
+                  langs
+                  org
+                  themes
+                  keybindings))
 
-(dolist (file my-config)
-  (load (emacs-d (symbol-name file))))
+(dolist (file my-init)
+  (load (emacs-d (concat "init/" (symbol-name file)))))
 
 (load-theme 'gruvbox t)
 
