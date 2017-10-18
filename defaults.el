@@ -1,8 +1,10 @@
 ;;; defaults.el --- Better Emacs defaults
 
-(menu-bar-mode -1)
-(tool-bar-mode -1)
-(toggle-scroll-bar -1)
+(when window-system
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (toggle-scroll-bar -1))
+
 (auto-save-mode -1)
 
 (column-number-mode 1)
