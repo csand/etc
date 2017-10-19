@@ -42,7 +42,12 @@
   "k" 'describe-key
   "m" 'describe-mode
   "p" 'describe-package
+  "s" 'counsel-info-lookup-symbol
   "v" 'counsel-describe-variable)
+
+;; Input
+(define-hub-key :infix "i"
+  "u" 'counsel-unicode-char)
 
 ;; Org
 (define-hub-key :infix "o"
