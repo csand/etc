@@ -2,8 +2,8 @@
       gc-cons-threshold most-positive-fixnum)
 
 (setq my-font-height (cond ((eq system-type 'darwin) 140)
-                           ((eq system-type 'windows-nt) 110)
-                           ((eq system-type 'gnu/linux) 110)))
+                           ((eq system-type 'windows-nt) 100)
+                           ((eq system-type 'gnu/linux) 100)))
 
 (setq-default line-spacing 2)
 
