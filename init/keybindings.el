@@ -135,7 +135,7 @@
 (define-follower-key
   "SPC" 'evil-ex-nohighlight)
 
-;; Emacs Lisp
+;; Lisp
 (define-major-mode-follower-key
-  :keymaps 'emacs-lisp-mode-map
+  :keymaps 'lisp-mode-map
   "," 'eval-last-sexp)
