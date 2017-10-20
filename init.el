@@ -20,7 +20,6 @@
 (defvar my-init '(defaults
                   funcs
                   packages
-                  macos
                   langs
                   org
                   themes
@@ -33,6 +32,10 @@
 
 (when (display-graphic-p)
   (toggle-frame-maximized))
+
+;; Enable the ligature support in railwaycat's Emacs port
+;; (when (eq window-system 'mac)
+;;   (mac-auto-operator-composition-mode))
 
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.

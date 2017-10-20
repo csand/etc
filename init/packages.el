@@ -133,3 +133,8 @@
   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1))))
 
 (use-package ssh-agency)
+
+(use-package exec-path-from-shell
+  :if (eq system-type 'darwin)
+  :config
+  (exec-path-from-shell-initialize))
