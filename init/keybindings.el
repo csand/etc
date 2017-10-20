@@ -85,6 +85,11 @@
   "r" 'restart-emacs-and-resume
   "R" 'restart-emacs)
 
+;; Search
+(define-hub-key :infix "s"
+  "p" 'counsel-projectile-rg
+  "s" 'swiper)
+
 ;; Quit/Restart
 (define-hub-key :infix "w"
   "c" 'evil-window-delete
