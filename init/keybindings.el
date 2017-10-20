@@ -44,9 +44,14 @@
   "s" 'magit-status)
 
 ;; Help
+(define-hub-key :infix "h"
+  "a" 'apropos-command)
+
 ;; Describe
-(define-hub-key :infix "h d"
+(define-hub-key :infix "hd"
+  "C" 'describe-coding-system
   "f" 'counsel-describe-function
+  "F" 'counsel-describe-face
   "k" 'describe-key
   "m" 'describe-mode
   "p" 'describe-package
