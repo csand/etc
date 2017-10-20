@@ -124,7 +124,12 @@
   :config
   (editorconfig-mode 1))
 
-(use-package flycheck)
+(use-package flycheck
+  :config
+  (add-hook 'js-mode-hook 'flycheck-mode)
+  (add-hook 'python-mode-hook 'flycheck-mode)
+  (add-hook 'rst-mode-hook 'flycheck-mode)
+  (add-hook 'sh-mode-hook 'flycheck-mode))
 
 (use-package restart-emacs)
 
