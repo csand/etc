@@ -5,7 +5,6 @@
   (tool-bar-mode -1)
   (toggle-scroll-bar -1))
 
-(auto-save-mode -1)
 
 (column-number-mode 1)
 (show-paren-mode 1)
@@ -14,6 +13,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq
+ auto-save-default nil
  compilation-scroll-output t
  create-lockfiles nil
  backup-inhibited t
