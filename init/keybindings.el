@@ -139,3 +139,12 @@
 (define-major-mode-follower-key
   :keymaps 'lisp-mode-map
   "," 'eval-last-sexp)
+
+;; PDF Tools
+(general-define-key :keymaps 'pdf-view-mode-map
+                    "j" 'pdf-view-next-line-or-next-page
+                    "k" 'pdf-view-previous-line-or-previous-page)
+
+(general-define-key :keymaps 'pdf-outline-buffer-mode-map
+                    "j" 'next-line
+                    "k" 'previous-line)

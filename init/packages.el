@@ -164,3 +164,5 @@
                      telephone-line-simple-minor-mode-segment))
           (accent . (telephone-line-major-mode-segment))))
   (telephone-line-mode 1))
+
+(use-package pdf-tools)
