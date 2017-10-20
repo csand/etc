@@ -29,6 +29,14 @@
   "R" 'rename-file-and-buffer
   "ed" 'edit-init-el)
 
+;; Frames
+(define-hub-key :infix "F"
+  "c" 'delete-frame
+  "m" 'toggle-frame-maximized
+  "n" 'new-frame
+  "f" 'toggle-frame-fullscreen
+  "F" 'select-frame-by-name)
+
 ;; Git
 (define-hub-key :infix "g"
   "b" 'magit-blame
