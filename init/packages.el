@@ -147,7 +147,9 @@
 (use-package telephone-line
   :pin melpa
   :config
-  (setq telephone-line-height (floor (* my-font-height 1.4) 10)
+  (setq telephone-line-height (let* ((dpi-multiplier (if (eq system-type 'windows-nt) 2 1))
+                                    (whitespace-multiplier 1.4))
+                                (floor (* my-font-height whitespace-multiplier dpi-multiplier) 10))
         telephone-line-primary-left-separator 'telephone-line-cubed-right
         telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-right
         telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-left
