@@ -8,7 +8,7 @@
 
 ;; Hub
 (general-create-definer define-hub-key
-                        :states '(normal)
+                        :states '(normal motion)
                         :prefix "SPC")
 
 (define-hub-key
