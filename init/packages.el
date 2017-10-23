@@ -132,7 +132,8 @@
   (add-hook 'rst-mode-hook 'flycheck-mode)
   (add-hook 'sh-mode-hook 'flycheck-mode))
 
-(use-package restart-emacs)
+(use-package restart-emacs
+  :pin melpa)
 
 (use-package rainbow-mode
   :config
