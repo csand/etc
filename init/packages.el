@@ -90,7 +90,10 @@
   :diminish company-mode
   :defer t
   :init
-  (global-company-mode))
+  (global-company-mode)
+  :config
+  (add-to-list 'company-dabbrev-code-modes 'js2-mode)
+  (add-to-list 'company-dabbrev-code-modes 'web-mode))
 
 (use-package smartparens
   :diminish smartparens-mode
