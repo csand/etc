@@ -34,10 +34,10 @@
 ;; Frames
 (define-hub-key :infix "F"
   "c" 'delete-frame
+  "F" 'toggle-frame-fullscreen
   "m" 'toggle-frame-maximized
   "n" 'new-frame
-  "f" 'toggle-frame-fullscreen
-  "F" 'select-frame-by-name)
+  "s" 'select-frame-by-name)
 
 ;; Git
 (define-hub-key :infix "g"
