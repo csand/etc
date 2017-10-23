@@ -5,11 +5,13 @@
   (tool-bar-mode -1)
   (toggle-scroll-bar -1))
 
-
 (column-number-mode 1)
 (show-paren-mode 1)
 
-(prefer-coding-system 'utf-8)
+(setq my-coding-system (if (eq system-type 'windows-nt) 'utf-8-dos 'utf-8))
+(prefer-coding-system my-coding-system)
+(set-default-coding-systems my-coding-system)
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq
