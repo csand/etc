@@ -12,9 +12,11 @@
                         :prefix "SPC")
 
 (define-hub-key
+  "!" 'shell-command
+  "&" 'async-shell-command
+  "/" 'swiper
   "SPC" 'counsel-M-x
-  "TAB" 'switch-to-previous-buffer
-  "/" 'swiper)
+  "TAB" 'switch-to-previous-buffer)
 
 ;; Buffers
 (define-hub-key :infix "b"
