@@ -139,7 +139,8 @@
 
 ;; Lisp
 (define-major-mode-follower-key
-  :keymaps 'lisp-mode-map
+  :keymaps '(emacs-lisp-mode-map
+             lisp-interaction-mode-map)
   "," 'eval-last-sexp)
 
 ;; PDF Tools
