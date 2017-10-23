@@ -126,6 +126,7 @@
 
 (use-package flycheck
   :config
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (add-hook 'js-mode-hook 'flycheck-mode)
   (add-hook 'python-mode-hook 'flycheck-mode)
   (add-hook 'rst-mode-hook 'flycheck-mode)
