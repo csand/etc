@@ -151,3 +151,13 @@
 (general-define-key :keymaps 'pdf-outline-buffer-mode-map
                     "j" 'next-line
                     "k" 'previous-line)
+
+;; Org-mode
+(general-define-key
+ :keymaps 'org-mode-map
+ :states 'normal
+ "t" 'org-todo)
+
+(define-major-mode-follower-key
+  :keymaps 'org-mode-map
+  "," 'org-ctrl-c-ctrl-c)
