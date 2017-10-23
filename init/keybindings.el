@@ -12,9 +12,11 @@
                         :prefix "SPC")
 
 (define-hub-key
+  "!" 'shell-command
+  "&" 'async-shell-command
+  "/" 'swiper
   "SPC" 'counsel-M-x
-  "TAB" 'switch-to-previous-buffer
-  "/" 'swiper)
+  "TAB" 'switch-to-previous-buffer)
 
 ;; Buffers
 (define-hub-key :infix "b"
@@ -32,10 +34,10 @@
 ;; Frames
 (define-hub-key :infix "F"
   "c" 'delete-frame
+  "F" 'toggle-frame-fullscreen
   "m" 'toggle-frame-maximized
   "n" 'new-frame
-  "f" 'toggle-frame-fullscreen
-  "F" 'select-frame-by-name)
+  "s" 'select-frame-by-name)
 
 ;; Git
 (define-hub-key :infix "g"
@@ -137,7 +139,8 @@
 
 ;; Lisp
 (define-major-mode-follower-key
-  :keymaps 'lisp-mode-map
+  :keymaps '(emacs-lisp-mode-map
+             lisp-interaction-mode-map)
   "," 'eval-last-sexp)
 
 ;; PDF Tools
@@ -148,3 +151,13 @@
 (general-define-key :keymaps 'pdf-outline-buffer-mode-map
                     "j" 'next-line
                     "k" 'previous-line)
+
+;; Org-mode
+(general-define-key
+ :keymaps 'org-mode-map
+ :states 'normal
+ "t" 'org-todo)
+
+(define-major-mode-follower-key
+  :keymaps 'org-mode-map
+  "," 'org-ctrl-c-ctrl-c)

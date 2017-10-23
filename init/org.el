@@ -10,8 +10,8 @@
 (use-package evil-org
   :after org
   :pin melpa
+  :diminish evil-org-mode
   :config
-  ;; (setq evil-org-special-o/O t)
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme))))
 
