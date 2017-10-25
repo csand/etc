@@ -23,6 +23,10 @@
   "b" 'switch-to-buffer
   "d" 'evil-delete-buffer)
 
+;; Errors
+(define-hub-key :infix "e"
+  "n" 'flycheck-next-error)
+
 ;; Files
 (define-hub-key :infix "f"
   "D" 'delete-file-and-buffer
