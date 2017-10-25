@@ -1,7 +1,11 @@
 ;;; org.el --- Org-mode config and enhancements
 
 (use-package org
-  :mode ("\\.org\\'" . org-mode))
+  :mode ("\\.org\\'" . org-mode)
+  :config
+  (setq org-startup-folded nil
+        org-blank-before-new-entry '((heading . t)
+                                     (plain-list-item . auto))))
 
 (use-package org-bullets
   :config
