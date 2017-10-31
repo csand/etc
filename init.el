@@ -13,6 +13,8 @@
                     :width 'normal
                     :weight 'normal)
 
+(set-face-attribute 'fixed-pitch nil :family "PragmataPro Mono")
+
 (defun emacs-d (filename)
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
