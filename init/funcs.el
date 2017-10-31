@@ -45,3 +45,7 @@ Repeated invocations toggle between the two most recently open buffers."
   (let ((face (or (get-char-property pos 'read-face-name)
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+(defun csand/add-to-hooks (hook pirates)
+  (dolist (pirate pirates)
+    (add-hook hook pirate)))

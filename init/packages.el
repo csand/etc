@@ -173,3 +173,11 @@
   (telephone-line-mode 1))
 
 (use-package pdf-tools)
+
+(use-package emmet-mode
+  :commands emmet-mode
+  :init
+  (csand/add-to-hooks 'emmet-mode '(css-mode-hook
+                                    sass-mode-hook
+                                    scss-mode-hook
+                                    web-mode-hook)))

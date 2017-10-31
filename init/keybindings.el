@@ -166,3 +166,10 @@
 (define-major-mode-follower-key
   :keymaps 'org-mode-map
   "," 'org-ctrl-c-ctrl-c)
+
+;; Emmet
+(general-define-key
+ :keymaps '(css-mode-map web-mode-map)
+ :states 'insert
+ "TAB" 'emmet-expand-line
+ )
