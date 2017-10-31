@@ -25,7 +25,8 @@
 
 ;; Errors
 (define-hub-key :infix "e"
-  "n" 'flycheck-next-error)
+  "n" 'flycheck-next-error
+  "l" 'flycheck-list-errors)
 
 ;; Files
 (define-hub-key :infix "f"
