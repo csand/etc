@@ -49,7 +49,8 @@
 (use-package ivy
   :diminish ivy-mode
   :config
-  (setq ivy-initial-inputs-alist nil)
+  (setq ivy-height 15
+        ivy-initial-inputs-alist nil)
   (ivy-mode 1))
 
 (use-package counsel
