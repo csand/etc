@@ -97,7 +97,7 @@
   "p" 'counsel-projectile-rg
   "s" 'swiper)
 
-;; Quit/Restart
+;; Windows
 (define-hub-key :infix "w"
   "c" 'evil-window-delete
   "h" 'evil-window-left
