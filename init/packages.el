@@ -175,6 +175,12 @@
 
 (use-package pdf-tools)
 
+(use-package git-timemachine
+  :after evil
+  :config
+  (evil-make-overriding-map git-timemachine-mode-map 'normal)
+  (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))
+
 (use-package emmet-mode
   :commands emmet-mode
   :init
