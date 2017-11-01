@@ -33,16 +33,19 @@
   )
 
 (use-package evil-commentary
+  :after evil
   :diminish evil-commentary-mode
   :config
   (evil-commentary-mode 1))
 
 (use-package evil-smartparens
+  :after evil
   :diminish evil-smartparens-mode
   :config
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 (use-package evil-surround
+  :after evil
   :config
   (global-evil-surround-mode 1))
 
@@ -54,6 +57,7 @@
   (ivy-mode 1))
 
 (use-package counsel
+  :after ivy
   :config
   (when (eq system-type 'windows-nt)
     (setq counsel-ag-base-command "pt /e /nocolor /nogroup"))
@@ -62,7 +66,8 @@
   ("C-h f" . counsel-describe-function)
   ("C-h v" . counsel-describe-variable))
 
-(use-package swiper)
+(use-package swiper
+  :after ivy)
 
 (use-package projectile
   :commands (projectile-find-file projectile-switch-project)
@@ -76,6 +81,7 @@
   (projectile-global-mode))
 
 (use-package counsel-projectile
+  :after (counsel projectile)
   :config
   (counsel-projectile-on))
 
@@ -85,7 +91,8 @@
   (require 'magit-blame)
   (setq magit-completing-read-function 'ivy-completing-read))
 
-(use-package evil-magit)
+(use-package evil-magit
+  :after (evil magit))
 
 (use-package company
   :diminish company-mode
