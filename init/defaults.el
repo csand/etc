@@ -22,6 +22,7 @@
  inhibit-startup-screen t
  initial-scratch-message nil)
 
+;; Basic edit settings
 (setq-default
  fill-column 80
  indent-tabs-mode nil
@@ -33,14 +34,18 @@
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
 
+;; Always select the help window
+(setq help-window-select t)
+
 ;; Swap out yes/no prompts for y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; Show buffer file name in title bar
 (setq frame-title-format
-      '((:eval (if (buffer-file-name)
-                   (abbreviate-file-name (buffer-file-name))
-                 "%b"))))
+      '((:eval
+         (if (buffer-file-name)
+             (abbreviate-file-name (buffer-file-name))
+           "%b"))))
 
 ;; When saving a file with the magic byte (#!), make it executable
 (add-hook 'after-save-hook
