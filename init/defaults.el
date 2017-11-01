@@ -29,8 +29,9 @@
  truncate-lines t
  require-final-newline t)
 
+;; Enable recent files list
 (recentf-mode 1)
-(setq recentf-max-menu-items 100)
+(setq recentf-max-menu-items 25)
 
 ;; Swap out yes/no prompts for y/n
 (defalias 'yes-or-no-p 'y-or-n-p)
