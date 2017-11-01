@@ -2,6 +2,8 @@
 /elpa
 /eshell
 /server
+/url
+bookmarks
 custom.el
 projectile-bookmarks.eld
 projectile.cache
