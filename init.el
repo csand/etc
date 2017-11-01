@@ -8,8 +8,6 @@
             ((eq system-type 'windows-nt) csand-base-font-height)
             ((eq system-type 'gnu/linux) csand-base-font-height)))
 
-(setq-default line-spacing 2)
-
 (set-face-attribute 'default nil
                     :family "PragmataPro"
                     :height csand-font-height
