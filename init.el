@@ -1,15 +1,18 @@
+;; Don't garbage collect during initialization
 (setq default-gc-cons-threshold gc-cons-threshold
       gc-cons-threshold most-positive-fixnum)
 
-(setq my-font-height (cond ((eq system-type 'darwin) 140)
-                           ((eq system-type 'windows-nt) 100)
-                           ((eq system-type 'gnu/linux) 100)))
+(setq csand-base-font-height 110
+      csand-font-height
+      (cond ((eq system-type 'darwin) (* csand-base-font-height-base-font-height 1.4))
+            ((eq system-type 'windows-nt) csand-base-font-height)
+            ((eq system-type 'gnu/linux) csand-base-font-height)))
 
 (setq-default line-spacing 2)
 
 (set-face-attribute 'default nil
                     :family "PragmataPro"
-                    :height my-font-height
+                    :height csand-font-height
                     :width 'normal
                     :weight 'normal)
 
@@ -32,6 +35,7 @@
 
 (load-theme 'gruvbox t)
 
+;; Start maximized
 (when (display-graphic-p)
   (toggle-frame-maximized))
 
@@ -48,4 +52,5 @@
   (with-temp-buffer (write-file custom-file)))
 (load custom-file)
 
+;; Reset to default gc threshold
 (setq gc-cons-threshold default-gc-cons-threshold)
