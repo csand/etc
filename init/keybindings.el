@@ -82,6 +82,10 @@
 (define-hub-key :infix "i"
   "u" 'counsel-unicode-char)
 
+;; Narrow/Widen
+(define-hub-key :infix "n"
+  "s" 'org-narrow-to-subtree)
+
 ;; Org
 (define-hub-key :infix "o"
   :global-prefix "C-c"
@@ -130,6 +134,7 @@
         ("g"   . "git")
         ("h"   . "help")
         ("h d" . "describe")
+        ("n"   . "narrow/widen")
         ("o"   . "org")
         ("p"   . "projectile")
         ("q"   . "quit")
