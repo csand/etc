@@ -24,6 +24,7 @@
 
 ;; Basic edit settings
 (setq-default
+ case-fold-search nil
  fill-column 80
  indent-tabs-mode nil
  tab-width 2
