@@ -3,3 +3,5 @@
 (use-package dracula-theme :defer t)
 (use-package gruvbox-theme :defer t)
 (use-package leuven-theme :defer t)
+
+(provide 'init-themes)

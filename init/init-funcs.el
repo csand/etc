@@ -49,3 +49,5 @@ Repeated invocations toggle between the two most recently open buffers."
 (defun csand/add-to-hooks (hook pirates)
   (dolist (pirate pirates)
     (add-hook hook pirate)))
+
+(provide 'init-funcs)

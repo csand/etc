@@ -20,16 +20,15 @@
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
 
-(defvar my-init '(defaults
-                  funcs
-                  packages
-                  langs
-                  org
-                  themes
-                  keybindings))
+(add-to-list 'load-path (emacs-d "init"))
 
-(dolist (file my-init)
-  (load (emacs-d (concat "init/" (symbol-name file)))))
+(require 'init-defaults)
+(require 'init-funcs)
+(require 'init-packages)
+(require 'init-langs)
+(require 'init-org)
+(require 'init-themes)
+(require 'init-keybindings)
 
 (load-theme 'gruvbox t)
 

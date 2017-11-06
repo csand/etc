@@ -53,3 +53,5 @@
 
 ;; Causes recursion error somehow
 ;; (add-hook 'window-configuration-change-hook #'balance-windows)
+
+(provide 'init-defaults)

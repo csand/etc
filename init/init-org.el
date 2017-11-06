@@ -34,3 +34,5 @@
   (progn
     (add-hook 'org-mode-hook 'evil-org-mode)
     (add-hook 'evil-org-mode-hook 'evil-org-set-key-theme)))
+
+(provide 'init-org)

@@ -199,3 +199,5 @@
                                     sass-mode-hook
                                     scss-mode-hook
                                     web-mode-hook)))
+
+(provide 'init-packages)
