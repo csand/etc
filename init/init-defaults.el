@@ -1,4 +1,4 @@
-;;; defaults.el --- Better Emacs defaults
+;;; init-defaults.el --- Better Emacs defaults
 
 (when window-system
   (menu-bar-mode -1)
@@ -8,9 +8,9 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
-(setq my-coding-system (if (eq system-type 'windows-nt) 'utf-8-dos 'utf-8))
-(prefer-coding-system my-coding-system)
-(set-default-coding-systems my-coding-system)
+(setq csand-coding-system (if is-windows 'utf-8-dos 'utf-8))
+(prefer-coding-system csand-coding-system)
+(set-default-coding-systems csand-coding-system)
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 

@@ -2,11 +2,13 @@
 (setq default-gc-cons-threshold gc-cons-threshold
       gc-cons-threshold most-positive-fixnum)
 
-(setq csand-base-font-height 110
-      csand-font-height
-      (cond ((eq system-type 'darwin) (* csand-base-font-height-base-font-height 1.4))
-            ((eq system-type 'windows-nt) csand-base-font-height)
-            ((eq system-type 'gnu/linux) csand-base-font-height)))
+(defconst is-linux (eq system-type 'gnu/linux))
+(defconst is-mac (eq system-type 'darwin))
+(defconst is-windows (eq system-type 'windows-nt))
+
+(defconst csand-base-font-height 110)
+(defconst csand-font-height
+  (if is-mac (* csand-base-font-height 1.4) csand-base-font-height))
 
 (set-face-attribute 'default nil
                     :family "PragmataPro"
@@ -14,6 +16,7 @@
                     :width 'normal
                     :weight 'normal)
 
+;; Set the fixed-pitch font. Mostly affects markdown mode source blocks
 (set-face-attribute 'fixed-pitch nil :family "PragmataPro Mono")
 
 (defun emacs-d (filename)
@@ -25,10 +28,15 @@
 (require 'init-defaults)
 (require 'init-funcs)
 (require 'init-packages)
+(require 'init-evil)
+(require 'init-ivy)
+(require 'init-projectile)
 (require 'init-langs)
 (require 'init-org)
 (require 'init-themes)
 (require 'init-keybindings)
+(require 'init-hub)
+(require 'init-modeline)
 
 (load-theme 'gruvbox t)
 

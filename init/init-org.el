@@ -1,14 +1,15 @@
-;;; org.el --- Org-mode config and enhancements
+;;; init-org.el --- Org-mode config and enhancements
 
-(defvar org-directory "~/Dropbox/Org")
+(defconst org-directory "~/Dropbox/Org")
 
 (defun org-file (filename)
   (expand-file-name filename org-directory))
 
-(defvar org-agenda-file (org-file "agenda.org"))
-(defvar org-inbox-file  (org-file "inbox.org"))
+(defconst org-agenda-file (org-file "agenda.org"))
+(defconst org-inbox-file  (org-file "inbox.org"))
 
 (use-package org
+  :ensure t
   :mode ("\\.org\\'" . org-mode)
   :init
   (progn
@@ -27,6 +28,7 @@
   (add-to-list 'org-src-lang-modes '("javascript" . js2)))
 
 (use-package evil-org
+  :ensure t
   :after org
   :diminish evil-org-mode
   :pin melpa

@@ -1,4 +1,4 @@
-;;; packages.el --- Install packages with use-package.el
+;;; init-packages.el --- Configure package installation
 
 (require 'package)
 
@@ -22,80 +22,27 @@
 (require 'diminish)
 (require 'bind-key)
 
-(setq use-package-always-ensure t)
-
-(use-package evil
-  :diminish undo-tree-mode
-  :init
-  (setq evil-search-module 'evil-search
-        evil-want-C-w-in-emacs-state t)
-  (evil-mode 1)
-  )
-
-(use-package evil-commentary
-  :after evil
-  :diminish evil-commentary-mode
-  :config
-  (evil-commentary-mode 1))
-
 (use-package evil-smartparens
+  :ensure t
   :after evil
   :diminish evil-smartparens-mode
   :config
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
-(use-package evil-surround
-  :after evil
-  :config
-  (global-evil-surround-mode 1))
-
-(use-package ivy
-  :diminish ivy-mode
-  :config
-  (setq ivy-height 15
-        ivy-initial-inputs-alist nil)
-  (ivy-mode 1))
-
-(use-package counsel
-  :after ivy
-  :config
-  (when (eq system-type 'windows-nt)
-    (setq counsel-ag-base-command "pt /e /nocolor /nogroup"))
-  :bind
-  ("M-x" . counsel-M-x)
-  ("C-h f" . counsel-describe-function)
-  ("C-h v" . counsel-describe-variable))
-
-(use-package swiper
-  :after ivy)
-
-(use-package projectile
-  :commands (projectile-find-file projectile-switch-project)
-  :diminish projectile-mode
-  :config
-  (setq projectile-enable-caching t
-        projectile-indexing-method 'alien)
-  (add-to-list 'projectile-globally-ignored-files ".DS_Store")
-  (add-to-list 'projectile-globally-ignored-directories "node_modules")
-  (add-to-list 'projectile-globally-ignored-directories "bower_components")
-  (projectile-global-mode))
-
-(use-package counsel-projectile
-  :after (counsel projectile)
-  :config
-  (counsel-projectile-on))
-
 (use-package magit
+  :ensure t
   :diminish auto-revert-mode
   :config
   (require 'magit-blame)
   (setq magit-completing-read-function 'ivy-completing-read))
 
 (use-package evil-magit
+  :ensure t
   :after (evil magit))
 
 (use-package company
-  :diminish company-mode
+  :ensure t
+  ;; :diminish company-mode
   :defer t
   :init
   (global-company-mode)
@@ -104,6 +51,7 @@
   (add-to-list 'company-dabbrev-code-modes 'web-mode))
 
 (use-package smartparens
+  :ensure t
   :diminish smartparens-mode
   :init
   (require 'smartparens-config)
@@ -112,13 +60,16 @@
   (add-hook 'smartparens-mode-hook #'show-smartparens-mode))
 
 (use-package rainbow-delimiters
+  :ensure t
   :defer t
   :init
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
-(use-package general)
+(use-package general
+  :ensure t)
 
 (use-package which-key
+  :ensure t
   :diminish which-key-mode
   :config
   (setq which-key-popup-type 'minibuffer
@@ -126,16 +77,19 @@
   (which-key-mode 1))
 
 (use-package key-chord
+  :ensure t
   :config
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
 
 (use-package editorconfig
+  :ensure t
   :diminish editorconfig-mode
   :config
   (editorconfig-mode 1))
 
 (use-package flycheck
+  :ensure t
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (add-hook 'js-mode-hook 'flycheck-mode)
@@ -144,60 +98,98 @@
   (add-hook 'sh-mode-hook 'flycheck-mode))
 
 (use-package restart-emacs
-  :pin melpa)
+  :pin melpa
+  :ensure t)
 
 (use-package rainbow-mode
+  :ensure t
+  :diminish rainbow-mode
   :config
   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1))))
 
-(use-package ssh-agency)
+(use-package ssh-agency
+  :ensure t)
 
 (use-package exec-path-from-shell
-  :if (eq system-type 'darwin)
+  :if is-mac
+  :ensure t
   :config
   (exec-path-from-shell-initialize))
 
 (use-package telephone-line
   :pin melpa
+  :ensure t
   :config
-  (setq telephone-line-height (let* ((dpi-multiplier (if (eq system-type 'windows-nt) 2 1))
-                                    (whitespace-multiplier 1.4))
-                                (floor (* csand-font-height whitespace-multiplier dpi-multiplier) 10))
-        telephone-line-primary-left-separator 'telephone-line-cubed-right
-        telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-right
-        telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-left
-        telephone-line-primary-right-separator 'telephone-line-cubed-left
-        telephone-line-lhs
-        '((evil   . (telephone-line-evil-tag-segment))
-          (accent . (telephone-line-vc-segment
-                     telephone-line-erc-modified-channels-segment
-                     telephone-line-process-segment))
-          (nil    . (telephone-line-buffer-segment)))
-        telephone-line-rhs
-        '((nil    . (telephone-line-misc-info-segment
-                     telephone-line-airline-position-segment
-                     telephone-line-simple-minor-mode-segment))
-          (accent . (telephone-line-major-mode-segment))))
-  (telephone-line-mode 1))
+  (progn
+    (setq
+     telephone-line-height
+     (let* ((dpi-multiplier (if (eq system-type 'windows-nt) 2 1))
+            (whitespace-multiplier 1.4))
+       (floor (* csand-font-height whitespace-multiplier dpi-multiplier) 10))
+     telephone-line-primary-left-separator 'telephone-line-cubed-right
+     telephone-line-secondary-left-separator 'telephone-line-cubed-hollow-right
+     telephone-line-secondary-right-separator 'telephone-line-cubed-hollow-left
+     telephone-line-primary-right-separator 'telephone-line-cubed-left
+     telephone-line-lhs
+     '((evil   . (telephone-line-evil-tag-segment))
+       (accent . (telephone-line-vc-segment
+                  telephone-line-erc-modified-channels-segment
+                  telephone-line-process-segment))
+       (nil    . (telephone-line-buffer-segment)))
+     telephone-line-rhs
+     '((nil    . (telephone-line-misc-info-segment
+                  telephone-line-airline-position-segment
+                  telephone-line-simple-minor-mode-segment))
+       (accent . (telephone-line-major-mode-segment))))
+    ;; (telephone-line-mode 1)
+    ))
 
-(use-package pdf-tools)
+(use-package pdf-tools
+  :ensure t)
 
 (use-package git-timemachine
+  :ensure t
   :after evil
   :config
-  (evil-make-overriding-map git-timemachine-mode-map 'normal)
-  (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps))
+  (progn
+    (evil-make-overriding-map git-timemachine-mode-map 'normal)
+    (add-hook 'git-timemachine-mode-hook #'evil-normalize-keymaps)
+    ))
 
 (use-package winum
+  :ensure t
   :init
   (winum-mode))
 
 (use-package emmet-mode
+  :ensure t
   :commands emmet-mode
   :init
-  (csand/add-to-hooks 'emmet-mode '(css-mode-hook
-                                    sass-mode-hook
-                                    scss-mode-hook
-                                    web-mode-hook)))
+  (progn
+    (setq emmet-enabled-modes '(css-mode-hook
+                                html-mode-hook
+                                sass-mode-hook
+                                scss-mode-hook
+                                web-mode-hook))
+    (csand/add-to-hooks 'emmet-mode emmet-enabled-modes))
+  :config
+  (progn
+    (defun emmet-expand ()
+      (interactive)
+      (if (bound-and-true-p yas-minor-mode)
+          (call-interactively 'emmet-expand-yas)
+        (call-interactively 'emmet-expand-line)))
+    (general-define-key
+     :keymaps emmet-mode-keymap
+     :states 'insert
+     "TAB" 'emmet-expand)
+    ))
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (diminish 'yas-global-mode)
+  (diminish 'yas-minor-mode)
+  (yas-global-mode 1))
 
 (provide 'init-packages)
