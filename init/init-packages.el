@@ -192,4 +192,10 @@
   (diminish 'yas-minor-mode)
   (yas-global-mode 1))
 
+(use-package visual-fill-column
+  :ensure t
+  :commands visual-fill-column-mode
+  :init
+  (add-hook 'visual-line-mode-hook 'visual-fill-column-mode))
+
 (provide 'init-packages)
