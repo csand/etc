@@ -22,6 +22,9 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package s
+  :ensure t)
+
 (use-package evil-smartparens
   :ensure t
   :after evil
