@@ -201,4 +201,8 @@
   :init
   (add-hook 'visual-line-mode-hook 'visual-fill-column-mode))
 
+(use-package tramp
+  :config
+  (setq tramp-default-method "ssh"))
+
 (provide 'init-packages)
