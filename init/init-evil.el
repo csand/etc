@@ -6,7 +6,10 @@
   :init
   (setq evil-search-module 'evil-search
         evil-want-C-w-in-emacs-state t)
-  (evil-mode 1))
+  (evil-mode 1)
+  :config
+  (when (require 'evil-collection nil t)
+    (evil-collection-init)))
 
 (use-package evil-ediff
   :ensure t
