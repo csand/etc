@@ -1,13 +1,17 @@
 ;;; init-modeline.el --- Personal modeline setup
 
+(defconst mode-line-window-number
+  '(:eval (concat "W" (winum-get-number-string))))
+
 (defconst mode-line-buffer-info
   '(:eval (concat
            (if (buffer-modified-p) "*" "-")
            " "
            (propertize (buffer-name) 'face '(:weight bold))
-           " "
-           (propertize (format-mode-line "%lL,%cC") 'face '(:weight light))
            )))
+
+(defconst mode-line-point-position
+  '(:eval (propertize (format-mode-line "%lL,%cC") 'face '(:weight light))))
 
 (defconst mode-line-evil-tag
   '(:eval (cond
@@ -36,11 +40,16 @@
 
 (setq-default mode-line-format
               '(:eval (concat
-                       ;; (if evil-mode (format-mode-line mode-line-evil-tag))
-                       (if evil-mode evil-mode-line-tag)
+                       (format-mode-line mode-line-front-space)
+                       (format-mode-line mode-line-window-number)
+                       " "
                        (format-mode-line mode-line-buffer-info)
-                       (format "%-20s" (format-mode-line mode-line-misc-info))
+                       (if evil-mode evil-mode-line-tag)
+                       (format-mode-line mode-line-misc-info)
                        (format-mode-line mode-line-mode-list)
+                       " "
+                       (format-mode-line mode-line-point-position)
+                       (format-mode-line mode-line-end-spaces)
                        )))
 
 ;; Value:
