@@ -22,8 +22,9 @@
 (require 'diminish)
 (require 'bind-key)
 
-(use-package s
-  :ensure t)
+(use-package s :ensure t)
+
+(use-package dash :ensure t)
 
 (use-package evil-smartparens
   :ensure t
