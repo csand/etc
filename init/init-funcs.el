@@ -50,4 +50,12 @@ Repeated invocations toggle between the two most recently open buffers."
   (dolist (pirate pirates)
     (add-hook hook pirate)))
 
+(defun csand/ls (path &optional abs match nosort)
+  "Like directory-files, but omits . and .."
+  (let* ((fails (directory-files path nil match nosort))
+         (files (remove "." (remove ".." fails))))
+    (if abs (mapcar (lambda (file)
+                      (expand-file-name file path)) files)
+      files)))
+
 (provide 'init-funcs)
