@@ -4,9 +4,9 @@
 (setq hub-prefixes
       '(
         ("b"   . "buffers")
+        ("F"   . "frames")
         ("f"   . "files")
         ("f e" . ".emacs.d")
-        ("F"   . "frames")
         ("g"   . "git")
         ("h"   . "help")
         ("h d" . "describe")
@@ -16,6 +16,7 @@
         ("q"   . "quit")
         ("s"   . "search")
         ("T"   . "toggles")
+        ("t"   . "themes")
         ("w"   . "windows")
         ))
 
@@ -135,6 +136,10 @@
 ;; Toggles
 (define-hub-key :infix "T"
   "w" 'whitespace-mode)
+
+;; Themes
+(define-hub-key :infix "t"
+  "t" 'counsel-load-theme)
 
 ;; Windows
 (define-hub-key :infix "w"
