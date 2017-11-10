@@ -199,6 +199,12 @@
   :config
   (setq tramp-default-method "ssh"))
 
+;; Improve the package installer
+(use-package paradox
+  :ensure t
+  :config
+  (paradox-enable))
+
 (use-package hydra
   :ensure t)
 
