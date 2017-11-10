@@ -8,6 +8,10 @@
         evil-want-C-w-in-emacs-state t)
   (evil-mode 1))
 
+(use-package evil-ediff
+  :ensure t
+  :after evil)
+
 (use-package evil-commentary
   :ensure t
   :after evil
