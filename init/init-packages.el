@@ -32,13 +32,6 @@
         (add-to-list 'load-path (expand-file-name site)))
       (-filter 'file-directory-p (csand/ls (emacs-d "site-lisp") t)))
 
-(use-package evil-smartparens
-  :ensure t
-  :after evil
-  :diminish evil-smartparens-mode
-  :config
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
-
 (use-package magit
   :ensure t
   :diminish auto-revert-mode

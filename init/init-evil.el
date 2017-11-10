@@ -22,6 +22,13 @@
   :config
   (evil-commentary-mode 1))
 
+(use-package evil-smartparens
+  :ensure t
+  :after 'smartparens
+  :diminish evil-smartparens-mode
+  :config
+  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
+
 (use-package evil-surround
   :ensure t
   :after evil
