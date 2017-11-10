@@ -5,7 +5,7 @@
   :diminish projectile-mode
   :config
   (progn
-    (setq projectile-enable-caching t
+    (setq projectile-enable-caching is-windows
           projectile-indexing-method 'alien)
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (add-to-list 'projectile-globally-ignored-directories "node_modules")
