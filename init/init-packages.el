@@ -11,6 +11,7 @@
 
 (package-initialize)
 
+;; Install use-package if it isn't installed
 (unless (package-installed-p 'use-package)
   (message "Refreshing packages")
   (package-refresh-contents)
@@ -22,14 +23,14 @@
 (require 'diminish)
 (require 'bind-key)
 
-;; Add site-lisp
+;; Load util libraries
+(use-package s :ensure t)
+(use-package dash :ensure t)
+
+;; Add site-lisp packages to load-path
 (mapc (lambda (site)
         (add-to-list 'load-path (expand-file-name site)))
       (-filter 'file-directory-p (csand/ls (emacs-d "site-lisp") t)))
-
-(use-package s :ensure t)
-
-(use-package dash :ensure t)
 
 (use-package evil-smartparens
   :ensure t
