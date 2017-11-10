@@ -152,8 +152,8 @@
 
 (use-package winum
   :ensure t
-  :init
-  (winum-mode))
+  :config
+  (winum-mode 1))
 
 (use-package emmet-mode
   :ensure t
