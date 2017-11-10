@@ -22,6 +22,9 @@
 (require 'diminish)
 (require 'bind-key)
 
+(use-package s
+  :ensure t)
+
 (use-package evil-smartparens
   :ensure t
   :after evil
@@ -185,5 +188,15 @@
   (diminish 'yas-global-mode)
   (diminish 'yas-minor-mode)
   (yas-global-mode 1))
+
+(use-package visual-fill-column
+  :ensure t
+  :commands visual-fill-column-mode
+  :init
+  (add-hook 'visual-line-mode-hook 'visual-fill-column-mode))
+
+(use-package tramp
+  :config
+  (setq tramp-default-method "ssh"))
 
 (provide 'init-packages)

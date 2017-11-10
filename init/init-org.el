@@ -23,7 +23,7 @@
     (setq org-capture-templates
           '(("t" "Todo" entry (file+headline org-inbox-file "Tasks")
              "* TODO %i%?")))
-    (add-hook 'org-mode-hook 'auto-fill-mode))
+    (add-hook 'org-mode-hook 'visual-line-mode))
   :config
   (add-to-list 'org-src-lang-modes '("javascript" . js2)))
 
