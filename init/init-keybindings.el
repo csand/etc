@@ -51,4 +51,12 @@
  "TAB" 'emmet-expand-line
  )
 
+;; With-Editor
+(define-major-mode-follower-key
+  :keymaps 'with-editor-mode-map
+  "a" 'with-editor-cancel
+  "c" 'with-editor-finish
+  "k" 'with-editor-cancel
+  "," 'with-editor-finish)
+
 (provide 'init-keybindings)
