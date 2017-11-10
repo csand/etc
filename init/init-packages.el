@@ -199,4 +199,7 @@
   :config
   (setq tramp-default-method "ssh"))
 
+(use-package hydra
+  :ensure t)
+
 (provide 'init-packages)

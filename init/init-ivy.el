@@ -24,4 +24,8 @@
   :ensure t
   :after ivy)
 
+(use-package ivy-hydra
+  :ensure t
+  :after ivy)
+
 (provide 'init-ivy)
