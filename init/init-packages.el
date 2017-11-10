@@ -22,6 +22,11 @@
 (require 'diminish)
 (require 'bind-key)
 
+;; Add site-lisp
+(mapc (lambda (site)
+        (add-to-list 'load-path (expand-file-name site)))
+      (-filter 'file-directory-p (csand/ls (emacs-d "site-lisp") t)))
+
 (use-package s :ensure t)
 
 (use-package dash :ensure t)

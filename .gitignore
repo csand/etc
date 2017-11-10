@@ -3,6 +3,7 @@
 /eshell
 /server
 /url
+/site-lisp/*
 bookmarks
 custom.el
 projectile-bookmarks.eld
