@@ -76,12 +76,6 @@
         which-key-idle-delay 0.4)
   (which-key-mode 1))
 
-(use-package key-chord
-  :ensure t
-  :config
-  (key-chord-mode 1)
-  (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
-
 (use-package editorconfig
   :ensure t
   :diminish editorconfig-mode
