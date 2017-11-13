@@ -119,6 +119,7 @@
   "b" 'projectile-switch-to-buffer
   "f" 'projectile-find-file
   "I" 'projectile-invalidate-cache
+  "k" 'projectile-kill-buffers
   "p" 'projectile-switch-project
   "s" 'counsel-projectile-rg)
 
