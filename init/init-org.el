@@ -19,7 +19,7 @@
                                (org-inbox-file :level . 1))
           org-src-tab-acts-natively t
           org-startup-folded nil
-          org-tags-column 80)
+          org-tags-column -80)
     (setq org-capture-templates
           '(("t" "Todo" entry (file+headline org-inbox-file "Tasks")
              "* TODO %i%?")))
