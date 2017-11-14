@@ -7,7 +7,9 @@
      eshell-hist-ignoredups t
      eshell-save-history-on-exit t
      eshell-prefer-lisp-functions t
-     eshell-destroy-buffer-when-process-dies t)))
+     eshell-destroy-buffer-when-process-dies t))
+  :config
+  (add-to-list 'eshell-modules-list 'eshell-tramp))
 
 ;; Visual Commands
 (add-hook 'eshell-mode-hook
