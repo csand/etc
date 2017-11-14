@@ -228,4 +228,7 @@
     "k" 'with-editor-cancel
     "," 'with-editor-finish))
 
+(use-package avy
+  :ensure t)
+
 (provide 'init-packages)
