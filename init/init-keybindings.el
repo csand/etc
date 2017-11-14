@@ -15,20 +15,10 @@
              lisp-interaction-mode-map)
   "," 'eval-last-sexp)
 
-;; PDF Tools
-(general-define-key :keymaps 'pdf-view-mode-map
-                    "j" 'pdf-view-next-line-or-next-page
-                    "k" 'pdf-view-previous-line-or-previous-page)
-
-(general-define-key :keymaps 'pdf-outline-buffer-mode-map
-                    "j" 'next-line
-                    "k" 'previous-line)
-
 ;; Emmet
 (general-define-key
  :keymaps '(css-mode-map web-mode-map)
  :states 'insert
- "TAB" 'emmet-expand-line
- )
+ "TAB" 'emmet-expand-line)
 
 (provide 'init-keybindings)
