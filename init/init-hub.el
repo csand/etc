@@ -79,6 +79,7 @@
 (define-hub-key :infix "g"
   "b" 'magit-blame
   "c" 'magit-commit
+  "r" 'magit-list-repositories
   "s" 'magit-status)
 
 ;; Help
