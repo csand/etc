@@ -38,6 +38,7 @@
 (require 'init-keybindings)
 (require 'init-hub)
 (require 'init-modeline)
+(require 'init-eshell)
 
 (load-theme 'gruvbox t)
 
