@@ -19,13 +19,32 @@
                                (org-inbox-file :level . 1))
           org-src-tab-acts-natively t
           org-startup-folded nil
-          org-tags-column 80)
+          org-tags-column -80)
     (setq org-capture-templates
           '(("t" "Todo" entry (file+headline org-inbox-file "Tasks")
              "* TODO %i%?")))
     (add-hook 'org-mode-hook 'visual-line-mode))
   :config
-  (add-to-list 'org-src-lang-modes '("javascript" . js2)))
+  (progn
+    (define-follower-key "c" 'org-capture)
+    (define-major-mode-follower-key
+      :keymaps 'org-mode-map
+      "," 'org-ctrl-c-ctrl-c
+      ":" 'org-set-tags
+      "r" 'org-refile)
+    (general-define-key
+     :keymaps 'org-mode-map
+     :states 'normal
+     "t" 'org-todo)
+    (define-major-mode-follower-key
+      :keymaps 'org-capture-mode-map
+      "," 'org-capture-finalize
+      "a" 'org-capture-kill
+      "c" 'org-capture-finalize
+      "k" 'org-capture-kill
+      "r" 'org-capture-refile
+      "w" 'org-capture-refile)
+    (add-to-list 'org-src-lang-modes '("javascript" . js2))))
 
 (use-package evil-org
   :ensure t
