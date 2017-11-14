@@ -69,7 +69,18 @@
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
 
 (use-package general
-  :ensure t)
+  :ensure t
+  :config
+  (progn
+    ;; Add definers for global and major mode leaders
+    (general-create-definer define-follower-key
+                            :keymaps 'evil-normal-state-map
+                            :prefix ",")
+    ;; Would be nice to use `:major-mode' instead of `:keymaps'
+    (general-create-definer define-major-mode-follower-key
+                            :states '(normal)
+                            :prefix ",")
+    ))
 
 (use-package which-key
   :ensure t
@@ -207,5 +218,14 @@
 
 (use-package hydra
   :ensure t)
+
+(use-package with-editor
+  :config
+  (define-major-mode-follower-key
+    :keymaps 'with-editor-mode-map
+    "a" 'with-editor-cancel
+    "c" 'with-editor-finish
+    "k" 'with-editor-cancel
+    "," 'with-editor-finish))
 
 (provide 'init-packages)

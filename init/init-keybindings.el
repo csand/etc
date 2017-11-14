@@ -6,16 +6,6 @@
                     "gj" 'evil-next-line
                     "gk" 'evil-previous-line)
 
-;; Leader
-(general-create-definer define-follower-key
-                        :keymaps 'evil-normal-state-map
-                        :prefix ",")
-
-;; Would be nice to use `:major-mode' instead of `:keymaps'
-(general-create-definer define-major-mode-follower-key
-                        :states '(normal)
-                        :prefix ",")
-
 (define-follower-key
   "SPC" 'evil-ex-nohighlight)
 
@@ -50,13 +40,5 @@
  :states 'insert
  "TAB" 'emmet-expand-line
  )
-
-;; With-Editor
-(define-major-mode-follower-key
-  :keymaps 'with-editor-mode-map
-  "a" 'with-editor-cancel
-  "c" 'with-editor-finish
-  "k" 'with-editor-cancel
-  "," 'with-editor-finish)
 
 (provide 'init-keybindings)
