@@ -5,24 +5,37 @@
 (defun org-file (filename)
   (expand-file-name filename org-directory))
 
-(defconst org-agenda-file (org-file "agenda.org"))
-(defconst org-inbox-file  (org-file "inbox.org"))
+(defconst org-archive-file  (org-file "archive.org"))
+(defconst org-inbox-file    (org-file "inbox.org"))
+(defconst org-projects-file (org-file "projects.org"))
+(defconst org-work-file     (org-file "work-journal.org"))
+
+(defconst org-todo-template
+  '("t" "TODO" entry (file+headline org-inbox-file "Tasks")
+    "* TODO %i%? %^G"))
+
+(defconst org-work-item-template
+  '("w" "Work Item" item (file+olp+datetree org-work-file)
+    "- %i%?"
+    :tree-type week))
 
 (use-package org
   :ensure t
   :mode ("\\.org\\'" . org-mode)
   :init
   (progn
-    (setq org-agenda-files `(,org-agenda-file ,org-inbox-file)
+    (setq org-agenda-files `(,org-inbox-file
+                             ,org-projects-file
+                             ,org-work-file)
           org-export-coding-system 'utf-8
           org-refile-targets '((nil :maxlevel . 9)
-                               (org-inbox-file :level . 1))
+                               (org-inbox-file :level . 1)
+                               (org-projects-file :level . 1))
           org-src-tab-acts-natively t
           org-startup-folded nil
           org-tags-column -80)
-    (setq org-capture-templates
-          '(("t" "Todo" entry (file+headline org-inbox-file "Tasks")
-             "* TODO %i%?")))
+    (setq org-capture-templates `(,org-todo-template
+                                  ,org-work-item-template))
     (add-hook 'org-mode-hook 'visual-line-mode))
   :config
   (progn
