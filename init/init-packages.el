@@ -203,9 +203,7 @@
   :init
   (add-hook 'visual-line-mode-hook 'visual-fill-column-mode))
 
-(use-package tramp
-  :config
-  (setq tramp-default-method "ssh"))
+(use-package tramp)
 
 ;; Improve the package installer
 (use-package paradox
