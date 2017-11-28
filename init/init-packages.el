@@ -66,7 +66,7 @@
   :ensure t
   :defer t
   :init
-  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode))
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package general
   :ensure t
@@ -100,10 +100,10 @@
   :ensure t
   :config
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (add-hook 'js-mode-hook 'flycheck-mode)
-  (add-hook 'python-mode-hook 'flycheck-mode)
-  (add-hook 'rst-mode-hook 'flycheck-mode)
-  (add-hook 'sh-mode-hook 'flycheck-mode))
+  (add-hook 'js-mode-hook #'flycheck-mode)
+  (add-hook 'python-mode-hook #'flycheck-mode)
+  (add-hook 'rst-mode-hook #'flycheck-mode)
+  (add-hook 'sh-mode-hook #'flycheck-mode))
 
 (use-package restart-emacs
   :pin melpa
@@ -176,7 +176,7 @@
                                 sass-mode-hook
                                 scss-mode-hook
                                 web-mode-hook))
-    (csand/add-to-hooks 'emmet-mode emmet-enabled-modes))
+    (csand/add-to-hooks #'emmet-mode emmet-enabled-modes))
   :config
   (progn
     (defun emmet-expand ()
@@ -201,7 +201,7 @@
   :ensure t
   :commands visual-fill-column-mode
   :init
-  (add-hook 'visual-line-mode-hook 'visual-fill-column-mode))
+  (add-hook 'visual-line-mode-hook #'visual-fill-column-mode))
 
 (use-package tramp)
 

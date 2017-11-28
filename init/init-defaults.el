@@ -12,7 +12,7 @@
 (prefer-coding-system csand-coding-system)
 (set-default-coding-systems csand-coding-system)
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook #'delete-trailing-whitespace)
 
 (setq
  auto-save-default nil
