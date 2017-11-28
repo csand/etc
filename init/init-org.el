@@ -44,6 +44,7 @@
       :keymaps 'org-mode-map
       "," 'org-ctrl-c-ctrl-c
       ":" 'org-set-tags
+      "'" 'org-edit-special
       "r" 'org-refile)
     (general-define-key
      :keymaps 'org-mode-map
