@@ -26,7 +26,7 @@
     (which-key-add-key-based-replacements prefix description)))
 
 (general-create-definer define-hub-key
-                        :states '(normal motion)
+                        :states 'motion
                         :prefix "SPC")
 
 (define-hub-key
