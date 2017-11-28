@@ -44,7 +44,9 @@
 
 (use-package evil-magit
   :ensure t
-  :after (evil magit))
+  :after (evil magit)
+  :init
+  (setq evil-magit-want-horizontal-movement t))
 
 (use-package company
   :ensure t
