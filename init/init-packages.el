@@ -37,7 +37,10 @@
   :diminish auto-revert-mode
   :config
   (require 'magit-blame)
-  (setq magit-completing-read-function 'ivy-completing-read))
+  (setq magit-completing-read-function 'ivy-completing-read)
+  (setq magit-repository-directories `((,(if is-windows "~/Code" "~/code") . 1)
+                                       ("~/.emacs.d" . 0)
+                                       ("~/etc" . 0))))
 
 (use-package evil-magit
   :ensure t
