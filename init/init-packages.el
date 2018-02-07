@@ -231,4 +231,8 @@
 (use-package avy
   :ensure t)
 
+(use-package color-identifiers-mode
+  :ensure t
+  :defer t)
+
 (provide 'init-packages)
