@@ -8,7 +8,7 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
-(setq csand-coding-system (if is-windows 'utf-8-dos 'utf-8))
+(setq csand-coding-system 'utf-8)
 (prefer-coding-system csand-coding-system)
 (set-default-coding-systems csand-coding-system)
 
