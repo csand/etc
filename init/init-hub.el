@@ -89,6 +89,7 @@
 ;; Describe
 (define-hub-key :infix "hd"
   "C" 'describe-coding-system
+  "b" 'counsel-descbinds
   "f" 'counsel-describe-function
   "F" 'counsel-describe-face
   "k" 'describe-key
