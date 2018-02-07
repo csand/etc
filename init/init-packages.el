@@ -115,9 +115,6 @@
   :config
   (add-hook 'css-mode-hook (lambda () (rainbow-mode 1))))
 
-(use-package ssh-agency
-  :ensure t)
-
 (use-package exec-path-from-shell
   :if is-mac
   :ensure t
