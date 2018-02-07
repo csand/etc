@@ -11,8 +11,7 @@
 (defconst org-work-file     (org-file "work-journal.org"))
 
 (defconst org-todo-template
-  '("t" "TODO" entry (file+headline org-inbox-file "Tasks")
-    "* TODO %i%? %^G"))
+  '("t" "TODO" entry (file org-inbox-file) "* TODO %i%? %^G"))
 
 (defconst org-work-item-template
   '("w" "Work Item" item (file+olp+datetree org-work-file)
@@ -36,6 +35,7 @@
           org-tags-column -80)
     (setq org-capture-templates `(,org-todo-template
                                   ,org-work-item-template))
+    (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" "DONE(d)" "SOMEDAY(s)" "WONTDO(n!)")))
     (add-hook 'org-mode-hook #'visual-line-mode))
   :config
   (progn
@@ -45,7 +45,8 @@
       "," 'org-ctrl-c-ctrl-c
       ":" 'org-set-tags
       "'" 'org-edit-special
-      "r" 'org-refile)
+      "r" 'org-refile
+      "t" 'org-todo)
     (general-define-key
      :keymaps 'org-mode-map
      :states 'normal
