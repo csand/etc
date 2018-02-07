@@ -17,8 +17,14 @@
 
 ;; Emmet
 (general-define-key
- :keymaps '(css-mode-map web-mode-map)
  :states 'insert
+ :keymaps '(css-mode-map web-mode-map)
  "TAB" 'emmet-expand-line)
+
+;; Magit Repolist
+(general-define-key
+ :state 'motion
+ :keymaps 'magit-repolist-mode-map
+ "RET" 'magit-repolist-status)
 
 (provide 'init-keybindings)
