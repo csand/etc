@@ -1,29 +1,4 @@
-;;; init-hub.el ---
-
-;; Tell which-key about the hub
-(setq hub-prefixes
-      '(
-        ("b"   . "buffers")
-        ("F"   . "frames")
-        ("f"   . "files")
-        ("f e" . ".emacs.d")
-        ("g"   . "git")
-        ("h"   . "help")
-        ("h d" . "describe")
-        ("n"   . "narrow/widen")
-        ("o"   . "org")
-        ("p"   . "projectile")
-        ("q"   . "quit")
-        ("s"   . "search")
-        ("T"   . "toggles")
-        ("t"   . "themes")
-        ("w"   . "windows")
-        ))
-
-(dolist (pf hub-prefixes)
-  (let ((prefix (concat "SPC " (car pf)))
-        (description (cdr pf)))
-    (which-key-add-key-based-replacements prefix description)))
+;;; init-hub.el --- From the keyboard, EMACS spoke
 
 (general-create-definer define-hub-key
                         :states 'motion
@@ -49,45 +24,50 @@
   "9" 'winum-select-window-9
   "0" 'winum-select-window-0-or-10)
 
-;; Buffers
+(define-hub-key :infix "a"
+  "" '(nil :which-key "applications")
+  "s" 'prodigy)
+
 (define-hub-key :infix "b"
+  "" '(nil :which-key "buffers")
   "b" 'switch-to-buffer
   "d" 'evil-delete-buffer)
 
-;; Errors
 (define-hub-key :infix "e"
+  "" '(nil :which-key "errors")
   "n" 'flycheck-next-error
   "l" 'flycheck-list-errors)
 
-;; Files
 (define-hub-key :infix "f"
+  "" '(nil :which-key "files")
   "D" 'delete-file-and-buffer
   "f" 'counsel-find-file
   "r" 'counsel-recentf
   "R" 'rename-file-and-buffer
+  "e" '(nil :which-key ".emacs.d")
   "ed" 'edit-init-el)
 
-;; Frames
 (define-hub-key :infix "F"
+  "" '(nil :which-key "frames")
   "c" 'delete-frame
   "F" 'toggle-frame-fullscreen
   "m" 'toggle-frame-maximized
   "n" 'new-frame
   "s" 'select-frame-by-name)
 
-;; Git
 (define-hub-key :infix "g"
+  "" '(nil :which-key "git")
   "b" 'magit-blame
   "c" 'magit-commit
   "r" 'magit-list-repositories
   "s" 'magit-status)
 
-;; Help
 (define-hub-key :infix "h"
+  "" '(nil :which-key "help")
   "a" 'apropos-command)
 
-;; Describe
 (define-hub-key :infix "hd"
+  "" '(nil :which-key "describe")
   "C" 'describe-coding-system
   "b" 'counsel-descbinds
   "f" 'counsel-describe-function
@@ -98,53 +78,57 @@
   "s" 'counsel-info-lookup-symbol
   "v" 'counsel-describe-variable)
 
-;; Input
 (define-hub-key :infix "i"
+  "" '(nil :which-key "input")
   "u" 'counsel-unicode-char)
 
-;; Narrow/Widen
 (define-hub-key :infix "n"
+  "" '(nil :which-key "narrow/widen")
   "s" 'org-narrow-to-subtree)
 
-;; Org
 (define-hub-key :infix "o"
   :global-prefix "C-c"
+  "" '(nil :which-key "org")
   "a" 'org-agenda
   "c" 'org-capture
   "l" 'org-store-link)
 
-;; Projectile
 (define-hub-key :infix "p"
+  "" '(nil :which-key "projectile")
+  "SPC" 'counsel-projectile
   "!" 'projectile-run-shell-command-in-root
   "&" 'projectile-run-async-shell-command-in-root
   "b" 'projectile-switch-to-buffer
-  "f" 'projectile-find-file
+  "c" 'projectile-compile-project
+  "f" 'counsel-projectile-find-file
   "I" 'projectile-invalidate-cache
   "k" 'projectile-kill-buffers
   "p" 'projectile-switch-project
-  "s" 'counsel-projectile-rg)
+  "P" 'projectile-test-project
+  "s" 'counsel-projectile-rg
+  "t" 'projectile-toggle-between-implementation-and-test)
 
-;; Quit/Restart
 (define-hub-key :infix "q"
+  "" '(nil :which-key "quit/restart")
   "q" 'save-buffers-kill-emacs
   "r" 'restart-emacs-and-resume
   "R" 'restart-emacs)
 
-;; Search
 (define-hub-key :infix "s"
+  "" '(nil :which-key "search")
   "p" 'counsel-projectile-rg
   "s" 'swiper)
 
-;; Toggles
 (define-hub-key :infix "T"
+  "" '(nil :which-key "toggles")
   "w" 'whitespace-mode)
 
-;; Themes
 (define-hub-key :infix "t"
+  "" '(nil :which-key "themes")
   "t" 'counsel-load-theme)
 
-;; Windows
 (define-hub-key :infix "w"
+  "" '(nil :which-key "windows")
   "c" 'evil-window-delete
   "h" 'evil-window-left
   "j" 'evil-window-down
