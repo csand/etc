@@ -36,7 +36,7 @@
           org-tags-column -80)
     (setq org-capture-templates `(,org-todo-template
                                   ,org-work-item-template))
-    (add-hook 'org-mode-hook 'visual-line-mode))
+    (add-hook 'org-mode-hook #'visual-line-mode))
   :config
   (progn
     (define-follower-key "c" 'org-capture)
@@ -66,7 +66,7 @@
   :pin melpa
   :init
   (progn
-    (add-hook 'org-mode-hook 'evil-org-mode)
-    (add-hook 'evil-org-mode-hook 'evil-org-set-key-theme)))
+    (add-hook 'org-mode-hook #'evil-org-mode)
+    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)))
 
 (provide 'init-org)
