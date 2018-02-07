@@ -10,6 +10,10 @@
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (add-to-list 'projectile-globally-ignored-directories "node_modules")
     (add-to-list 'projectile-globally-ignored-directories "bower_components")
+    (projectile-register-project-type
+     'node '("package.json")
+     :test "npm test"
+     :test-suffix "-test.js")
     (projectile-global-mode)))
 
 (use-package counsel-projectile
