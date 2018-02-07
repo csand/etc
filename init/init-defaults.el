@@ -52,6 +52,9 @@
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
 
+;; Stop "Reverting buffer..." message spam
+(setq auto-revert-verbose nil)
+
 ;; Causes recursion error somehow
 ;; (add-hook 'window-configuration-change-hook #'balance-windows)
 
