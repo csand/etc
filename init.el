@@ -6,7 +6,7 @@
 (defconst is-mac (eq system-type 'darwin))
 (defconst is-windows (eq system-type 'windows-nt))
 
-(defconst csand-base-font-height 110)
+(defconst csand-base-font-height 120)
 (defconst csand-font-height
   (if is-mac (truncate (* csand-base-font-height 1.3))
     csand-base-font-height))
@@ -40,7 +40,7 @@
 (require 'init-modeline)
 (require 'init-eshell)
 
-(load-theme 'gruvbox t)
+(load-theme 'zerodark t)
 
 ;; Start maximized
 (when (display-graphic-p)
