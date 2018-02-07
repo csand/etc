@@ -235,4 +235,7 @@
   :ensure t
   :defer t)
 
+(use-package wgrep
+  :ensure t)
+
 (provide 'init-packages)
