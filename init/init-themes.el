@@ -22,6 +22,49 @@
 
 (use-package solarized-theme
   :ensure t
+  :defer t
+  :init
+  (setq solarized-use-variable-pitch nil)
+  (setq solarized-high-contrast-mode-line nil)
+  (setq solarized-use-less-bold t)
+  (setq solarized-use-more-italic nil))
+
+(use-package flatui-theme
+  :ensure t
+  :defer t)
+
+(use-package tao-theme
+  :ensure t
+  :defer t)
+
+(use-package tronesque
+  :ensure t
+  :defer t)
+
+(use-package material-theme
+  :ensure t
+  :defer t)
+
+(use-package color-theme-sanityinc-tomorrow
+  :ensure t
+  :defer t)
+
+(use-package afternoon-theme
+  :ensure t
+  :defer t)
+
+(use-package atom-one-dark-theme
+  :ensure t
+  :defer t)
+
+(use-package nord-theme
+  :ensure t
+  :defer t
+  :init
+  (setq nord-comment-brightness 20))
+
+(use-package sublime-themes
+  :ensure t
   :defer t)
 
 (provide 'init-themes)
