@@ -5,7 +5,8 @@
   :diminish undo-tree-mode
   :init
   (setq evil-search-module 'evil-search
-        evil-want-C-w-in-emacs-state t)
+        evil-want-C-w-in-emacs-state t
+        evil-want-integration nil)
   (evil-mode 1)
   :config
   (when (require 'evil-collection nil t)
