@@ -37,10 +37,6 @@
   :ensure t
   :defer t)
 
-(use-package tronesque
-  :ensure t
-  :defer t)
-
 (use-package material-theme
   :ensure t
   :defer t)
@@ -64,6 +60,10 @@
   (setq nord-comment-brightness 20))
 
 (use-package sublime-themes
+  :ensure t
+  :defer t)
+
+(use-package zerodark-theme
   :ensure t
   :defer t)
 
