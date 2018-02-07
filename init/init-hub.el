@@ -1,9 +1,5 @@
 ;;; init-hub.el --- From the keyboard, EMACS spoke
 
-(general-create-definer define-hub-key
-                        :states 'motion
-                        :prefix "SPC")
-
 (define-hub-key
   "!" 'shell-command
   "&" 'async-shell-command
