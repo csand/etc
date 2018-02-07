@@ -15,7 +15,11 @@
   :ensure t
   :mode "\\.js\\'"
   :config
-  (setq js2-mode-show-strict-warnings nil))
+  (setq js2-mode-show-strict-warnings nil)
+  (defun set-js2-mode-company-backends ()
+    (set (make-local-variable 'company-backends)
+         '(company-dabbrev-code company-yasnippet)))
+  (add-hook 'js2-mode-hook #'set-js2-mode-company-backends))
 
 (use-package json-mode
   :ensure t
