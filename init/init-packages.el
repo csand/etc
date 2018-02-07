@@ -115,6 +115,9 @@
   :ensure t
   :diminish editorconfig-mode
   :config
+  (add-hook 'editorconfig-custom-hooks
+            (lambda (props)
+              (setq web-mode-attr-indent-offset nil)))
   (editorconfig-mode 1))
 
 (use-package flycheck
