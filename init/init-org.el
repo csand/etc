@@ -5,10 +5,11 @@
 (defun org-file (filename)
   (expand-file-name filename org-directory))
 
-(defconst org-archive-file  (org-file "archive.org"))
-(defconst org-inbox-file    (org-file "inbox.org"))
+(defconst org-archive-file (org-file "archive.org"))
+(defconst org-inbox-file (org-file "inbox.org"))
 (defconst org-projects-file (org-file "projects.org"))
-(defconst org-work-file     (org-file "work-journal.org"))
+(defconst org-work-file
+  (org-file (concat "work-journal-" (format-time-string "%Y") ".org")))
 
 (defconst org-todo-template
   '("t" "TODO" entry (file org-inbox-file) "* TODO %i%? %^G"))
