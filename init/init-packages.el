@@ -5,8 +5,10 @@
 (setq package-enable-at-startup nil
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/"))
-      package-archive-priorities '(("melpa-stable" . 2)
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/"))
+      package-archive-priorities '(("org" . 10)
+                                   ("melpa-stable" . 2)
                                    ("melpa" . 1)))
 
 (package-initialize)
