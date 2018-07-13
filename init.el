@@ -20,6 +20,9 @@
 ;; Set the fixed-pitch font. Mostly affects markdown mode source blocks
 (set-face-attribute 'fixed-pitch nil :family "PragmataPro Mono")
 
+;; Disable alarm bell
+(setq ring-bell-function 'ignore)
+
 (defun emacs-d (filename)
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
