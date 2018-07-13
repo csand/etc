@@ -261,6 +261,14 @@
 (use-package wgrep
   :ensure t)
 
+(use-package ag
+  :ensure t
+  :defer t)
+
+(use-package wgrep-ag
+  :ensure t
+  :after (ag wgrep))
+
 (use-package iedit
   :ensure t
   :defer t)
