@@ -1,5 +1,6 @@
 ;;; init-evil.el --- vi emulation mode
 
+
 (use-package evil
   :ensure t
   :diminish undo-tree-mode
@@ -7,10 +8,8 @@
   (setq evil-search-module 'evil-search
         evil-want-C-w-in-emacs-state t
         evil-want-integration nil)
-  (evil-mode 1)
   :config
-  (when (require 'evil-collection nil t)
-    (evil-collection-init)))
+  (evil-mode t))
 
 (use-package evil-ediff
   :ensure t
@@ -41,5 +40,11 @@
   :config
   (key-chord-mode 1)
   (key-chord-define evil-insert-state-map "jk" 'evil-normal-state))
+
+(use-package evil-collection
+ :ensure t
+ :after (evil)
+ :config
+ (evil-collection-init))
 
 (provide 'init-evil)
