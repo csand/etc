@@ -36,6 +36,7 @@
 
 (use-package magit
   :ensure t
+  :pin melpa
   :diminish auto-revert-mode
   :config
   (require 'magit-blame)
@@ -52,8 +53,8 @@
 
 (use-package company
   :ensure t
-  ;; :diminish company-mode
   :defer t
+  :pin melpa
   :init
   (global-company-mode)
   :config
@@ -66,6 +67,7 @@
   :init
   (require 'smartparens-config)
   :config
+  ;; Only enable
   (add-hook 'prog-mode-hook #'smartparens-mode)
   (add-hook 'smartparens-mode-hook #'show-smartparens-mode))
 
@@ -258,5 +260,17 @@
 
 (use-package wgrep
   :ensure t)
+
+(use-package iedit
+  :ensure t
+  :defer t)
+
+(use-package browse-kill-ring
+  :ensure t
+  :defer t)
+
+(use-package deadgrep
+  :ensure t
+  :defer t)
 
 (provide 'init-packages)
