@@ -1,6 +1,6 @@
 ;;; init-org.el --- Org-mode config and enhancements
 
-(defconst org-directory "~/Dropbox/Org")
+(defconst org-directory (expand-file-name "Dropbox/Org" (getenv "HOME")))
 
 (defun org-file (filename)
   (expand-file-name filename org-directory))
