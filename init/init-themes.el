@@ -67,4 +67,32 @@
   :ensure t
   :defer t)
 
+(use-package challenger-deep-theme
+  :ensure t
+  :defer t)
+
+(use-package majapahit-theme
+  :ensure t
+  :defer t)
+
+(use-package arjen-grey-theme
+  :ensure t
+  :defer t)
+
+(use-package goose-theme
+  :ensure t
+  :defer t)
+
+(use-package oldlace-theme
+  :ensure t
+  :defer t)
+
+(use-package greymatters-theme
+  :ensure t
+  :defer t)
+
+(use-package poet-theme
+  :ensure t
+  :defer t)
+
 (provide 'init-themes)
