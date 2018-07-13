@@ -23,6 +23,10 @@
 ;; Disable alarm bell
 (setq ring-bell-function 'ignore)
 
+;; Weirdly this variable was void at some point
+(setq user-emacs-directory
+      (or user-emacs-directory (expand-file-name ".emacs.d" (getenv "HOME"))))
+
 (defun emacs-d (filename)
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
