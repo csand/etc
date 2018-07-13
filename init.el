@@ -75,7 +75,7 @@ before trying vertically. See `split-window-sensibly' for more details."
 (require 'init-modeline)
 (require 'init-eshell)
 
-(load-theme 'zerodark t)
+(load-theme 'poet t)
 
 ;; Start maximized
 (when (display-graphic-p)
