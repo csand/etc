@@ -74,6 +74,7 @@ before trying vertically. See `split-window-sensibly' for more details."
 (require 'init-hub)
 (require 'init-modeline)
 (require 'init-eshell)
+(require 'init-prodigy)
 
 (load-theme 'poet t)
 
