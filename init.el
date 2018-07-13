@@ -6,9 +6,9 @@
 (defconst is-mac (eq system-type 'darwin))
 (defconst is-windows (eq system-type 'windows-nt))
 
-(defconst csand-base-font-height 120)
+(defconst csand-base-font-height 130)
 (defconst csand-font-height
-  (if is-mac (truncate (* csand-base-font-height 1.3))
+  (if is-mac (truncate (* csand-base-font-height 1.1))
     csand-base-font-height))
 
 (set-face-attribute 'default nil
