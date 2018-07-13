@@ -27,6 +27,9 @@
 (setq user-emacs-directory
       (or user-emacs-directory (expand-file-name ".emacs.d" (getenv "HOME"))))
 
+;; Definitely don't want auth info in plain text
+(setq-default auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+
 (defun emacs-d (filename)
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
