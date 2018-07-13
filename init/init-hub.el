@@ -80,7 +80,10 @@
 
 (define-hub-key :infix "n"
   "" '(nil :which-key "narrow/widen")
-  "s" 'org-narrow-to-subtree)
+  "f" 'narrow-to-defun
+  "r" 'narrow-to-region
+  "s" 'org-narrow-to-subtree
+  "w" 'widen)
 
 (define-hub-key :infix "o"
   :global-prefix "C-c"
