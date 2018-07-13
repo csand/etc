@@ -97,6 +97,7 @@
   "SPC" 'counsel-projectile
   "!" 'projectile-run-shell-command-in-root
   "&" 'projectile-run-async-shell-command-in-root
+  "a" 'projectile-find-other-file
   "b" 'projectile-switch-to-buffer
   "c" 'projectile-compile-project
   "f" 'counsel-projectile-find-file
