@@ -19,7 +19,8 @@
     :tree-type week))
 
 (use-package org
-  :ensure t
+  :ensure org-plus-contrib
+  :pin org
   :mode ("\\.org\\'" . org-mode)
   :init
   (progn
