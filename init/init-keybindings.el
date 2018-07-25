@@ -1,6 +1,6 @@
 ;;; init-keybindings.el --- Efficient keybindings with general.el
 
-(general-define-key :states '(motion)
+(general-define-key :keymaps 'motion
                     "j" 'evil-next-visual-line
                     "k" 'evil-previous-visual-line
                     "gj" 'evil-next-line
@@ -17,8 +17,14 @@
 
 ;; Emmet
 (general-define-key
- :keymaps '(css-mode-map web-mode-map)
  :states 'insert
+ :keymaps '(css-mode-map web-mode-map)
  "TAB" 'emmet-expand-line)
+
+;; Magit Repolist
+(general-define-key
+ :state 'normal
+ :keymaps 'magit-repolist-mode-map
+ "RET" 'magit-repolist-status)
 
 (provide 'init-keybindings)

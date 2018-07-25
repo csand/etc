@@ -5,8 +5,10 @@
 (setq package-enable-at-startup nil
       package-archives '(("gnu" . "https://elpa.gnu.org/packages/")
                          ("melpa" . "https://melpa.org/packages/")
-                         ("melpa-stable" . "https://stable.melpa.org/packages/"))
-      package-archive-priorities '(("melpa-stable" . 2)
+                         ("melpa-stable" . "https://stable.melpa.org/packages/")
+                         ("org" . "http://orgmode.org/elpa/"))
+      package-archive-priorities '(("org" . 10)
+                                   ("melpa-stable" . 2)
                                    ("melpa" . 1)))
 
 (package-initialize)
@@ -34,6 +36,7 @@
 
 (use-package magit
   :ensure t
+  :pin melpa
   :diminish auto-revert-mode
   :config
   (require 'magit-blame)
@@ -50,8 +53,8 @@
 
 (use-package company
   :ensure t
-  ;; :diminish company-mode
   :defer t
+  :pin melpa
   :init
   (global-company-mode)
   :config
@@ -64,6 +67,7 @@
   :init
   (require 'smartparens-config)
   :config
+  ;; Only enable
   (add-hook 'prog-mode-hook #'smartparens-mode)
   (add-hook 'smartparens-mode-hook #'show-smartparens-mode))
 
@@ -77,6 +81,16 @@
   :ensure t
   :config
   (progn
+    (setq general-override-states '(
+      insert
+      emacs
+      hybrid
+      normal
+      visual
+      motion
+      operator
+      replace))
+    (general-override-mode)
     ;; Add definers for global and major mode leaders
     (general-create-definer define-follower-key
                             :keymaps 'evil-normal-state-map
@@ -85,6 +99,12 @@
     (general-create-definer define-major-mode-follower-key
                             :states '(normal)
                             :prefix ",")
+    ;; Used later for creating hub bindings
+    (general-create-definer define-hub-key
+                            :states '(normal visual motion)
+                            :keymaps 'override
+                            :prefix "SPC"
+                            :non-normal-prefix "C-SPC")
     ))
 
 (use-package which-key
@@ -99,6 +119,9 @@
   :ensure t
   :diminish editorconfig-mode
   :config
+  (add-hook 'editorconfig-custom-hooks
+            (lambda (props)
+              (setq web-mode-attr-indent-offset nil)))
   (editorconfig-mode 1))
 
 (use-package flycheck
@@ -237,5 +260,25 @@
 
 (use-package wgrep
   :ensure t)
+
+(use-package ag
+  :ensure t
+  :defer t)
+
+(use-package wgrep-ag
+  :ensure t
+  :after (ag wgrep))
+
+(use-package iedit
+  :ensure t
+  :defer t)
+
+(use-package browse-kill-ring
+  :ensure t
+  :defer t)
+
+(use-package deadgrep
+  :ensure t
+  :defer t)
 
 (provide 'init-packages)

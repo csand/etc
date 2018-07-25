@@ -1,18 +1,18 @@
 ;;; init-org.el --- Org-mode config and enhancements
 
-(defconst org-directory "~/Dropbox/Org")
+(defconst org-directory (expand-file-name "Dropbox/Org" (getenv "HOME")))
 
 (defun org-file (filename)
   (expand-file-name filename org-directory))
 
-(defconst org-archive-file  (org-file "archive.org"))
-(defconst org-inbox-file    (org-file "inbox.org"))
+(defconst org-archive-file (org-file "archive.org"))
+(defconst org-inbox-file (org-file "inbox.org"))
 (defconst org-projects-file (org-file "projects.org"))
-(defconst org-work-file     (org-file "work-journal.org"))
+(defconst org-work-file
+  (org-file (concat "work-journal-" (format-time-string "%Y") ".org")))
 
 (defconst org-todo-template
-  '("t" "TODO" entry (file+headline org-inbox-file "Tasks")
-    "* TODO %i%? %^G"))
+  '("t" "TODO" entry (file org-inbox-file) "* TODO %i%? %^G"))
 
 (defconst org-work-item-template
   '("w" "Work Item" item (file+olp+datetree org-work-file)
@@ -20,7 +20,8 @@
     :tree-type week))
 
 (use-package org
-  :ensure t
+  :ensure org-plus-contrib
+  :pin org
   :mode ("\\.org\\'" . org-mode)
   :init
   (progn
@@ -36,6 +37,7 @@
           org-tags-column -80)
     (setq org-capture-templates `(,org-todo-template
                                   ,org-work-item-template))
+    (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w!)" "|" "DONE(d)" "SOMEDAY(s)" "WONTDO(n!)")))
     (add-hook 'org-mode-hook #'visual-line-mode))
   :config
   (progn
@@ -45,7 +47,8 @@
       "," 'org-ctrl-c-ctrl-c
       ":" 'org-set-tags
       "'" 'org-edit-special
-      "r" 'org-refile)
+      "r" 'org-refile
+      "t" 'org-todo)
     (general-define-key
      :keymaps 'org-mode-map
      :states 'normal

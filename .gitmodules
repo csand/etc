@@ -1,3 +1,0 @@
-[submodule "evil-collection"]
-	path = site-lisp/evil-collection
-	url = https://github.com/jojojames/evil-collection.git

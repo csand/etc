@@ -62,6 +62,10 @@
   :init
   (setq scss-compile-at-save nil))
 
+(use-package taskpaper-mode
+  :ensure t
+  :mode "\\.taskpaper\\'")
+
 (use-package web-mode
   :ensure t
   :mode "\\.html\\'")
