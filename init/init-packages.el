@@ -106,6 +106,14 @@
                             :keymaps 'override
                             :prefix "SPC"
                             :non-normal-prefix "C-SPC")
+    (use-package with-editor
+      :config
+      (define-major-mode-follower-key
+        :keymaps 'with-editor-mode-map
+        "a" 'with-editor-cancel
+        "c" 'with-editor-finish
+        "k" 'with-editor-cancel
+        "," 'with-editor-finish))
     ))
 
 (use-package which-key
@@ -242,15 +250,6 @@
 
 (use-package hydra
   :ensure t)
-
-(use-package with-editor
-  :config
-  (define-major-mode-follower-key
-    :keymaps 'with-editor-mode-map
-    "a" 'with-editor-cancel
-    "c" 'with-editor-finish
-    "k" 'with-editor-cancel
-    "," 'with-editor-finish))
 
 (use-package avy
   :ensure t)
