@@ -27,7 +27,12 @@
 
 (use-package markdown-mode
   :ensure t
-  :mode "\\.md\\'")
+  :mode "\\.md\\'"
+  :config
+  (setq markdown-command "pandoc -f markdown"
+        markdown-asymmetric-header t
+        markdown-italic-underscore t
+        markdown-coding-system "utf-8"))
 
 (use-package powershell
   :if is-windows
