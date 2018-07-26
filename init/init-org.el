@@ -65,7 +65,7 @@
 
 (use-package evil-org
   :ensure t
-  :after org
+  :after (evil org)
   :diminish evil-org-mode
   :pin melpa
   :init
