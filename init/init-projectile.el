@@ -12,11 +12,13 @@
     (add-to-list 'projectile-globally-ignored-files ".DS_Store")
     (add-to-list 'projectile-globally-ignored-directories "node_modules")
     (add-to-list 'projectile-globally-ignored-directories "bower_components")
-    (projectile-register-project-type 'node '("package.json")
+    (projectile-register-project-type 'npm '("package.json")
                                       :test "npm --no-color run test"
-                                      :test-suffix ".spec.js")
+                                      :test-suffix ".spec")
     (add-to-list 'projectile-other-file-alist
-                 '("js" "scss" "css" "html" "hbs"))
+                 '("js" "spec.js" "scss" "html"))
+    (add-to-list 'projectile-other-file-alist
+                 '("spec.js" "js"))
     (projectile-global-mode)))
 
 (use-package counsel-projectile
