@@ -79,6 +79,7 @@
 
 (use-package general
   :ensure t
+  :after evil
   :config
   (progn
     (setq general-override-states '(
@@ -278,6 +279,10 @@
   :defer t)
 
 (use-package deadgrep
+  :ensure t
+  :defer t)
+
+(use-package olivetti
   :ensure t
   :defer t)
 
