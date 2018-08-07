@@ -1,5 +1,7 @@
 ;;; init-modeline.el --- Personal modeline setup
 
+(require 'init-extras)
+
 (defconst mode-line-window-number
   '(:eval (concat "W" (winum-get-number-string))))
 

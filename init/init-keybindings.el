@@ -1,5 +1,7 @@
 ;;; init-keybindings.el --- Efficient keybindings with general.el
 
+(require 'init-general)
+
 (general-define-key :keymaps 'motion
                     "j" 'evil-next-visual-line
                     "k" 'evil-previous-visual-line

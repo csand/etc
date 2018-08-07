@@ -63,14 +63,4 @@
       "w" 'org-capture-refile)
     (add-to-list 'org-src-lang-modes '("javascript" . js2))))
 
-(use-package evil-org
-  :ensure t
-  :after (evil org)
-  :diminish evil-org-mode
-  :pin melpa
-  :init
-  (progn
-    (add-hook 'org-mode-hook #'evil-org-mode)
-    (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme)))
-
 (provide 'init-org)

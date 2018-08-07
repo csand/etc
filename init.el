@@ -20,37 +20,10 @@
 ;; Set the fixed-pitch font. Mostly affects markdown mode source blocks
 (set-face-attribute 'fixed-pitch nil :family "PragmataPro Mono")
 
-(defun split-window-sensibly-prefer-horizontal (&optional window)
-  "Similar to `split-window-sensibly' except it tries to split horizontally
-before trying vertically. See `split-window-sensibly' for more details."
-  (let ((window (or window (selected-window))))
-    (or (and (window-splittable-p window t)
-             ;; Split window horizontally.
-             (with-selected-window window
-               (split-window-right)))
-        (and (window-splittable-p window)
-             ;; Split window vertically.
-             (with-selected-window window
-               (split-window-below)))
-        (and (eq window (frame-root-window (window-frame window)))
-             (not (window-minibuffer-p window))
-             ;; If WINDOW is the only window on its frame and is not the
-             ;; minibuffer window, try to split it vertically disregarding
-             ;; the value of `split-height-threshold'.
-             (let ((split-height-threshold 0))
-               (when (window-splittable-p window)
-                 (with-selected-window window
-                   (split-window-below))))))))
-
-(setq split-window-preferred-function #'split-window-sensibly-prefer-horizontal
-      split-width-threshold 150)
-
-;; Disable alarm bell
-(setq ring-bell-function 'ignore)
-
 ;; Weirdly this variable was void at some point
 (setq user-emacs-directory
-      (or user-emacs-directory (expand-file-name ".emacs.d" (getenv "HOME"))))
+      (or user-emacs-directory
+          (expand-file-name ".emacs.d" (getenv "HOME"))))
 
 ;; Definitely don't want auth info in plain text
 (setq-default auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
@@ -65,16 +38,19 @@ before trying vertically. See `split-window-sensibly' for more details."
 (require 'init-funcs)
 (require 'init-packages)
 (require 'init-evil)
+(require 'init-general)
 (require 'init-ivy)
+(require 'init-magit)
 (require 'init-projectile)
 (require 'init-langs)
 (require 'init-org)
 (require 'init-themes)
 (require 'init-keybindings)
 (require 'init-hub)
-(require 'init-modeline)
 (require 'init-eshell)
 (require 'init-prodigy)
+(require 'init-extras)
+(require 'init-modeline)
 
 (load-theme 'poet t)
 
