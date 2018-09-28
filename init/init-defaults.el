@@ -1,9 +1,10 @@
 ;;; init-defaults.el --- Better Emacs defaults
 
-(when window-system
-  (menu-bar-mode -1)
-  (tool-bar-mode -1)
-  (toggle-scroll-bar -1))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+
+(fringe-mode nil)
 
 (column-number-mode 1)
 (show-paren-mode 1)
