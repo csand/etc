@@ -2,6 +2,11 @@
 
 (require 'init-general)
 
+;; Configure macOS modifiers
+(when (mac?)
+  (setq ns-command-modifier 'meta
+        ns-option-modifier 'alt))
+
 (general-define-key :keymaps 'motion
                     "j" 'evil-next-visual-line
                     "k" 'evil-previous-visual-line
