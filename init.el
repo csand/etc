@@ -38,8 +38,16 @@
   "Expand FILENAME relative to `user-emacs-directory'."
   (expand-file-name filename user-emacs-directory))
 
+;; Move custom variables to their own file.
+(setq custom-file (emacs-d "custom.el"))
+(unless (file-exists-p custom-file)
+  (with-temp-buffer (write-file custom-file)))
+(load custom-file)
+
+;; Add init directory to the load path
 (add-to-list 'load-path (emacs-d "init"))
 
+;; Require init files
 (require 'init-defaults)
 (require 'init-funcs)
 (require 'init-display)
@@ -71,11 +79,6 @@
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.
 ;; (package-initialize)
-;; Move custom variables to their own file.
-(setq custom-file (emacs-d "custom.el"))
-(unless (file-exists-p custom-file)
-  (with-temp-buffer (write-file custom-file)))
-(load custom-file)
 
 ;; Reset to default gc threshold
 (setq gc-cons-threshold default-gc-cons-threshold)
