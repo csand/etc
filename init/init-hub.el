@@ -42,7 +42,7 @@
   "r" 'counsel-recentf
   "R" 'rename-file-and-buffer
   "e" '(nil :which-key ".emacs.d")
-  "ed" 'edit-init-el)
+  "ed" 'edit-user-init)
 
 (define-hub-key :infix "F"
   "" '(nil :which-key "frames")

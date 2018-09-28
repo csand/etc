@@ -1,6 +1,6 @@
 ;;; init-funcs.el --- Useful functions that should probably be in Emacs by default
 
-(defun edit-init-el ()
+(defun edit-user-init ()
   "Edit user init file."
   (interactive)
   (find-file user-init-file))
