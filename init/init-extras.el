@@ -116,6 +116,14 @@
 
 (use-package restart-emacs :pin melpa)
 
+(use-package slime
+  :pin melpa-stable
+  :config
+  (setq slime-default-lisp 'clisp
+        slime-lisp-implementations '((clisp ("clisp"))
+                                     )
+        slime-contribs '(slime-fancy)))
+
 (use-package smartparens
   :diminish smartparens-mode
   :hook
