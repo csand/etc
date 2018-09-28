@@ -118,6 +118,9 @@
   :init
   (require 'smartparens-config))
 
+(use-package tide
+  :hook (js2-mode . (lambda () (tide-setup))))
+
 (use-package tramp)
 
 (use-package visual-fill-column
