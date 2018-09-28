@@ -15,6 +15,12 @@
   :mode "\\.js\\'"
   :custom
   (js2-mode-show-strict-warnings nil)
+  :custom-face
+  ;; Unset default jsdoc colours since a lot of themes miss these
+  (js2-jsdoc-tag ((t (:foreground nil))))
+  (js2-jsdoc-type ((t (:foreground nil))))
+  (js2-jsdoc-value ((t (:foreground nil))))
+  (js2-function-param ((t (:foreground nil))))
   :config
   (defun set-js2-mode-company-backends ()
     (set (make-local-variable 'company-backends)
