@@ -18,9 +18,9 @@
 
 ;; Lisp
 (define-major-mode-follower-key
-  :keymaps '(emacs-lisp-mode-map
-             lisp-interaction-mode-map)
-  "," 'eval-last-sexp)
+  :keymaps 'emacs-lisp-mode-map
+  "," 'eval-last-sexp
+  "eb" 'eval-buffer)
 
 ;; Emmet
 (general-define-key
