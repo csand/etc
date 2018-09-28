@@ -26,7 +26,8 @@
   (setq projectile-enable-caching is-windows)
 
   (projectile-register-project-type 'npm '("package.json")
-                                    :test "npm --no-color run test"
+                                    :compile "npm run build"
+                                    :test "npm test"
                                     :test-suffix ".spec")
 
   (add-to-list 'projectile-other-file-alist
