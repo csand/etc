@@ -72,6 +72,10 @@
   :custom
   (flycheck-check-syntax-automatically '(save mode-enabled)))
 
+(use-package flyspell
+  :hook
+  (text-mode . flyspell-mode))
+
 (use-package git-timemachine
   :after evil
   :hook
