@@ -33,6 +33,12 @@
   :config
   (direnv-mode 1))
 
+(use-package dtrt-indent
+  :defer t
+  :diminish dtrt-indent-mode
+  :config
+  (dtrt-indent-global-mode 1))
+
 (use-package editorconfig
   :diminish editorconfig-mode
   :config
