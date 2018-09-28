@@ -1,3 +1,5 @@
+;;; init.el --- Boot away
+
 ;; Don't garbage collect during initialization
 (setq default-gc-cons-threshold gc-cons-threshold
       gc-cons-threshold most-positive-fixnum)
@@ -26,7 +28,9 @@
           (expand-file-name ".emacs.d" (getenv "HOME"))))
 
 ;; Definitely don't want auth info in plain text
-(setq-default auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+(setq-default auth-sources '("~/.authinfo.gpg"
+                             "~/.authinfo"
+                             "~/.netrc"))
 
 (defun emacs-d (filename)
   "Expand FILENAME relative to `user-emacs-directory'."
@@ -57,6 +61,9 @@
 ;; Start maximized
 (when (display-graphic-p)
   (toggle-frame-maximized))
+
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.
