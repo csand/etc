@@ -83,9 +83,13 @@
   :config
   (evil-make-overriding-map git-timemachine-mode-map 'normal))
 
+(use-package htmlize :defer t)
+
 (use-package hydra)
 
 (use-package iedit :defer t)
+
+(use-package lorem-ipsum :defer t)
 
 (use-package olivetti :defer t)
 
