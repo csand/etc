@@ -1,5 +1,9 @@
 ;;; init-funcs.el --- Useful functions that should probably be in Emacs by default
 
+(defsubst linux? () (eq system-type 'gnu/linux))
+(defsubst mac? () (eq system-type 'darwin))
+(defsubst windows? () (eq system-type 'windows-nt))
+
 (defun edit-user-init ()
   "Edit user init file."
   (interactive)

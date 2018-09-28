@@ -65,7 +65,7 @@
    "TAB" 'emmet-expand))
 
 (use-package exec-path-from-shell
-  :if is-mac
+  :if (mac?)
   :config
   (exec-path-from-shell-initialize))
 
