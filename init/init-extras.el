@@ -28,6 +28,11 @@
 
 (use-package deadgrep :defer t)
 
+(use-package direnv
+  :defer t
+  :config
+  (direnv-mode 1))
+
 (use-package editorconfig
   :diminish editorconfig-mode
   :config
