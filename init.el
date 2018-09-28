@@ -15,7 +15,14 @@
                     :weight 'normal)
 
 ;; Set the fixed-pitch font. Mostly affects markdown mode source blocks
-(set-face-attribute 'fixed-pitch nil :family "PragmataPro Mono")
+(set-face-attribute 'fixed-pitch nil
+  :family "PragmataPro Mono")
+
+(set-face-attribute 'fixed-pitch-serif nil
+  :family "Triplicate T3p")
+
+(set-face-attribute 'variable-pitch nil
+  :family "Triplicate T3p")
 
 ;; Weirdly this variable was void at some point
 (setq user-emacs-directory
