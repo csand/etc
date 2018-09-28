@@ -58,4 +58,9 @@ Repeated invocations toggle between the two most recently open buffers."
                       (expand-file-name file path)) files)
       files)))
 
+(defun csand/itch ()
+  "Switch to or create *scratch* buffer"
+  (interactive)
+  (switch-to-buffer (get-buffer-create "*scratch*")))
+
 (provide 'init-funcs)

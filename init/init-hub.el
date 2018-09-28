@@ -27,7 +27,8 @@
 (define-hub-key :infix "b"
   "" '(nil :which-key "buffers")
   "b" 'switch-to-buffer
-  "d" 'evil-delete-buffer)
+  "d" 'evil-delete-buffer
+  "s" 'csand/itch)
 
 (define-hub-key :infix "e"
   "" '(nil :which-key "errors")
