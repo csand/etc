@@ -8,14 +8,9 @@
 (defconst is-mac (eq system-type 'darwin))
 (defconst is-windows (eq system-type 'windows-nt))
 
-(defconst csand-base-font-height 130)
-(defconst csand-font-height
-  (if is-mac (truncate (* csand-base-font-height 1.1))
-    csand-base-font-height))
-
 (set-face-attribute 'default nil
                     :family "PragmataPro"
-                    :height csand-font-height
+                    :height 140
                     :width 'normal
                     :weight 'normal)
 
