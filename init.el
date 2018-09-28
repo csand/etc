@@ -35,6 +35,7 @@
 
 (require 'init-defaults)
 (require 'init-funcs)
+(require 'init-display)
 (require 'init-packages)
 (require 'init-evil)
 (require 'init-general)
