@@ -33,6 +33,9 @@
  truncate-lines t
  require-final-newline t)
 
+;; Move to trash on delete
+(setq delete-by-moving-to-trash t)
+
 ;; Enable recent files list
 (recentf-mode 1)
 (setq recentf-max-menu-items 25)
