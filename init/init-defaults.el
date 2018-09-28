@@ -9,11 +9,10 @@
 (column-number-mode 1)
 (show-paren-mode 1)
 
-(setq csand-coding-system 'utf-8)
-(prefer-coding-system csand-coding-system)
-(set-default-coding-systems csand-coding-system)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
 
-(add-hook 'before-save-hook #'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq
  auto-save-default nil
@@ -59,9 +58,6 @@
 
 ;; Stop "Reverting buffer..." message spam
 (setq auto-revert-verbose nil)
-
-;; Causes recursion error somehow
-;; (add-hook 'window-configuration-change-hook #'balance-windows)
 
 (defun split-window-sensibly-prefer-horizontal (&optional window)
   "Similar to `split-window-sensibly' except it tries to split horizontally
