@@ -23,13 +23,15 @@
      ".svn"
      ".stack-work"))
   :config
-  (setq projectile-enable-caching is-windows)
-
+  (setq projectile-enable-caching t)
+  (when (executable-find "fd")
+    (let ((fd-command "fd . -0 --color never"))
+      (setq projectile-generic-command fd-command
+            projectile-git-command fd-command)))
   (projectile-register-project-type 'npm '("package.json")
                                     :compile "npm run build"
                                     :test "npm test"
                                     :test-suffix ".spec")
-
   (add-to-list 'projectile-other-file-alist
                '("js" "spec.js" "scss" "html"))
   (add-to-list 'projectile-other-file-alist
