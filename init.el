@@ -8,22 +8,6 @@
 (defconst is-mac (eq system-type 'darwin))
 (defconst is-windows (eq system-type 'windows-nt))
 
-(set-face-attribute 'default nil
-                    :family "PragmataPro"
-                    :height 140
-                    :width 'normal
-                    :weight 'normal)
-
-;; Set the fixed-pitch font. Mostly affects markdown mode source blocks
-(set-face-attribute 'fixed-pitch nil
-  :family "PragmataPro Mono")
-
-(set-face-attribute 'fixed-pitch-serif nil
-  :family "Triplicate T3p")
-
-(set-face-attribute 'variable-pitch nil
-  :family "Triplicate T3p")
-
 ;; Weirdly this variable was void at some point
 (setq user-emacs-directory
       (or user-emacs-directory
@@ -59,6 +43,7 @@
 (require 'init-projectile)
 (require 'init-langs)
 (require 'init-org)
+(require 'init-fonts)
 (require 'init-themes)
 (require 'init-keybindings)
 (require 'init-hub)
