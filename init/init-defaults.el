@@ -52,6 +52,8 @@
              (abbreviate-file-name (buffer-file-name))
            "%b"))))
 
+(setq frame-resize-pixelwise t)
+
 ;; When saving a file with the magic byte (#!), make it executable
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
