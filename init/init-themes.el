@@ -70,6 +70,7 @@
 (use-package oldlace-theme :defer t)
 (use-package plain-theme :defer t)
 (use-package punpun-theme :defer t)
+(use-package railscasts-reloaded-theme :defer t)
 (use-package sublime-themes :defer t)
 (use-package tao-theme :defer t)
 (use-package white-sand-theme :defer t)
