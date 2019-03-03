@@ -7,7 +7,8 @@
   :custom
   (evil-search-mode 'evil-search)
   (evil-want-C-w-in-emacs-state t)
-  (evil-want-integration nil)
+  (evil-want-integration t)
+  (evil-want-keybinding nil)
   :config
   (evil-mode 1))
 
