@@ -52,8 +52,6 @@
 (require 'init-extras)
 (require 'init-modeline)
 
-(load-theme 'poet t)
-
 ;; Start maximized
 (when (display-graphic-p)
   (toggle-frame-maximized))
@@ -61,9 +59,13 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 
+;; Load current theme as last step
+(load-theme 'poet t)
+
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.
 ;; (package-initialize)
 
 ;; Reset to default gc threshold
 (setq gc-cons-threshold default-gc-cons-threshold)
+(put 'narrow-to-region 'disabled nil)
