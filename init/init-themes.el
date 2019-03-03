@@ -6,7 +6,7 @@
   (solarized-use-variable-pitch nil)
   (solarized-high-contrast-mode-line nil)
   (solarized-use-less-bold t)
-  (solarized-use-more-italic nil))
+  (solarized-use-more-italic t))
 
 (use-package nord-theme
   :defer t
