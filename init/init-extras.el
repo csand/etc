@@ -117,10 +117,11 @@
 
 (use-package rainbow-mode
   :diminish rainbow-mode
-  :hook
-  (css-mode . (lambda () (rainbow-mode 1))))
+  :hook (css-mode . (lambda () (rainbow-mode 1))))
 
 (use-package restart-emacs :pin melpa)
+
+(use-package restclient :pin melpa)
 
 (use-package slime
   :pin melpa-stable
@@ -140,6 +141,11 @@
 
 (use-package tide
   :hook (js2-mode . (lambda () (tide-setup))))
+(use-package super-save
+  :diminish super-save-mode
+  :config
+  (super-save-mode 1))
+
 
 (use-package tramp)
 
