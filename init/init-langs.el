@@ -36,7 +36,8 @@
   (markdown-command "pandoc -f markdown")
   (markdown-asymmetric-header t)
   (markdown-italic-underscore t)
-  (markdown-coding-system "utf-8"))
+  (markdown-coding-system "utf-8")
+  (markdown-header-scaling t))
 
 (use-package powershell
   :if is-windows
