@@ -84,4 +84,8 @@
   (add-to-list 'org-structure-template-alist
                '("js" . "src javascript")))
 
+(use-package ox-pandoc
+  :pin melpa
+  :after org)
+
 (provide 'init-org)
