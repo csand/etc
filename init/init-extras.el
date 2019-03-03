@@ -79,8 +79,14 @@
   (flycheck-check-syntax-automatically '(save mode-enabled)))
 
 (use-package flyspell
-  :hook
-  (text-mode . flyspell-mode))
+  :hook (text-mode . flyspell-mode)
+  :config
+  (cond
+   ((executable-find "aspell")
+    (setq ispell-program-name "aspell")
+    (setq ispell-extra-args '("--run-together")))
+   ((executable-find "hunspell")
+    (setq ispell-program-name "hunspell"))))
 
 (use-package git-timemachine
   :after evil
