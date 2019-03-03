@@ -36,6 +36,7 @@
                '("js" "spec.js" "scss" "html"))
   (add-to-list 'projectile-other-file-alist
                '("spec.js" "js"))
+  (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
   (projectile-global-mode 1))
 
 (use-package counsel-projectile
