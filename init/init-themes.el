@@ -1,5 +1,37 @@
 ;;; init-themes.el --- Whatever themes I feel like installing
 
+(defvar after-load-theme-hook nil
+  "Hook run after a color theme is loaded using `load-theme'.")
+
+(defadvice load-theme (after run-after-load-theme-hook activate)
+  "Run `after-load-theme-hook'."
+  (run-hooks 'after-load-theme-hook))
+
+(use-package poet-theme
+  :defer t
+  :config
+  (defun customize-poet-theme ()
+    (if (member 'poet custom-enabled-themes)
+        (let ((line-color (face-attribute 'mode-line :overline)))
+          (set-face-underline 'mode-line line-color)
+          ;; (set-face-attribute 'mode-line nil :box nil)
+          ;; (set-face-attribute 'mode-line-inactive nil :box nil)
+          ;; (set-face-background 'mode-line-inactive "#bdb7a8")
+          (set-face-underline 'mode-line-buffer-id nil))))
+  (add-hook 'after-load-theme-hook 'customize-poet-theme)
+  ;; (defun customize-poet-dark-monochrome-theme ()
+  ;;   (if (member 'poet-dark-monochrome custom-enabled-themes)
+  ;;       (let ((line-color (face-attribute 'mode-line :overline)))
+  ;;         (set-face-underline 'mode-line line-color)
+  ;;         (set-face-underline 'mode-line-buffer-id nil))))
+  ;; (add-hook 'after-load-theme-hook 'customize-poet-dark-monochrome-theme)
+  (defun customize-poet-monochrome-theme ()
+    (if (member 'poet-monochrome custom-enabled-themes)
+        (let ((line-color (face-attribute 'mode-line :overline)))
+          (set-face-underline 'mode-line line-color)
+          (set-face-underline 'mode-line-buffer-id nil))))
+  (add-hook 'after-load-theme-hook 'customize-poet-monochrome-theme))
+
 (use-package solarized-theme
   :defer t
   :custom
@@ -37,7 +69,6 @@
 (use-package nordless-theme :defer t)
 (use-package oldlace-theme :defer t)
 (use-package plain-theme :defer t)
-(use-package poet-theme :defer t)
 (use-package punpun-theme :defer t)
 (use-package sublime-themes :defer t)
 (use-package tao-theme :defer t)
