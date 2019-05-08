@@ -1,1 +1,1 @@
-/Users/samanderson/etc/vimrc
+vimrc
