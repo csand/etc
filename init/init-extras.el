@@ -100,10 +100,8 @@
 
 (use-package git-timemachine
   :after evil
-  :hook
-  (git-timemachine-mode . evil-normalize-keymaps)
-  :config
-  (evil-make-overriding-map git-timemachine-mode-map 'normal))
+  :hook (git-timemachine-mode . evil-normalize-keymaps)
+  :config (evil-make-overriding-map git-timemachine-mode-map 'normal))
 
 (use-package htmlize :defer t)
 
@@ -113,11 +111,23 @@
 
 (use-package lorem-ipsum :defer t)
 
+(use-package md4rd
+  :defer t
+  :pin melpa
+  :config
+  (setq md4rd-subs-active '(emacs elderscrollsonline))
+  (add-to-list 'evil-emacs-state-modes 'md4rd-mode))
+
+(use-package nov
+  :defer t
+  :pin melpa
+  :mode ("\\.epub\\'" . nov-mode)
+  :config (setq nov-text-width 80))
+
 (use-package olivetti :defer t)
 
 (use-package paradox
-  :config
-  (paradox-enable))
+  :config (paradox-enable))
 
 (use-package pdf-tools
   :defer t)
@@ -132,6 +142,19 @@
 (use-package restart-emacs :pin melpa)
 
 (use-package restclient :pin melpa)
+
+(use-package shackle
+  :defer t
+  :custom
+  (shackle-rules
+   '((compilation-mode
+      :select nil
+      :popup t
+      :align below
+      :size 15)
+     ))
+  :config
+  (shackle-mode 1))
 
 (use-package slime
   :pin melpa-stable
@@ -149,18 +172,23 @@
   :init
   (require 'smartparens-config))
 
-(use-package tide
-  :hook (js2-mode . (lambda () (tide-setup))))
 (use-package super-save
   :diminish super-save-mode
   :config
   (super-save-mode 1))
 
+(use-package tide
+  ;; :config (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log -traceToConsole true"))
+  :hook (typescript-mode . (lambda () (tide-setup))))
 
 (use-package tramp)
 
 (use-package visual-fill-column
   :hook (visual-line-mode . visual-fill-column-mode))
+
+(use-package web-beautify
+  :pin melpa
+  :defer t)
 
 (use-package wgrep
   :commands (ivy-wgrep-change-to-wgrep-mode
