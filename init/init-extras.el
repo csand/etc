@@ -31,7 +31,16 @@
 (use-package direnv
   :defer t
   :config
-  (direnv-mode 1))
+  (direnv-mode 1)
+  (defvar after-direnv-update-hook nil
+    "Hook run after a `direnv-update-directory-environment' has finished.")
+  (defadvice direnv-update-directory-environment (after run-after-direnv-update-hook activate)
+    "Run `after-direnv-update-hook'."
+    (run-hooks 'after-direnv-update-hook))
+  (defun update-eshell-path-from-exec-path ()
+    (interactive)
+    (setq eshell-path-env (s-join ":" exec-path)))
+  (add-hook 'after-direnv-update-hook #'update-eshell-path-from-exec-path))
 
 (use-package dtrt-indent
   :defer t
