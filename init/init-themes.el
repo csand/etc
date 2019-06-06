@@ -43,7 +43,8 @@
 (use-package nord-theme
   :defer t
   :init
-  (setq nord-comment-brightness 20))
+  (setq nord-comment-brightness 20)
+  (setq nord-uniform-mode-lines t))
 
 (use-package afternoon-theme :defer t)
 (use-package ample-theme :defer t)
