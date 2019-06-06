@@ -72,6 +72,7 @@
 (use-package flycheck
   :hook
   ((js-mode . flycheck-mode)
+   (typescript-mode . flycheck-mode)
    (python-mode . flycheck-mode)
    (rst-mode . flycheck-mode)
    (sh-mode . flycheck-mode))
