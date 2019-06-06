@@ -15,6 +15,7 @@
   :mode "\\.js\\'"
   :custom
   (js2-mode-show-strict-warnings nil)
+  (js2-basic-offset 2)
   :custom-face
   ;; Unset default jsdoc colours since a lot of themes miss these
   (js2-jsdoc-tag ((t (:foreground nil))))
