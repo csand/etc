@@ -12,14 +12,15 @@
 (defun rename-file-and-buffer ()
   "Rename the current buffer and file it is visiting."
   (interactive)
-  (let ((filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
+  (let ((old (buffer-file-name)))
+    (if (not (and old (file-exists-p old)))
         (message "Buffer is not visiting a file!")
-      (let ((new-name (read-file-name "New name: " filename)))
+      (let ((new (read-file-name "New name: " old)))
+        (mkdir (file-name-directory new) t)
         (cond
-         ((vc-backend filename) (vc-rename-file filename new-name))
-         (t (rename-file filename new-name t)
-            (set-visited-file-name new-name t t)))))))
+         ((vc-backend old) (vc-rename-file old new))
+         (t (rename-file old new t)
+            (set-visited-file-name new t t)))))))
 
 (defun delete-file-and-buffer ()
   (interactive)
