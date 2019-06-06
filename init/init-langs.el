@@ -39,6 +39,13 @@
   (markdown-coding-system "utf-8")
   (markdown-header-scaling t))
 
+(use-package ng2-mode
+  :mode (("\\.ngml" . ng2-html-mode))
+  :config
+  ;; Kindly piss off ng2-mode
+  (setq auto-mode-alist
+        (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist)))
+
 (use-package powershell
   :if is-windows
   :mode ("\\.ps[dm]?1\\'" . powershell-mode))
@@ -68,6 +75,11 @@
 
 (use-package taskpaper-mode
   :mode "\\.taskpaper\\'")
+
+(use-package typescript-mode
+  :mode "\\.ts\\'"
+  :custom
+  (typescript-indent-level 2))
 
 (use-package web-mode
   :mode "\\.html\\'")

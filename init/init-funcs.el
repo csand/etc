@@ -67,4 +67,11 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*")))
 
+(defun assq-delete-all-equal (key alist)
+  "Like `assq-delete-all', but uses `equal' instead of `eq' so it can match
+string keys in the alist."
+  (seq-remove (lambda (pair)
+                (equal key (car pair)))
+              alist))
+
 (provide 'init-funcs)
