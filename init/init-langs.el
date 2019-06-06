@@ -47,6 +47,9 @@
   (setq auto-mode-alist
         (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist)))
 
+(use-package nix-mode
+  :mode "\\.nix\\'")
+
 (use-package powershell
   :if is-windows
   :mode ("\\.ps[dm]?1\\'" . powershell-mode))
