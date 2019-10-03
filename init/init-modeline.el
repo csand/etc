@@ -10,6 +10,7 @@
   :config
   (sml/setup))
 
+(use-package moody)
 
 (use-package minions
   :config (minions-mode 1))
