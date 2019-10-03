@@ -5,6 +5,7 @@
 (use-package evil
   :diminish undo-tree-mode
   :custom
+  (evil-ex-substitute-global t)
   (evil-search-mode 'evil-search)
   (evil-want-C-w-in-emacs-state t)
   (evil-want-integration t)
