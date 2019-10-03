@@ -56,7 +56,7 @@
      projectile-root-top-down-recurring
      projectile-root-bottom-up))
   :config
-  (setq projectile-enable-caching t)
+  (setq projectile-enable-caching nil)
   (when (executable-find "fd")
     (let ((fd-command "fd . -0 --hidden --color never"))
       (setq projectile-generic-command fd-command
