@@ -131,6 +131,7 @@
 
 (define-hub-key :infix "w"
   "" '(nil :which-key "windows")
+  "1" 'delete-other-windows
   "c" 'evil-window-delete
   "h" 'evil-window-left
   "j" 'evil-window-down
