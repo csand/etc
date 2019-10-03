@@ -51,6 +51,7 @@
 (require 'init-prodigy)
 (require 'init-extras)
 (require 'init-modeline)
+(require 'init-compilation)
 
 ;; Start maximized
 (when (display-graphic-p)
