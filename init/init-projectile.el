@@ -65,6 +65,10 @@
                                     :compile "npm run build"
                                     :test "npm test"
                                     :test-suffix ".spec")
+  (projectile-register-project-type 'webpack '("webpack.config.js package.json")
+                                    :compile "webpack --env development"
+                                    :test "jest"
+                                    :test-suffix ".spec")
   (add-to-list 'projectile-other-file-alist
                '("js" "spec.js" "scss" "html"))
   (add-to-list 'projectile-other-file-alist
