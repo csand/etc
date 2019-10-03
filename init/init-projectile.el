@@ -22,6 +22,11 @@
      ".tox"
      ".svn"
      ".stack-work"))
+  (projectile-project-root-files-functions
+   '(projectile-root-local
+     projectile-root-top-down
+     projectile-root-top-down-recurring
+     projectile-root-bottom-up))
   :config
   (setq projectile-enable-caching t)
   (when (executable-find "fd")
