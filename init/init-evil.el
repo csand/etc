@@ -15,7 +15,7 @@
 
 (use-package evil-collection
  :pin melpa
- :after (evil evil-magit evil-org)
+ :after evil
  :config
  (evil-collection-init))
 
