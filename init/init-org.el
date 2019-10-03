@@ -84,6 +84,17 @@
   (add-to-list 'org-structure-template-alist
                '("js" . "src javascript")))
 
+(use-package ob-http
+  :after org
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((http .t))))
+
+(use-package org-mime
+  :pin melpa
+  :after org)
+
 (use-package ox-pandoc
   :pin melpa
   :after org)
