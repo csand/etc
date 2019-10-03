@@ -58,7 +58,7 @@
   :config
   (setq projectile-enable-caching nil)
   (when (executable-find "fd")
-    (let ((fd-command "fd . -0 --hidden --color never"))
+    (let ((fd-command "fd . -0 -t file -t symlink --hidden --color never"))
       (setq projectile-generic-command fd-command
             projectile-git-command fd-command)))
   (projectile-register-project-type 'npm '("package.json")
