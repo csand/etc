@@ -15,6 +15,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 (setq
+ confirm-kill-emacs 'yes-or-no-p
  auto-save-default nil
  backup-inhibited t
  compilation-scroll-output t
