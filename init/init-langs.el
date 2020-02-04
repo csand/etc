@@ -8,6 +8,9 @@
 (use-package fish-mode
   :mode "\\.fish\\'")
 
+(use-package groovy-mode
+  :mode "\\.groovy\\'")
+
 (use-package jinja2-mode
   :mode "\\.j2\\'")
 
