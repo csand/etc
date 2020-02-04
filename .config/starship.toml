@@ -1,0 +1,13 @@
+[character]
+symbol = "✔"
+error_symbol = "✗"
+use_symbol_for_status = true
+
+[conda]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[java]
+disabled = true
