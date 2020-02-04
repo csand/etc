@@ -115,7 +115,7 @@ Plugin 'tpope/vim-unimpaired' " Mappings for quickfix/location list nav
 Plugin 'tpope/vim-vinegar' " Improvements for netrw
 Plugin 'guns/xterm-color-table.vim' " Show the terminal colour table
 Plugin 'editorconfig/editorconfig-vim' " Nice project wide config for editors
-Plugin 'eraserhd/vim-ios' " Utilities for developing iOS apps in vim
+" Plugin 'eraserhd/vim-ios' " Utilities for developing iOS apps in vim
 Plugin 'alexlafroscia/vim-ember-cli' " Ember-cli utilities for vim
 
 " Text objects
