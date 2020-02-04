@@ -42,7 +42,7 @@ if ! has('gui_running')
   " MacVim is terrible
   " Plugin 'Valloric/YouCompleteMe'
 endif
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 
 " }}}
 " Syntaxes {{{
