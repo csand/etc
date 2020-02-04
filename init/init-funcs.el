@@ -73,6 +73,13 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*")))
 
+(defun re-replace-all (regexp replacement &optional buffer)
+  (with-current-buffer (or buffer (current-buffer))
+    (save-excursion
+      (goto-char 0)
+      (while (re-search-forward regexp nil t)
+        (replace-match replacement)))))
+
 (defun jest-diff-to-js! ()
   "Scrubs cruft from Jest's object diffs to get valid JS code."
   (interactive)
