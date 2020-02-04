@@ -9,4 +9,4 @@ let g:airline#extensions#whitespace#enabled = 1
 let g:airline#extensions#branch#displayed_head_limit = 20
 
 " Theme
-let g:airline_theme='nord'
+let g:airline_theme='cool'
