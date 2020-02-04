@@ -61,7 +61,7 @@
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;; Load current theme as last step
-(load-theme 'material t)
+(load-theme 'dakrone t)
 
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.
