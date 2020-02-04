@@ -5,6 +5,7 @@
 (scroll-bar-mode -1)
 
 (fringe-mode nil)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 
 (column-number-mode 1)
 (show-paren-mode 1)
