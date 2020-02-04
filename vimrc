@@ -90,6 +90,7 @@ Plugin 'cocopon/iceberg.vim'
 Plugin 'ciaranm/inkpot'
 Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plugin 'morhetz/gruvbox'
+Plugin 'arcticicestudio/nord-vim'
 
 " }}}
 " Extras {{{
