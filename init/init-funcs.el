@@ -68,6 +68,15 @@ Repeated invocations toggle between the two most recently open buffers."
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*")))
 
+(defun jest-diff-to-js! ()
+  "Scrubs cruft from Jest's object diffs to get valid JS code."
+  (interactive)
+  (re-replace-all " *\\+" "")
+  (re-replace-all "Object " "")
+  (re-replace-all "Array " "")
+  (re-replace-all "\"\\(.+\\)\":" "\\1:")
+  (re-replace-all "\"" "'"))
+
 (defun eshell-here ()
   "Opens up a new shell in the directory associated with the
 current buffer's file. The eshell is renamed to match that
