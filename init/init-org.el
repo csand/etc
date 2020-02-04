@@ -1,5 +1,7 @@
 ;;; init-org.el --- Org-mode config and enhancements
 
+(require 'init-fonts)
+
 (defconst org-directory (expand-file-name "Dropbox/Org" (getenv "HOME")))
 
 (defun org-file (filename)
@@ -96,10 +98,9 @@
     "'" 'org-edit-special
     "r" 'org-refile
     "t" 'org-todo)
-  (general-define-key
-   :keymaps 'org-mode-map
-   :states 'normal
-   "t" 'org-todo)
+  (general-define-key :keymaps 'org-mode-map
+                      :states 'normal
+                      "t" 'org-todo)
   (define-major-mode-follower-key
     :keymaps 'org-capture-mode-map
     "," 'org-capture-finalize
@@ -108,21 +109,25 @@
     "k" 'org-capture-kill
     "r" 'org-capture-refile
     "w" 'org-capture-refile)
-  (add-to-list 'org-src-lang-modes '("javascript" . js2))
-  (org-babel-do-load-languages 'org-babel-load-languages
-                               '((awk . t)))
-  (set-face-attribute 'org-code nil
-                      :family "Triplicate T4")
-  (require 'org-tempo)
-  (add-to-list 'org-structure-template-alist
-               '("js" . "src javascript")))
+  (org-babel-do-load-languages 'org-babel-load-languages '((awk . t)))
+  ;; NO spell check for embedded snippets
+  (defadvice org-mode-flyspell-verify (after org-mode-flyspell-verify-hack activate)
+    (let* ((rlt ad-return-value)
+           (begin-regexp "^[ \t]*#\\+begin_\\(src\\|html\\|latex\\|example\\|quote\\)")
+           (end-regexp "^[ \t]*#\\+end_\\(src\\|html\\|latex\\|example\\|quote\\)")
+           (case-fold-search t)
+           b e)
+      (when ad-return-value
+        (save-excursion
+          (setq b (re-search-backward begin-regexp nil t))
+          (if b (setq e (re-search-forward end-regexp nil t))))
+        (if (and b e (< (point) e)) (setq rlt nil)))
+      (setq ad-return-value rlt))))
 
 (use-package ob-http
   :after org
   :config
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((http .t))))
+  (org-babel-do-load-languages 'org-babel-load-languages '((http . t))))
 
 (use-package org-mime
   :pin melpa
