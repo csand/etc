@@ -1,0 +1,14 @@
+/auto-save-list
+/elpa
+/eshell
+/server
+/site-lisp/*
+/url
+.cache
+bookmarks
+custom.el
+projectile-bookmarks.eld
+projectile.cache
+recentf
+tramp
+.DS_Store
