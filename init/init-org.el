@@ -137,4 +137,6 @@
   :pin melpa
   :after org)
 
+(use-package ox-reveal :after org)
+
 (provide 'init-org)
