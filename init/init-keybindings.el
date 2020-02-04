@@ -22,6 +22,11 @@
   "," 'eval-last-sexp
   "eb" 'eval-buffer)
 
+;; TIDE
+(define-major-mode-follower-key
+  :keymaps 'tide-mode-map
+  "," 'tide-fix)
+
 ;; Emmet
 (general-define-key
  :states 'insert
