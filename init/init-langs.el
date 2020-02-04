@@ -52,7 +52,9 @@
   :config
   ;; Kindly piss off ng2-mode
   (setq auto-mode-alist
-        (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist)))
+        (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist))
+  (setq auto-mode-alist
+        (assq-delete-all-equal "\\.module.ts\\'" auto-mode-alist)))
 
 (use-package nix-mode
   :mode "\\.nix\\'")
