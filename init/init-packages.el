@@ -36,6 +36,6 @@
 ;; Add site-lisp packages to load-path
 (mapc (lambda (site)
         (add-to-list 'load-path (expand-file-name site)))
-      (-filter 'file-directory-p (csand/ls (emacs-d "site-lisp") t)))
+      (-filter 'file-directory-p (sand/ls (emacs-d "site-lisp") t)))
 
 (provide 'init-packages)

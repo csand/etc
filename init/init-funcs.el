@@ -51,11 +51,11 @@ Repeated invocations toggle between the two most recently open buffers."
                   (get-char-property pos 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-(defun csand/add-to-hooks (hook pirates)
+(defun sand/add-to-hooks (hook pirates)
   (dolist (pirate pirates)
     (add-hook hook pirate)))
 
-(defun csand/ls (path &optional abs match nosort)
+(defun sand/ls (path &optional abs match nosort)
   "Like directory-files, but omits . and .."
   (let* ((fails (directory-files path nil match nosort))
          (files (remove "." (remove ".." fails))))
@@ -63,7 +63,7 @@ Repeated invocations toggle between the two most recently open buffers."
                       (expand-file-name file path)) files)
       files)))
 
-(defun csand/itch ()
+(defun sand/itch ()
   "Switch to or create *scratch* buffer"
   (interactive)
   (switch-to-buffer (get-buffer-create "*scratch*")))
