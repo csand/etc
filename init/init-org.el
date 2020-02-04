@@ -23,7 +23,52 @@
   :ensure org-plus-contrib
   :pin org
   :mode ("\\.org\\'" . org-mode)
+  :custom
+  (org-hide-emphasis-markers t)
+  (org-export-coding-system 'utf-8)
+  (org-modules '(org-bbdb
+                 org-bibtex
+                 org-docview
+                 org-eww
+                 org-gnus
+                 org-info
+                 org-irc
+                 org-mhe
+                 org-rmail
+                 org-tempo
+                 org-w3m))
+  (org-src-lang-modes '(("bash" . sh)
+                        ("html" . web)
+                        ("http" . ob-http)
+                        ("elisp" . emacs-lisp)
+                        ("javascript" . js)
+                        ("sass" . sass-mode)
+                        ("scss" . scss-mode)
+                        ("sh" . sh)
+                        ("typescript" . typescript)))
+  (org-src-tab-acts-natively t)
+  (org-startup-folded nil)
+  (org-structure-template-alist '(("C" . "comment")
+                                  ("E" . "export")
+                                  ("a" . "export ascii")
+                                  ("c" . "center")
+                                  ("e" . "example")
+                                  ("h" . "export html")
+                                  ("js" . "src javascript")
+                                  ("l" . "export latex")
+                                  ("q" . "quote")
+                                  ("s" . "src")
+                                  ("ts" . "src typescript")
+                                  ("v" . "verse")))
+  (org-tags-column -80)
+  (org-todo-keywords '((sequence "TODO(t)"
+                                 "WAITING(w!)"
+                                 "|"
+                                 "DONE(d)"
+                                 "SOMEDAY(s)"
+                                 "WONTDO(n!)")))
   :custom-face
+  (org-ode ((t (:family "Triplicate T4"))))
   (org-document-title ((t (:family "Triplicate C4"))))
   (org-level-1 ((t (:family "Triplicate C4"))))
   (org-level-2 ((t (:family "Triplicate C4"))))
@@ -37,23 +82,11 @@
   (setq org-agenda-files `(,org-inbox-file
                            ,org-projects-file
                            ,org-work-file)
-        org-export-coding-system 'utf-8
         org-refile-targets '((nil :maxlevel . 9)
                              (org-inbox-file :level . 1)
                              (org-projects-file :level . 1))
-        org-src-tab-acts-natively t
-        org-startup-folded nil
-        org-tags-column -80
-        org-hide-emphasis-markers t)
-  (setq org-capture-templates `(,org-todo-template
+        org-capture-templates `(,org-todo-template
                                 ,org-work-item-template))
-  (setq org-todo-keywords '((sequence
-                             "TODO(t)"
-                             "WAITING(w!)"
-                             "|"
-                             "DONE(d)"
-                             "SOMEDAY(s)"
-                             "WONTDO(n!)")))
   :config
   (define-follower-key "c" 'org-capture)
   (define-major-mode-follower-key
