@@ -41,7 +41,11 @@
   (markdown-asymmetric-header t)
   (markdown-italic-underscore t)
   (markdown-coding-system "utf-8")
-  (markdown-header-scaling t))
+  (markdown-header-scaling t)
+  (markdown-code-lang-modes
+   '(("elisp" . emacs-lisp-mode)
+     ("html" . web-mode)
+     ("shell" . sh-mode))))
 
 (use-package ng2-mode
   :mode (("\\.ngml" . ng2-html-mode))
