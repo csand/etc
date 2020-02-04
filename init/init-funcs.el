@@ -63,6 +63,11 @@ Repeated invocations toggle between the two most recently open buffers."
                       (expand-file-name file path)) files)
       files)))
 
+(defun set-window-width (n)
+  "Set the selected window's width."
+  (interactive "nColumns: ")
+  (adjust-window-trailing-edge (selected-window) (- n (window-width)) t))
+
 (defun sand/itch ()
   "Switch to or create *scratch* buffer"
   (interactive)
