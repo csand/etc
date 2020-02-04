@@ -18,6 +18,7 @@
  confirm-kill-emacs 'yes-or-no-p
  auto-save-default nil
  backup-inhibited t
+ make-backup-files nil
  compilation-scroll-output t
  create-lockfiles nil
  inhibit-startup-screen t
