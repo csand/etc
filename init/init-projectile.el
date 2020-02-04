@@ -1,7 +1,6 @@
 ;;; init-projectile.el --- Project-wide navigation and functions
 
 (use-package projectile
-  :pin melpa
   :diminish projectile-mode
   :custom
   (projectile-indexing-method 'alien)
@@ -52,9 +51,9 @@
      "cscope.out"))
   (projectile-project-root-files-functions
    '(projectile-root-local
+     projectile-root-bottom-up
      projectile-root-top-down
-     projectile-root-top-down-recurring
-     projectile-root-bottom-up))
+     projectile-root-top-down-recurring))
   :config
   (setq projectile-enable-caching nil)
   (when (executable-find "fd")
@@ -80,7 +79,6 @@
   (projectile-global-mode 1))
 
 (use-package counsel-projectile
-  :pin melpa
   :after (counsel projectile)
   :config
   (counsel-projectile-mode 1))
