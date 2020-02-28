@@ -10,8 +10,10 @@
   :custom
   (ivy-count-format "(%d/%d) ")
   (ivy-height 18)
-  (ivy-initial-inputs-alist nil)
-  (ivy-use-virtual-buffers t))
+  (ivy-use-virtual-buffers t)
+  :config
+  ;; Doesn't stick if set in customizations
+  (setq ivy-initial-inputs-alist nil))
 
 (use-package counsel
   :after ivy
