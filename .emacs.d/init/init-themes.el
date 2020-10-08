@@ -35,10 +35,14 @@
 (use-package poet-theme :defer t)
 
 ;; Light
+(use-package berrys-theme :defer t)
 (use-package cloud-theme :defer t) ;; +1
+(use-package dakrone-light-theme :defer t)
 (use-package flatui-theme :defer t)
 (use-package greymatters-theme :defer t)
+(use-package modus-operandi-theme :defer t)
 (use-package oldlace-theme :defer t)
+(use-package paper-theme :defer t)
 (use-package parchment-theme :pin melpa :defer t)
 (use-package silkworm-theme :defer t)
 (use-package twilight-bright-theme :defer t) ;; Interesting highlighting
@@ -50,6 +54,7 @@
 (use-package badwolf-theme :defer t)
 (use-package dakrone-theme :defer t) ;; Good, but I hate the default gutter
 (use-package dracula-theme :defer t)
+(use-package modus-vivendi-theme :defer t)
 (use-package naysayer-theme :defer t)
 (use-package oceanic-theme :defer t)
 (use-package omtose-phellack-theme :defer t)
