@@ -10,8 +10,8 @@
 
 (set-face-attribute 'default nil
                     :height sand-font-height
-                    :width 'normal
-                    :weight 'normal)
+                    :width 'condensed
+                    :weight 'medium)
 
 (defun sand/set-font-family (family &optional face)
   (interactive "sFont family: ")
@@ -24,9 +24,19 @@
 
 (sand/set-font-family "PragmataPro")
 
-(sand/set-font-family "PragmataPro Mono" 'fixed-pitch) ;; Mostly affects markdown mode source blocks
+;; Mostly affects markdown mode source blocks
+(sand/set-font-family "PragmataPro Mono" 'fixed-pitch)
 
 (sand/set-font-family "Triplicate T4c" 'fixed-pitch-serif)
 (sand/set-font-family "Triplicate T4" 'variable-pitch)
+
+(sand/set-font-family "Gintronic")
+(sand/set-font-family "Gintronic" 'fixed-pitch)
+(sand/set-font-height 120)
+
+;; (set-face-attribute 'default nil :weight 'bold)
+(set-face-attribute 'default nil :weight 'light)
+;; (set-face-attribute 'default nil :weight 'normal)
+;; (setq-default line-spacing 1)
 
 (provide 'init-fonts)
