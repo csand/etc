@@ -8,6 +8,17 @@
 (use-package fish-mode
   :mode "\\.fish\\'")
 
+(use-package flow-js2-mode
+  :config
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (when (flow-minor-tag-present-p)
+                (flow-js2-mode +1)))))
+
+(use-package flow-minor-mode
+  :config
+  (add-hook 'js2-mode-hook 'flow-minor-enable-automatically))
+
 (use-package groovy-mode
   :mode "\\.groovy\\'")
 
@@ -66,17 +77,7 @@
 (use-package python-mode
   :mode "\\.py\\'")
 
-(use-package rust-mode
-  :mode "\\.rs\\'"
-  :config
-  (use-package racer
-    :hook
-    ((rust-mode . racer-mode)
-     (racer-mode . eldoc-mode)
-     (racer-mode . company-mode))
-    :general
-    ('insert rust-mode-map
-     "TAB" 'company-indent-or-complete-common)))
+(use-package rjsx-mode)
 
 (use-package sass-mode
   :mode "\\.sass\\'")
@@ -90,12 +91,16 @@
   :mode "\\.taskpaper\\'")
 
 (use-package typescript-mode
+  :pin melpa
   :mode "\\.ts\\'"
+  :hook (typescript-mode . flycheck-mode)
   :custom
   (typescript-indent-level 2))
 
 (use-package web-mode
-  :mode "\\.html\\'")
+  :mode (("\\.html\\'" . web-mode)
+         ("\\.jsx\\'" . web-mode)
+         ("\\.tsx\\'" . web-mode)))
 
 (use-package yaml-mode
   :mode "\\.ya?ml\\'")

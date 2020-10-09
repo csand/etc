@@ -79,9 +79,10 @@
   (exec-path-from-shell-initialize))
 
 (use-package flycheck
+  :pin melpa
+  :commands (flycheck-mode)
   :hook
   ((js-mode . flycheck-mode)
-   (typescript-mode . flycheck-mode)
    (python-mode . flycheck-mode)
    (rst-mode . flycheck-mode)
    (sh-mode . flycheck-mode))
@@ -178,8 +179,17 @@
   (super-save-mode 1))
 
 (use-package tide
-  ;; :config (setq tide-tsserver-process-environment '("TSS_LOG=-level verbose -file /tmp/tss.log -traceToConsole true"))
-  :hook (typescript-mode . (lambda () (tide-setup))))
+  :pin melpa
+  :commands (tide-setup)
+  :hook (typescript-mode . (lambda () (tide-setup)))
+  :config
+  ;; (setq tide-tsserver-process-environment
+  ;;       '("TSS_LOG=-level verbose -file /tmp/tss.log -traceToConsole true"))
+  (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append)
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (when (string-equal "tsx" (file-name-extension buffer-file-name))
+                (tide-setup)))))
 
 (use-package tramp)
 
