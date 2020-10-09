@@ -42,6 +42,8 @@
 (require 'init-magit)
 (require 'init-projectile)
 (require 'init-langs)
+(require 'init-lsp)
+(require 'init-rust)
 (require 'init-org)
 (require 'init-fonts)
 (require 'init-themes)
