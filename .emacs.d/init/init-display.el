@@ -36,6 +36,6 @@
 
 (sidebar-buffers for help-mode on right size 78)
 ;; (sidebar-buffers for magit-status-mode on top size 20)
-(sidebar-buffers for compilation-mode on bottom size 15)
+;; (sidebar-buffers for compilation-mode on bottom size 15)
 
 (provide 'init-display)
