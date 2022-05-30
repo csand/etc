@@ -114,4 +114,23 @@ string keys in the alist."
                 (equal key (car pair)))
               alist))
 
+(defvar sand-garbage-overlay nil)
+(make-variable-buffer-local 'sand-garbage-overlay)
+
+(defun sand/hide-garbage ()
+  (interactive)
+  (save-excursion
+    (let* ((beg (progn (beginning-of-buffer) (point)))
+           (end (progn (forward-comment 2) (point))))
+      (setq sand-garbage-overlay (make-overlay beg end))
+      (overlay-put sand-garbage-overlay 'invisible t))))
+
+(defun sand/show-garbage ()
+  (interactive)
+  (if (and (overlayp sand-garbage-overlay)
+           (overlay-buffer sand-garbage-overlay))
+      (delete-overlay sand-garbage-overlay)
+    (if (called-interactively-p 'interactive)
+        (message "No garbage to show"))))
+
 (provide 'init-funcs)

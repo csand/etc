@@ -40,7 +40,16 @@
   (defun set-js2-mode-company-backends ()
     (set (make-local-variable 'company-backends)
          '(company-dabbrev-code company-yasnippet)))
-  (add-hook 'js2-mode-hook #'set-js2-mode-company-backends))
+  (add-hook 'js2-mode-hook #'set-js2-mode-company-backends)
+  (defun sand/js-copyright-comment-present-p ()
+    (save-excursion
+      (beginning-of-buffer)
+      (when (re-search-forward " *\\*+ *Copyright" nil t)
+        t)))
+  (defun sand/hide-garbage-if-copyright-present ()
+    (when (sand/js-copyright-comment-present-p)
+      (sand/hide-garbage)))
+  (add-hook 'js2-mode-hook #'sand/hide-garbage-if-copyright-present))
 
 (use-package json-mode
   :mode "\\.json\\'")
