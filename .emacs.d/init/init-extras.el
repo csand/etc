@@ -99,10 +99,7 @@
    ((executable-find "hunspell")
     (setq ispell-program-name "hunspell"))))
 
-(use-package git-timemachine
-  :after evil
-  :hook (git-timemachine-mode . evil-normalize-keymaps)
-  :config (evil-make-overriding-map git-timemachine-mode-map 'normal))
+(use-package git-timemachine :defer t)
 
 (use-package htmlize :defer t)
 
