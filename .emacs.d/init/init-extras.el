@@ -169,6 +169,7 @@
   :diminish smartparens-mode
   :hook
   ((prog-mode . smartparens-mode)
+   (conf-mode . smartparens-mode)
    (smartparens-mode . show-smartparens-mode))
   :init
   (require 'smartparens-config))
