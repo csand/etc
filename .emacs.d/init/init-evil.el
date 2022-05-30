@@ -16,6 +16,8 @@
 (use-package evil-collection
  :pin melpa
  :after evil
+ :custom
+ (evil-collection-magit-want-horizontal-movement t)
  :config
  (evil-collection-init))
 
@@ -27,11 +29,6 @@
 
 (use-package evil-ediff
   :after evil)
-
-(use-package evil-magit
-  :after (evil magit)
-  :init
-  (setq evil-magit-want-horizontal-movement t))
 
 (use-package evil-org
   :pin melpa
