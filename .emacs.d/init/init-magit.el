@@ -5,6 +5,7 @@
 (require 'init-general)
 
 (use-package magit
+  :pin melpa
   :diminish auto-revert-mode
   :config
   (require 'magit-blame)
