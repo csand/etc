@@ -32,6 +32,13 @@
 (use-package leuven-theme :defer t)
 (use-package majapahit-theme :defer t)
 (use-package material-theme :defer t) ;; material-light +1
+(use-package modus-themes
+  :defer t
+  :custom
+  (modus-themes-syntax nil)
+  ;; (modus-themes-syntax 'alt-syntax)
+  :config
+  (modus-themes-load-themes))
 (use-package poet-theme :defer t)
 
 ;; Light
@@ -40,7 +47,6 @@
 (use-package dakrone-light-theme :defer t)
 (use-package flatui-theme :defer t)
 (use-package greymatters-theme :defer t)
-(use-package modus-operandi-theme :defer t)
 (use-package oldlace-theme :defer t)
 (use-package paper-theme :defer t)
 (use-package parchment-theme :pin melpa :defer t)
@@ -54,7 +60,6 @@
 (use-package badwolf-theme :defer t)
 (use-package dakrone-theme :defer t) ;; Good, but I hate the default gutter
 (use-package dracula-theme :defer t)
-(use-package modus-vivendi-theme :defer t)
 (use-package naysayer-theme :defer t)
 (use-package oceanic-theme :defer t)
 (use-package omtose-phellack-theme :defer t)
