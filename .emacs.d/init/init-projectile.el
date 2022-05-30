@@ -79,6 +79,7 @@
   (projectile-global-mode 1))
 
 (use-package counsel-projectile
+  :pin melpa
   :after (counsel projectile)
   :config
   (counsel-projectile-mode 1))
