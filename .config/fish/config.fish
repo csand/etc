@@ -7,7 +7,7 @@ set -g fish_user_paths $HOME/.npm-packages/bin $fish_user_paths
 set -x EDITOR emacsclient -c
 set -x CODE $HOME/code
 
-set nix_script $HOME/.nix-profile/etc/profile.d/nix.sh
+set nix_script /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 test -e $nix_script; and fenv source $nix_script
 
 which thefuck >/dev/null; and thefuck --alias | source
