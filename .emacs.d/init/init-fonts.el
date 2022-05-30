@@ -23,6 +23,7 @@
                       :height (or height sand-font-height)))
 
 (sand/set-font-family "PragmataPro")
+(sand/set-font-height 170)
 
 ;; Mostly affects markdown mode source blocks
 (sand/set-font-family "PragmataPro Mono" 'fixed-pitch)
@@ -30,13 +31,13 @@
 (sand/set-font-family "Triplicate T4c" 'fixed-pitch-serif)
 (sand/set-font-family "Triplicate T4" 'variable-pitch)
 
-(sand/set-font-family "Gintronic")
-(sand/set-font-family "Gintronic" 'fixed-pitch)
-(sand/set-font-height 120)
+(sand/set-font-family "Berkeley Mono")
+(sand/set-font-height 140)
+(sand/set-font-height 160)
 
 ;; (set-face-attribute 'default nil :weight 'bold)
-(set-face-attribute 'default nil :weight 'light)
-;; (set-face-attribute 'default nil :weight 'normal)
+;; (set-face-attribute 'default nil :weight 'light)
+(set-face-attribute 'default nil :weight 'normal)
 ;; (setq-default line-spacing 1)
 
 (provide 'init-fonts)
