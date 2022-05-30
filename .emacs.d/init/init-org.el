@@ -28,6 +28,12 @@
   :custom
   (org-hide-emphasis-markers t)
   (org-export-coding-system 'utf-8)
+  (org-export-backends '(ascii
+                         html
+                         icalendar
+                         latex
+                         md
+                         odt))
   (org-modules '(org-bbdb
                  org-bibtex
                  org-docview
