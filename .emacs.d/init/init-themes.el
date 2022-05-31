@@ -24,6 +24,7 @@
 ;; Bundles
 (use-package color-theme-sanityinc-tomorrow :defer t)
 (use-package doom-themes
+  :pin melpa
   :defer t
   :custom
   (doom-challenger-deep-brighter-comments t))
