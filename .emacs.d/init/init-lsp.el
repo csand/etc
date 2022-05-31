@@ -7,11 +7,11 @@
 ;; (use-package lsp-ui
 ;;   :commands (lsp-ui-mode))
 
-(use-package company-lsp
-  :after (company lsp)
-  :commands (company-lsp)
-  :config
-  (push 'company-lsp company-backends))
+;; (use-package company-lsp
+;;   :after (company lsp)
+;;   :commands (company-lsp)
+;;   :config
+;;   (push 'company-lsp company-backends))
 
 (use-package lsp-ivy
   :after lsp-mode
