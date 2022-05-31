@@ -68,6 +68,7 @@
 (use-package railscasts-reloaded-theme :defer t)
 (use-package subatomic-theme :defer t)
 (use-package zerodark-theme :defer t)
+(use-package weyland-yutani-theme :defer t)
 
 ;; Monochromatic
 (use-package eink-theme :defer t)
