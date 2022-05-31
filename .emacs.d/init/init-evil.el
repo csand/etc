@@ -10,6 +10,7 @@
   (evil-want-C-w-in-emacs-state t)
   (evil-want-integration t)
   (evil-want-keybinding nil)
+  (undo-tree-auto-save-history nil)
   :config
   (evil-mode 1))
 
