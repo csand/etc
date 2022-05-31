@@ -40,7 +40,8 @@
   (defun update-eshell-path-from-exec-path ()
     (interactive)
     (setq eshell-path-env (s-join ":" exec-path)))
-  (add-hook 'after-direnv-update-hook #'update-eshell-path-from-exec-path))
+  (add-hook 'after-direnv-update-hook #'update-eshell-path-from-exec-path)
+  (direnv-update-directory-environment))
 
 (use-package dtrt-indent
   :defer t
