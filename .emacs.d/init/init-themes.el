@@ -22,6 +22,7 @@
   (setq nord-uniform-mode-lines t))
 
 ;; Bundles
+(use-package ample-theme :defer t)
 (use-package color-theme-sanityinc-tomorrow :defer t)
 (use-package doom-themes
   :pin melpa
@@ -46,6 +47,7 @@
 (use-package berrys-theme :defer t)
 (use-package cloud-theme :defer t) ;; +1
 (use-package dakrone-light-theme :defer t)
+(use-package espresso-theme :defer t)
 (use-package flatui-theme :defer t)
 (use-package greymatters-theme :defer t)
 (use-package oldlace-theme :defer t)
@@ -59,23 +61,29 @@
 (use-package arjen-grey-theme :defer t)
 (use-package atom-one-dark-theme :defer t)
 (use-package badwolf-theme :defer t)
+(use-package creamsody-theme :defer t)
 (use-package dakrone-theme :defer t) ;; Good, but I hate the default gutter
+(use-package danneskjold-theme :defer t)
 (use-package dracula-theme :defer t)
 (use-package naysayer-theme :defer t)
 (use-package oceanic-theme :defer t)
 (use-package omtose-phellack-theme :defer t)
 (use-package planet-theme :defer t)
 (use-package railscasts-reloaded-theme :defer t)
+(use-package rebecca-theme :defer t)
 (use-package subatomic-theme :defer t)
+(use-package snazzy-theme :defer t)
 (use-package zerodark-theme :defer t)
 (use-package weyland-yutani-theme :defer t)
 
 ;; Monochromatic
+(use-package almost-mono-themes :defer t)
 (use-package eink-theme :defer t)
 (use-package goose-theme :defer t) ;; Super grey
 (use-package monotropic-theme :defer t)
 (use-package plain-theme :defer t)
 (use-package punpun-theme :defer t)
+(use-package stimmung-themes :defer t)
 (use-package tao-theme :defer t)
 
 ;; Crazy

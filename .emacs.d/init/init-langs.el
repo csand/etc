@@ -67,14 +67,14 @@
      ("html" . web-mode)
      ("shell" . sh-mode))))
 
-(use-package ng2-mode
-  :mode (("\\.ngml" . ng2-html-mode))
-  :config
-  ;; Kindly piss off ng2-mode
-  (setq auto-mode-alist
-        (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist))
-  (setq auto-mode-alist
-        (assq-delete-all-equal "\\.module.ts\\'" auto-mode-alist)))
+;; (use-package ng2-mode
+;;   :mode (("\\.ngml" . ng2-html-mode))
+;;   :config
+;;   ;; Kindly piss off ng2-mode
+;;   (setq auto-mode-alist
+;;         (assq-delete-all-equal "\\.component.ts\\'" auto-mode-alist))
+;;   (setq auto-mode-alist
+;;         (assq-delete-all-equal "\\.module.ts\\'" auto-mode-alist)))
 
 (use-package nix-mode
   :mode "\\.nix\\'")

@@ -63,7 +63,7 @@
 (add-to-list 'default-frame-alist '(ns-appearance . light))
 
 ;; Load current theme as last step
-(load-theme 'gruvbox-light-hard t)
+(load-theme 'doom-snazzy t)
 
 ;; Stop modifying init.el on me, Emacs.
 ;; package.el adds this line to init.el if it is not present.

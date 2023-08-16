@@ -23,7 +23,7 @@
                       :height (or height sand-font-height)))
 
 (sand/set-font-family "PragmataPro")
-(sand/set-font-height 170)
+(sand/set-font-height 150)
 
 ;; Mostly affects markdown mode source blocks
 (sand/set-font-family "PragmataPro Mono" 'fixed-pitch)
@@ -32,8 +32,7 @@
 (sand/set-font-family "Triplicate T4" 'variable-pitch)
 
 (sand/set-font-family "Berkeley Mono")
-(sand/set-font-height 140)
-(sand/set-font-height 160)
+(sand/set-font-height 150)
 
 ;; (set-face-attribute 'default nil :weight 'bold)
 ;; (set-face-attribute 'default nil :weight 'light)
